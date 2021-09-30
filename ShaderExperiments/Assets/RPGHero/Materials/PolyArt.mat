@@ -62,7 +62,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.1
+    - _Glossiness: 32
     - _GlossyReflections: 1
     - _LitOutlineThickness: 0.1
     - _Metallic: 0.5
@@ -70,7 +70,7 @@ Material:
     - _OcclusionStrength: 1
     - _OutlineWidth: 0.0223
     - _Parallax: 0.02
-    - _RimAmount: 0.654
+    - _RimAmount: 0.85
     - _RimThreshold: 0.124
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

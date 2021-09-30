@@ -98,11 +98,11 @@ float4 frag (vertOut i) : SV_Target
 
     float4 sample = tex2D(_MainTex, i.uv);
 
-    float4 color = _Color * sample * (_AmbientColor + light + rim);
-    return applyFog(color, i);
+    //float4 color = _Color * sample * (_AmbientColor + light + rim);
+    //return applyFog(color, i);
 
     //return _Color * sample * (_AmbientColor + light + rim);
-    //return _Color * sample * (_AmbientColor + light + specular + rim);
+    return _Color * sample * (_AmbientColor + light + specular + rim);
     
     //return _Color * sample * (_AmbientColor + light);
 }
