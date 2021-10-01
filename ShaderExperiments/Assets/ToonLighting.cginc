@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 // Adapted from https://roystan.net/articles/toon-shader.html
 
 #if !defined(MY_LIGHTING_INCLUDED)
@@ -66,11 +68,14 @@ float4 frag (vertOut i) : SV_Target
     float3 normal = normalize(i.worldNormal);
     float NdotL = dot(_WorldSpaceLightPos0, normal);
 
+    // For spot/point lighting
+    float4x4 modelMatrix = unity_ObjectToWorld;
+
     // Shadows
-    float shadow = SHADOW_ATTENUATION(i);
+    float shadow1 = SHADOW_ATTENUATION(i);
 
     // Toonify it
-    float lightIntensity = smoothstep(0, 0.01, NdotL * shadow);
+    float lightIntensity = smoothstep(0, 0.01, NdotL * shadow1);
     float4 light = lightIntensity * _LightColor0;
 
     float3 viewDir = normalize(i.viewDir);
@@ -89,13 +94,24 @@ float4 frag (vertOut i) : SV_Target
     rimIntensity = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, rimIntensity);
     float4 rim = rimIntensity * _RimColor;
 
+    float4 sample = tex2D(_MainTex, i.uv);
+
+    // IF point or spot light
+    #if defined (POINT) || defined (SPOT)
+        float3 L = _WorldSpaceLightPos0.xyz - i.worldPos.xyz;
+        float dist = length(L);
+        float dot1 = max(dot(normalize(L), normal), 0);
+
+        UNITY_LIGHT_ATTENUATION(attenuation, i, i.worldPos.xyz);
+        return _Color * sample * attenuation * dot1 * (_AmbientColor + light + specular + rim);
+
+    #else
+
     // Outlining
     /* float3 lightDir = normalize(_WorldSpaceLightPos0.xyz - i.worldPos.xyz);
     if (dot(viewDir, normal) < lerp(_UnlitOutlineThickness, _LitOutlineThickness, max(0.0, dot(normal, lightDir)))) {
         outline = float4(_LightColor0.rgb * _OutlineColor.rgb, 0);
     } */
-
-    float4 sample = tex2D(_MainTex, i.uv);
 
     //float4 color = _Color * sample * (_AmbientColor + light + rim);
     //return applyFog(color, i);
@@ -104,6 +120,8 @@ float4 frag (vertOut i) : SV_Target
     return _Color * sample * (_AmbientColor + light + specular + rim);
     
     //return _Color * sample * (_AmbientColor + light);
+    
+    #endif
 }
 
 #endif
