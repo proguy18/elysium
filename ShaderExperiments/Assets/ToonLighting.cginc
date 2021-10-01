@@ -70,7 +70,6 @@ float4 frag (vertOut i) : SV_Target
     float shadow = SHADOW_ATTENUATION(i);
 
     // Toonify it
-    // TODO: FIX SHADOW WITH SPECULAR LIGHTING
     float lightIntensity = smoothstep(0, 0.01, NdotL * shadow);
     float4 light = lightIntensity * _LightColor0;
 

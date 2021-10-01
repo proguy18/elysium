@@ -1260,6 +1260,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RPGHeroPolyart
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: c647a6e9ba715004ebbf4dc6d7bd1e7a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: c647a6e9ba715004ebbf4dc6d7bd1e7a, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1392,10 +1396,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000662823}
-  m_LocalRotation: {x: 0.6236538, y: 0.14868167, z: 0.64899343, w: 0.40958193}
+  m_LocalRotation: {x: 0.6598522, y: 0.719404, z: -0.21126099, w: -0.0492122}
   m_LocalPosition: {x: -15.811587, y: 7.5051103, z: -12.261439}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 18.535, y: 79.185, z: 130.86}
+  m_LocalEulerAnglesHint: {x: 13.829, y: 201.103, z: 87.643}
