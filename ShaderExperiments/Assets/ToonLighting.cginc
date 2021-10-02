@@ -97,6 +97,7 @@ float4 frag (vertOut i) : SV_Target
     float4 sample = tex2D(_MainTex, i.uv);
 
     // IF point or spot light
+    // https://www.reddit.com/r/shaders/comments/5vmlm9/help_unity_cel_shader_point_light_troubles/
     #if defined (POINT) || defined (SPOT)
         float3 L = _WorldSpaceLightPos0.xyz - i.worldPos.xyz;
         float dist = length(L);
