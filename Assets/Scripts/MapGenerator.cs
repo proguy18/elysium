@@ -62,13 +62,13 @@ public class MapGenerator : MonoBehaviour {
 
 	void makeNoiseGrid(){
 
-		if (useRandomSeed){
+		if (true){
 			seed = Time.time.ToString();
 		}
 		map = new int[width, height];
 		
-		System.Random rand = new System.Random(seed.GetHashCode());
-
+		System.Random rand = new System.Random();
+		Debug.Log(seed);
         float random = rand.Next(0, 100);
 		for (int i = 0; i < width ; i ++){
 			for (int j = 0; j < height; j ++){
