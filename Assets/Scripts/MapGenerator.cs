@@ -26,27 +26,27 @@ public class MapGenerator : MonoBehaviour {
 
 	MeshGenerator meshGenerator;
 
+	List<Room> finalRooms;
+	MapPopulator mapPopulator;
+
 	void Start() {
 
 		GenerateMap();
-
 	}
 
 	void Update() {
 		if (Input.GetMouseButtonDown(0)) {
 			meshGenerator.clearMesh();
+			mapPopulator = null;
 			GenerateMap();
 		}
 	}
 	void GenerateMap(){
-		map = new int[width, height];
 		makeNoiseGrid();
 		applyCellularAutomation(iterations);
-		Debug.Log("Ass1");
 		ProcessMap();
-		Debug.Log("Ass3");
 		int borderSize = 5; 
-		int[,] borderedMap= new int[width + borderSize*2,height + borderSize*2];
+		int[,] borderedMap= new int[width + borderSize*2, height + borderSize*2];
 		for (int i = 0; i < borderedMap.GetLength(0) ; i ++){
 			for (int j = 0; j < borderedMap.GetLength(1); j ++){
 				if (i >= borderSize && i < width + borderSize && j >= borderSize && j < borderSize + height){
@@ -58,17 +58,17 @@ public class MapGenerator : MonoBehaviour {
 		}
 		meshGenerator = GetComponent<MeshGenerator>();
 		meshGenerator.GenerateMesh(borderedMap, 1);
+		mapPopulator = new MapPopulator(borderedMap, finalRooms);
 	}
-
 	void makeNoiseGrid(){
 
-		if (true){
+		if (useRandomSeed){
 			seed = Time.time.ToString();
 		}
 		map = new int[width, height];
 		
-		System.Random rand = new System.Random();
-		Debug.Log(seed);
+		System.Random rand = new System.Random(seed.GetHashCode());
+
         float random = rand.Next(0, 100);
 		for (int i = 0; i < width ; i ++){
 			for (int j = 0; j < height; j ++){
@@ -111,11 +111,11 @@ public class MapGenerator : MonoBehaviour {
     /// <param name="x">X coordinate of cell to check</param>
     /// <param name="y">Y coordinate of cell to check</param>
     /// <returns>number of neighbors</returns>
-    int GetNumberOfNeighbors(int gridX, int gridY, int[,] cpy) {
+    public static int GetNumberOfNeighbors(int gridX, int gridY, int[,] cpy) {
         int wallCount = 0;
         for (int neighbourX = gridX - 1; neighbourX <= gridX + 1; neighbourX ++) {
             for (int neighbourY = gridY - 1; neighbourY <= gridY + 1; neighbourY ++) {
-                if (neighbourX >= 0 && neighbourX < width && neighbourY >= 0 && neighbourY < height) {
+                if (neighbourX >= 0 && neighbourX < cpy.GetLength(0) && neighbourY >= 0 && neighbourY < cpy.GetLength(1)) {
                     if (neighbourX != gridX || neighbourY != gridY) {
                         wallCount += cpy[neighbourX,neighbourY];
                     }
@@ -160,6 +160,8 @@ public class MapGenerator : MonoBehaviour {
 		}
 		
 		ConnectClosestRooms(survivingRooms);
+		survivingRooms.Sort();
+		finalRooms = survivingRooms;
 	}
 	void ConnectClosestRooms(List<Room> allRooms, bool forceAccesibilityFromMainRoom = false){
 		List<Room> roomListA = new List<Room>();
@@ -413,5 +415,76 @@ public class MapGenerator : MonoBehaviour {
 
 	}
 
-		
+	class MapPopulator {
+		Coord spawnPoint; 
+		Coord endPoint; 
+		HashSet<Coord> filledCoords;	
+		List<Coord> unfilledFloor;
+		List<Coord> unfilledEdges; //Don't know how to do this very effectively
+		int[,] map;
+		List<Room> finalRooms;
+		public MapPopulator(int[,] _map, List<Room> _finalRooms){
+			spawnPoint = GenerateSpawnPoint();
+			endPoint = GenerateEndPoint();
+			filledCoords = new HashSet<Coord>();
+			unfilledFloor = new List<Coord>();
+			map = _map;
+			finalRooms = _finalRooms;
+			for (int x = 0; x < map.GetLength(0); x ++){
+				for (int y = 0; y < map.GetLength(1); y ++){
+					if (map[x,y] == FLOOR){
+						unfilledFloor.Add(new Coord(x, y));
+					}
+				}
+			}
+		}
+
+		public List<Coord> generateLocationList(int amount, bool onWalls = false, List<Coord> reducedList = null, bool onEdge = false, bool notOnEdge = false){
+			//generates a list of random, unfilled coordinates on the map or in a smaller set of locations
+			List<Coord> locations = new List<Coord>();
+			List<Coord> possibleLocations; 
+			if (reducedList != null) {
+				possibleLocations = reducedList;
+			} else {
+				possibleLocations = unfilledFloor;
+			}
+
+			System.Random rand = new System.Random();
+			int index = rand.Next(0, possibleLocations.Count  - 1); // -1 to account for indexing 
+
+			Coord possLocation; 
+			while (locations.Count < amount){
+				possLocation = possibleLocations[index];
+				if (filledCoords.Contains(possLocation)){
+					index = rand.Next(0, possibleLocations.Count  - 1);
+					continue;
+				}
+				if (onWalls){
+					//check condition
+				}
+				if (onEdge){
+				}
+				if (!notOnEdge && GetNumberOfNeighbors(possLocation.tileX, possLocation.tileY, map) > 0){
+					index = rand.Next(0, possibleLocations.Count  - 1);
+					continue;
+				}
+				locations.Add(possLocation);
+				filledCoords.Add(possLocation);
+			}
+
+			return locations;
+		}
+		Coord GenerateSpawnPoint(){
+			Room smallestRoom = finalRooms[finalRooms.Count - 1];
+			List<Coord> location = generateLocationList(1, false, smallestRoom.tiles, false, true);
+
+			if (location.Count == 1){
+				return location[0];
+			}
+			return new Coord(-1, -1);
+		}
+		Coord GenerateEndPoint(){
+			return new Coord(-1, -1);
+		}
+	}
 }
