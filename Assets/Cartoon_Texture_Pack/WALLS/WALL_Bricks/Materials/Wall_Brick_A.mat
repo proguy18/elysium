@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Wall_Brick_A
   m_Shader: {fileID: 4800000, guid: a10e1e2806efde441a15b4a5d0198a11, type: 3}
-  m_ShaderKeywords: HEIGHTMAP_ON
+  m_ShaderKeywords: HEIGHTMAP_OFF
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -49,7 +49,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
         m_Texture: {fileID: 2800000, guid: 2c49d12fb89450b488277e7bfc402e8a, type: 3}
-        m_Scale: {x: 50, y: 50}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 2800000, guid: 572981d23c249024a9189323bf08a0fb, type: 3}
@@ -57,7 +57,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 2800000, guid: 17aeb35c067cd4043bfd58e7e7b6cf6c, type: 3}
-        m_Scale: {x: 50, y: 50}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
@@ -68,10 +68,11 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _HeightAdjustment: 0
+    - _HeightAdjustment: 1
     - _LitOutlineThickness: 0.1
     - _Metallic: 0
     - _Mode: 0
+    - _NormalIntensity: 1
     - _OcclusionStrength: 1
     - _OutlineWidth: 0
     - _Parallax: 0.08
