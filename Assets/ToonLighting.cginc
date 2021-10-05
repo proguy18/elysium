@@ -14,6 +14,7 @@ struct vertIn
     float4 vertex : POSITION;				
     float4 uv : TEXCOORD0;
     float3 normal : NORMAL;
+    float4 tangent : TANGENT;
 };
 
 struct vertOut
@@ -23,12 +24,16 @@ struct vertOut
     float3 worldNormal : NORMAL;
     float3 viewDir : TEXCOORD1;
     float3 worldPos : TEXCOORD3;
+    float3 tangent  : TEXCOORD4;
+    float3 bitangent : TEXCOORD5;
     SHADOW_COORDS(2)
 };
 
 sampler2D _MainTex;
 sampler2D _ParallaxMap;
+sampler2D _NormalMap;
 float _HeightAdjustment;
+float _NormalIntensity;
 float4 _MainTex_ST;
 float4 _AmbientColor;
 float _Glossiness;
@@ -58,6 +63,11 @@ vertOut vert (vertIn v)
     o.pos = UnityObjectToClipPos(v.vertex);
     o.uv = TRANSFORM_TEX(v.uv, _MainTex);
     o.worldNormal = UnityObjectToWorldNormal(v.normal);
+
+    // Normal map
+    o.tangent = UnityObjectToWorldDir(v.tangent.xyz);
+    o.bitangent = cross(o.worldNormal, o.tangent) * (v.tangent.w * unity_WorldTransformParams.w);
+
     o.viewDir = WorldSpaceViewDir(v.vertex);
     o.worldPos = mul(unity_ObjectToWorld, v.vertex);
     TRANSFER_SHADOW(o);
@@ -78,7 +88,21 @@ float4 applyFog (float4 color, vertOut i) {
 
 float4 frag (vertOut i) : SV_Target
 {
-    float3 normal = normalize(i.worldNormal);
+    float4 sample = tex2D(_MainTex, i.uv);
+
+    // Normal maps
+    float3 tangentSpaceNormal = UnpackNormal(tex2D(_NormalMap, i.uv));
+    tangentSpaceNormal = normalize(lerp(float3(0,0,1), tangentSpaceNormal, _NormalIntensity));
+
+    float3x3 mtxTangToWorld = {
+        i.tangent.x, i.bitangent.x, i.worldNormal.x,
+        i.tangent.y, i.bitangent.y, i.worldNormal.y,
+        i.tangent.z, i.bitangent.z, i.worldNormal.z
+    };
+
+    float3 normal = mul(mtxTangToWorld, tangentSpaceNormal);
+
+    //normal = normalize(i.worldNormal);
     float NdotL = dot(_WorldSpaceLightPos0, normal);
 
     // For spot/point lighting
@@ -106,8 +130,6 @@ float4 frag (vertOut i) : SV_Target
     float rimIntensity = rimDot * pow(NdotL, _RimThreshold);
     rimIntensity = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, rimIntensity);
     float4 rim = rimIntensity * _RimColor;
-
-    float4 sample = tex2D(_MainTex, i.uv);
 
     // IF point or spot light
     // https://www.reddit.com/r/shaders/comments/5vmlm9/help_unity_cel_shader_point_light_troubles/

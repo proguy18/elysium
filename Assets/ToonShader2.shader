@@ -14,6 +14,9 @@ Shader "Unlit/Toon2"
 		_ParallaxMap ("Height Map", 2D) = "black" {}
 		_HeightAdjustment ("Height Adjustment", Range(0, 100)) = 1
 
+		_NormalMap ("Normal Map", 2D) = "bump" {}
+		_NormalIntensity ("Normal Intensity", Range(0,10)) = 1
+
 		_OutlineColor ("Outline Color", Color) = (0,0,0,1)
       	_LitOutlineThickness ("Lit Outline Thickness", Range(0,1)) = 0.1
       	_UnlitOutlineThickness ("Unlit Outline Thickness", Range(0,1)) = 0.4
