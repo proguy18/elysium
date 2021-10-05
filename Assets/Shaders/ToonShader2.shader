@@ -11,8 +11,8 @@ Shader "Unlit/Toon2"
 		_RimAmount("Rim Amount", Range(0, 1)) = 0.716
 		_RimThreshold("Rim Threshold", Range(0, 1)) = 0.1
 
-		_ParallaxMap ("Height Map", 2D) = "black" {}
-		_HeightAdjustment ("Height Adjustment", Range(0, 100)) = 1
+		_HeightMap ("Height Map", 2D) = "black" {}
+		_HeightIntensity ("Height Intensity", Range(0, 1)) = 1
 
 		_NormalMap ("Normal Map", 2D) = "bump" {}
 		_NormalIntensity ("Normal Intensity", Range(0,10)) = 1

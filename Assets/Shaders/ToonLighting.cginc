@@ -30,9 +30,9 @@ struct vertOut
 };
 
 sampler2D _MainTex;
-sampler2D _ParallaxMap;
+sampler2D _HeightMap;
 sampler2D _NormalMap;
-float _HeightAdjustment;
+float _HeightIntensity;
 float _NormalIntensity;
 float4 _MainTex_ST;
 float4 _AmbientColor;
@@ -51,20 +51,21 @@ vertOut vert (vertIn v)
 {
     vertOut o;
 
+    o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+
     #if HEIGHTMAP_ON
     // Height mapping
     // https://forum.unity.com/threads/moving-vertices-based-on-a-heightmap.89478/
-    float4 tex = tex2Dlod(_ParallaxMap, float4(v.uv.xy, 0, 0)).g;
-    tex = (tex - 0.5) * _HeightAdjustment;
+    float height = tex2Dlod(_HeightMap, float4(o.uv, 0, 0)).x;
+    //height = (height * 2 - 1);
     //v.normal = normalize(v.normal);
-    v.vertex.xyz += _HeightAdjustment;
+    v.vertex.xyz += v.normal * height * _HeightIntensity;
     #endif
 
     o.pos = UnityObjectToClipPos(v.vertex);
-    o.uv = TRANSFORM_TEX(v.uv, _MainTex);
     o.worldNormal = UnityObjectToWorldNormal(v.normal);
 
-    // Normal map
+    // Normal mapping
     o.tangent = UnityObjectToWorldDir(v.tangent.xyz);
     o.bitangent = cross(o.worldNormal, o.tangent) * (v.tangent.w * unity_WorldTransformParams.w);
 
