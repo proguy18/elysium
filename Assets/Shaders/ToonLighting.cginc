@@ -57,7 +57,7 @@ vertOut vert (vertIn v)
     // Height mapping
     // https://forum.unity.com/threads/moving-vertices-based-on-a-heightmap.89478/
     float height = tex2Dlod(_HeightMap, float4(o.uv, 0, 0)).x;
-    //height = (height * 2 - 1);
+    height = (height * 2 - 1);
     //v.normal = normalize(v.normal);
     v.vertex.xyz += v.normal * height * _HeightIntensity;
     #endif

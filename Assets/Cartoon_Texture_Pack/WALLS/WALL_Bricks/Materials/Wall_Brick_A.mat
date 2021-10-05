@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Wall_Brick_A
   m_Shader: {fileID: 4800000, guid: a10e1e2806efde441a15b4a5d0198a11, type: 3}
-  m_ShaderKeywords: HEIGHTMAP_ON
+  m_ShaderKeywords: HEIGHTMAP_ON _METALLICGLOSSMAP _NORMALMAP _PARALLAXMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -73,14 +73,14 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 1
     - _HeightAdjustment: 1
-    - _HeightIntensity: 1
+    - _HeightIntensity: 0
     - _LitOutlineThickness: 0.1
     - _Metallic: 0
     - _Mode: 0
-    - _NormalIntensity: 1
+    - _NormalIntensity: 10
     - _OcclusionStrength: 1
     - _OutlineWidth: 0
-    - _Parallax: 0.08
+    - _Parallax: 0.005
     - _RimAmount: 0
     - _RimThreshold: 0
     - _SmoothnessTextureChannel: 0
