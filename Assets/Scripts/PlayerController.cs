@@ -14,9 +14,20 @@ public class PlayerController : MonoBehaviour {
     public KeyCode up = KeyCode.W;
     public KeyCode down = KeyCode.S;
     public KeyCode run = KeyCode.LeftShift;
+    public KeyCode attack1 = KeyCode.Space; // Placeholder for attack change to mouse or as needed
+
+    public KeyCode attack2 = KeyCode.M; // Placeholder for attack change to mouse or as needed
+
+    public KeyCode attack3 = KeyCode.N; // Placeholder for attack change to mouse or as needed
  
     Vector3 forwardV, rightV; // Keeps track of our relative forward and right vectors
     Animator m_Animator;
+
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
+
+
 
     void Start()
     {
@@ -28,18 +39,34 @@ public class PlayerController : MonoBehaviour {
     }
     void Update()
     {
-        if(Input.GetKey(left) || Input.GetKey(right) || Input.GetKey(up) || Input.GetKey(down)){
+        if(Input.GetKey(attack1)) {
+            Attack();
+        }
+
+        if(Input.GetKey(attack2)) {
+            m_Animator.SetTrigger("Attack_2");
+        }
+
+        if(Input.GetKey(attack3)) {
+            m_Animator.SetTrigger("Attack_3");
+        }   
+
+        if(Input.GetKey(left) || Input.GetKey(right) || Input.GetKey(up) || Input.GetKey(down))
+        {
             m_Animator.SetTrigger("Walk");
-            if(Input.GetKey(run)){
+            if(Input.GetKey(run))
+            {
                 m_Animator.SetTrigger("Run");
                 Move(runSpeed);
             }
-            else{
+            else
+            {
                 m_Animator.ResetTrigger("Run");
                 Move(walkSpeed); 
             }
         } 
-        else{
+        else
+        {
             m_Animator.ResetTrigger("Run");
             m_Animator.ResetTrigger("Walk");
         }
@@ -69,5 +96,31 @@ public class PlayerController : MonoBehaviour {
         transform.position += rightMovement; // move our transform's position right/left
         transform.position += upMovement; // Move our transform's position up/down
     }
+
+    void Attack() 
+    {
+        // Play attack animation
+        m_Animator.SetTrigger("Attack_1");
+
+        // Detect enemies in range of attack
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
+
+        // Damage enemies
+        foreach(Collider enemy in hitEnemies) 
+        {
+            Debug.Log("We hit " + enemy.name);
+
+        }
+    }
+
+    void onDrawGizmosSelected() 
+    {
+        if(attackPoint == null) 
+            return;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    
 }
 
