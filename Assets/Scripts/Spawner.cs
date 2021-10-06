@@ -24,6 +24,5 @@ public class Spawner : MonoBehaviour
     private void trySpawnPoint(){
         MapGenerator mapGenerator = mapGeneratorOb.GetComponent<MapGenerator>();
         spawnPoint = mapGenerator.getSpawnPoint();
-        Debug.Log("Spawn point is " + spawnPoint);
     }
 }

@@ -29,6 +29,10 @@ public class MapGenerator : MonoBehaviour {
 	List<Room> finalRooms;
 	MapPopulator mapPopulator;
 	Vector3 playerSpawn;
+
+	List<Vector3> rockSpawns;
+
+	bool mapOperational = false;
 	void Start() {
 
 		GenerateMap();
@@ -36,6 +40,7 @@ public class MapGenerator : MonoBehaviour {
 
 	void Update() {
 		if (Input.GetMouseButtonDown(0)) {
+			mapOperational = false;
 			meshGenerator.clearMesh();
 			mapPopulator = null;
 			GenerateMap();
@@ -65,6 +70,7 @@ public class MapGenerator : MonoBehaviour {
 		mapPopulator = new MapPopulator(borderedMap, finalRooms);
 		playerSpawn = CoordToWorldPoint(mapPopulator.getPlayerSpawn());
 		Debug.Log("Generated Player Spawn: " + playerSpawn);
+		mapOperational = true;
 	}
 	void makeNoiseGrid(){
 
@@ -306,7 +312,7 @@ public class MapGenerator : MonoBehaviour {
 	}
 
 	Vector3 CoordToWorldPoint(Coord tile){
-		return new Vector3(-width/2 +.5f + tile.tileX, 6, -height/2 + .5f + tile.tileY);
+		return new Vector3(-width/2 +.5f + tile.tileX, 0, -height/2 + .5f + tile.tileY);
 	}
 
 	List<List<Coord>> GetRegions(int tileType) {
@@ -423,6 +429,20 @@ public class MapGenerator : MonoBehaviour {
 	public Vector3 getSpawnPoint(){
 		return playerSpawn;
 	}
+
+	public List<Vector3> getRandomSpawns(int number, float height = 0, bool onWalls = false, bool onEdge = false, bool notOnEdge = false){
+
+		if (!mapOperational){
+			return null;
+		}
+		List<Coord> locations = mapPopulator.generateLocationList(number, onWalls, null, onEdge, notOnEdge);
+		List<Vector3> realWorldPositions = new List<Vector3>();
+		
+		for (int i = 0; i < locations.Count; i ++){
+			realWorldPositions.Add(CoordToWorldPoint(locations[i]));
+		}
+		return realWorldPositions;
+	}
 	
 	class MapPopulator {
 		Coord spawnPoint; 
@@ -483,6 +503,7 @@ public class MapGenerator : MonoBehaviour {
 				}
 				locations.Add(possLocation);
 				filledCoords.Add(possLocation);
+				i++;
 			}
 			return locations;
 		}
@@ -491,6 +512,10 @@ public class MapGenerator : MonoBehaviour {
 
 			List<Coord> location = generateLocationList(1, false, smallestRoom.tiles, false, true);
 			// List<Coord> location = generateLocationList(1);
+			if (location.Count == 1){
+				return location[0];
+			} 
+			location = generateLocationList(1);
 			if (location.Count == 1){
 				return location[0];
 			}
