@@ -159,7 +159,7 @@ float4 frag (vertOut i) : SV_Target
         float dot1 = max(dot(normalize(L), normal), 0);
 
         UNITY_LIGHT_ATTENUATION(attenuation, i, i.worldPos.xyz);
-        return _Color * sample * attenuation * dot1 * multiplier + skyboxLight;
+        return _Color * sample * attenuation * dot1 * multiplier /*+ skyboxLight*/;
 
     #else
 
@@ -172,7 +172,7 @@ float4 frag (vertOut i) : SV_Target
     //float4 color = _Color * sample * (_AmbientColor + light + rim);
     //return applyFog(color, i);
 
-    return _Color * sample * multiplier + skyboxLight;
+    return _Color * sample * multiplier /*+ skyboxLight*/;
     
     //return _Color * sample * (_AmbientColor + light);
     
