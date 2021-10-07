@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Shield_1
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: 4800000, guid: a10e1e2806efde441a15b4a5d0198a11, type: 3}
+  m_ShaderKeywords: HEIGHTMAP_OFF
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -39,12 +39,20 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _HeightMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 15f9966b7cf8b425f8e8c88af79207b9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: 269f180ffc87a4cbca0ea2aa2f40f2bf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -55,6 +63,11 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SkyboxLight:
+        m_Texture: {fileID: 2800000, guid: d34a7e42f26d51041ade65d0b0e898bf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
@@ -63,15 +76,27 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _HeightIntensity: 1
+    - _LitOutlineThickness: 0.1
     - _Metallic: 0
     - _Mode: 0
+    - _NormalIntensity: 1
     - _OcclusionStrength: 1
+    - _OutlineWidth: 0
     - _Parallax: 0.02
+    - _RimAmount: 0.716
+    - _RimThreshold: 0.1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _UnlitOutlineThickness: 0.4
     - _ZWrite: 1
     m_Colors:
+    - _AmbientColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecularColor: {r: 0.9, g: 0.9, b: 0.9, a: 1}
+  m_BuildTextureStacks: []

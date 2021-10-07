@@ -32,6 +32,7 @@ struct vertOut
 sampler2D _MainTex;
 sampler2D _HeightMap;
 sampler2D _NormalMap;
+sampler2D _SkyboxLight;
 float _HeightIntensity;
 float _NormalIntensity;
 float4 _Color;
@@ -87,6 +88,13 @@ float4 applyFog (float4 color, vertOut i) {
     
 }
 
+/*float2 DirToRectilinear(float3 dir)
+{
+    float x = atan2(dir.z, dir.z) / TAU + 0.5;
+    float y = dir.y * 0.5 + 0.5;
+    return float2(x,y);
+}*/
+
 float4 frag (vertOut i) : SV_Target
 {
     float4 sample = tex2D(_MainTex, i.uv);
@@ -132,6 +140,17 @@ float4 frag (vertOut i) : SV_Target
     rimIntensity = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, rimIntensity);
     float4 rim = rimIntensity * _RimColor;
 
+    float4 multiplier = light + specular + rim;
+
+    float4 skyboxLight = 0;
+
+    #ifdef IS_IN_BASE_PASS
+        skyboxLight = float4(tex2D(_SkyboxLight, i.uv));
+        multiplier += skyboxLight;
+    #endif
+
+    //skyboxLight = float4(tex2D(_SkyboxLight, i.uv))/10;
+    
     // IF point or spot light
     // https://www.reddit.com/r/shaders/comments/5vmlm9/help_unity_cel_shader_point_light_troubles/
     #if defined (POINT) || defined (SPOT)
@@ -140,7 +159,7 @@ float4 frag (vertOut i) : SV_Target
         float dot1 = max(dot(normalize(L), normal), 0);
 
         UNITY_LIGHT_ATTENUATION(attenuation, i, i.worldPos.xyz);
-        return _Color * sample * attenuation * dot1 * (_AmbientColor + light + specular + rim);
+        return _Color * sample * attenuation * dot1 * multiplier + skyboxLight;
 
     #else
 
@@ -153,7 +172,7 @@ float4 frag (vertOut i) : SV_Target
     //float4 color = _Color * sample * (_AmbientColor + light + rim);
     //return applyFog(color, i);
 
-    return _Color * sample * (_AmbientColor + light + specular + rim);
+    return _Color * sample * multiplier + skyboxLight;
     
     //return _Color * sample * (_AmbientColor + light);
     
