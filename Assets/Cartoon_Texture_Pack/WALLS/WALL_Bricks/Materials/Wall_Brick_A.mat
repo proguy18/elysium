@@ -90,7 +90,7 @@ Material:
     - _UnlitOutlineThickness: 0.4
     - _ZWrite: 1
     m_Colors:
-    - _AmbientColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
+    - _AmbientColor: {r: 0.26415092, g: 0.1954317, b: 0.13100745, a: 1}
     - _Color: {r: 0.26415092, g: 0.1954317, b: 0.13100745, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
