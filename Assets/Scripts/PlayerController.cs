@@ -113,10 +113,14 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void onDrawGizmosSelected() 
+    void OnDrawGizmosSelected() 
+    
     {
         if(attackPoint == null) 
+        {
+            Debug.Log("Attack point is null.");
             return;
+        }
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }

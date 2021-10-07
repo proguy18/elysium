@@ -796,7 +796,7 @@ GameObject:
   - component: {fileID: 1469178268}
   - component: {fileID: 1469178271}
   - component: {fileID: 1469178270}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1069,7 +1069,7 @@ GameObject:
   - component: {fileID: 1717375384}
   - component: {fileID: 1717375386}
   - component: {fileID: 1717375385}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1245,10 +1245,10 @@ MonoBehaviour:
   attack2: 109
   attack3: 110
   attackPoint: {fileID: 2057075658}
-  attackRange: 0.5
+  attackRange: 0.58
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!54 &1919506635
 Rigidbody:
   m_ObjectHideFlags: 0
