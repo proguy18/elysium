@@ -8,6 +8,9 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     public float lookRadius = 10f;
 
+    public int maxHealth = 100;
+    int currentHealth;
+
     Transform target;
     NavMeshAgent agent;
 
@@ -18,15 +21,25 @@ public class EnemyController : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TakeDamage(int damage) 
     {
-        
+        currentHealth -= damage;
+
+        // Play hurt animation
+
+        if(currentHealth <= 0)
+        {
+            Die();
+        }
     }
 
-    void onDrawGizmosSelected () 
+    void Die() 
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, lookRadius);
+        Debug.Log("Enemy died");
+        // Die animation
+
+        // Disable the enemy
+
+
     }
 }
