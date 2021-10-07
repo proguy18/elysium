@@ -114,12 +114,7 @@ float4 frag (vertOut i) : SV_Target
 
     // Toonify it
     float lightIntensity = smoothstep(0, 0.01, NdotL * shadow1);
-    float4 light = lightIntensity * _LightColor0;
-
-    #ifdef IS_IN_BASE_PASS
-        light += _Color;
-    #endif
-    
+    float4 light = lightIntensity * _LightColor0;    
 
     float3 viewDir = normalize(i.viewDir);
     float3 halfVector = normalize(_WorldSpaceLightPos0 + viewDir);
@@ -145,7 +140,7 @@ float4 frag (vertOut i) : SV_Target
         float dot1 = max(dot(normalize(L), normal), 0);
 
         UNITY_LIGHT_ATTENUATION(attenuation, i, i.worldPos.xyz);
-        return /*_Color * */sample * attenuation * dot1 * (/*_Color + */light + specular + rim);
+        return _Color * sample * attenuation * dot1 * (_AmbientColor + light + specular + rim);
 
     #else
 
@@ -158,7 +153,7 @@ float4 frag (vertOut i) : SV_Target
     //float4 color = _Color * sample * (_AmbientColor + light + rim);
     //return applyFog(color, i);
 
-    return /*_Color * */sample * (/*_Color + */light + specular + rim);
+    return _Color * sample * (_AmbientColor + light + specular + rim);
     
     //return _Color * sample * (_AmbientColor + light);
     
