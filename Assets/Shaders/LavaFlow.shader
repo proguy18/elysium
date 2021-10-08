@@ -18,10 +18,28 @@ Shader "Unlit/LavaFlow"
 			#pragma fragment frag
 			#pragma multi_compile_fwdbase
 			
-			//#include "Flow.cginc"
-			#include "TutorialLighting.cginc"		
+			//#include "TutorialLighting.cginc"
+			#include "LavaToonLighting.cginc"
 			
 			ENDCG
 		}
+		
+		Pass {
+            Tags {
+                "LightMode" = "ForwardAdd"
+            }
+
+            Blend One One
+            ZWrite Off
+
+            CGPROGRAM
+
+			#pragma vertex vert
+			#pragma fragment frag
+
+            #include "LavaToonLighting.cginc"	
+
+            ENDCG
+        }
 	}
 }

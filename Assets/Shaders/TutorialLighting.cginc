@@ -73,7 +73,7 @@ vertOut vert(vertIn v)
 {
 	vertOut o;
 	o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-	o.uv = FlowUV(o.uv, _Time.y);
+	//o.uv = FlowUV(o.uv, _Time.y/5);
 
 	// Convert Vertex position and corresponding normal into world coords.
 	// Note that we have to multiply the normal by the transposed inverse of the world 
