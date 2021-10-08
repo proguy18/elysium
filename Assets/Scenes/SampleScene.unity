@@ -1088,12 +1088,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock1: {fileID: 0}
-  rock2: {fileID: 0}
-  rock3: {fileID: 0}
-  rock4: {fileID: 0}
+  nameStem: rock
   mapGeneratorOb: {fileID: 1651193678}
-  number: 700
+  number: 350
 --- !u!4 &1742823618
 Transform:
   m_ObjectHideFlags: 0

@@ -435,7 +435,7 @@ public class MapGenerator : MonoBehaviour {
 		if (!mapOperational){
 			return null;
 		}
-		List<Coord> locations = mapPopulator.generateLocationList(number, onWalls, null, onEdge, notOnEdge);
+		List<Coord> locations = mapPopulator.generateRandLocationList(number, onWalls, null, onEdge, notOnEdge);
 		List<Vector3> realWorldPositions = new List<Vector3>();
 		
 		for (int i = 0; i < locations.Count; i ++){
@@ -466,11 +466,12 @@ public class MapGenerator : MonoBehaviour {
 					}
 				}
 			}
+			
 			spawnPoint = GenerateSpawnPoint();
 			endPoint = GenerateEndPoint();
 		}
 
-		public List<Coord> generateLocationList(int amount, bool onWalls = false, List<Coord> reducedList = null, bool onEdge = false, bool notOnEdge = false){
+		public List<Coord> generateRandLocationList(int amount, bool onWalls = false, List<Coord> reducedList = null, bool onEdge = false, bool notOnEdge = false){
 			//generates a list of random, unfilled coordinates on the map or in a smaller set of locations
 			List<Coord> locations = new List<Coord>();
 			List<Coord> possibleLocations; 
@@ -510,12 +511,12 @@ public class MapGenerator : MonoBehaviour {
 		Coord GenerateSpawnPoint(){
 			Room smallestRoom = finalRooms[finalRooms.Count - 1];
 
-			List<Coord> location = generateLocationList(1, false, smallestRoom.tiles, false, true);
+			List<Coord> location = generateRandLocationList(1, false, smallestRoom.tiles, false, true);
 			// List<Coord> location = generateLocationList(1);
 			if (location.Count == 1){
 				return location[0];
 			} 
-			location = generateLocationList(1);
+			location = generateRandLocationList(1);
 			if (location.Count == 1){
 				return location[0];
 			}

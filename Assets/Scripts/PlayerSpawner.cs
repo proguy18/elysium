@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class PlayerSpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Start is called before the first frame updatek
 
     public GameObject objectToSpawn;
     public GameObject mapGeneratorOb;
