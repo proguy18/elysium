@@ -79,7 +79,7 @@ public class MapGenerator : MonoBehaviour {
 		}
 		map = new int[width, height];
 		
-		System.Random rand = new System.Random(seed.GetHashCode());
+		System.Random rand = new System.Random();
 
         float random = rand.Next(0, 100);
 		for (int i = 0; i < width ; i ++){

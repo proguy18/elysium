@@ -9,7 +9,7 @@ public class MeshGenerator : MonoBehaviour
     public MeshFilter walls;
     public MeshFilter cave;
     public int wallHeight  = 5;
-    public int wallTiles; 
+    public int wallTiles = 2; 
     List<Vector3> vertices;
     List<int> triangles;
     Dictionary<int, List<Triangle>> triangleDictionary = new Dictionary<int, List<Triangle>>();
@@ -88,6 +88,7 @@ public class MeshGenerator : MonoBehaviour
         }
         MeshCollider wallCollider = walls.gameObject.AddComponent<MeshCollider> ();
         
+        // From here code effects textures
         float textureScale = walls.gameObject.GetComponentInChildren<MeshRenderer>().material.mainTextureScale.x;
         float increment = (textureScale/map.GetLength(1));
         Vector2[] uvs = new Vector2[wallMesh.vertices.Length];
@@ -99,6 +100,7 @@ public class MeshGenerator : MonoBehaviour
         }
         wallMesh.uv = uvs; 
         wallCollider.sharedMesh = wallMesh;
+        //End here
         walls.mesh = wallMesh;
         
 
