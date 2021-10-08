@@ -10,6 +10,8 @@ Shader "Unlit/Toon2"
 		[HDR] _RimColor("Rim Color", Color) = (1,1,1,1)
 		_RimAmount("Rim Amount", Range(0, 1)) = 0.716
 		_RimThreshold("Rim Threshold", Range(0, 1)) = 0.1
+		
+		_SkyboxLight ("Skybox Light", 2D) = "black" {}
 
 		_HeightMap ("Height Map", 2D) = "black" {}
 		_HeightIntensity ("Height Intensity", Range(0, 1)) = 1
