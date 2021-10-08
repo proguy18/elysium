@@ -32,8 +32,10 @@ struct vertOut
 sampler2D _MainTex;
 sampler2D _HeightMap;
 sampler2D _NormalMap;
+sampler2D _SkyboxLight;
 float _HeightIntensity;
 float _NormalIntensity;
+float4 _Color;
 float4 _MainTex_ST;
 float4 _AmbientColor;
 float _Glossiness;
@@ -41,6 +43,7 @@ float4 _SpecularColor;
 float4 _RimColor;
 float _RimAmount;
 float _RimThreshold;
+float4 _FinalColor;
 
 /* float4 _OutlineColor;
 float _LitOutlineThickness;
@@ -76,8 +79,6 @@ vertOut vert (vertIn v)
     return o;
 }
 
-float4 _Color;
-
 float4 applyFog (float4 color, vertOut i) {
     float viewDistance = length(_WorldSpaceCameraPos - i.worldPos);
     UNITY_CALC_FOG_FACTOR_RAW(viewDistance);
@@ -86,6 +87,13 @@ float4 applyFog (float4 color, vertOut i) {
     return color;
     
 }
+
+/*float2 DirToRectilinear(float3 dir)
+{
+    float x = atan2(dir.z, dir.z) / TAU + 0.5;
+    float y = dir.y * 0.5 + 0.5;
+    return float2(x,y);
+}*/
 
 float4 frag (vertOut i) : SV_Target
 {
@@ -114,7 +122,7 @@ float4 frag (vertOut i) : SV_Target
 
     // Toonify it
     float lightIntensity = smoothstep(0, 0.01, NdotL * shadow1);
-    float4 light = lightIntensity * _LightColor0;
+    float4 light = lightIntensity * _LightColor0;    
 
     float3 viewDir = normalize(i.viewDir);
     float3 halfVector = normalize(_WorldSpaceLightPos0 + viewDir);
@@ -132,6 +140,17 @@ float4 frag (vertOut i) : SV_Target
     rimIntensity = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, rimIntensity);
     float4 rim = rimIntensity * _RimColor;
 
+    float4 multiplier = light + specular + rim;
+
+    float4 skyboxLight = 0;
+
+    #ifdef IS_IN_BASE_PASS
+        skyboxLight = float4(tex2D(_SkyboxLight, i.uv));
+        multiplier += skyboxLight;
+    #endif
+
+    //skyboxLight = float4(tex2D(_SkyboxLight, i.uv))/10;
+    
     // IF point or spot light
     // https://www.reddit.com/r/shaders/comments/5vmlm9/help_unity_cel_shader_point_light_troubles/
     #if defined (POINT) || defined (SPOT)
@@ -140,7 +159,7 @@ float4 frag (vertOut i) : SV_Target
         float dot1 = max(dot(normalize(L), normal), 0);
 
         UNITY_LIGHT_ATTENUATION(attenuation, i, i.worldPos.xyz);
-        return _Color * sample * attenuation * dot1 * (_AmbientColor + light + specular + rim);
+        return _Color * sample * attenuation * dot1 * multiplier /*+ skyboxLight*/;
 
     #else
 
@@ -153,8 +172,7 @@ float4 frag (vertOut i) : SV_Target
     //float4 color = _Color * sample * (_AmbientColor + light + rim);
     //return applyFog(color, i);
 
-    //return _Color * sample * (_AmbientColor + light + rim);
-    return _Color * sample * (_AmbientColor + light + specular + rim);
+    return _Color * sample * multiplier /*+ skyboxLight*/;
     
     //return _Color * sample * (_AmbientColor + light);
     
