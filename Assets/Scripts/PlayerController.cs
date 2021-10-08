@@ -14,9 +14,23 @@ public class PlayerController : MonoBehaviour {
     public KeyCode up = KeyCode.W;
     public KeyCode down = KeyCode.S;
     public KeyCode run = KeyCode.LeftShift;
+    public bool animate = false; // will cause errors if changed during runtime
  
-    Vector3 forwardV, rightV; // Keeps track of our relative forward and right vectors
-    Animator m_Animator;
+    private Vector3 forwardV, rightV; // Keeps track of our relative forward and right vectors
+    private Animator m_Animator;
+    private Rigidbody m_Rigidbody;
+
+    void SetTrigger(string name){
+        if(animate){
+            m_Animator.SetTrigger(name);
+        }
+    }
+
+    void ResetTrigger(string name){
+        if(animate){
+            m_Animator.ResetTrigger(name);
+        }
+    }
 
     void Start()
     {
@@ -24,28 +38,31 @@ public class PlayerController : MonoBehaviour {
         forwardV.y = 0; // make sure y is 0
         forwardV = Vector3.Normalize(forwardV); // make sure the length of vector is set to a max of 1.0
         rightV = Quaternion.Euler(new Vector3(0, 90, 0)) * forwardV; // set the right-facing vector to be facing right relative to the camera's forward vector
-        m_Animator  = gameObject.GetComponent<Animator>();
+        if(animate){
+            m_Animator  = gameObject.GetComponent<Animator>();
+        }
+        m_Rigidbody = GetComponent<Rigidbody>();
     }
-    void Update()
+    void FixedUpdate()
     {
         if(Input.GetKey(left) || Input.GetKey(right) || Input.GetKey(up) || Input.GetKey(down)){
-            m_Animator.SetTrigger("Walk");
+            SetTrigger("Walk");
             if(Input.GetKey(run)){
-                m_Animator.SetTrigger("Run");
+                SetTrigger("Run");
                 Move(runSpeed);
             }
             else{
-                m_Animator.ResetTrigger("Run");
+                ResetTrigger("Run");
                 Move(walkSpeed); 
             }
         } 
         else{
-            m_Animator.ResetTrigger("Run");
-            m_Animator.ResetTrigger("Walk");
+            ResetTrigger("Run");
+            ResetTrigger("Walk");
         }
     }
 
-    int getAxisValue(KeyCode negativeDirection, KeyCode positiveDirection){
+    int getAxis(KeyCode negativeDirection, KeyCode positiveDirection){
         if(Input.GetKey(negativeDirection) && Input.GetKey(positiveDirection)){
             return 0;
         }
@@ -61,13 +78,13 @@ public class PlayerController : MonoBehaviour {
 
     void Move(float speed)
     {
-        Vector3 direction = new Vector3(getAxisValue(left, right), 0, getAxisValue(down, up)); // setup a direction Vector based on keyboard input. GetAxis returns a value between -1.0 and 1.0. If the A key is pressed, GetAxis(HorizontalKey) will return -1.0. If D is pressed, it will return 1.0
-        Vector3 rightMovement = rightV * speed * Time.deltaTime * getAxisValue(left, right); // Our right movement is based on the right vector, movement speed, and our GetAxis command. We multiply by Time.deltaTime to make the movement smooth.
-        Vector3 upMovement = forwardV * speed * Time.deltaTime * getAxisValue(down, up); // Up movement uses the forward vector, movement speed, and the vertical axis inputs.
+        Vector3 rightMovement = rightV * speed * Time.deltaTime * getAxis(left, right); // Our right movement is based on the right vector, movement speed, and our GetAxis command. We multiply by Time.deltaTime to make the movement smooth.
+        Vector3 upMovement = forwardV * speed * Time.deltaTime * getAxis(down, up); // Up movement uses the forward vector, movement speed, and the vertical axis inputs.
         Vector3 heading = Vector3.Normalize(rightMovement + upMovement); // This creates our new direction. By combining our right and forward movements and normalizing them, we create a new vector that points in the appropriate direction with a length no greater than 1.0
         transform.forward = heading; // Sets forward direction of our game object to whatever direction we're moving in
-        transform.position += rightMovement; // move our transform's position right/left
-        transform.position += upMovement; // Move our transform's position up/down
+        //transform.position += rightMovement; // move our transform's position right/left
+        //transform.position += upMovement; // Move our transform's position up/down
+        m_Rigidbody.MovePosition(transform.position + rightMovement + upMovement);
     }
 }
 
