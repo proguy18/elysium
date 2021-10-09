@@ -4,14 +4,18 @@
 
 sampler2D _MainTex;
 float4 _MainTex_ST;
-float4 _WaveA;
+//float4 _WaveA;
 sampler2D _FlowMap;
+sampler2D _NormalMap;
 float _UJump;
 float _VJump;
+float _Tiling;
+float _Speed;
+float _FlowStrength;
+float _FlowOffset;
 
 // Taken from toon lighting, may need to remove unnecessary 
 sampler2D _HeightMap;
-sampler2D _NormalMap;
 sampler2D _SkyboxLight;
 float _HeightIntensity;
 float _NormalIntensity;
@@ -44,7 +48,7 @@ struct vertOut
     SHADOW_COORDS(2)
 };
 
-float3 GerstnerWave (float4 wave, float3 p, inout float3 tangent, inout float3 binormal)
+/*float3 GerstnerWave (float4 wave, float3 p, inout float3 tangent, inout float3 binormal)
 {
     float steepness = wave.z;
     float wavelength = wave.w;
@@ -69,7 +73,7 @@ float3 GerstnerWave (float4 wave, float3 p, inout float3 tangent, inout float3 b
         a * sin(f),
         d.y * (a * cos(f))
     );
-}
+}*/
 
 // Implementation of the vertex shader
 vertOut vert(vertIn v)
@@ -114,30 +118,45 @@ vertOut vert(vertIn v)
     return o;
 }
 
-float3 FlowUV (float2 uv, float2 flowVector, float2 jump, float time, bool flowB) {
+#if !defined(FLOW_INCLUDED)
+#define FLOW_INCLUDED
+
+float3 FlowUV (float2 uv, float2 flowVector, float2 jump,
+    float flowOffset, float tiling, float time, bool flowB
+    ) {
     float phaseOffset = flowB ? 0.5 : 0;
     float progress = frac(time + phaseOffset);
     float3 uvw;
-    uvw.xy = uv - flowVector * progress;
+    uvw.xy = uv - flowVector * (progress + flowOffset);
+    uvw.xy *= tiling;
+    uvw.xy += phaseOffset;
     uvw.xy += (time - progress) * jump;
     uvw.z = 1 - abs(1 - 2 * progress);
     return uvw;
 }
+#endif
 
 float4 frag (vertOut i) : SV_Target
 {
     float2 flowVector = tex2D(_FlowMap, i.uv).rg * 2 - 1;
+    flowVector *= _FlowStrength;
     float noise = tex2D(_FlowMap, i.uv).a;
-    float time = _Time.y + noise;
+    float time = _Time.y * _Speed + noise;
     float2 jump = float2(_UJump, _VJump);
     
-    float3 uvwA = FlowUV(i.uv, flowVector, jump, time, false);
-    float3 uvwB = FlowUV(i.uv, flowVector, jump, time, true);
+    float3 uvwA = FlowUV(i.uv, flowVector, jump, _FlowOffset, _Tiling, time, false);
+    float3 uvwB = FlowUV(i.uv, flowVector, jump, _FlowOffset, _Tiling, time, true);
+
+    float3 normalA = UnpackNormal(tex2D(_NormalMap, uvwA.xy)) * uvwA.z;
+    float3 normalB = UnpackNormal(tex2D(_NormalMap, uvwB.xy)) * uvwB.z;
+    i.worldNormal = normalize(normalA + normalB);
     
     float4 sample1 = tex2D(_MainTex, uvwA.xy) * uvwA.z;
     float4 sample2 = tex2D(_MainTex, uvwB.xy) * uvwB.z;
 
     float4 sample = (sample1 + sample2);
+
+    //return _Color * sample;
     
 
 
