@@ -42,6 +42,9 @@ public class MapGenerator : MonoBehaviour {
 			meshGenerator.ClearMesh();
 			GenerateMap();
 		}
+		if (mapOperational){
+			Debug.Log("My ass");
+		}
 	}
 	void GenerateMap(){
 		makeNoiseGrid();

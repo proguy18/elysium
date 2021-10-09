@@ -10,14 +10,11 @@ public class MapPopulator : MonoBehaviour
     MapGenerator mapGenerator;
     MapPopulatorI mapPopulator;
     int[,] _map;
-    void Start()
-    {
-        mapGenerator = GetComponent<MapGenerator>();
-    }
 
     // Update is called once per frame
     void Update()
     {
+        mapGenerator = GetComponent<MapGenerator>();
         tryMap();
         if (_map != null){
             mapPopulator = new MapPopulatorI(_map);
@@ -34,9 +31,10 @@ public class MapPopulator : MonoBehaviour
     }
     public List<Vector3> getRandomSpawns(int number, float height = 0){
 
-		if (mapGenerator.isMapOperational()){
-			return null;
-		}
+		// if (mapGenerator.isMapOperational()){
+        //     Debug.Log("No map operational");
+		// 	return null;
+		// }
 		List<Coord> locations = mapPopulator.generateRandLocationList(number);
 		List<Vector3> realWorldPositions = new List<Vector3>();
 		
@@ -104,6 +102,7 @@ public class MapPopulator : MonoBehaviour
 				// 	continue;
 				// }
 				locations.Add(possLocation);
+                index = rand.Next(0, possibleLocations.Count  - 1);
 				i++;
 			}
             foreach (Coord coord in locations){

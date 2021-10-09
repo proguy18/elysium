@@ -9,7 +9,7 @@ public class ObjSpawner : MonoBehaviour
     private List<GameObject> objects;
 
     public GameObject mapGeneratorOb;
-    private List<Vector3> spawnPoints;
+    private List<Vector3> spawnPoints = null;
 
     public int number = 100; 
 
@@ -19,7 +19,6 @@ public class ObjSpawner : MonoBehaviour
         int i = 1;
         while(moreObjects){
             var _temp = Resources.Load(nameStem + i.ToString());
-            Debug.Log(nameStem + i.ToString());
             if (_temp != null){
                 objects.Add(_temp as GameObject);
             }
@@ -50,7 +49,8 @@ public class ObjSpawner : MonoBehaviour
         if (spawnPoints == null){
             MapPopulator mapPopulator = mapGeneratorOb.GetComponent<MapPopulator>();
             if (mapPopulator != null){
-            spawnPoints = mapPopulator.getRandomSpawns(number);
+                spawnPoints = mapPopulator.getRandomSpawns(number);
+                
             }
         }
     }
