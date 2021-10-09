@@ -1,9 +1,13 @@
+// https://catlikecoding.com/unity/tutorials/flow/waves/
+
 Shader "Unlit/LavaFlow"
 {
 	Properties
 	{
 		_Color("Color", Color) = (0.5, 0.65, 1, 1)
 		_MainTex("Main Texture", 2D) = "white" {}	
+		_WaveA("Wave A (dir, steepness, wavelength)", Vector) = (1,0,0.5,10)
+		[NoScaleOffset] _FlowMap ("Flow", 2D) = "black" {}
 	}
 	SubShader
 	{
