@@ -35,7 +35,7 @@ public class ObjSpawner : MonoBehaviour
     {
         trySpawnPoints();
         if (Input.GetKeyDown("k")){
-            if (!spawnPoints.Equals(null)){
+            if (spawnPoints != null){
                 System.Random random = new System.Random();
                 int rand = random.Next(0, objects.Count);
                 foreach(Vector3 spawnPoint in spawnPoints){
@@ -48,8 +48,10 @@ public class ObjSpawner : MonoBehaviour
     }
     private void trySpawnPoints(){
         if (spawnPoints == null){
-            MapGenerator mapGenerator = mapGeneratorOb.GetComponent<MapGenerator>();
-            spawnPoints = mapGenerator.getRandomSpawns(number);
+            MapPopulator mapPopulator = mapGeneratorOb.GetComponent<MapPopulator>();
+            if (mapPopulator != null){
+            spawnPoints = mapPopulator.getRandomSpawns(number);
+            }
         }
     }
 }
