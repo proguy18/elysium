@@ -10,7 +10,7 @@ public class EnemyController : MonoBehaviour
 
     public int maxHealth = 100;
     int currentHealth;
-
+    
     Transform target;
     NavMeshAgent agent;
 
@@ -41,5 +41,11 @@ public class EnemyController : MonoBehaviour
         // Disable the enemy
 
 
+    }
+
+    void OnDrawGizmosSelected ()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
 }

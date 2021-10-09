@@ -7,6 +7,10 @@ public class Interactable : MonoBehaviour
 
     public GameObject uiObject;
 
+    public float radius = 3f;
+
+    public Transform interactionTransform;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +31,20 @@ public class Interactable : MonoBehaviour
         {
             uiObject.SetActive(false);
         }
+    }
+
+    void OnDrawGizmosSelected ()
+    {
+        if (interactionTransform == null) 
+            interactionTransform = transform;
+
+        Gizmos.color = Color.yellow;
+		Gizmos.DrawWireSphere(interactionTransform.position, radius);
+    }
+
+    public virtual void Interact ()
+    {
+        Debug.Log("Interacting with " + transform.name);
     }
 
     // Update is called once per frame

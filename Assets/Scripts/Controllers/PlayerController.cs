@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour {
     public KeyCode attack2 = KeyCode.M; // Placeholder for attack change to mouse or as needed
 
     public KeyCode attack3 = KeyCode.N; // Placeholder for attack change to mouse or as needed
+
+    public KeyCode interact = KeyCode.F;
  
     Vector3 forwardV, rightV; // Keeps track of our relative forward and right vectors
     Animator m_Animator;
@@ -52,6 +54,11 @@ public class PlayerController : MonoBehaviour {
         if(Input.GetKey(attack3)) {
             m_Animator.SetTrigger("Attack_3");
         }   
+
+        // FIND A WAY TO GET THE INTERACT() METHOD FROM INTERACTABLE.CS 
+        // if(Input.GetKey(interact)) {
+        //     Interactable.Interact();
+        // }
 
         if(Input.GetKey(left) || Input.GetKey(right) || Input.GetKey(up) || Input.GetKey(down))
         {
