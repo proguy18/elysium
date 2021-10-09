@@ -6,6 +6,8 @@ sampler2D _MainTex;
 float4 _MainTex_ST;
 float4 _WaveA;
 sampler2D _FlowMap;
+float _UJump;
+float _VJump;
 
 // Taken from toon lighting, may need to remove unnecessary 
 sampler2D _HeightMap;
@@ -69,14 +71,6 @@ float3 GerstnerWave (float4 wave, float3 p, inout float3 tangent, inout float3 b
     );
 }
 
-float3 FlowUV (float2 uv, float2 flowVector, float time) {
-    float progress = frac(time);
-    float3 uvw;
-    uvw.xy = uv - flowVector * progress;
-    uvw.z = 1 - abs(1 - 2 * progress);
-    return uvw;
-}
-
 // Implementation of the vertex shader
 vertOut vert(vertIn v)
 {
@@ -120,11 +114,30 @@ vertOut vert(vertIn v)
     return o;
 }
 
+float3 FlowUV (float2 uv, float2 flowVector, float2 jump, float time, bool flowB) {
+    float phaseOffset = flowB ? 0.5 : 0;
+    float progress = frac(time + phaseOffset);
+    float3 uvw;
+    uvw.xy = uv - flowVector * progress;
+    uvw.xy += (time - progress) * jump;
+    uvw.z = 1 - abs(1 - 2 * progress);
+    return uvw;
+}
+
 float4 frag (vertOut i) : SV_Target
 {
     float2 flowVector = tex2D(_FlowMap, i.uv).rg * 2 - 1;
-    float3 uvw = FlowUV(i.uv, flowVector, _Time.y);
-    float4 sample = tex2D(_MainTex, uvw.xy) * uvw.z;
+    float noise = tex2D(_FlowMap, i.uv).a;
+    float time = _Time.y + noise;
+    float2 jump = float2(_UJump, _VJump);
+    
+    float3 uvwA = FlowUV(i.uv, flowVector, jump, time, false);
+    float3 uvwB = FlowUV(i.uv, flowVector, jump, time, true);
+    
+    float4 sample1 = tex2D(_MainTex, uvwA.xy) * uvwA.z;
+    float4 sample2 = tex2D(_MainTex, uvwB.xy) * uvwB.z;
+
+    float4 sample = (sample1 + sample2);
     
 
 

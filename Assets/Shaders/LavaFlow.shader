@@ -8,6 +8,8 @@ Shader "Unlit/LavaFlow"
 		_MainTex("Main Texture", 2D) = "white" {}	
 		_WaveA("Wave A (dir, steepness, wavelength)", Vector) = (1,0,0.5,10)
 		[NoScaleOffset] _FlowMap ("Flow", 2D) = "black" {}
+		_UJump ("U jump per phase", Range(-0.25, 0.25)) = 0.25
+		_VJump ("V jump per phase", Range(-0.25, 0.25)) = 0.25
 	}
 	SubShader
 	{
