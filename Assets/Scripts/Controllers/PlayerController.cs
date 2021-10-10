@@ -14,12 +14,7 @@ public class PlayerController : MonoBehaviour {
     public KeyCode up = KeyCode.W;
     public KeyCode down = KeyCode.S;
     public KeyCode run = KeyCode.LeftShift;
-    public KeyCode attack1 = KeyCode.Space; // Placeholder for attack change to mouse or as needed
-
-    public KeyCode attack2 = KeyCode.M; // Placeholder for attack change to mouse or as needed
-
-    public KeyCode attack3 = KeyCode.N; // Placeholder for attack change to mouse or as needed
-
+    
     public KeyCode interact = KeyCode.F;
  
     Vector3 forwardV, rightV; // Keeps track of our relative forward and right vectors
@@ -43,18 +38,6 @@ public class PlayerController : MonoBehaviour {
     }
     void Update()
     {
-        if(Input.GetKey(attack1)) {
-            Attack();
-        }
-
-        if(Input.GetKey(attack2)) {
-            m_Animator.SetTrigger("Attack_2");
-        }
-
-        if(Input.GetKey(attack3)) {
-            m_Animator.SetTrigger("Attack_3");
-        }   
-
         // FIND A WAY TO GET THE INTERACT() METHOD FROM INTERACTABLE.CS 
         // if(Input.GetKey(interact)) {
         //     Interactable.Interact();
@@ -104,22 +87,6 @@ public class PlayerController : MonoBehaviour {
         transform.forward = heading; // Sets forward direction of our game object to whatever direction we're moving in
         transform.position += rightMovement; // move our transform's position right/left
         transform.position += upMovement; // Move our transform's position up/down
-    }
-
-    void Attack() 
-    {
-        // Play attack animation
-        m_Animator.SetTrigger("Attack_1");
-
-        // Detect enemies in range of attack
-        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
-
-        // Damage enemies
-        foreach(Collider enemy in hitEnemies) 
-        {
-            enemy.GetComponent<EnemyController>().TakeDamage(attackDamage);
-
-        }
     }
 
     void OnDrawGizmosSelected() 
