@@ -42,6 +42,7 @@ public class EnemyController : MonoBehaviour
         // Die animation
 
         // Disable the enemy
+        Destroy(gameObject);
 
 
     }
