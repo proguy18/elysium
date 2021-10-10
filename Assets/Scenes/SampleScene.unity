@@ -821,6 +821,8 @@ MonoBehaviour:
   cave: {fileID: 336031009}
   wallHeight: 2
   wallTiles: 3
+  x_scale: 10000
+  y_scale: 10000
 --- !u!114 &1651193680
 MonoBehaviour:
   m_ObjectHideFlags: 0
