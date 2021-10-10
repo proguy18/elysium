@@ -4,9 +4,18 @@
 
 sampler2D _MainTex;
 float4 _MainTex_ST;
-
-sampler2D _HeightMap;
+//float4 _WaveA;
+sampler2D _FlowMap;
 sampler2D _NormalMap;
+float _UJump;
+float _VJump;
+float _Tiling;
+float _Speed;
+float _FlowStrength;
+float _FlowOffset;
+
+// Taken from toon lighting, may need to remove unnecessary 
+sampler2D _HeightMap;
 sampler2D _SkyboxLight;
 float _HeightIntensity;
 float _NormalIntensity;
@@ -39,18 +48,53 @@ struct vertOut
     SHADOW_COORDS(2)
 };
 
-float2 FlowUV (float2 uv, float time) {
-    return uv + time;
-}
+/*float3 GerstnerWave (float4 wave, float3 p, inout float3 tangent, inout float3 binormal)
+{
+    float steepness = wave.z;
+    float wavelength = wave.w;
+    float k = 2 * UNITY_PI / wavelength;
+    float c = sqrt(9.8 / k);
+    float2 d = normalize(wave.xy);
+    float f = k * (dot(d, p.xz) - c * _Time.y);
+    float a = steepness / k;
+
+    tangent += float3(
+        -d.x * d.x * (steepness * sin(f)),
+        d.x * (steepness * cos(f)),
+        -d.x * d.y * (steepness * sin(f))
+    );
+    binormal += float3(
+        -d.x * d.y * (steepness * sin(f)),
+        d.y * (steepness * cos(f)),
+        -d.y * d.y * (steepness * sin(f))
+    );
+    return float3(
+        d.x * (a * cos(f)),
+        a * sin(f),
+        d.y * (a * cos(f))
+    );
+}*/
 
 // Implementation of the vertex shader
 vertOut vert(vertIn v)
 {
     vertOut o;
     o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-    o.uv = FlowUV(o.uv, _Time.y/5);
+    //o.uv = FlowUV(o.uv, _Time.y/5);
 
-    #if HEIGHTMAP_ON
+    
+    // for lava waves but not working
+    /*float3 gridPoint = v.vertex.xyz;
+    float3 tangent = float3(1,0,0);
+    float3 binormal = float3(0,0,1);
+    float3 p = gridPoint;
+    p += GerstnerWave(_WaveA, gridPoint, tangent, binormal);
+    v.normal = normalize(cross(binormal, tangent));
+    v.vertex.xyz = p;*/
+    //v.normal = normal;
+    
+
+    /*#if HEIGHTMAP_ON
     // Height mapping
     // https://forum.unity.com/threads/moving-vertices-based-on-a-heightmap.89478/
     float height = tex2Dlod(_HeightMap, float4(o.uv, 0, 0)).x;
@@ -58,6 +102,7 @@ vertOut vert(vertIn v)
     //v.normal = normalize(v.normal);
     v.vertex.xyz += v.normal * height * _HeightIntensity;
     #endif
+    */
 
     o.pos = UnityObjectToClipPos(v.vertex);
     o.worldNormal = UnityObjectToWorldNormal(v.normal);
@@ -73,9 +118,47 @@ vertOut vert(vertIn v)
     return o;
 }
 
+#if !defined(FLOW_INCLUDED)
+#define FLOW_INCLUDED
+
+float3 FlowUV (float2 uv, float2 flowVector, float2 jump,
+    float flowOffset, float tiling, float time, bool flowB
+    ) {
+    float phaseOffset = flowB ? 0.5 : 0;
+    float progress = frac(time + phaseOffset);
+    float3 uvw;
+    uvw.xy = uv - flowVector * (progress + flowOffset);
+    uvw.xy *= tiling;
+    uvw.xy += phaseOffset;
+    uvw.xy += (time - progress) * jump;
+    uvw.z = 1 - abs(1 - 2 * progress);
+    return uvw;
+}
+#endif
+
 float4 frag (vertOut i) : SV_Target
 {
-    float4 sample = tex2D(_MainTex, i.uv);
+    float2 flowVector = tex2D(_FlowMap, i.uv).rg * 2 - 1;
+    flowVector *= _FlowStrength;
+    float noise = tex2D(_FlowMap, i.uv).a;
+    float time = _Time.y * _Speed + noise;
+    float2 jump = float2(_UJump, _VJump);
+    
+    float3 uvwA = FlowUV(i.uv, flowVector, jump, _FlowOffset, _Tiling, time, false);
+    float3 uvwB = FlowUV(i.uv, flowVector, jump, _FlowOffset, _Tiling, time, true);
+
+    float3 normalA = UnpackNormal(tex2D(_NormalMap, uvwA.xy)) * uvwA.z;
+    float3 normalB = UnpackNormal(tex2D(_NormalMap, uvwB.xy)) * uvwB.z;
+    i.worldNormal = normalize(normalA + normalB);
+    
+    float4 sample1 = tex2D(_MainTex, uvwA.xy) * uvwA.z;
+    float4 sample2 = tex2D(_MainTex, uvwB.xy) * uvwB.z;
+
+    float4 sample = (sample1 + sample2);
+
+    //return _Color * sample;
+    
+
 
     /*// Normal maps
     float3 tangentSpaceNormal = UnpackNormal(tex2D(_NormalMap, i.uv));
