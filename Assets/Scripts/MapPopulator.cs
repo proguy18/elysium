@@ -6,10 +6,12 @@ public class MapPopulator : MonoBehaviour
 {
     static int WALL = 1;
 	static int FLOOR = 0;
+    public int spaceBetweenLights;
     
     MapGenerator mapGenerator;
     MapPopulatorI mapPopulator;
     int[,] _map;
+    bool hasMap = false;
 
     // Update is called once per frame
     void Update()
@@ -18,6 +20,7 @@ public class MapPopulator : MonoBehaviour
         tryMap();
         if (_map != null){
             mapPopulator = new MapPopulatorI(_map);
+            hasMap = true;
         }
     }
     void tryMap(){
@@ -35,7 +38,7 @@ public class MapPopulator : MonoBehaviour
         //     Debug.Log("No map operational");
 		// 	return null;
 		// }
-		List<Coord> locations = mapPopulator.generateRandLocationList(number);
+		List<MapGenerator.Coord> locations = mapPopulator.generateRandLocationList(number);
 		List<Vector3> realWorldPositions = new List<Vector3>();
 		
 		for (int i = 0; i < locations.Count; i ++){
@@ -43,25 +46,51 @@ public class MapPopulator : MonoBehaviour
 		}
 		return realWorldPositions;
 	}
+    public List<Vector3> GenerateLightPoints(){
+        if (!hasMap) return null;
+        List<MapGenerator.Coord> edgeTiles = mapGenerator.getEdgeTiles();
+        if (edgeTiles == null){
+            return null;
+        }
+        //First try getting every 20th and return it
 
-    Vector3 CoordToWorldPoint(Coord tile, float y = 0){
+        List<Vector3> lessTiles = new List<Vector3>();
+        // int max = edgeTiles.Count%spaceBetweenLights;
+        // int count = 0;
+        int j = spaceBetweenLights/2;
+        foreach(MapGenerator.Coord tile in edgeTiles){
+            j ++;
+            if (j == spaceBetweenLights){
+                lessTiles.Add(CoordToWorldPoint(tile, 1.64f));
+                j = 0;
+                // count ++;
+            }
+            
+            // if (count >= max) {
+            //     return lessTiles;
+            // }
+        }
+        return lessTiles;
+    }
+
+
+    Vector3 CoordToWorldPoint(MapGenerator.Coord tile, float y = 0){
 		return new Vector3(-_map.GetLength(0)/2 +.5f + tile.tileX, y, -_map.GetLength(1)/2 + .5f + tile.tileY);
 	}
     class MapPopulatorI {
-		Coord spawnPoint; 
-		Coord endPoint; 
-		HashSet<Coord> filledCoords;	
-		List<Coord> unfilledFloor;
+		MapGenerator.Coord spawnPoint; 
+		MapGenerator.Coord endPoint; 
+		HashSet<MapGenerator.Coord> filledCoords;	
+		List<MapGenerator.Coord> unfilledFloor;
 		int[,] map;
 		public MapPopulatorI(int[,] _map){
-			Debug.Log("here we are");
-			filledCoords = new HashSet<Coord>();
-			unfilledFloor = new List<Coord>();
+			filledCoords = new HashSet<MapGenerator.Coord>();
+			unfilledFloor = new List<MapGenerator.Coord>();
 			map = _map;
 			for (int x = 0; x < map.GetLength(0); x ++){
 				for (int y = 0; y < map.GetLength(1); y ++){
 					if (map[x,y] == FLOOR){
-						unfilledFloor.Add(new Coord(x, y));
+						unfilledFloor.Add(new MapGenerator.Coord(x, y));
 					}
 				}
 			}
@@ -70,10 +99,10 @@ public class MapPopulator : MonoBehaviour
 			endPoint = GenerateEndPoint();
 		}
 
-		public List<Coord> generateRandLocationList(int amount, bool onWalls = false, List<Coord> reducedList = null, bool onEdge = false, bool notOnEdge = false){
+		public List<MapGenerator.Coord> generateRandLocationList(int amount, bool onWalls = false, List<MapGenerator.Coord> reducedList = null, bool onEdge = false, bool notOnEdge = false){
 			//generates a list of random, unfilled coordinates on the map or in a smaller set of locations
-			List<Coord> locations = new List<Coord>();
-			List<Coord> possibleLocations; 
+			List<MapGenerator.Coord> locations = new List<MapGenerator.Coord>();
+			List<MapGenerator.Coord> possibleLocations; 
 			if (reducedList != null) {
 				possibleLocations = reducedList;
 			} else {
@@ -82,8 +111,7 @@ public class MapPopulator : MonoBehaviour
 			
 			System.Random rand = new System.Random();
 			int index = rand.Next(0, possibleLocations.Count  - 1); // -1 to account for indexing 
-			Debug.Log(possibleLocations.Count);
-			Coord possLocation; 
+			MapGenerator.Coord possLocation; 
 			int maxIterations = possibleLocations.Count;
 			int i = 0;
 			while (locations.Count < amount && i <= possibleLocations.Count){
@@ -105,15 +133,16 @@ public class MapPopulator : MonoBehaviour
                 index = rand.Next(0, possibleLocations.Count  - 1);
 				i++;
 			}
-            foreach (Coord coord in locations){
+            foreach (MapGenerator.Coord coord in locations){
                 filledCoords.Add(coord);
             }
 			return locations;
 		}
-		Coord GenerateSpawnPoint(){
+        
+		MapGenerator.Coord GenerateSpawnPoint(){
 
 			// List<Coord> location = generateRandLocationList(1, false, smallestRoom.tiles, false, true);
-			List<Coord> location = generateRandLocationList(1);
+			List<MapGenerator.Coord> location = generateRandLocationList(1);
 			if (location.Count == 1){
 				return location[0];
 			} 
@@ -122,21 +151,13 @@ public class MapPopulator : MonoBehaviour
 				return location[0];
 			}
 			
-			return new Coord(-1, -1);
+			return new MapGenerator.Coord(-1, -1);
 		}
-		Coord GenerateEndPoint(){
-			return new Coord(-1, -1);
+		MapGenerator.Coord GenerateEndPoint(){
+			return new MapGenerator.Coord(-1, -1);
 		}
-		public Coord getPlayerSpawn(){
+		public MapGenerator.Coord getPlayerSpawn(){
 			return spawnPoint;
-		}
-	}
-    struct Coord{
-		public int tileX;
-		public int tileY;
-		public Coord(int x, int y){
-			tileX = x;
-			tileY = y;
 		}
 	}
 }

@@ -12,6 +12,7 @@ public class ObjSpawner : MonoBehaviour
     private List<Vector3> spawnPoints = null;
 
     public int number = 100; 
+    public float z = 0;
 
     private void Awake() {
         objects = new List<GameObject>();
@@ -39,7 +40,8 @@ public class ObjSpawner : MonoBehaviour
                 int rand = random.Next(0, objects.Count);
                 foreach(Vector3 spawnPoint in spawnPoints){
                     GameObject objectToSpawn = objects[rand];
-                    Instantiate(objectToSpawn, spawnPoint, transform.rotation);
+                    Vector3 sp = new Vector3(spawnPoint.x, spawnPoint.y + z, spawnPoint.z);
+                    Instantiate(objectToSpawn, sp, transform.rotation);
                     rand = random.Next(0, objects.Count);
                 }
             }

@@ -31,8 +31,10 @@ public class MapGenerator : MonoBehaviour {
 
 	bool mapOperational = false;
 
-	void Start() {
+	List<Coord> edgeTiles = null; 
+	public int TILE_BORDER = 30;
 
+	void Start() {
 		GenerateMap();
 	}
 
@@ -42,17 +44,16 @@ public class MapGenerator : MonoBehaviour {
 			meshGenerator.ClearMesh();
 			GenerateMap();
 		}
-		if (mapOperational){
-			Debug.Log("My ass");
-		}
+
+
+
 	}
 	void GenerateMap(){
 		makeNoiseGrid();
 		applyCellularAutomation(iterations);
-		Debug.Log("One");
 		ProcessMap();
-		Debug.Log("two");
-		int borderSize = 5; 
+		
+		int borderSize = TILE_BORDER; 
 		borderedMap = new int[width + borderSize*2, height + borderSize*2];
 		for (int i = 0; i < borderedMap.GetLength(0) ; i ++){
 			for (int j = 0; j < borderedMap.GetLength(1); j ++){
@@ -63,7 +64,14 @@ public class MapGenerator : MonoBehaviour {
 				}
 			}
 		}
-		Debug.Log("three");
+		List<Coord> allTiles = getAllFloorTiles(map);
+		// foreach(Room room in finalRooms){
+		// 	foreach(Coord tile in room.edgeTiles){
+		// 		allTiles.Add(tile);
+		// 	}
+		// }
+		Room bigRoom = new Room(allTiles, map);
+		edgeTiles = bigRoom.edgeTiles;
 		meshGenerator = GetComponent<MeshGenerator>();
 		meshGenerator.GenerateMesh(borderedMap, 1);
 		mapOperational = true;
@@ -90,8 +98,20 @@ public class MapGenerator : MonoBehaviour {
 			}
 		}
     }
+
 	public bool isMapOperational(){
 		return mapOperational;
+	}
+
+	List<Coord> getAllFloorTiles(int[,] map){
+		//n^2 implementation. Flood Fill would be better but this is for correctness. 
+		List<Coord> allTiles = new List<Coord>();
+		for (int x = 0; x < map.GetLength(0); x ++){
+			for (int y = 0; y < map.GetLength(1); y ++){
+				if (map[x,y] == FLOOR) allTiles.Add(new Coord(x, y));
+			}
+		}
+		return allTiles;
 	}
 	void applyCellularAutomation(int count){
 		
@@ -105,7 +125,6 @@ public class MapGenerator : MonoBehaviour {
 			for (int j = 0; j < width; j ++){
 				for (int k = 0; k < height; k ++){
 					int neighbourWallCount = GetNumberOfNeighbors(j, k, map);
-					// Debug.Log("wall count is " + neighbourWallCount);
 					if (neighbourWallCount > 4){
 						map[j, k] = WALL;
 					} else if (neighbourWallCount < 4) {
@@ -142,8 +161,9 @@ public class MapGenerator : MonoBehaviour {
 
 	void ProcessMap(){
 		List<List<Coord>> wallRegions = GetRegions(1);
-		int wallThresholdSize = 50;
+		int wallThresholdSize = 20;
 		foreach (List<Coord> wallRegion in wallRegions){
+
 			if (wallRegion.Count < wallThresholdSize){
 				foreach (Coord tile in wallRegion){
 					map[tile.tileX, tile.tileY] = FLOOR;
@@ -153,7 +173,7 @@ public class MapGenerator : MonoBehaviour {
 
 		List<List<Coord>> roomRegions = GetRegions (0);
 		List<Room> survivingRooms = new List<Room>();
-        int roomThresholdSize = 50;
+        int roomThresholdSize = 20;
 
         foreach (List<Coord> roomRegion in roomRegions) {
             if (roomRegion.Count < roomThresholdSize) {
@@ -169,10 +189,17 @@ public class MapGenerator : MonoBehaviour {
 			survivingRooms[0].isMainRoom = true;
 			survivingRooms[0].isAccessibleFromMainRoom = true;
 		}
-		
+
 		ConnectClosestRooms(survivingRooms);
 		survivingRooms.Sort();
 		finalRooms = survivingRooms;
+	}
+	public List<Coord> getEdgeTiles(){
+		List<Coord> fixedEgdeTiles = new List<Coord>();
+		foreach (Coord tile in edgeTiles){
+			fixedEgdeTiles.Add(new Coord(tile.tileX + TILE_BORDER, tile.tileY + TILE_BORDER));
+		}
+		return fixedEgdeTiles;
 	}
 	void ConnectClosestRooms(List<Room> allRooms, bool forceAccesibilityFromMainRoom = false){
 		List<Room> roomListA = new List<Room>();
@@ -311,10 +338,8 @@ public class MapGenerator : MonoBehaviour {
 	}
 	public int[,] getBordedMap(){
 		if (mapOperational){
-			Debug.Log("victory");
 			return borderedMap;
 		}
-		Debug.Log("Oh my ass");
 		return null;
 	}
 
@@ -369,7 +394,7 @@ public class MapGenerator : MonoBehaviour {
 		return x >= 0 && x < width && y >= 0 && y < height;
 	}
 
-	struct Coord{
+	public struct Coord{
 		public int tileX;
 		public int tileY;
 		public Coord(int x, int y){
@@ -377,6 +402,29 @@ public class MapGenerator : MonoBehaviour {
 			tileY = y;
 		}
 	}
+	// List<Coord> edgeFinding(){
+	// 	// int wall = -1;
+	// 	int[,] map_cpy = 
+	// }
+	// void flood_fill(int pos_x, int pos_y, int target_color, int color)
+	// {
+		
+	// 	if(map_cpy[pos_x][pos_y] == WALL || map_cpy[pos_x][pos_y] == color) // if there is no wall or if i haven't been there
+	// 		return;                                              // already go back
+		
+	// 	if(map_cpy[pos_x][pos_y] != target_color) // if it's not color go back
+	// 		return;
+		
+	// 	map_cpy[pos_x][pos_y] = color; // mark the point so that I know if I passed through it. 
+		
+	// 	flood_fill(pos_x + 1, pos_y, color);  // then i can either go south
+	// 	flood_fill(pos_x - 1, pos_y, color);  // or north
+	// 	flood_fill(pos_x, pos_y + 1, color);  // or east
+	// 	flood_fill(pos_x, pos_y - 1, color);  // or west
+		
+	// 	return;
+
+	// }
 
 	class Room : IComparable<Room>{
 		public List<Coord> tiles;

@@ -1,14 +1,27 @@
 fileFormatVersion: 2
-guid: bf000102c3e2987409013366d5c24659
+guid: c2583327bbf7aba469c513f6262e9f5f
 ModelImporter:
-  serializedVersion: 20200
-  internalIDToNameTable: []
-  externalObjects:
+  serializedVersion: 21100
+  internalIDToNameTable:
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Colour Grid
-    second: {fileID: 2100000, guid: 2f400dc7bad9d124cb965988e2e21d8f, type: 2}
+      74: 7592985955492970875
+    second: skeleton-skeleton|attack
+  - first:
+      74: 3455293764771774039
+    second: skeleton-skeleton|idle
+  - first:
+      74: -7850262884199127126
+    second: skeleton-skeleton|pose
+  - first:
+      74: -3563580171973691075
+    second: skeleton-skeleton|run
+  - first:
+      74: 8642759567063915290
+    second: skeleton-skeleton|spawn
+  - first:
+      74: -4858432787345055052
+    second: skeleton-skeleton|taunt
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
