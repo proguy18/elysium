@@ -72,6 +72,31 @@ public class MapPopulator : MonoBehaviour
         }
         return lessTiles;
     }
+    public Vector3 getEndSpawn(){
+        if (getPlayerSpawn() == new Vector3(0,0,0)){
+            return new Vector3(0,0,0);
+        }
+        Vector3 playerSpawn = getPlayerSpawn();
+        List<MapGenerator.Coord> edgeTiles = mapGenerator.getEdgeTiles();
+        List<Vector3> randomTiles = new List<Vector3>();
+        System.Random random = new System.Random();
+        for (int i = 0; i < 10; i ++){
+            randomTiles.Add(CoordToWorldPoint(edgeTiles[random.Next(0, edgeTiles.Count - 1)]));
+        }
+
+        float max = float.MinValue;
+        Vector3 finalPos = new Vector3(0,0,0);
+        foreach (Vector3 pos in randomTiles){
+            Vector3 offset = pos - playerSpawn;
+            float mag2 = offset.sqrMagnitude;
+
+            if (mag2 > max){
+                max = mag2;
+                finalPos = pos;
+            }
+        }
+        return finalPos;
+    }
 
 
     Vector3 CoordToWorldPoint(MapGenerator.Coord tile, float y = 0){

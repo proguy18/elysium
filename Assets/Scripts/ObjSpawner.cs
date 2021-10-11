@@ -41,7 +41,7 @@ public class ObjSpawner : MonoBehaviour
                 foreach(Vector3 spawnPoint in spawnPoints){
                     GameObject objectToSpawn = objects[rand];
                     Vector3 sp = new Vector3(spawnPoint.x, spawnPoint.y + z, spawnPoint.z);
-                    Instantiate(objectToSpawn, sp, transform.rotation);
+                    Instantiate(objectToSpawn, sp, Quaternion.Euler(new Vector3(0,random.Next(0,360),0 )));
                     rand = random.Next(0, objects.Count);
                 }
             }
