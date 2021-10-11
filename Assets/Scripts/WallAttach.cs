@@ -15,8 +15,8 @@
 //     void Update()
 //     {
         
-    }
-    /*void findBestDistance(){
+    /*}
+    void findBestDistance(){
         if (finalHit != null){
             List<Vector3> directions = new List<Vector3>();
             directions.Add(Vector3.forward);
@@ -43,5 +43,5 @@
             }
             finalHit = bestHit;
         }
-    }*/
-}
+    }
+}*/
