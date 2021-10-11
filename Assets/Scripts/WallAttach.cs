@@ -16,7 +16,7 @@ public class WallAttach : MonoBehaviour
     {
         
     }
-    void findBestDistance(){
+    /*void findBestDistance(){
         if (finalHit != null){
             List<Vector3> directions = new List<Vector3>();
             directions.Add(Vector3.forward);
@@ -30,7 +30,7 @@ public class WallAttach : MonoBehaviour
             List<RaycastHit> hits = new List<RaycastHit>();
             foreach (Vector3 dir in directions){
                 RaycastHit hit = new RaycastHit();
-                if (Physics.Raycast(trasform.position, dir, 15)) hits.Add(hit);
+                if (Physics.Raycast(transform.position, dir, 15)) hits.Add(hit);
             }
 
             float distance = float.MaxValue;
@@ -43,5 +43,5 @@ public class WallAttach : MonoBehaviour
             }
             finalHit = bestHit;
         }
-    }
+    }*/
 }

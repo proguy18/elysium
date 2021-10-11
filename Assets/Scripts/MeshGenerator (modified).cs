@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeshGenerator : MonoBehaviour
+public class MeshGenerator1 : MonoBehaviour
 {
     //FROM SEBASTIAN LAGUE VIDEOS https://www.youtube.com/watch?v=yOgIncKp0BE
     public SquareGrid squareGrid;
