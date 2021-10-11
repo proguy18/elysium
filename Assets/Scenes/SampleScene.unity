@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &204727268
 Transform:
   m_ObjectHideFlags: 0
@@ -600,7 +600,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &785966819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,7 +645,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &867596678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -841,7 +841,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &968665214
 Transform:
   m_ObjectHideFlags: 0
@@ -888,7 +888,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1341511266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1052,7 +1052,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1742823617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1099,7 +1099,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1870205404
 Transform:
   m_ObjectHideFlags: 0
@@ -1146,7 +1146,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1966876693
 Transform:
   m_ObjectHideFlags: 0
@@ -1315,5 +1315,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7719015136e907f4dab57157cdf6e0aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myLight: {fileID: 5899386838766012579, guid: 966923d49d9fad5459a92a852e2ac60e, type: 3}
+  myLight: {fileID: 9126208942601054864, guid: dbb86f48d1a6871468d8db176b905752, type: 3}
   mapGeneratorOb: {fileID: 1651193678}
