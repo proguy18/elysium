@@ -18,7 +18,9 @@ public class followPlayerSpawn : MonoBehaviour
         }
     }
     private void trySpawnPoint(){
-        MapGenerator mapGenerator = mapGeneratorOb.GetComponent<MapGenerator>();
-        spawnPoint = mapGenerator.getSpawnPoint();
+        MapPopulator mapPopulator = mapGeneratorOb.GetComponent<MapPopulator>();
+        if (mapPopulator != null){
+            spawnPoint = mapPopulator.getPlayerSpawn();
+        }
     }
 }

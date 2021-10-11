@@ -55,8 +55,9 @@ public class MeshGenerator : MonoBehaviour
         mesh.uv = uvs;
         CreateWallMesh();
     }
-    public void clearMesh(){
-        mesh.Clear();
+    public void ClearMesh(){
+        cave.mesh.Clear();
+        walls.mesh.Clear();
     }
     void CreateWallMesh(){
 
