@@ -15,7 +15,6 @@ public class PlayerCombat : CharacterCombat
 
     Animator m_Animator;
 
-
     CharacterStats myStats;
 
     // Start is called before the first frame update
@@ -39,7 +38,7 @@ public class PlayerCombat : CharacterCombat
     {
         if (attackCooldown <= 0f)
         {
-            // Debug.Log("Attack done");
+            Debug.Log("Attack done");
             // Play attack animation
             m_Animator.SetTrigger("Attack_2");
 
@@ -54,7 +53,14 @@ public class PlayerCombat : CharacterCombat
             }
             attackCooldown = 1 / attackSpeed;
         }
-        
-
     }
+
+    void OnDrawGizmosSelected () 
+    {
+        if (attackPoint == null) 
+            return;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
 }

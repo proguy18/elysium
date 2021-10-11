@@ -25,8 +25,8 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(int damage) 
     {
         currentHealth -= damage;
-        // Debug.Log("Enemy took " + damage + " damage.");
-        // Debug.Log("Enemy is currently " + currentHealth + " health.");
+        Debug.Log("Enemy took " + damage + " damage.");
+        Debug.Log("Enemy is currently " + currentHealth + " health.");
 
         // Play hurt animation
 
