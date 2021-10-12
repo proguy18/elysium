@@ -4,6 +4,7 @@ Shader "Custom/Triplanar"{
 		_Color ("Tint", Color) = (0, 0, 0, 1)
 		_MainTex ("Texture", 2D) = "white" {}
 		_Sharpness ("Blend sharpness", Range(1, 64)) = 1
+		_TextureScale ("Texture Scale", Range(0, 1000)) = 1
 		
 		// for toon lighting
 		[HDR] _AmbientColor("Ambient Color", Color) = (0.4, 0.4, 0.4, 1)
@@ -33,7 +34,7 @@ Shader "Custom/Triplanar"{
 			
 			ENDCG
 		}
-		
+
 		Pass {
             Tags {
                 "LightMode" = "ForwardAdd"
@@ -47,7 +48,6 @@ Shader "Custom/Triplanar"{
 
 			#pragma vertex vert
 			#pragma fragment frag
-			#pragma multi_compile_fog
 
             #include "Triplanar.cginc"	
 
@@ -70,5 +70,5 @@ Shader "Custom/Triplanar"{
             ENDCG
         }
 	}
-	FallBack "Standard" //fallback adds a shadow pass so we get shadows on other objects
+	//FallBack "Standard" //fallback adds a shadow pass so we get shadows on other objects
 }

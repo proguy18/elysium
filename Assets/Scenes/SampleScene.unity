@@ -335,6 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb3de2236cb371345b26bac551ed5049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1919506633}
 --- !u!20 &586795500
 Camera:
   m_ObjectHideFlags: 0
@@ -960,7 +961,6 @@ MonoBehaviour:
 --- !u!114 &1651193680
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1651193678}
