@@ -5,6 +5,9 @@ using UnityEngine;
 public class WallAttach : MonoBehaviour
 {
     RaycastHit finalHit = new RaycastHit();
+    Vector3 normal = new Vector3(-40,-40,-40);
+    Vector3 point = new Vector3(-40,-40,-40);
+    public float adjustment = 0.3f;
     bool hasMoved = false;
     // Start is called before the first frame update
     void Start()
@@ -23,8 +26,12 @@ public class WallAttach : MonoBehaviour
         
     }
     void moveToPosition(){
-        transform.position = finalHit.point;
-        transform.Rotate(finalHit.normal);
+        transform.position = point + adjustment*normal;
+        transform.rotation = Quaternion.LookRotation(normal);
+
+        // MeshCollider meshCollider = finalHit.collider;
+        // Vector3 normal = mesh.normals[finalHit.triangleIndex];
+        // transform.rotation = Quaternion.LookRotation(normal);
         hasMoved = true;
 
     }
@@ -49,12 +56,21 @@ public class WallAttach : MonoBehaviour
             }
 
             float distance = float.MaxValue;
+            Vector3 _normal = new Vector3(-40, -40, -40);
+            Vector3 _point = new Vector3(-40, -40, -40);
             foreach (RaycastHit hit in hits){
                 if (distance > hit.distance){
                     distance = hit.distance;
-                    finalHit = hit;
+                    _normal = hit.normal;
+                    _point = hit.point;
                 }
             }
+            if (_normal != new Vector3(-40, -40, -40) && _point != new Vector3(-40, -40, -40)){
+                normal = _normal;
+                point = _point;
+                return;
+            }
+            return;
         }
     }
     bool tryCast(){
