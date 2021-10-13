@@ -8,8 +8,7 @@ public class SC_TPSController : MonoBehaviour
     public float walkSpeed = 5f; 
     public float runSpeed = 8f;
     public float mouseSensitivity = 2.0f;
-    public float lookXLimit = 60.0f;
-    public bool movementAnimations = false; // will cause errors if changed during runtime
+    public bool movementAnimations = true; // will cause errors if changed during runtime
 
     public KeyCode left = KeyCode.A;
     public KeyCode right = KeyCode.D;
@@ -17,7 +16,8 @@ public class SC_TPSController : MonoBehaviour
     public KeyCode down = KeyCode.S;
     public KeyCode run = KeyCode.LeftShift;
 
-    public Transform playerCameraParent;
+    private float lookXLimit = 0;
+    private Transform playerCameraParent;
     private CharacterController characterController;
     private Vector3 moveDirection = Vector3.zero;
     private Vector2 rotation = Vector2.zero;
@@ -48,8 +48,22 @@ public class SC_TPSController : MonoBehaviour
         return 0;
     }
 
+    void Awake(){
+        playerCameraParent = new GameObject("CameraParent").transform;
+        playerCameraParent.SetParent(transform);
+        playerCameraParent.localPosition = new Vector3(0,1,0);
+        GameObject mainCamera = new GameObject("MainCamera");
+        mainCamera.transform.SetParent(playerCameraParent);
+        mainCamera.tag = "MainCamera";
+        mainCamera.AddComponent<Camera>();
+        mainCamera.transform.localPosition = new Vector3(0,2.5f,-6);
+        mainCamera.transform.localRotation = Quaternion.Euler(15,0,0);
+        SC_CameraCollision cameraScript  = mainCamera.AddComponent<SC_CameraCollision>();
+        cameraScript.referenceTransform = playerCameraParent;
+    }
+
     void Start()
-    {
+    {                
         y = transform.position.y; // starting y-value
         characterController = GetComponent<CharacterController>();
         rotation.y = transform.eulerAngles.y;
