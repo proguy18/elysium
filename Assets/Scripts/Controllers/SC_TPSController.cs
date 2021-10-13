@@ -90,18 +90,15 @@ public class SC_TPSController : MonoBehaviour
 
     void Update()
     {
-        if(movementAnimations && !m_Animator){
-            m_Animator  = gameObject.GetComponent<Animator>();
-        }
-
-        // We are grounded, so recalculate move direction based on axes
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
-        Vector3 r = transform.TransformDirection(Vector3.right);
-
         if(movementAnimations){
-           animateMovements(); 
+            if(!m_Animator){
+                m_Animator  = gameObject.GetComponent<Animator>();
+            }
+            animateMovements(); 
         }
         
+        Vector3 forward = transform.TransformDirection(Vector3.forward);
+        Vector3 r = transform.TransformDirection(Vector3.right);
         float speed = Input.GetKey(run) ? runSpeed : walkSpeed;
         float curSpeedX = speed * getAxis(down, up);
         float curSpeedY = speed * getAxis(left, right);
