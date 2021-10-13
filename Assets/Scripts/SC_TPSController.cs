@@ -8,7 +8,7 @@ public class SC_TPSController : MonoBehaviour
     public float walkSpeed = 5f; 
     public float runSpeed = 8f;
     public float mouseSensitivity = 2.0f;
-    public bool movementAnimations = true; // will cause errors if changed during runtime
+    public bool movementAnimations = false; // will cause errors if changed during runtime
 
     public KeyCode left = KeyCode.A;
     public KeyCode right = KeyCode.D;
@@ -95,7 +95,6 @@ public class SC_TPSController : MonoBehaviour
                 m_Animator  = gameObject.GetComponent<Animator>();
             }
             animateMovements(); 
-
         }
 
         // We are grounded, so recalculate move direction based on axes
