@@ -110,6 +110,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0.258
     - _GlossyReflections: 1
+    - _HeightAdjustment: 1
     - _HeightIntensity: 1
     - _LitOutlineThickness: 0.1
     - _Metallic: 0
@@ -120,11 +121,13 @@ Material:
     - _Parallax: 0.08
     - _RimAmount: 0.716
     - _RimThreshold: 0.1
+    - _Sharpness: 1
     - _Shininess: 0.71
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _Speed: 0.1
     - _SrcBlend: 1
+    - _TextureScale: 1
     - _Tiling: 0.5
     - _UJump: 0.1
     - _UVSec: 0
