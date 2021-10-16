@@ -1246,14 +1246,12 @@ MonoBehaviour:
   walkSpeed: 5
   runSpeed: 8
   mouseSensitivity: 2
-  lookXLimit: 60
-  movementAnimations: 0
+  movementAnimations: 1
   left: 97
   right: 100
   up: 119
   down: 115
   run: 304
-  playerCameraParent: {fileID: 0}
 --- !u!114 &9133032776799548703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1284,7 +1282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae2c00f31ffcaab4cb0f62f36f38f990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 109
+  attack: 32
   attackSpeed: 1
   enemyLayers:
     serializedVersion: 2
