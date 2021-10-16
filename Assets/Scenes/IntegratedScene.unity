@@ -1065,8 +1065,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referenceTransform: {fileID: 1484025316}
-  collisionOffset: 0.3
-  cameraSpeed: 15
 --- !u!81 &1652698303
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1271,6 +1269,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.02
       objectReference: {fileID: 0}
+    - target: {fileID: 7811330455057761757, guid: 0e8a48316c7f243948a75f0fca931274, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e8a48316c7f243948a75f0fca931274, type: 3}
 --- !u!1 &1919506633 stripped
@@ -1309,14 +1311,12 @@ MonoBehaviour:
   walkSpeed: 5
   runSpeed: 8
   mouseSensitivity: 2
-  lookXLimit: 0
   movementAnimations: 1
   left: 97
   right: 100
   up: 119
   down: 115
   run: 304
-  playerCameraParent: {fileID: 1484025316}
 --- !u!136 &1919506637
 CapsuleCollider:
   m_ObjectHideFlags: 0

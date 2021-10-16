@@ -39,7 +39,7 @@ public class MapGenerator : MonoBehaviour {
 	}
 
 	void Update() {
-		if (Input.GetMouseButtonDown(1)) {
+		if (Input.GetKeyDown("p")) {
 			mapOperational = false;
 			meshGenerator.ClearMesh();
 			GenerateMap();

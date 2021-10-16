@@ -38,6 +38,7 @@ public class MapPopulator : MonoBehaviour
         //     Debug.Log("No map operational");
 		// 	return null;
 		// }
+		Update();
 		List<MapGenerator.Coord> locations = mapPopulator.generateRandLocationList(number);
 		List<Vector3> realWorldPositions = new List<Vector3>();
 		
