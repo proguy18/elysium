@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 [RequireComponent(typeof(CharacterController))]
 
@@ -59,6 +60,12 @@ public class SC_TPSController : MonoBehaviour
         mainCamera.transform.localPosition = new Vector3(0,2.5f,-6);
         mainCamera.transform.localRotation = Quaternion.Euler(15,0,0);
         SC_CameraCollision cameraScript  = mainCamera.AddComponent<SC_CameraCollision>();
+        
+        // Add postprocessing
+        PostProcessLayer postProcessLayer = mainCamera.AddComponent<PostProcessLayer>();
+        postProcessLayer.antialiasingMode = PostProcessLayer.Antialiasing.SubpixelMorphologicalAntialiasing;
+        postProcessLayer.volumeLayer = LayerMask.GetMask("Post-processing");
+        
         cameraScript.referenceTransform = playerCameraParent;
     }
 
