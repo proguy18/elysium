@@ -335,7 +335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb3de2236cb371345b26bac551ed5049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1919506633}
 --- !u!20 &586795500
 Camera:
   m_ObjectHideFlags: 0
@@ -955,12 +954,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walls: {fileID: 765067856}
   cave: {fileID: 336031009}
-  wallHeight: 2
+  wallHeight: 6
   x_scale: 1
   wallTiles: 200
 --- !u!114 &1651193680
 MonoBehaviour:
   m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1651193678}
@@ -969,14 +969,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ff641c15294c440acf79d1f1082fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 50
-  height: 80
+  width: 80
+  height: 120
   iterations: 4
   seed: 
   useRandomSeed: 1
   randomFillPercent: 49
-  passageRadius: 2
-  TILE_BORDER: 30
+  passageRadius: 3
+  TILE_BORDER: 20
 --- !u!4 &1651193681
 Transform:
   m_ObjectHideFlags: 0
@@ -985,7 +985,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1651193678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 765067858}
