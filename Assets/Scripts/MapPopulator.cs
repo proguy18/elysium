@@ -28,22 +28,31 @@ public class MapPopulator : MonoBehaviour
     }
     public Vector3 getPlayerSpawn() {
         if (mapPopulator != null) { 
-            return CoordToWorldPoint(mapPopulator.getPlayerSpawn());
+			MapGenerator.Coord coord = mapPopulator.getPlayerSpawn();
+			mapPopulator.fillCoord(coord);
+            return CoordToWorldPoint(coord);
         }
         return new Vector3(0,0,0);
     }
     public List<Vector3> getRandomSpawns(int number, float height = 0){
-
-		// if (mapGenerator.isMapOperational()){
-        //     Debug.Log("No map operational");
-		// 	return null;
-		// }
-		List<MapGenerator.Coord> locations = mapPopulator.generateRandLocationList(number);
-		List<Vector3> realWorldPositions = new List<Vector3>();
-		
-		for (int i = 0; i < locations.Count; i ++){
-			realWorldPositions.Add(CoordToWorldPoint(locations[i]));
+		if (mapPopulator == null){
+			return null;
 		}
+		List<MapGenerator.Coord> locations = mapPopulator.generateRandLocationList(number);
+		if (locations == null) Debug.Log("Locations is null");
+		if (locations.Count == 0) Debug.Log("Locations is empty");
+		List<Vector3> realWorldPositions = new List<Vector3>();
+
+		for (int i = 0; i < locations.Count; i ++){
+			// if (!mapPopulator.filledCoord(locations[i])){
+			// 	Debug.Log("5");
+			// 	realWorldPositions.Add(CoordToWorldPoint(locations[i]));
+			// 	mapPopulator.fillCoord(locations[i]);
+			// }
+			realWorldPositions.Add(CoordToWorldPoint(locations[i]));
+			mapPopulator.fillCoord(locations[i]);
+		}
+
 		return realWorldPositions;
 	}
     public List<Vector3> GenerateLightPoints(){
@@ -55,20 +64,15 @@ public class MapPopulator : MonoBehaviour
         //First try getting every 20th and return it
 
         List<Vector3> lessTiles = new List<Vector3>();
-        // int max = edgeTiles.Count%spaceBetweenLights;
-        // int count = 0;
         int j = spaceBetweenLights/2;
         foreach(MapGenerator.Coord tile in edgeTiles){
             j ++;
-            if (j == spaceBetweenLights){
+            if (j == spaceBetweenLights && !mapPopulator.filledCoord(tile)){
                 lessTiles.Add(CoordToWorldPoint(tile, 1.64f));
+				mapPopulator.filledCoord(tile);
                 j = 0;
-                // count ++;
             }
             
-            // if (count >= max) {
-            //     return lessTiles;
-            // }
         }
         return lessTiles;
     }
@@ -78,23 +82,30 @@ public class MapPopulator : MonoBehaviour
         }
         Vector3 playerSpawn = getPlayerSpawn();
         List<MapGenerator.Coord> edgeTiles = mapGenerator.getEdgeTiles();
-        List<Vector3> randomTiles = new List<Vector3>();
+        List<MapGenerator.Coord> randomTiles = new List<MapGenerator.Coord>();
         System.Random random = new System.Random();
         for (int i = 0; i < 10; i ++){
-            randomTiles.Add(CoordToWorldPoint(edgeTiles[random.Next(0, edgeTiles.Count - 1)]));
+			int index = random.Next(0, edgeTiles.Count - 1);
+			if (!mapPopulator.filledCoord(edgeTiles[index])){
+				randomTiles.Add(edgeTiles[index]);
+			}
+            
         }
 
         float max = float.MinValue;
         Vector3 finalPos = new Vector3(0,0,0);
-        foreach (Vector3 pos in randomTiles){
-            Vector3 offset = pos - playerSpawn;
+		MapGenerator.Coord finalCoord = new MapGenerator.Coord(0,0);
+        foreach (MapGenerator.Coord pos in randomTiles){
+            Vector3 offset = CoordToWorldPoint(pos) - playerSpawn;
             float mag2 = offset.sqrMagnitude;
 
-            if (mag2 > max){
+            if (mag2 > max && !mapPopulator.filledCoord(pos)){
                 max = mag2;
-                finalPos = pos;
+                finalPos = CoordToWorldPoint(pos);
+				finalCoord = pos;
             }
         }
+		mapPopulator.fillCoord(finalCoord);
         return finalPos;
     }
 
@@ -183,6 +194,12 @@ public class MapPopulator : MonoBehaviour
 		}
 		public MapGenerator.Coord getPlayerSpawn(){
 			return spawnPoint;
+		}
+		public void fillCoord(MapGenerator.Coord coord){
+			filledCoords.Add(coord);
+		}
+		public bool filledCoord(MapGenerator.Coord coord){
+			return filledCoords.Contains(coord);
 		}
 	}
 }

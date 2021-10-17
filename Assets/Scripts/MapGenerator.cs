@@ -402,29 +402,7 @@ public class MapGenerator : MonoBehaviour {
 			tileY = y;
 		}
 	}
-	// List<Coord> edgeFinding(){
-	// 	// int wall = -1;
-	// 	int[,] map_cpy = 
-	// }
-	// void flood_fill(int pos_x, int pos_y, int target_color, int color)
-	// {
-		
-	// 	if(map_cpy[pos_x][pos_y] == WALL || map_cpy[pos_x][pos_y] == color) // if there is no wall or if i haven't been there
-	// 		return;                                              // already go back
-		
-	// 	if(map_cpy[pos_x][pos_y] != target_color) // if it's not color go back
-	// 		return;
-		
-	// 	map_cpy[pos_x][pos_y] = color; // mark the point so that I know if I passed through it. 
-		
-	// 	flood_fill(pos_x + 1, pos_y, color);  // then i can either go south
-	// 	flood_fill(pos_x - 1, pos_y, color);  // or north
-	// 	flood_fill(pos_x, pos_y + 1, color);  // or east
-	// 	flood_fill(pos_x, pos_y - 1, color);  // or west
-		
-	// 	return;
 
-	// }
 
 	class Room : IComparable<Room>{
 		public List<Coord> tiles;
@@ -445,7 +423,7 @@ public class MapGenerator : MonoBehaviour {
 				for (int x = tile.tileX - 1; x<= tile.tileX + 1;x ++){
 					for( int y = tile.tileY - 1; y <= tile.tileY + 1; y++){
 						if (x == tile.tileX || y == tile.tileY){
-							if (map[x,y] == WALL) {
+							if ( x>= 0 && x< map.GetLength(0) && y >=0 && y < map.GetLength(1) && map[x,y] == WALL) {
 								edgeTiles.Add(tile);
 							}
 						}
