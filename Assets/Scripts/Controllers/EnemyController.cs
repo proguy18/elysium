@@ -47,9 +47,11 @@ public class EnemyController : MonoBehaviour
     {
         Debug.Log("Enemy died");
         // Die animation
+        m_Animator.SetTrigger("Die");
+        m_Animator.SetBool("hasDied", true);
 
         // Disable the enemy
-        Destroy(gameObject);
+        Destroy(gameObject, 2.1f);
 
 
     }
