@@ -28,10 +28,6 @@ public class WallAttach : MonoBehaviour
     void moveToPosition(){
         transform.position = point + adjustment*normal;
         transform.rotation = Quaternion.LookRotation(normal);
-
-        // MeshCollider meshCollider = finalHit.collider;
-        // Vector3 normal = mesh.normals[finalHit.triangleIndex];
-        // transform.rotation = Quaternion.LookRotation(normal);
         hasMoved = true;
 
     }
@@ -51,7 +47,6 @@ public class WallAttach : MonoBehaviour
                 RaycastHit hit = new RaycastHit();
                 if (Physics.Raycast(transform.position, dir, out hit)){
                     hits.Add(hit);
-                    Debug.Log(hit.normal);
                 }
             }
 

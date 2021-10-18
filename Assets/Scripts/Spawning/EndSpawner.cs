@@ -8,6 +8,7 @@ public class EndSpawner : MonoBehaviour
     public GameObject objectToSpawn;
     public GameObject mapGeneratorOb;
     private Vector3 spawnPoint;
+    public float z = 0;
 
     // Update is called once per frame
     void Update()
@@ -16,7 +17,7 @@ public class EndSpawner : MonoBehaviour
         if (Input.GetKeyDown("k")){
             Debug.Log(spawnPoint);
             if (!spawnPoint.Equals(new Vector3(0,0,0))){
-                Instantiate(objectToSpawn, spawnPoint, transform.rotation);
+                Instantiate(objectToSpawn, new Vector3(spawnPoint.x, z, spawnPoint.z), transform.rotation);
             }
         }
     }

@@ -34,19 +34,30 @@ public class MapGenerator : MonoBehaviour {
 	List<Coord> edgeTiles = null; 
 	public int TILE_BORDER = 30;
 
-	void Start() {
+	// void Start() {
+	// 	GenerateMap();
+	// }
+
+	// void Update() {
+	// 	if (Input.GetKeyDown("p")) {
+	// 		GenerateMap();
+			
+	// 	}
+	// 	if (Input.GetKeyDown("o")){
+	// 		mapOperational = false;
+	// 		meshGenerator.ClearMesh();
+	// 	}
+
+
+
+	// }
+	public void GenMap(){
+		mapOperational = true;
 		GenerateMap();
 	}
-
-	void Update() {
-		if (Input.GetMouseButtonDown(1)) {
-			mapOperational = false;
-			meshGenerator.ClearMesh();
-			GenerateMap();
-		}
-
-
-
+	public void KillMap(){
+		mapOperational = false;
+		meshGenerator.ClearMesh();
 	}
 	void GenerateMap(){
 		makeNoiseGrid();
