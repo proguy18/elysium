@@ -3,13 +3,13 @@
 
 #include "UnityCG.cginc"
 
-struct vertIn
+struct appdata
     {
         float4 vertex : POSITION;
         float3 normal : NORMAL;
     };
 
-    struct vertOut
+    struct v2f
     {
         float4 vertex : SV_POSITION;
     };
@@ -43,12 +43,12 @@ struct vertIn
     return o;
 	} */
 
-	vertOut vert (vertIn v)
+	v2f vert (appdata v)
     {
         // Offset vertices in the direction of the normal
         v.vertex.xyz += v.normal * _OutlineWidth;
 
-        vertOut o;
+        v2f o;
         o.vertex = UnityObjectToClipPos(v.vertex);
 
         return o;
