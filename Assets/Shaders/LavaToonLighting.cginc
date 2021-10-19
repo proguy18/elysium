@@ -138,7 +138,6 @@ float3 FlowUV (float2 uv, float2 flowVector, float2 jump,
 
 float4 frag (vertOut i) : SV_Target
 {
-    // Flow effect
     float2 flowVector = tex2D(_FlowMap, i.uv).rg * 2 - 1;
     flowVector *= _FlowStrength;
     float noise = tex2D(_FlowMap, i.uv).a;
@@ -157,7 +156,7 @@ float4 frag (vertOut i) : SV_Target
 
     float4 sample = (sample1 + sample2);
 
-    return _Color * sample * _LightColor0;
+    //return _Color * sample;
     
 
 

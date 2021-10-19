@@ -9,10 +9,9 @@ public class ObjSpawner : MonoBehaviour
     private List<GameObject> objects;
 
     public GameObject mapGeneratorOb;
-    private List<Vector3> spawnPoints = null;
+    private List<Vector3> spawnPoints;
 
     public int number = 100; 
-    public float z = 0;
 
     private void Awake() {
         objects = new List<GameObject>();
@@ -20,6 +19,7 @@ public class ObjSpawner : MonoBehaviour
         int i = 1;
         while(moreObjects){
             var _temp = Resources.Load(nameStem + i.ToString());
+            Debug.Log(nameStem + i.ToString());
             if (_temp != null){
                 objects.Add(_temp as GameObject);
             }
@@ -35,13 +35,12 @@ public class ObjSpawner : MonoBehaviour
     {
         trySpawnPoints();
         if (Input.GetKeyDown("k")){
-            if (spawnPoints != null){
+            if (!spawnPoints.Equals(null)){
                 System.Random random = new System.Random();
                 int rand = random.Next(0, objects.Count);
                 foreach(Vector3 spawnPoint in spawnPoints){
                     GameObject objectToSpawn = objects[rand];
-                    Vector3 sp = new Vector3(spawnPoint.x, spawnPoint.y + z, spawnPoint.z);
-                    Instantiate(objectToSpawn, sp, Quaternion.Euler(new Vector3(0,random.Next(0,360),0 )));
+                    Instantiate(objectToSpawn, spawnPoint, transform.rotation);
                     rand = random.Next(0, objects.Count);
                 }
             }
@@ -49,11 +48,8 @@ public class ObjSpawner : MonoBehaviour
     }
     private void trySpawnPoints(){
         if (spawnPoints == null){
-            MapPopulator mapPopulator = mapGeneratorOb.GetComponent<MapPopulator>();
-            if (mapPopulator != null){
-                spawnPoints = mapPopulator.getRandomSpawns(number);
-                
-            }
+            MapGenerator mapGenerator = mapGeneratorOb.GetComponent<MapGenerator>();
+            spawnPoints = mapGenerator.getRandomSpawns(number);
         }
     }
 }

@@ -22,9 +22,7 @@ public class PlayerSpawner : MonoBehaviour
         }
     }
     private void trySpawnPoint(){
-        MapPopulator mapPopulator = mapGeneratorOb.GetComponent<MapPopulator>();
-        if (mapPopulator != null){
-            spawnPoint = mapPopulator.getPlayerSpawn();
-        }
+        MapGenerator mapGenerator = mapGeneratorOb.GetComponent<MapGenerator>();
+        spawnPoint = mapGenerator.getSpawnPoint();
     }
 }

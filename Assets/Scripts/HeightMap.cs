@@ -3,8 +3,8 @@ using UnityEngine;
 using UnityEditor;
 using System.Linq;
  
-//public class HeightMap : MaterialEditor
-/*{
+public class HeightMap : MaterialEditor
+{
     public override void OnInspectorGUI ()
     {
         // Draw the default inspector.
@@ -32,4 +32,4 @@ using System.Linq;
             EditorUtility.SetDirty (targetMat);
         }
     }
-}*/
+}

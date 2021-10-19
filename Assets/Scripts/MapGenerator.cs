@@ -18,7 +18,6 @@ public class MapGenerator : MonoBehaviour {
 	public int randomFillPercent;
 
 	int[,] map;
-	int[,] borderedMap;
 
 	static int WALL = 1;
 	static int FLOOR = 0;
@@ -28,33 +27,31 @@ public class MapGenerator : MonoBehaviour {
 	MeshGenerator meshGenerator;
 
 	List<Room> finalRooms;
+	MapPopulator mapPopulator;
+	Vector3 playerSpawn;
+
+	List<Vector3> rockSpawns;
 
 	bool mapOperational = false;
-
-	List<Coord> edgeTiles = null; 
-	public int TILE_BORDER = 30;
-
 	void Start() {
+
 		GenerateMap();
 	}
 
 	void Update() {
-		if (Input.GetKeyDown("p")) {
+		if (Input.GetMouseButtonDown(0)) {
 			mapOperational = false;
-			meshGenerator.ClearMesh();
+			meshGenerator.clearMesh();
+			mapPopulator = null;
 			GenerateMap();
 		}
-
-
-
 	}
 	void GenerateMap(){
 		makeNoiseGrid();
 		applyCellularAutomation(iterations);
 		ProcessMap();
-		
-		int borderSize = TILE_BORDER; 
-		borderedMap = new int[width + borderSize*2, height + borderSize*2];
+		int borderSize = 5; 
+		int[,] borderedMap= new int[width + borderSize*2, height + borderSize*2];
 		for (int i = 0; i < borderedMap.GetLength(0) ; i ++){
 			for (int j = 0; j < borderedMap.GetLength(1); j ++){
 				if (i >= borderSize && i < width + borderSize && j >= borderSize && j < borderSize + height){
@@ -64,16 +61,15 @@ public class MapGenerator : MonoBehaviour {
 				}
 			}
 		}
-		List<Coord> allTiles = getAllFloorTiles(map);
-		// foreach(Room room in finalRooms){
-		// 	foreach(Coord tile in room.edgeTiles){
-		// 		allTiles.Add(tile);
-		// 	}
-		// }
-		Room bigRoom = new Room(allTiles, map);
-		edgeTiles = bigRoom.edgeTiles;
 		meshGenerator = GetComponent<MeshGenerator>();
 		meshGenerator.GenerateMesh(borderedMap, 1);
+		// int count = finalRooms.Count;
+		// foreach (Room room in finalRooms){
+		// 	Debug.Log(room.roomSize);
+		// }
+		mapPopulator = new MapPopulator(borderedMap, finalRooms);
+		playerSpawn = CoordToWorldPoint(mapPopulator.getPlayerSpawn());
+		Debug.Log("Generated Player Spawn: " + playerSpawn);
 		mapOperational = true;
 	}
 	void makeNoiseGrid(){
@@ -98,21 +94,6 @@ public class MapGenerator : MonoBehaviour {
 			}
 		}
     }
-
-	public bool isMapOperational(){
-		return mapOperational;
-	}
-
-	List<Coord> getAllFloorTiles(int[,] map){
-		//n^2 implementation. Flood Fill would be better but this is for correctness. 
-		List<Coord> allTiles = new List<Coord>();
-		for (int x = 0; x < map.GetLength(0); x ++){
-			for (int y = 0; y < map.GetLength(1); y ++){
-				if (map[x,y] == FLOOR) allTiles.Add(new Coord(x, y));
-			}
-		}
-		return allTiles;
-	}
 	void applyCellularAutomation(int count){
 		
 		for (int i = 0; i < count; i ++){
@@ -125,6 +106,7 @@ public class MapGenerator : MonoBehaviour {
 			for (int j = 0; j < width; j ++){
 				for (int k = 0; k < height; k ++){
 					int neighbourWallCount = GetNumberOfNeighbors(j, k, map);
+					// Debug.Log("wall count is " + neighbourWallCount);
 					if (neighbourWallCount > 4){
 						map[j, k] = WALL;
 					} else if (neighbourWallCount < 4) {
@@ -161,9 +143,8 @@ public class MapGenerator : MonoBehaviour {
 
 	void ProcessMap(){
 		List<List<Coord>> wallRegions = GetRegions(1);
-		int wallThresholdSize = 20;
+		int wallThresholdSize = 50;
 		foreach (List<Coord> wallRegion in wallRegions){
-
 			if (wallRegion.Count < wallThresholdSize){
 				foreach (Coord tile in wallRegion){
 					map[tile.tileX, tile.tileY] = FLOOR;
@@ -173,7 +154,7 @@ public class MapGenerator : MonoBehaviour {
 
 		List<List<Coord>> roomRegions = GetRegions (0);
 		List<Room> survivingRooms = new List<Room>();
-        int roomThresholdSize = 20;
+        int roomThresholdSize = 50;
 
         foreach (List<Coord> roomRegion in roomRegions) {
             if (roomRegion.Count < roomThresholdSize) {
@@ -189,17 +170,10 @@ public class MapGenerator : MonoBehaviour {
 			survivingRooms[0].isMainRoom = true;
 			survivingRooms[0].isAccessibleFromMainRoom = true;
 		}
-
+		
 		ConnectClosestRooms(survivingRooms);
 		survivingRooms.Sort();
 		finalRooms = survivingRooms;
-	}
-	public List<Coord> getEdgeTiles(){
-		List<Coord> fixedEgdeTiles = new List<Coord>();
-		foreach (Coord tile in edgeTiles){
-			fixedEgdeTiles.Add(new Coord(tile.tileX + TILE_BORDER, tile.tileY + TILE_BORDER));
-		}
-		return fixedEgdeTiles;
 	}
 	void ConnectClosestRooms(List<Room> allRooms, bool forceAccesibilityFromMainRoom = false){
 		List<Room> roomListA = new List<Room>();
@@ -336,12 +310,6 @@ public class MapGenerator : MonoBehaviour {
 		}
 		return line;
 	}
-	public int[,] getBordedMap(){
-		if (mapOperational){
-			return borderedMap;
-		}
-		return null;
-	}
 
 	Vector3 CoordToWorldPoint(Coord tile){
 		return new Vector3(-width/2 +.5f + tile.tileX, 0, -height/2 + .5f + tile.tileY);
@@ -394,7 +362,7 @@ public class MapGenerator : MonoBehaviour {
 		return x >= 0 && x < width && y >= 0 && y < height;
 	}
 
-	public struct Coord{
+	struct Coord{
 		public int tileX;
 		public int tileY;
 		public Coord(int x, int y){
@@ -402,29 +370,6 @@ public class MapGenerator : MonoBehaviour {
 			tileY = y;
 		}
 	}
-	// List<Coord> edgeFinding(){
-	// 	// int wall = -1;
-	// 	int[,] map_cpy = 
-	// }
-	// void flood_fill(int pos_x, int pos_y, int target_color, int color)
-	// {
-		
-	// 	if(map_cpy[pos_x][pos_y] == WALL || map_cpy[pos_x][pos_y] == color) // if there is no wall or if i haven't been there
-	// 		return;                                              // already go back
-		
-	// 	if(map_cpy[pos_x][pos_y] != target_color) // if it's not color go back
-	// 		return;
-		
-	// 	map_cpy[pos_x][pos_y] = color; // mark the point so that I know if I passed through it. 
-		
-	// 	flood_fill(pos_x + 1, pos_y, color);  // then i can either go south
-	// 	flood_fill(pos_x - 1, pos_y, color);  // or north
-	// 	flood_fill(pos_x, pos_y + 1, color);  // or east
-	// 	flood_fill(pos_x, pos_y - 1, color);  // or west
-		
-	// 	return;
-
-	// }
 
 	class Room : IComparable<Room>{
 		public List<Coord> tiles;
@@ -481,6 +426,108 @@ public class MapGenerator : MonoBehaviour {
 		}
 
 	}
-	
+	public Vector3 getSpawnPoint(){
+		return playerSpawn;
+	}
 
+	public List<Vector3> getRandomSpawns(int number, float height = 0, bool onWalls = false, bool onEdge = false, bool notOnEdge = false){
+
+		if (!mapOperational){
+			return null;
+		}
+		List<Coord> locations = mapPopulator.generateRandLocationList(number, onWalls, null, onEdge, notOnEdge);
+		List<Vector3> realWorldPositions = new List<Vector3>();
+		
+		for (int i = 0; i < locations.Count; i ++){
+			realWorldPositions.Add(CoordToWorldPoint(locations[i]));
+		}
+		return realWorldPositions;
+	}
+	
+	class MapPopulator {
+		Coord spawnPoint; 
+		Coord endPoint; 
+		HashSet<Coord> filledCoords;	
+		List<Coord> unfilledFloor;
+		List<Coord> unfilledEdges; //Don't know how to do this very effectively
+		int[,] map;
+		List<Room> finalRooms;
+		public MapPopulator(int[,] _map, List<Room> _finalRooms){
+			
+			filledCoords = new HashSet<Coord>();
+			unfilledFloor = new List<Coord>();
+			map = _map;
+			finalRooms = _finalRooms;
+			for (int x = 0; x < map.GetLength(0); x ++){
+				for (int y = 0; y < map.GetLength(1); y ++){
+					if (map[x,y] == FLOOR){
+						unfilledFloor.Add(new Coord(x, y));
+						
+					}
+				}
+			}
+			
+			spawnPoint = GenerateSpawnPoint();
+			endPoint = GenerateEndPoint();
+		}
+
+		public List<Coord> generateRandLocationList(int amount, bool onWalls = false, List<Coord> reducedList = null, bool onEdge = false, bool notOnEdge = false){
+			//generates a list of random, unfilled coordinates on the map or in a smaller set of locations
+			List<Coord> locations = new List<Coord>();
+			List<Coord> possibleLocations; 
+			if (reducedList != null) {
+				possibleLocations = reducedList;
+			} else {
+				possibleLocations = unfilledFloor;
+			}
+			
+			System.Random rand = new System.Random();
+			int index = rand.Next(0, possibleLocations.Count  - 1); // -1 to account for indexing 
+			Debug.Log(possibleLocations.Count);
+			Coord possLocation; 
+			int maxIterations = possibleLocations.Count;
+			int i = 0;
+			while (locations.Count < amount && i <= possibleLocations.Count){
+				possLocation = possibleLocations[index];
+				if (filledCoords.Contains(possLocation)){
+					index = rand.Next(0, possibleLocations.Count  - 1);
+					continue;
+				}
+				if (onWalls){
+					//check condition
+				}
+				if (onEdge){
+				}
+				if (notOnEdge && GetNumberOfNeighbors(possLocation.tileX, possLocation.tileY, map) > 0){
+					index = rand.Next(0, possibleLocations.Count  - 1);
+					continue;
+				}
+				locations.Add(possLocation);
+				filledCoords.Add(possLocation);
+				i++;
+			}
+			return locations;
+		}
+		Coord GenerateSpawnPoint(){
+			Room smallestRoom = finalRooms[finalRooms.Count - 1];
+
+			List<Coord> location = generateRandLocationList(1, false, smallestRoom.tiles, false, true);
+			// List<Coord> location = generateLocationList(1);
+			if (location.Count == 1){
+				return location[0];
+			} 
+			location = generateRandLocationList(1);
+			if (location.Count == 1){
+				return location[0];
+			}
+			
+			return new Coord(-1, -1);
+		}
+		Coord GenerateEndPoint(){
+			return new Coord(-1, -1);
+		}
+		public Coord getPlayerSpawn(){
+			return spawnPoint;
+		}
+	}
 }
