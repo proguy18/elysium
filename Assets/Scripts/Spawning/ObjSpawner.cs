@@ -49,10 +49,7 @@ public class ObjSpawner : MonoBehaviour
             }
         }
         if (Input.GetKeyDown("o")){
-            foreach (GameObject ob in clones){
-                Destroy(ob);
-                Debug.Log("I'm inactive yaya");
-            }
+            kill();
         }
     }
     private void trySpawnPoints(){
@@ -63,5 +60,26 @@ public class ObjSpawner : MonoBehaviour
                 
             }
         }
+    }
+    public void kill(){
+        foreach (GameObject ob in clones){
+            Destroy(ob);
+            Debug.Log("I'm inactive yaya");
+        }
+    }
+    public void spawn(){
+        trySpawnPoints();
+        if (spawnPoints != null){
+            clones = new List<GameObject>();
+            System.Random random = new System.Random();
+            int rand = random.Next(0, objects.Count);
+            foreach(Vector3 spawnPoint in spawnPoints){
+                GameObject objectToSpawn = objects[rand];
+                Vector3 sp = new Vector3(spawnPoint.x, spawnPoint.y + z, spawnPoint.z);
+                clones.Add(Instantiate(objectToSpawn, sp, Quaternion.Euler(new Vector3(0,random.Next(0,360),0 ))));
+                rand = random.Next(0, objects.Count);
+            }
+        }
+
     }
 }

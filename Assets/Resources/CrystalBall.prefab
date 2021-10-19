@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3454277780503944143}
   - component: {fileID: 3454277780502944015}
   - component: {fileID: 3454277780500744128}
+  - component: {fileID: 6221928202707151819}
   m_Layer: 0
   m_Name: CrystalBall
   m_TagString: Untagged
@@ -97,3 +98,15 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: f57cc7a1624e76443b185852b327936b, type: 3}
+--- !u!114 &6221928202707151819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3454277780500744143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b956ed0296ed7642991ef365463d251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
