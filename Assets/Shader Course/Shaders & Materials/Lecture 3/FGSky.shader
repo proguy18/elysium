@@ -19,13 +19,13 @@
 
             #include "UnityCG.cginc"
 
-            struct appdata
+            struct vertIn
             {
                 float4 vertex : POSITION;
                 float3 viewDir : TEXCOORD0;
             };
 
-            struct v2f
+            struct vertOut
             {
                 float3 viewDir : TEXCOORD0;
                 float4 vertex : SV_POSITION;
@@ -36,8 +36,8 @@
 
             #define TAU 6.28318530718
 
-            v2f vert (appdata v) {
-                v2f o;
+            vertOut vert (vertIn v) {
+                vertOut o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.viewDir = v.viewDir;
                 return o;
@@ -49,7 +49,7 @@
                 return float2(x,y);
             }
 
-            float3 frag (v2f i) : SV_Target {
+            float3 frag (vertOut i) : SV_Target {
                 // sample the texture
                 float3 col = tex2Dlod(_MainTex, float4(DirToRectilinear(i.viewDir),0,0) );
                 return col;
