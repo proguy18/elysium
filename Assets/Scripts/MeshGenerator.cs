@@ -9,7 +9,6 @@ public class MeshGenerator : MonoBehaviour
     public MeshFilter walls;
     public MeshFilter cave;
     public int wallHeight  = 5;
-    public int wallTiles = 2; 
     List<Vector3> vertices;
     List<int> triangles;
     Dictionary<int, List<Triangle>> triangleDictionary = new Dictionary<int, List<Triangle>>();
@@ -17,7 +16,7 @@ public class MeshGenerator : MonoBehaviour
     
     // for texture scaling i hope
     [Range(0, 1000000)] public float x_scale = 10000;
-    [Range(0, 1000000)] public float y_scale = 10000;
+    [Range(0, 1000000)] public int wallTiles = 20;
 
     float squareSize; 
     int[,] map;
@@ -55,8 +54,9 @@ public class MeshGenerator : MonoBehaviour
         mesh.uv = uvs;
         CreateWallMesh();
     }
-    public void clearMesh(){
-        mesh.Clear();
+    public void ClearMesh(){
+        cave.mesh.Clear();
+        walls.mesh.Clear();
     }
     void CreateWallMesh(){
 
@@ -95,25 +95,26 @@ public class MeshGenerator : MonoBehaviour
         // From here code effects textures
         //float textureScale = walls.gameObject.GetComponentInChildren<MeshRenderer>().material.mainTextureScale.x;
         float textureScaleX = x_scale;
-        float textureScaleY = y_scale;
-        //Debug.Log("textureScale: " + textureScale);
         float increment = (textureScaleX/map.GetLength(1));
         Vector2[] uvs = new Vector2[wallMesh.vertices.Length];
         float[] uvEntries = new float[]{0.5f, increment};
 
         for (int i = 0; i < wallMesh.vertices.Length; i ++)
         {
-            float map_length = map.GetLength(1);
+            float map_length = map.GetLength(0);
             float fraction = wallHeight / map_length;
             Vector3 wallmeshvertice = wallMesh.vertices[i];
-            float value = wallMesh.vertices[i].x*wallTiles;
+            float value = wallMesh.vertices[i].y*wallTiles;
             value = value * fraction;
+            float tmp = (-wallHeight) * squareSize;
             float percentY = Mathf.InverseLerp((-wallHeight)*squareSize, 0, value);
             //float percentY = Mathf.InverseLerp((-wallHeight)*squareSize, 0, wallMesh.vertices[i].y)*wallTiles*(wallHeight/map.GetLength(1));
+            float percentX = Mathf.InverseLerp((-wallHeight)*squareSize, 0, wallMesh.vertices[i].y)*wallTiles*(wallHeight/map.GetLength(0));
             //float percentX = Mathf.InverseLerp(-map.GetLength(0)/2*squareSize, map.GetLength(0)/2*squareSize, vertices[i].x)* tileAmount;
             //float percentY = Mathf.InverseLerp(-map.GetLength(1)/2*squareSize, map.GetLength(1)/2*squareSize, vertices[i].z)* tileAmount;
             //float percentY = textureScaleY;
             uvs[i] = new Vector2(uvEntries[i%2], percentY);
+            uvs[i] = new Vector2(percentX, percentY);
         }
         wallMesh.uv = uvs; 
         wallCollider.sharedMesh = wallMesh;
