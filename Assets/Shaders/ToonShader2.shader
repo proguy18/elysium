@@ -32,13 +32,13 @@ Shader "Unlit/Toon2"
 				"LightMode" = "ForwardBase"
 				}
 
-			//Cull Off
+			/*Cull Off
 
-			//Stencil {
-			//	Ref 1
-			//	Comp Always
-			//	Pass Replace
-			//}
+			Stencil {
+				Ref 1
+				Comp Always
+				Pass Replace
+			}*/
 
 			CGPROGRAM
 			#pragma vertex vert
@@ -58,10 +58,10 @@ Shader "Unlit/Toon2"
 		Pass {
 			Cull Front
 
-			//Stencil {
-			//	Ref 1
-			//	Comp Greater
-			//}
+			/*Stencil {
+				Ref 1
+				Comp Greater
+			}*/
 
 			CGPROGRAM
 			#pragma vertex vert
