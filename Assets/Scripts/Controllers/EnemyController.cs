@@ -47,6 +47,7 @@ public class EnemyController : MonoBehaviour
     {
         Debug.Log("Enemy died");
         // Die animation
+        m_Animator.SetInteger("DeathIndex", Random.Range(0,3));
         m_Animator.SetTrigger("Die");
         m_Animator.SetBool("hasDied", true);
 
@@ -110,7 +111,9 @@ public class EnemyController : MonoBehaviour
     {
         if (attackCooldown <= 0f)
         {
-            // Play attack animation
+            // Play random attack animation
+            m_Animator.SetInteger("AttackIndex", Random.Range(0,3));
+            Debug.Log(m_Animator.GetInteger("AttackIndex"));
             m_Animator.SetTrigger("Attack");
 
             // Check if collides player
