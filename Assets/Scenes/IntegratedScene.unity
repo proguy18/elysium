@@ -1485,7 +1485,7 @@ MonoBehaviour:
   maxHealth:
     baseValue: 100
   damage:
-    baseValue: 10
+    baseValue: 50
   armor:
     baseValue: 0
 --- !u!4 &1977981581 stripped
@@ -1604,6 +1604,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1345272517403409953, guid: e2fa22b53691bc54498329d0a06b6f0a, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: c2694ce66043cf34fbe29c1342f3a3bf, type: 3}
     - target: {fileID: 1345272517403409962, guid: e2fa22b53691bc54498329d0a06b6f0a, type: 3}
       propertyPath: m_Name
       value: BattleSpider02

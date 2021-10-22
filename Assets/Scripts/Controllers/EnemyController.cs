@@ -25,6 +25,7 @@ public class EnemyController : MonoBehaviour
         target = PlayerManager.instance.player.transform;   
         agent = GetComponent<NavMeshAgent>();
         m_Animator = gameObject.GetComponent<Animator>();
+        currentHealth = maxHealth;
         // Debug.Log("Enemy is currently " + currentHealth + " health.");
         
     }
@@ -40,6 +41,11 @@ public class EnemyController : MonoBehaviour
         if(currentHealth <= 0)
         {
             Die();
+        }
+        else
+        {
+            m_Animator.SetTrigger("Hit");
+            Debug.Log("Enemy has been hit");
         }
     }
 
@@ -113,7 +119,7 @@ public class EnemyController : MonoBehaviour
         {
             // Play random attack animation
             m_Animator.SetInteger("AttackIndex", Random.Range(0,3));
-            Debug.Log(m_Animator.GetInteger("AttackIndex"));
+            // Debug.Log(m_Animator.GetInteger("AttackIndex"));
             m_Animator.SetTrigger("Attack");
 
             // Check if collides player
