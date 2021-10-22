@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Rendering.PostProcessing;
 
 [RequireComponent(typeof(CharacterController))]
@@ -65,6 +66,9 @@ public class SC_TPSController : MonoBehaviour
         PostProcessLayer postProcessLayer = mainCamera.AddComponent<PostProcessLayer>();
         postProcessLayer.antialiasingMode = PostProcessLayer.Antialiasing.SubpixelMorphologicalAntialiasing;
         postProcessLayer.volumeLayer = LayerMask.GetMask("Post-processing");
+        
+        // Add audio controller
+        AudioListener audioListener = mainCamera.AddComponent<AudioListener>();
         
         cameraScript.referenceTransform = playerCameraParent;
     }
