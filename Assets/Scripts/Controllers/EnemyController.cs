@@ -15,18 +15,25 @@ public class EnemyController : MonoBehaviour
 
     public int maxHealth = 100;
     int currentHealth;
-    
+
     Transform target;
     NavMeshAgent agent;
     private Animator m_Animator; 
+    
+    // Add movement sound
+    private AudioSource _audioSource;
 
     void Start()
     {
         target = PlayerManager.instance.player.transform;   
         agent = GetComponent<NavMeshAgent>();
         m_Animator = gameObject.GetComponent<Animator>();
-        // Debug.Log("Enemy is currently " + currentHealth + " health.");
         
+        // Add movement sound
+        _audioSource = gameObject.GetComponent<AudioSource>();
+
+        // Debug.Log("Enemy is currently " + currentHealth + " health.");
+
     }
 
     public void TakeDamage(int damage) 
@@ -77,6 +84,11 @@ public class EnemyController : MonoBehaviour
             agent.SetDestination(target.position);
             m_Animator.SetBool("Run", true);
 
+            if (!_audioSource.isPlaying)
+            {
+                _audioSource.Play();
+            }
+
 
             if (distance <= agent.stoppingDistance) 
             {
@@ -90,6 +102,7 @@ public class EnemyController : MonoBehaviour
         if (agent.velocity.Equals(new Vector3(0, 0, 0)))
         {
             m_Animator.SetBool("Run", false);
+            _audioSource.Stop();
         }
         attackCooldown -= Time.deltaTime;
     }
