@@ -1140,6 +1140,7 @@ GameObject:
   - component: {fileID: 8503365054032489370}
   - component: {fileID: 9133032776799548703}
   - component: {fileID: 5260497739065522607}
+  - component: {fileID: 6441459128459653860}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1289,6 +1290,14 @@ MonoBehaviour:
     m_Bits: 64
   attackRange: 0.5
   attackPoint: {fileID: 8672588682157186310}
+--- !u!81 &6441459128459653860
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626152726046998940}
+  m_Enabled: 1
 --- !u!1 &1626152726088886931
 GameObject:
   m_ObjectHideFlags: 0

@@ -68,7 +68,7 @@ public class SC_TPSController : MonoBehaviour
         postProcessLayer.volumeLayer = LayerMask.GetMask("Post-processing");
         
         // Add audio controller
-        AudioListener audioListener = mainCamera.AddComponent<AudioListener>();
+        /*AudioListener audioListener = mainCamera.AddComponent<AudioListener>();*/
         
         cameraScript.referenceTransform = playerCameraParent;
     }
