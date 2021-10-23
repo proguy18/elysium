@@ -22,7 +22,7 @@ public class WallAttach : MonoBehaviour
             findBestDistance();
             moveToPosition();
         }
-        Debug.Log(tryCast());
+        //Debug.Log(tryCast());
         
     }
     void moveToPosition(){
@@ -51,7 +51,7 @@ public class WallAttach : MonoBehaviour
                 RaycastHit hit = new RaycastHit();
                 if (Physics.Raycast(transform.position, dir, out hit)){
                     hits.Add(hit);
-                    Debug.Log(hit.normal);
+                    //Debug.Log(hit.normal);
                 }
             }
 

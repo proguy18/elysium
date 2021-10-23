@@ -12,6 +12,9 @@ public class PlayerCombat : CharacterCombat
     public float attackRange = 0.5f;
 
     public Transform attackPoint;
+    
+    public AudioClip swordSwing;
+    private AudioSource _audioSource;
 
     Animator m_Animator;
 
@@ -22,6 +25,8 @@ public class PlayerCombat : CharacterCombat
     {
         myStats = GetComponent<CharacterStats>();
         m_Animator  = gameObject.GetComponent<Animator>();
+        _audioSource = gameObject.GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -29,6 +34,18 @@ public class PlayerCombat : CharacterCombat
     {
         if(Input.GetKey(attack)) {
             Attack();
+            _audioSource = gameObject.GetComponent<AudioSource>();
+            Debug.Log(_audioSource.clip.ToString());
+            if (_audioSource.clip != swordSwing)
+            {
+                _audioSource.Stop();
+                _audioSource.clip = swordSwing;
+                _audioSource.volume = 1f;
+                _audioSource.Play();
+            }
+            Debug.Log(_audioSource.clip.ToString());
+            _audioSource.Play();
+
         }
 
         attackCooldown -= Time.deltaTime;

@@ -6467,6 +6467,7 @@ MonoBehaviour:
     m_Bits: 64
   attackRange: 0.5
   attackPoint: {fileID: 1582256392}
+  swordSwing: {fileID: 8300000, guid: fc7468403b7b0ae489c1e5dc8a7fccb2, type: 3}
 --- !u!114 &334789169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37928,7 +37929,7 @@ Light:
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
-    m_Bias: 0
+    m_Bias: 0.17
     m_NormalBias: 0
     m_NearPlane: 0.6
     m_CullingMatrixOverride:
