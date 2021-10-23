@@ -12,20 +12,27 @@ public class MapPopulator : MonoBehaviour
     MapPopulatorI mapPopulator;
     int[,] _map;
     bool hasMap = false;
+	private void Awake() {
+	
+		mapGenerator = GetComponent<MapGenerator>();
+	}
 
     // Update is called once per frame
-    void Update()
-    {
-        mapGenerator = GetComponent<MapGenerator>();
-        tryMap();
-        if (_map != null){
-            mapPopulator = new MapPopulatorI(_map);
-            hasMap = true;
-        }
-    }
     void tryMap(){
         _map = mapGenerator.getBordedMap();
     }
+	public void reload(){
+		KillMap();
+		tryMap();
+		Debug.Log(_map);
+		mapPopulator = new MapPopulatorI(_map);
+        hasMap = true;
+	}
+
+	void KillMap(){
+		mapPopulator = null;
+		_map = null;
+	}
     public Vector3 getPlayerSpawn() {
         if (mapPopulator != null) { 
 			MapGenerator.Coord coord = mapPopulator.getPlayerSpawn();
@@ -44,11 +51,7 @@ public class MapPopulator : MonoBehaviour
 		List<Vector3> realWorldPositions = new List<Vector3>();
 
 		for (int i = 0; i < locations.Count; i ++){
-			// if (!mapPopulator.filledCoord(locations[i])){
-			// 	Debug.Log("5");
-			// 	realWorldPositions.Add(CoordToWorldPoint(locations[i]));
-			// 	mapPopulator.fillCoord(locations[i]);
-			// }
+
 			realWorldPositions.Add(CoordToWorldPoint(locations[i]));
 			mapPopulator.fillCoord(locations[i]);
 		}
@@ -156,15 +159,6 @@ public class MapPopulator : MonoBehaviour
 					index = rand.Next(0, possibleLocations.Count  - 1);
 					continue;
 				}
-				// if (onWalls){
-				// 	//check condition
-				// }
-				// if (onEdge){
-				// }
-				// if (notOnEdge && GetNumberOfNeighbors(possLocation.tileX, possLocation.tileY, map) > 0){
-				// 	index = rand.Next(0, possibleLocations.Count  - 1);
-				// 	continue;
-				// }
 				locations.Add(possLocation);
                 index = rand.Next(0, possibleLocations.Count  - 1);
 				i++;

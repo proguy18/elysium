@@ -2,29 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSpawner : MonoBehaviour
+public class PlayerSpawner : MonoBehaviour, ISpawnable
 {
-    // Start is called before the first frame updatek
 
+    private GameObject instance = null;
     public GameObject objectToSpawn;
     public GameObject mapGeneratorOb;
     private Vector3 spawnPoint;
 
     // Update is called once per frame
-    void Update()
-    {
-        trySpawnPoint();
-        if (Input.GetKeyDown("k")){
-            Debug.Log(spawnPoint);
-            if (!spawnPoint.Equals(new Vector3(0,0,0))){
-                Instantiate(objectToSpawn, spawnPoint, transform.rotation);
-            }
-        }
-    }
     private void trySpawnPoint(){
         MapPopulator mapPopulator = mapGeneratorOb.GetComponent<MapPopulator>();
         if (mapPopulator != null){
             spawnPoint = mapPopulator.getPlayerSpawn();
         }
+    }
+    public void kill(){
+        instance.SetActive(false);
+
+    }
+    public void spawn(){
+        trySpawnPoint();
+        Debug.Log("Spawnpoint invalid" + spawnPoint.Equals(new Vector3(0,0,0)));
+        if (!spawnPoint.Equals(new Vector3(0,0,0))){
+            if (instance != null){
+                instance.transform.position = spawnPoint;
+                instance.SetActive(true);
+            }else{
+                instance = Instantiate(objectToSpawn, spawnPoint, transform.rotation);
+            }
+        }
+            
     }
 }

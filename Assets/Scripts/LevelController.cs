@@ -9,34 +9,51 @@ public class LevelController : MonoBehaviour
     int levelCount = 0;
     private MapGenerator mapGenerator;
     private ObjSpawner[] spawners;
-
-    void Start()
-    {
+    private LightSpawner lightSpawner;
+    private PlayerSpawner playerSpawner;
+    private MapPopulator mapPopulator;
+    private void Awake() {
         mapGenerator = GetComponentInChildren<MapGenerator>();
         spawners = GetComponentsInChildren<ObjSpawner>();
+        lightSpawner = GetComponentInChildren<LightSpawner>();
+        playerSpawner = GetComponentInChildren<PlayerSpawner>();
+        mapPopulator = GetComponentInChildren<MapPopulator>();
+    }
+    private void Start() {
         newLevel();
+    }
+    private void Update() {
+        if (Input.GetKeyDown("i")){
+            newLevel();
+        }    
     }
 
     // Update is called once per frame
     void newLevel(){
         //Save player stats inc inventory
         //Delete old Map
+        
         if (levelCount > 0) {
             foreach(ObjSpawner spawner in spawners){
                 spawner.kill();
             }
+            lightSpawner.kill();
+            playerSpawner.kill();
             mapGenerator.KillMap();
         }
         
         //Generate New Map
-        if (levelCount == 0){
+    
         mapGenerator.GenMap();
+        mapPopulator.reload();
         //Populate new map - possibly differently
         levelCount ++;
         foreach(ObjSpawner spawner in spawners){
             spawner.spawn();
         }
-        }
+        lightSpawner.spawn();
+        playerSpawner.spawn();
+        
 
     }
     public void playerFinishedLevel(){
