@@ -2,7 +2,8 @@ using UnityEngine;
 
 /* Contains all the stats for a character. */
 
-public class CharacterStats : MonoBehaviour {
+public class CharacterStats : MonoBehaviour 
+{
 
 	public Stat maxHealth;			// Maximum amount of health
 	public int currentHealth {get;protected set;}	// Current amount of health
@@ -11,7 +12,7 @@ public class CharacterStats : MonoBehaviour {
 	public Stat armor;
 
 	public event System.Action OnHealthReachedZero;
-
+	public event System.Action OnDamaged;
 	public virtual void Awake() {
 		currentHealth = maxHealth.GetValue();
 	}
@@ -36,9 +37,13 @@ public class CharacterStats : MonoBehaviour {
 		// If we hit 0. Die.
 		if (currentHealth <= 0)
 		{
-			if (OnHealthReachedZero != null) {
-				OnHealthReachedZero ();
-			}
+			if (OnHealthReachedZero != null)
+				OnHealthReachedZero();
+		}
+		else
+		{
+			if (OnDamaged != null)
+				OnDamaged();
 		}
 	}
 

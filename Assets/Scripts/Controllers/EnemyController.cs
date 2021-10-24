@@ -1,52 +1,54 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Combat;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
-public class EnemyController : MonoBehaviour
+[RequireComponent(typeof(EnemyCombat))]
+[RequireComponent(typeof(CharacterStats))]
+public abstract class EnemyController : MonoBehaviour
 {
     // Start is called before the first frame update
     public float lookRadius = 10f;
 
-    public float attackRange = 2f;
-
-    public float attackSpeed = 1f;
-    private float attackCooldown = 0f;
-
-    public int maxHealth = 100;
-    int currentHealth;
-    
     Transform target;
     NavMeshAgent agent;
-    private Animator m_Animator; 
+    private CharacterCombat characterCombat;
+    protected Animator m_Animator;
 
+    private CharacterStats stats;
+
+    private void Awake()
+    {
+        stats = GetComponent<CharacterStats>();
+        characterCombat = GetComponent<CharacterCombat>();
+        agent = GetComponent<NavMeshAgent>();
+        m_Animator = GetComponent<Animator>();
+    }
     void Start()
     {
-        target = PlayerManager.instance.player.transform;   
-        agent = GetComponent<NavMeshAgent>();
-        m_Animator = gameObject.GetComponent<Animator>();
-        currentHealth = maxHealth;
-        // Debug.Log("Enemy is currently " + currentHealth + " health.");
-        
+        target = PlayerManager.instance.player.transform;
     }
 
-    public void TakeDamage(int damage) 
+    private void OnEnable()
     {
-        currentHealth -= damage;
-        Debug.Log("Enemy took " + damage + " damage.");
-        Debug.Log("Enemy is currently " + currentHealth + " health.");
+        stats.OnHealthReachedZero += Die;
+        stats.OnDamaged += PlayOnHitAnimation;
+        characterCombat.OnAttacking += PlayAttackAnimation;
+    }
 
-        // Play hurt animation
-
-        if(currentHealth <= 0)
-        {
-            Die();
-        }
-        else
-        {
-            m_Animator.SetTrigger("Hit");
-            Debug.Log("Enemy has been hit");
-        }
+    private void OnDisable()
+    {
+        stats.OnHealthReachedZero -= Die;
+        stats.OnDamaged -= PlayOnHitAnimation;
+        characterCombat.OnAttacking -= PlayAttackAnimation;
+    }
+    
+    private void PlayOnHitAnimation()
+    {
+        m_Animator.SetTrigger("Hit");
     }
 
     void Die() 
@@ -59,8 +61,6 @@ public class EnemyController : MonoBehaviour
 
         // Disable the enemy
         Destroy(gameObject, 2.1f);
-
-
     }
     void Update () 
     {
@@ -71,13 +71,7 @@ public class EnemyController : MonoBehaviour
         }
         
         float distance = Vector3.Distance(target.position, transform.position);
-        // Debug.Log(agent.velocity);
-        // Attacks target if target is within attack range
-        if (distance <= attackRange)
-        {
-            Attack();
-        }
-
+        
         // Move to target if target is within look radius
         if (distance <= lookRadius) 
         {
@@ -98,7 +92,6 @@ public class EnemyController : MonoBehaviour
         {
             m_Animator.SetBool("Run", false);
         }
-        attackCooldown -= Time.deltaTime;
     }
 
     void FaceTarget()
@@ -113,21 +106,5 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
 
-    void Attack()
-    {
-        if (attackCooldown <= 0f)
-        {
-            // Play random attack animation
-            m_Animator.SetInteger("AttackIndex", Random.Range(0,3));
-            // Debug.Log(m_Animator.GetInteger("AttackIndex"));
-            m_Animator.SetTrigger("Attack");
-
-            // Check if collides player
-
-            // Damage player
-
-            // Reset attackCooldown
-            attackCooldown = 1 / attackSpeed;
-        }
-    }
+    protected abstract void PlayAttackAnimation();
 }
