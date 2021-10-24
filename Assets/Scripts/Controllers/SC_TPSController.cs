@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.Rendering.PostProcessing;
 
 [RequireComponent(typeof(CharacterController))]
@@ -25,11 +24,6 @@ public class SC_TPSController : MonoBehaviour
     private Vector2 rotation = Vector2.zero;
     private Animator m_Animator;
     private float y;
-    
-    // Add movement sound
-    private AudioSource _audioSource;
-    public AudioClip walking;
-    public AudioClip running;
 
     void SetTrigger(string name){
         if(movementAnimations){
@@ -74,10 +68,7 @@ public class SC_TPSController : MonoBehaviour
         
         // Add audio controller
         /*AudioListener audioListener = mainCamera.AddComponent<AudioListener>();*/
-        
-        // Add movement sound
-        _audioSource = gameObject.GetComponent<AudioSource>();
-        
+
         cameraScript.referenceTransform = playerCameraParent;
     }
 
@@ -97,37 +88,13 @@ public class SC_TPSController : MonoBehaviour
 
             if(Input.GetKey(run)){
                 SetTrigger("Run");
-                
-                if (_audioSource.clip != running)
-                {
-                    _audioSource.Stop();
-                    _audioSource.clip = running;
-                    _audioSource.Play();
-                }
-                
-                if (!_audioSource.isPlaying)
-                {
-                    _audioSource.Play();
-                }
             }
             else
             {
-                if (_audioSource.clip != walking)
-                {   
-                    _audioSource.Stop();
-                    _audioSource.clip = walking;
-                    _audioSource.Play();
-                }
-
-                if (!_audioSource.isPlaying)
-                {
-                    _audioSource.Play();
-                }
                 ResetTrigger("Run");
             }
         } 
         else{
-            _audioSource.Stop();
             ResetTrigger("Run");
             ResetTrigger("Walk");
         }

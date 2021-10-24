@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerCombat : CharacterCombat
 {
-    public KeyCode attack = KeyCode.M; // Placeholder for attack change to mouse or as needed
+    public KeyCode attack = KeyCode.Mouse0; // Placeholder for attack change to mouse or as needed
     public float attackSpeed = 1f;
     private float attackCooldown = 0f;
     public LayerMask enemyLayers;
@@ -13,9 +13,6 @@ public class PlayerCombat : CharacterCombat
 
     public Transform attackPoint;
     
-    public AudioClip swordSwing;
-    private AudioSource _audioSource;
-
     Animator m_Animator;
 
     CharacterStats myStats;
@@ -25,7 +22,6 @@ public class PlayerCombat : CharacterCombat
     {
         myStats = GetComponent<CharacterStats>();
         m_Animator  = gameObject.GetComponent<Animator>();
-        _audioSource = gameObject.GetComponent<AudioSource>();
 
     }
 
@@ -34,18 +30,6 @@ public class PlayerCombat : CharacterCombat
     {
         if(Input.GetKey(attack)) {
             Attack();
-            _audioSource = gameObject.GetComponent<AudioSource>();
-            Debug.Log(_audioSource.clip.ToString());
-            if (_audioSource.clip != swordSwing)
-            {
-                _audioSource.Stop();
-                _audioSource.clip = swordSwing;
-                _audioSource.volume = 1f;
-                _audioSource.Play();
-            }
-            Debug.Log(_audioSource.clip.ToString());
-            _audioSource.Play();
-
         }
 
         attackCooldown -= Time.deltaTime;
