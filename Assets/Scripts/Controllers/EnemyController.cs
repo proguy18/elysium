@@ -21,16 +21,16 @@ public class EnemyController : MonoBehaviour
     private Animator m_Animator; 
     
     // Add movement sound
-    private AudioSource _audioSource;
+    public AudioSource _mainAudioSource;
+    public AudioSource _secondaryAudioSource;
+    public AudioClip movement;
+    public AudioClip getHit;
 
     void Start()
     {
         target = PlayerManager.instance.player.transform;   
         agent = GetComponent<NavMeshAgent>();
         m_Animator = gameObject.GetComponent<Animator>();
-        
-        // Add movement sound
-        _audioSource = gameObject.GetComponent<AudioSource>();
 
         // Debug.Log("Enemy is currently " + currentHealth + " health.");
 
@@ -41,6 +41,19 @@ public class EnemyController : MonoBehaviour
         currentHealth -= damage;
         Debug.Log("Enemy took " + damage + " damage.");
         Debug.Log("Enemy is currently " + currentHealth + " health.");
+        
+        // Add movement sound
+        if (_secondaryAudioSource.clip != getHit)
+        {
+            _secondaryAudioSource.Stop();
+            _secondaryAudioSource.clip = getHit;
+            _secondaryAudioSource.Play();
+        }
+
+        if (!_secondaryAudioSource.isPlaying)
+        {
+            _secondaryAudioSource.Play();
+        }
 
         // Play hurt animation
 
@@ -83,10 +96,18 @@ public class EnemyController : MonoBehaviour
         {
             agent.SetDestination(target.position);
             m_Animator.SetBool("Run", true);
-
-            if (!_audioSource.isPlaying)
+            
+            // Add movement sound
+            if (_mainAudioSource.clip != movement)
             {
-                _audioSource.Play();
+                _mainAudioSource.Stop();
+                _mainAudioSource.clip = movement;
+                _mainAudioSource.Play();
+            }
+
+            if (!_mainAudioSource.isPlaying)
+            {
+                _mainAudioSource.Play();
             }
 
 
@@ -102,7 +123,7 @@ public class EnemyController : MonoBehaviour
         if (agent.velocity.Equals(new Vector3(0, 0, 0)))
         {
             m_Animator.SetBool("Run", false);
-            _audioSource.Stop();
+            _mainAudioSource.Stop();
         }
         attackCooldown -= Time.deltaTime;
     }

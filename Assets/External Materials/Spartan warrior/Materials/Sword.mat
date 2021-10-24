@@ -82,7 +82,7 @@ Material:
     - _Mode: 0
     - _NormalIntensity: 0
     - _OcclusionStrength: 1
-    - _OutlineWidth: 0.03
+    - _OutlineWidth: 0.025
     - _Parallax: 0.02
     - _RimAmount: 0
     - _RimThreshold: 0.1
