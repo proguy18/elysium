@@ -5228,6 +5228,10 @@ PrefabInstance:
       propertyPath: _secondaryAudioSource
       value: 
       objectReference: {fileID: 257535397}
+    - target: {fileID: 874848128884587076, guid: 369ba5d074d846e40a179cf890196067, type: 3}
+      propertyPath: m_Volume
+      value: 0.494
+      objectReference: {fileID: 0}
     - target: {fileID: 1626152726046998940, guid: 369ba5d074d846e40a179cf890196067, type: 3}
       propertyPath: m_Name
       value: Player w audio
@@ -5276,6 +5280,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4133082766324662780, guid: 369ba5d074d846e40a179cf890196067, type: 3}
+      propertyPath: m_Volume
+      value: 0.367
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133082766324662780, guid: 369ba5d074d846e40a179cf890196067, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5260497739065522607, guid: 369ba5d074d846e40a179cf890196067, type: 3}
       propertyPath: attack
       value: 323
@@ -5284,7 +5296,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 369ba5d074d846e40a179cf890196067, type: 3}
 --- !u!82 &257535396 stripped
 AudioSource:
-  m_CorrespondingSourceObject: {fileID: 7859333255598067361, guid: 369ba5d074d846e40a179cf890196067, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4133082766324662780, guid: 369ba5d074d846e40a179cf890196067, type: 3}
   m_PrefabInstance: {fileID: 257535395}
   m_PrefabAsset: {fileID: 0}
 --- !u!82 &257535397 stripped
@@ -6791,6 +6803,7 @@ MonoBehaviour:
   walking: {fileID: 8300000, guid: b72d958a649776a49aceac30fbf3247a, type: 3}
   running: {fileID: 8300000, guid: cb2e036a2cfab1d40ae095f2281d8943, type: 3}
   swordSwing: {fileID: 8300000, guid: fc7468403b7b0ae489c1e5dc8a7fccb2, type: 3}
+  attackSpeed: 1
   left: 97
   right: 100
   up: 119
