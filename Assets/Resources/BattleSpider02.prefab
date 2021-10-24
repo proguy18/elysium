@@ -457,7 +457,9 @@ GameObject:
   - component: {fileID: 1345272517403409965}
   - component: {fileID: 1345272517403409964}
   - component: {fileID: 1345272517403409967}
-  - component: {fileID: 1345272517403409966}
+  - component: {fileID: 4576021517388286062}
+  - component: {fileID: 4328783528743718056}
+  - component: {fileID: -3385927112942964632}
   m_Layer: 6
   m_Name: BattleSpider02
   m_TagString: Untagged
@@ -552,7 +554,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1345272517403409966
+--- !u!114 &4576021517388286062
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -561,13 +563,48 @@ MonoBehaviour:
   m_GameObject: {fileID: 1345272517403409962}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7374c1121e0ece64fbc62b5f140d3cb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cc740b9e0d69384da8a9022e50f055a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth:
+    baseValue: 50
+  damage:
+    baseValue: 30
+  armor:
+    baseValue: 0
+--- !u!114 &4328783528743718056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345272517403409962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7587f0cbb12a452ebfe2a3e1451cb430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackSpeed: 1
+  attackCooldown: 0
+  attackPoint: {fileID: 2843676730193374438}
+  attackRange: 2
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  m_Animator: {fileID: 0}
+--- !u!114 &-3385927112942964632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345272517403409962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8de522acbafd4513afd9bbc40b2376ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
-  attackRange: 2
-  attackSpeed: 1
-  maxHealth: 100
 --- !u!1 &1345272517457583396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,7 +1187,8 @@ Transform:
   m_LocalRotation: {x: -0.69681346, y: 0.12021286, z: -0.120213546, w: 0.69681317}
   m_LocalPosition: {x: -0.0819658, y: -0.010761738, z: -0.0004132072}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2843676730193374438}
   m_Father: {fileID: 1345272517764108055}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2368,4 +2406,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1345272518354720192}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4962296613108424824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2843676730193374438}
+  m_Layer: 6
+  m_Name: attackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2843676730193374438
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4962296613108424824}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1345272518033962219}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
