@@ -12,12 +12,14 @@ public class LevelController : MonoBehaviour
     private LightSpawner lightSpawner;
     private PlayerSpawner playerSpawner;
     private MapPopulator mapPopulator;
+    private EndSpawner endSpawner;
     private void Awake() {
         mapGenerator = GetComponentInChildren<MapGenerator>();
         spawners = GetComponentsInChildren<ObjSpawner>();
         lightSpawner = GetComponentInChildren<LightSpawner>();
         playerSpawner = GetComponentInChildren<PlayerSpawner>();
         mapPopulator = GetComponentInChildren<MapPopulator>();
+        endSpawner = GetComponentInChildren<EndSpawner>();
     }
     private void Start() {
         newLevel();
@@ -37,6 +39,7 @@ public class LevelController : MonoBehaviour
             foreach(ObjSpawner spawner in spawners){
                 spawner.kill();
             }
+            endSpawner.kill();
             lightSpawner.kill();
             playerSpawner.kill();
             mapGenerator.KillMap();
@@ -53,6 +56,7 @@ public class LevelController : MonoBehaviour
         }
         lightSpawner.spawn();
         playerSpawner.spawn();
+        endSpawner.spawn();
         
 
     }

@@ -19,7 +19,6 @@ public class PlayerSpawner : MonoBehaviour, ISpawnable
     }
     public void kill(){
         instance.SetActive(false);
-
     }
     public void spawn(){
         trySpawnPoint();
