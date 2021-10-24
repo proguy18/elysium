@@ -8,31 +8,18 @@ public class WallAttach : MonoBehaviour
     Vector3 normal = new Vector3(-40,-40,-40);
     Vector3 point = new Vector3(-40,-40,-40);
     public float adjustment = 0.3f;
-    bool hasMoved = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (tryCast() && !hasMoved){
-            findBestDistance();
-            moveToPosition();
-        }
-        //Debug.Log(tryCast());
-        
+    private void Awake() {
+        MoveLights();
+    }
+    public void MoveLights(){
+        findBestDistance();
+        moveToPosition();
     }
     void moveToPosition(){
         transform.position = point + adjustment*normal;
         transform.rotation = Quaternion.LookRotation(normal);
-
-        // MeshCollider meshCollider = finalHit.collider;
-        // Vector3 normal = mesh.normals[finalHit.triangleIndex];
-        // transform.rotation = Quaternion.LookRotation(normal);
-        hasMoved = true;
 
     }
     void findBestDistance(){
@@ -51,7 +38,6 @@ public class WallAttach : MonoBehaviour
                 RaycastHit hit = new RaycastHit();
                 if (Physics.Raycast(transform.position, dir, out hit)){
                     hits.Add(hit);
-                    //Debug.Log(hit.normal);
                 }
             }
 
