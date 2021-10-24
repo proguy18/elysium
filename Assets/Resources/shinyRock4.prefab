@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 6906013387439204924}
   - component: {fileID: 6906013387439204927}
   m_Layer: 0
-  m_Name: Shiny rock 4
+  m_Name: shinyRock4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

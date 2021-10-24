@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 527687094}
   - component: {fileID: 527687093}
   - component: {fileID: 527687092}
+  - component: {fileID: 527687101}
   m_Layer: 0
   m_Name: SpawnerParent
   m_TagString: Untagged
@@ -367,7 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7719015136e907f4dab57157cdf6e0aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myLight: {fileID: 9126208942601054864, guid: dbb86f48d1a6871468d8db176b905752, type: 3}
+  myLight: {fileID: 1073399667334255935, guid: dc2a4dfcdc610de47ab8445fbec9e5a8, type: 3}
   mapGeneratorOb: {fileID: 1651193678}
 --- !u!114 &527687097
 MonoBehaviour:
@@ -434,6 +435,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 1626152726046998940, guid: 369ba5d074d846e40a179cf890196067, type: 3}
   mapGeneratorOb: {fileID: 1651193678}
+--- !u!114 &527687101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527687090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: shinyRock
+  mapGeneratorOb: {fileID: 0}
+  clones: []
+  number: 10
+  z: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,14 +909,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ff641c15294c440acf79d1f1082fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 80
-  height: 120
+  width: 150
+  height: 200
   iterations: 4
   seed: 
   useRandomSeed: 1
   randomFillPercent: 49
   passageRadius: 3
-  TILE_BORDER: 20
+  TILE_BORDER: 5
 --- !u!4 &1651193681
 Transform:
   m_ObjectHideFlags: 0

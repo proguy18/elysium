@@ -7,7 +7,6 @@ public class LightSpawner : MonoBehaviour, ISpawnable
     
     public GameObject myLight;
     private List<GameObject> instances = null;
-
     public GameObject mapGeneratorOb;
     private List<Vector3> spawnPoints = null;
 
