@@ -17,7 +17,7 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
-    private void LoadNextLevel()
+    public void LoadNextLevel()
     {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }
@@ -32,5 +32,18 @@ public class LevelLoader : MonoBehaviour
 
         // Load Scene
         SceneManager.LoadScene(levelIndex);
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void GoToSettingsMenu()
+    {
+        SceneManager.LoadScene("SettingsMenu");
+    }
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
