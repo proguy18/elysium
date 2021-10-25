@@ -83,6 +83,9 @@ public class SC_TPSController : MonoBehaviour
         postProcessLayer.antialiasingMode = PostProcessLayer.Antialiasing.SubpixelMorphologicalAntialiasing;
         postProcessLayer.volumeLayer = LayerMask.GetMask("Post-processing");
         
+        // Add audio controller
+        /*AudioListener audioListener = mainCamera.AddComponent<AudioListener>();*/
+
         cameraScript.referenceTransform = playerCameraParent;
     }
 
@@ -99,10 +102,12 @@ public class SC_TPSController : MonoBehaviour
     void animateMovements() {
         if(Input.GetKey(left) || Input.GetKey(right) || Input.GetKey(up) || Input.GetKey(down)){
             SetTrigger("Walk");
+
             if(Input.GetKey(run)){
                 SetTrigger("Run");
             }
-            else{
+            else
+            {
                 ResetTrigger("Run");
             }
         } 

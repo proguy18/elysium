@@ -14,16 +14,16 @@ Shader "Unlit/Toon2"
 		_SkyboxLight ("Skybox Light", 2D) = "black" {}
 
 		_HeightMap ("Height Map", 2D) = "black" {}
-		_HeightIntensity ("Height Intensity", Range(0, 1)) = 1
+		_HeightIntensity ("Height Intensity", Range(0, 1)) = 0
 
 		_NormalMap ("Normal Map", 2D) = "bump" {}
-		_NormalIntensity ("Normal Intensity", Range(0,10)) = 1
+		_NormalIntensity ("Normal Intensity", Range(0,10)) = 0
 
 		_OutlineColor ("Outline Color", Color) = (0,0,0,1)
       	_LitOutlineThickness ("Lit Outline Thickness", Range(0,1)) = 0.1
       	_UnlitOutlineThickness ("Unlit Outline Thickness", Range(0,1)) = 0.4
 
-		_OutlineWidth ("Outline Width", Range(0, 0.1)) = 0.01
+		_OutlineWidth ("Outline Width", Range(0, 0.1)) = 0.00001
 	}
 	SubShader
 	{

@@ -22,7 +22,6 @@ Shader "Unlit/LavaFlow"
 		Pass {
 			Tags {
 				"LightMode" = "ForwardBase"
-				"RenderType" = "Opaque"
 				}
 
 			CGPROGRAM
@@ -30,7 +29,6 @@ Shader "Unlit/LavaFlow"
 			#pragma fragment frag
 			#pragma multi_compile_fwdbase
 			
-			//#include "TutorialLighting.cginc"
 			#include "LavaToonLighting.cginc"
 			
 			ENDCG
@@ -45,7 +43,8 @@ Shader "Unlit/LavaFlow"
             ZWrite Off
 
             CGPROGRAM
-
+			#pragma multi_compile_fwdadd
+            
 			#pragma vertex vert
 			#pragma fragment frag
 
