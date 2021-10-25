@@ -1028,6 +1028,7 @@ GameObject:
   - component: {fileID: 3019924144036298215}
   - component: {fileID: 3019924144036298214}
   - component: {fileID: 6341350177889503177}
+  - component: {fileID: 2267802172955507555}
   m_Layer: 6
   m_Name: ToonSkeleton
   m_TagString: Untagged
@@ -1081,10 +1082,6 @@ MonoBehaviour:
   attackRange: 2
   attackSpeed: 1
   maxHealth: 100
-  _mainAudioSource: {fileID: 4441884065389420460}
-  _secondaryAudioSource: {fileID: 6099967082967824357}
-  movement: {fileID: 8300000, guid: 42286d78c3a3aa34eae5b20f1d1d3392, type: 3}
-  getHit: {fileID: 8300000, guid: b3f9bff7eef0d5a408cd026cc7fb586c, type: 3}
 --- !u!195 &3019924144036298216
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1156,6 +1153,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2267802172955507555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3019924144036298213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dfed385660fb024399caae3e5fe9e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainAudioSource: {fileID: 4441884065389420460}
+  _secondaryAudioSource: {fileID: 6099967082967824357}
+  _secondaryAudioSource1: {fileID: 0}
+  Movement: {fileID: 8300000, guid: 42286d78c3a3aa34eae5b20f1d1d3392, type: 3}
+  getHit: {fileID: 8300000, guid: b3f9bff7eef0d5a408cd026cc7fb586c, type: 3}
+  Attack: {fileID: 0}
 --- !u!1 &3019924144171438594
 GameObject:
   m_ObjectHideFlags: 0
