@@ -1286,13 +1286,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae2c00f31ffcaab4cb0f62f36f38f990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 32
   attackSpeed: 1
+  attackCooldown: 0
+  attackPoint: {fileID: 8672588682157186310}
+  attackRange: 0.5
   enemyLayers:
     serializedVersion: 2
     m_Bits: 64
-  attackRange: 0.5
-  attackPoint: {fileID: 8672588682157186310}
+  m_Animator: {fileID: 0}
+  attack: 32
 --- !u!114 &-4407672627959293856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1763,7 +1765,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.517
+  m_Volume: 0.409
   m_Pitch: 1
   Loop: 0
   Mute: 0
