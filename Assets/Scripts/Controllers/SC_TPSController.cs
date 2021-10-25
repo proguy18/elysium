@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
 [RequireComponent(typeof(CharacterController))]
-
+[RequireComponent(typeof(PlayerCombat))]
+[RequireComponent(typeof(CharacterStats))]
 public class SC_TPSController : MonoBehaviour
 {
 
@@ -24,7 +25,21 @@ public class SC_TPSController : MonoBehaviour
     private Vector2 rotation = Vector2.zero;
     private Animator m_Animator;
     private float y;
+    private CharacterCombat characterCombat;
+    private CharacterStats stats;
+    private void OnEnable()
+    {
+        stats.OnHealthReachedZero += Die;
+        stats.OnDamaged += PlayOnHitAnimation;
+        characterCombat.OnAttacking += PlayAttackAnimation;
+    }
 
+    private void OnDisable()
+    {
+        stats.OnHealthReachedZero -= Die;
+        stats.OnDamaged -= PlayOnHitAnimation;
+        characterCombat.OnAttacking -= PlayAttackAnimation;
+    }
     void SetTrigger(string name){
         if(movementAnimations){
             m_Animator.SetTrigger(name);
@@ -50,6 +65,8 @@ public class SC_TPSController : MonoBehaviour
     }
 
     void Awake(){
+        characterCombat = GetComponent<CharacterCombat>();
+        stats = GetComponent<CharacterStats>();
         playerCameraParent = new GameObject("CameraParent").transform;
         playerCameraParent.SetParent(transform);
         playerCameraParent.localPosition = new Vector3(0,1,0);
@@ -99,6 +116,21 @@ public class SC_TPSController : MonoBehaviour
             ResetTrigger("Walk");
         }
     }
+    private void PlayOnHitAnimation()
+    {
+        m_Animator.SetTrigger("Hit");
+    }
+
+    void Die() 
+    {
+        Debug.Log("Player has died");
+        // Die animation
+        m_Animator.SetTrigger("Die");
+        m_Animator.SetBool("hasDied", true);
+
+        // Disable the enemy
+        // Destroy(gameObject, 2.1f);
+    }
 
     void Update()
     {
@@ -129,6 +161,9 @@ public class SC_TPSController : MonoBehaviour
         rotation.x = Mathf.Clamp(rotation.x, -lookXLimit, lookXLimit);
         playerCameraParent.localRotation = Quaternion.Euler(rotation.x, 0, 0);
         transform.eulerAngles = new Vector2(0, rotation.y);
-
+    }
+    private void PlayAttackAnimation()
+    {
+        m_Animator.SetTrigger("Attack_2");
     }
 }

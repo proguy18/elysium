@@ -1,67 +1,72 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Combat;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
-public class EnemyController : MonoBehaviour
+[RequireComponent(typeof(EnemyCombat))]
+[RequireComponent(typeof(CharacterStats))]
+public abstract class EnemyController : MonoBehaviour
 {
     // Start is called before the first frame update
     public float lookRadius = 10f;
 
-    public float attackRange = 2f;
-
-    public float attackSpeed = 1f;
-    private float attackCooldown = 0f;
-
-    public int maxHealth = 100;
-    int currentHealth;
-
+    private EnemyAudioController enemyAudio;
+    
     Transform target;
     NavMeshAgent agent;
-    private Animator m_Animator;
+    private CharacterCombat characterCombat;
+    protected Animator m_Animator;
 
-    private EnemyAudioController audio;
-    
+    private CharacterStats stats;
 
+    private void Awake()
+    {
+        stats = GetComponent<CharacterStats>();
+        characterCombat = GetComponent<CharacterCombat>();
+        agent = GetComponent<NavMeshAgent>();
+        
+        enemyAudio = gameObject.GetComponent<EnemyAudioController>();
+
+        m_Animator = GetComponent<Animator>();
+    }
     void Start()
     {
-        target = PlayerManager.instance.player.transform;   
-        agent = GetComponent<NavMeshAgent>();
-        m_Animator = gameObject.GetComponent<Animator>();
-        audio = gameObject.GetComponent<EnemyAudioController>();
-
-        // Debug.Log("Enemy is currently " + currentHealth + " health.");
-
+        target = PlayerManager.instance.player.transform;
     }
 
-    public void TakeDamage(int damage) 
+    private void OnEnable()
     {
-        currentHealth -= damage;
-        Debug.Log("Enemy took " + damage + " damage.");
-        Debug.Log("Enemy is currently " + currentHealth + " health.");
+        stats.OnHealthReachedZero += Die;
+        stats.OnDamaged += PlayOnHitAnimation;
+        characterCombat.OnAttacking += PlayAttackAnimation;
+    }
 
-        // Play hurt animation
-        
-        // sound
-        audio.getHitSound();
-
-        if(currentHealth <= 0)
-        {
-            Die();
-        }
+    private void OnDisable()
+    {
+        stats.OnHealthReachedZero -= Die;
+        stats.OnDamaged -= PlayOnHitAnimation;
+        characterCombat.OnAttacking -= PlayAttackAnimation;
+    }
+    
+    private void PlayOnHitAnimation()
+    {
+        m_Animator.SetTrigger("Hit");
+        enemyAudio.getHitSound();
     }
 
     void Die() 
     {
         Debug.Log("Enemy died");
         // Die animation
+        m_Animator.SetInteger("DeathIndex", Random.Range(0,3));
         m_Animator.SetTrigger("Die");
         m_Animator.SetBool("hasDied", true);
 
         // Disable the enemy
         Destroy(gameObject, 2.1f);
-
-
     }
     void Update () 
     {
@@ -72,19 +77,13 @@ public class EnemyController : MonoBehaviour
         }
         
         float distance = Vector3.Distance(target.position, transform.position);
-        // Debug.Log(agent.velocity);
-        // Attacks target if target is within attack range
-        if (distance <= attackRange)
-        {
-            Attack();
-        }
-
+        
         // Move to target if target is within look radius
         if (distance <= lookRadius) 
         {
             agent.SetDestination(target.position);
             m_Animator.SetBool("Run", true);
-            audio.movementSounds();
+            enemyAudio.movementSounds();
 
             if (distance <= agent.stoppingDistance) 
             {
@@ -98,9 +97,8 @@ public class EnemyController : MonoBehaviour
         if (agent.velocity.Equals(new Vector3(0, 0, 0)))
         {
             m_Animator.SetBool("Run", false);
-            audio.stopMainSound();
+            enemyAudio.stopMainSound();
         }
-        attackCooldown -= Time.deltaTime;
     }
 
     void FaceTarget()
@@ -115,19 +113,5 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
 
-    void Attack()
-    {
-        if (attackCooldown <= 0f)
-        {
-            // Play attack animation
-            m_Animator.SetTrigger("Attack");
-
-            // Check if collides player
-
-            // Damage player
-
-            // Reset attackCooldown
-            attackCooldown = 1 / attackSpeed;
-        }
-    }
+    protected abstract void PlayAttackAnimation();
 }
