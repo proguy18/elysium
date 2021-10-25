@@ -22,7 +22,8 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        target = PlayerManager.instance.player.transform;   
+        target = GameObject.Find("Player(Clone)").transform;
+        // target = PlayerManager.instance.player.transform;   
         agent = GetComponent<NavMeshAgent>();
         m_Animator = gameObject.GetComponent<Animator>();
         // Debug.Log("Enemy is currently " + currentHealth + " health.");
