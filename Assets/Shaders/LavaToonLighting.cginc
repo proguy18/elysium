@@ -1,5 +1,9 @@
-﻿#include "UnityCG.cginc"
-#include "UnityLightingCommon.cginc"
+﻿#if !defined(LAVA_LIGHTING_INCLUDED)
+#define LAVA_LIGHTING_INCLUDED
+
+#include "UnityCG.cginc"
+//#include "UnityLightingCommon.cginc"
+#include "Lighting.cginc"
 #include "AutoLight.cginc"
 
 sampler2D _MainTex;
@@ -150,15 +154,34 @@ float4 frag (vertOut i) : SV_Target
 
     float3 normalA = UnpackNormal(tex2D(_NormalMap, uvwA.xy)) * uvwA.z;
     float3 normalB = UnpackNormal(tex2D(_NormalMap, uvwB.xy)) * uvwB.z;
-    i.worldNormal = normalize(normalA + normalB);
+    float3 normal = normalize(normalA + normalB);
     
     float4 sample1 = tex2D(_MainTex, uvwA.xy) * uvwA.z;
     float4 sample2 = tex2D(_MainTex, uvwB.xy) * uvwB.z;
 
     float4 sample = (sample1 + sample2);
 
-    return _Color * sample * _LightColor0;
+    //float shadow2 = SHADOW_ATTENUATION(i);
     
+    #if defined (POINT) || defined (SPOT)
+        float3 L = _WorldSpaceLightPos0.xyz - i.worldPos.xyz;
+        float dist = length(L);
+        float dot1 = max(dot(normalize(L), normal), 0);
+    
+        UNITY_LIGHT_ATTENUATION(attenuation, i, i.worldPos.xyz);
+        return _Color * sample * attenuation /** dot1*/ * _LightColor0;
+
+    #else
+
+    /*#ifdef IS_IN_BASE_PASS
+    return _Color * sample * _LightColor0 *sh;
+    #endif
+    
+    return sample * _LightColor0;*/
+
+    return _Color * sample * _LightColor0/* * shadow2*/;
+
+    #endif
 
 
     /*// Normal maps
@@ -206,14 +229,9 @@ float4 frag (vertOut i) : SV_Target
 
     float4 skyboxLight = 0;
 
-    #ifdef IS_IN_BASE_PASS
-        skyboxLight = float4(tex2D(_SkyboxLight, i.uv));
-        multiplier += skyboxLight;
-    #endif
-
     //skyboxLight = float4(tex2D(_SkyboxLight, i.uv))/10;
     
-    // IF point or spot light
+    /*// IF point or spot light
     // https://www.reddit.com/r/shaders/comments/5vmlm9/help_unity_cel_shader_point_light_troubles/
     #if defined (POINT) || defined (SPOT)
         float3 L = _WorldSpaceLightPos0.xyz - i.worldPos.xyz;
@@ -221,22 +239,24 @@ float4 frag (vertOut i) : SV_Target
         float dot1 = max(dot(normalize(L), normal), 0);
 
         UNITY_LIGHT_ATTENUATION(attenuation, i, i.worldPos.xyz);
-        return _Color * sample * attenuation * dot1 * multiplier /*+ skyboxLight*/;
+        return _Color * sample * attenuation * dot1 * multiplier /*+ skyboxLight#1#;*/
 
-    #else
+    /*#else
 
     // Outlining
     /* float3 lightDir = normalize(_WorldSpaceLightPos0.xyz - i.worldPos.xyz);
     if (dot(viewDir, normal) < lerp(_UnlitOutlineThickness, _LitOutlineThickness, max(0.0, dot(normal, lightDir)))) {
         outline = float4(_LightColor0.rgb * _OutlineColor.rgb, 0);
-    } */
+    } #1#
 
     //float4 color = _Color * sample * (_AmbientColor + light + rim);
     //return applyFog(color, i);
 
-    return _Color * sample * multiplier /*+ skyboxLight*/;
+    //return _Color * sample * multiplier /*+ skyboxLight#1#;
     
     //return _Color * sample * (_AmbientColor + light);
     
-    #endif
+    #endif*/
 }
+
+#endif

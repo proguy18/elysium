@@ -13,6 +13,8 @@ public abstract class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     public float lookRadius = 10f;
 
+    private EnemyAudioController enemyAudio;
+    
     Transform target;
     NavMeshAgent agent;
     private CharacterCombat characterCombat;
@@ -25,6 +27,9 @@ public abstract class EnemyController : MonoBehaviour
         stats = GetComponent<CharacterStats>();
         characterCombat = GetComponent<CharacterCombat>();
         agent = GetComponent<NavMeshAgent>();
+        
+        enemyAudio = gameObject.GetComponent<EnemyAudioController>();
+
         m_Animator = GetComponent<Animator>();
     }
     void Start()
@@ -49,6 +54,7 @@ public abstract class EnemyController : MonoBehaviour
     private void PlayOnHitAnimation()
     {
         m_Animator.SetTrigger("Hit");
+        enemyAudio.getHitSound();
     }
 
     void Die() 
@@ -77,7 +83,7 @@ public abstract class EnemyController : MonoBehaviour
         {
             agent.SetDestination(target.position);
             m_Animator.SetBool("Run", true);
-
+            enemyAudio.movementSounds();
 
             if (distance <= agent.stoppingDistance) 
             {
@@ -91,6 +97,7 @@ public abstract class EnemyController : MonoBehaviour
         if (agent.velocity.Equals(new Vector3(0, 0, 0)))
         {
             m_Animator.SetBool("Run", false);
+            enemyAudio.stopMainSound();
         }
     }
 
