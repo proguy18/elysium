@@ -61,8 +61,6 @@ public class MapPopulator : MonoBehaviour
     public List<Vector3> GenerateLightPoints(){
 
 
-
-
         if (!hasMap) return null;
 		List<Vector3> poss = new List<Vector3>();
 		for (int i = 0; i < _map.GetLength(0); i += spaceBetweenLights){
