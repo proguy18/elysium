@@ -1,28 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemPickup : Interactable
-{
-    public Item item;
-    public override void Interact()
-    {
-        base.Interact();
+public class ItemPickup : Interactable {
 
-        PickUp();
-    }
+	public Item item;	// Item to put in the inventory if picked up
 
-    void PickUp () 
-    {
-        Debug.Log("Picking up " + item.name);
-        // Add item to inventory
-        bool wasPickedUp = Inventory.instance.Add(item);
+	// When the player interacts with the item
+	public override void Interact()
+	{
+		base.Interact();
 
+		PickUp();
+	}
 
-        // Destroy game object
-        if (wasPickedUp)
-            Destroy(gameObject);
-        // Set ui TEXT to false
-        uiObject.SetActive(false);
-    }
+	// Pick up the item
+	void PickUp ()
+	{
+		Debug.Log("Picking up " + item.name);
+		Inventory.instance.Add(item);	// Add to inventory
+
+		Destroy(gameObject);	// Destroy item from scene
+	}
+
 }

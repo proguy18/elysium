@@ -95,7 +95,7 @@ public class SC_TPSController : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(movementAnimations){
             if(!m_Animator){
