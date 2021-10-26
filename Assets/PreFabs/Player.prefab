@@ -600,6 +600,7 @@ GameObject:
   - component: {fileID: 1626152725434499323}
   - component: {fileID: 1626152725434499317}
   - component: {fileID: 1626152725434499316}
+  - component: {fileID: 1049446197327258625}
   m_Layer: 0
   m_Name: Shield_LP
   m_TagString: Untagged
@@ -650,7 +651,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e95e43905ec1141c480a1c9e4a2ca6f7, type: 2}
-  - {fileID: 2100000, guid: d996f08e7f48f497a959079932d766c5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -672,6 +672,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1049446197327258625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626152725434499322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 265c29d6136c215499fcb9fa62cdddb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 2100000, guid: e95e43905ec1141c480a1c9e4a2ca6f7, type: 2}
+  transparentMaterial: {fileID: 2100000, guid: a8245aae47b17bf44a9921ab9d7742f2, type: 2}
+  meshRenderer: {fileID: 1626152725434499316}
+  changeMaterial: 102
 --- !u!1 &1626152725448222212
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,6 +975,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1626152725923619847}
   - component: {fileID: 1626152725923619840}
+  - component: {fileID: 692885026929172753}
   m_Layer: 0
   m_Name: Spartan_LP
   m_TagString: Untagged
@@ -1060,6 +1077,22 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0002007396, y: 0.0034895572, z: 0.0002442894}
     m_Extent: {x: 0.0062503493, y: 0.014329001, z: 0.006160605}
   m_DirtyAABB: 0
+--- !u!114 &692885026929172753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626152725923619846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f678cdd788baba44d974b2bcebe37592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 2100000, guid: 5b9de4bb8dd40457e90f875d08b8bc33, type: 2}
+  transparentMaterial: {fileID: 2100000, guid: c1a8fefe1e1f6624f84999f5ecef62cd, type: 2}
+  skinnedMeshRenderer: {fileID: 1626152725923619840}
+  changeMaterial: 102
 --- !u!1 &1626152725966759130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,6 +1496,7 @@ GameObject:
   - component: {fileID: 1626152726443455303}
   - component: {fileID: 1626152726443455297}
   - component: {fileID: 1626152726443455296}
+  - component: {fileID: 7193110708202510971}
   m_Layer: 0
   m_Name: Sword_LP
   m_TagString: Untagged
@@ -1534,6 +1568,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7193110708202510971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626152726443455302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 265c29d6136c215499fcb9fa62cdddb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 2100000, guid: d307e054e041d41ff81ec1d40be5919f, type: 2}
+  transparentMaterial: {fileID: 2100000, guid: 9b2f1c1a098ef7840a198963894ecd28, type: 2}
+  meshRenderer: {fileID: 1626152726443455296}
+  changeMaterial: 102
 --- !u!1 &1626152726486288795
 GameObject:
   m_ObjectHideFlags: 0
