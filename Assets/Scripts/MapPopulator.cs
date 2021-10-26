@@ -59,25 +59,35 @@ public class MapPopulator : MonoBehaviour
 		return realWorldPositions;
 	}
     public List<Vector3> GenerateLightPoints(){
-        if (!hasMap) return null;
-        List<MapGenerator.Coord> edgeTiles = mapGenerator.getEdgeTiles();
-        if (edgeTiles == null){
-            return null;
-        }
-        //First try getting every 20th and return it
 
-        List<Vector3> lessTiles = new List<Vector3>();
-        int j = spaceBetweenLights/2;
-        foreach(MapGenerator.Coord tile in edgeTiles){
-            j ++;
-            if (j == spaceBetweenLights && !mapPopulator.filledCoord(tile)){
-                lessTiles.Add(CoordToWorldPoint(tile, 1.64f));
-				mapPopulator.filledCoord(tile);
-                j = 0;
-            }
+
+        if (!hasMap) return null;
+		List<Vector3> poss = new List<Vector3>();
+		for (int i = 0; i < _map.GetLength(0); i += spaceBetweenLights){
+			for (int j = spaceBetweenLights/2; j < _map.GetLength(1); j += spaceBetweenLights){
+				if (_map[i,j] != WALL){
+					poss.Add(CoordToWorldPoint(new MapGenerator.Coord(i , j), 1.64f));
+				}
+			}
+		}
+        // List<MapGenerator.Coord> edgeTiles = mapGenerator.getEdgeTiles();
+        // if (edgeTiles == null){
+        //     return null;
+        // }
+        // //First try getting every 20th and return it
+
+        // List<Vector3> lessTiles = new List<Vector3>();
+        // int j = spaceBetweenLights/2;
+        // foreach(MapGenerator.Coord tile in edgeTiles){
+        //     j ++;
+        //     if (j == spaceBetweenLights && !mapPopulator.filledCoord(tile)){
+        //         lessTiles.Add(CoordToWorldPoint(tile, 1.64f));
+		// 		mapPopulator.filledCoord(tile);
+        //         j = 0;
+        //     }
             
-        }
-        return lessTiles;
+        // }
+       return poss;
     }
     public Vector3 getEndSpawn(){
         if (getPlayerSpawn() == new Vector3(0,0,0)){
