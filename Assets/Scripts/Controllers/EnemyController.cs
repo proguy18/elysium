@@ -26,6 +26,8 @@ public abstract class EnemyController : MonoBehaviour
     {
         stats = GetComponent<CharacterStats>();
         characterCombat = GetComponent<CharacterCombat>();
+        target = GameObject.Find("Player(Clone)").transform;
+        // target = PlayerManager.instance.player.transform;   
         agent = GetComponent<NavMeshAgent>();
         
         enemyAudio = gameObject.GetComponent<EnemyAudioController>();

@@ -8,6 +8,7 @@ public class WallAttach : MonoBehaviour
     Vector3 normal = new Vector3(-40,-40,-40);
     Vector3 point = new Vector3(-40,-40,-40);
     public float adjustment = 0.3f;
+    public float height = 1.0f; 
 
     // Update is called once per frame
     private void Awake() {
@@ -56,6 +57,7 @@ public class WallAttach : MonoBehaviour
                 point = _point;
                 return;
             }
+            gameObject.SetActive(false);
             return;
         }
     }

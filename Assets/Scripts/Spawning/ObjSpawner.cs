@@ -14,6 +14,7 @@ public class ObjSpawner : MonoBehaviour, ISpawnable
 
     public int number = 100; 
     public float z = 0;
+    public int levelType = 0;
 
     private void Awake() {
         objects = new List<GameObject>();
