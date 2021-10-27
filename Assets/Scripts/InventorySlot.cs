@@ -36,7 +36,7 @@ public class InventorySlot : MonoBehaviour {
 		Inventory.instance.Remove(item);
 	}
 
-	public void moveItem () {
+	/*public void moveItem () {
         GameObject canvas = GameObject.Find("Canvas");
 		Transform inv = canvas.transform.Find("Inventory");
         Transform character = inv.transform.Find("Character");
@@ -58,5 +58,5 @@ public class InventorySlot : MonoBehaviour {
 			PotionSlot.AddItem(item);
 			ClearSlot();
 		}
-    }
+    }*/
 }

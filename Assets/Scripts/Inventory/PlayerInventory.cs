@@ -6,19 +6,42 @@ using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour {
 
-	public GameObject inventoryUI;	// The entire UI
-	public Transform storage;	// The parent object of all the items
+	private GameObject inventoryUI;	// The entire UI
+	private Transform storage;	// The parent object of all the items
     public KeyCode inventoryKey = KeyCode.I;
 
-    public Item swordEquipped = null;
-    public Item ringEquipped = null;
-    public Item potionEquipped = null;
-    public int space = 24;	
+    private bool swordEquipped = false;
+    private bool ringEquipped = false;
+    private bool potionEquipped = false;
+    private int space = 24;	
     private int slotsOccupied = 0;
+    private Transform inv;
+    private Item SwordSlot;
+    private Item RingSlot;
+    private Item PotionSlot;
+    private CharacterStats stats;
+
+    private bool swordIsEquipped() {return swordEquipped;}
+    private bool ringIsEquipped() {return ringEquipped;}
+    private bool potionIsEquipped() {return potionEquipped;}
+
+
 
 	void Start ()
 	{
-		inventoryUI.SetActive(false);
+        GameObject canvas = GameObject.Find("Canvas");
+        inv = canvas.transform.Find("Inventory");
+        inventoryUI = inv.gameObject;
+        Transform character = inv.transform.Find("Character");
+        Transform weapons = character.transform.Find("Weapons");
+        SwordSlot = weapons.transform.Find("SwordSlot").GetComponent<Item>();
+        RingSlot = weapons.transform.Find("RingSlot").GetComponent<Item>();
+        PotionSlot = weapons.transform.Find("PotionSlot").GetComponent<Item>();
+        GameObject player = GameObject.Find("Player");
+        stats = player.GetComponent<CharacterStats>();
+        inventoryUI.SetActive(false);
+
+
 	}
 
 	// Check to see if we should open/close the inventory
@@ -57,8 +80,6 @@ public class PlayerInventory : MonoBehaviour {
 
     public void AddToInv(Item item)
 	{
-        GameObject canvas = GameObject.Find("Canvas");
-        Transform inv = canvas.transform.Find("Inventory");
         Transform storage = inv.transform.Find("Storage");
 		Item[] slots = storage.GetComponentsInChildren<Item>();
 		for (int i = 0; i < slots.Length; i++)
@@ -71,47 +92,41 @@ public class PlayerInventory : MonoBehaviour {
 		}
 	}
 
-    public void moveItem (GameObject button) {
-        GameObject canvas = GameObject.Find("Canvas");
-        Transform inv = canvas.transform.Find("Inventory");
-        Transform character = inv.transform.Find("Character");
-        Transform weapons = character.transform.Find("Weapons");
-        Item SwordSlot = weapons.transform.Find("SwordSlot").GetComponent<Item>();
-        Item RingSlot = weapons.transform.Find("RingSlot").GetComponent<Item>();
-        Item PotionSlot = weapons.transform.Find("PotionSlot").GetComponent<Item>();
+    public void clickSlot (GameObject button) {    
         PlayerInventory inventory = inv.GetComponent<PlayerInventory>();
         Item item = button.transform.parent.gameObject.GetComponent<Item>();
         if(item.icon == null) { return; }
         if(button.transform.parent.parent.name == "Storage"){
-            if((item.type == Item.Type.Sword) && (!swordEquipped)){
+            if((item.type == Item.Type.Sword) && (!swordIsEquipped())){
                 FillSlot(SwordSlot, item);
                 ClearSlot(item);
-                swordEquipped = item;
+                swordEquipped = true;
             }
-            if((item.type == Item.Type.Ring) && (!ringEquipped)){
+            if((item.type == Item.Type.Ring) && (!ringIsEquipped())){
                 FillSlot(RingSlot, item);
                 ClearSlot(item);
-                ringEquipped = item;
+                ringEquipped = true;
             }
-            if((item.type == Item.Type.Potion) && (!potionEquipped)){
+            if((item.type == Item.Type.Potion) && (!potionIsEquipped())){
                 FillSlot(PotionSlot, item);
                 ClearSlot(item);
-                potionEquipped = item;
+                potionEquipped = true;
             }
         }
         else {
+            Debug.Log(item.type);
             AddToInv(item);
             if(item.type == Item.Type.Sword){
                 ClearSlot(SwordSlot);
-                swordEquipped = null;
+                swordEquipped = false;
             }
             if(item.type == Item.Type.Ring){
                 ClearSlot(RingSlot);
-                ringEquipped = null;
+                ringEquipped = false;
             }
             if(item.type == Item.Type.Potion){
                 ClearSlot(PotionSlot);
-                potionEquipped = null;
+                potionEquipped = false;
             }
         }
         
@@ -120,7 +135,6 @@ public class PlayerInventory : MonoBehaviour {
 
 	public void FillSlot (Item slot, Item newItem)
 	{
-		slot.name = newItem.name;
         slot.icon = newItem.icon;
         slot.type = newItem.type;
         Image icon = slot.gameObject.transform.GetChild(0).GetComponent<Image>();
@@ -129,12 +143,11 @@ public class PlayerInventory : MonoBehaviour {
 
 	}
 
-    public void ClearSlot(Item item)
+    public void ClearSlot(Item slot)
 	{
-		item.name = null;
-        item.icon = null;
-        item.type = Item.Type.Sword;
-        Image icon = item.gameObject.transform.GetChild(0).GetComponent<Image>();
+        slot.icon = null;
+        slot.type = Item.Type.Sword;
+        Image icon = slot.gameObject.transform.GetChild(0).GetComponent<Image>();
         icon.enabled = false;
         icon.sprite = null;
 	}
