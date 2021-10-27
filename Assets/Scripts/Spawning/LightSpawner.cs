@@ -11,6 +11,7 @@ public class LightSpawner : MonoBehaviour, ISpawnable
     private List<Vector3> spawnPoints = null;
 
 
+
     private void trySpawnPoints(){
         
         MapPopulator mapPopulator = mapGeneratorOb.GetComponent<MapPopulator>();

@@ -7,6 +7,7 @@ public class MapPopulator : MonoBehaviour
     static int WALL = 1;
 	static int FLOOR = 0;
     public int spaceBetweenLights;
+	public float heightoflight = 1.0f;
     
     MapGenerator mapGenerator;
     MapPopulatorI mapPopulator;
@@ -66,7 +67,7 @@ public class MapPopulator : MonoBehaviour
 		for (int i = 0; i < _map.GetLength(0); i += spaceBetweenLights){
 			for (int j = spaceBetweenLights/2; j < _map.GetLength(1); j += spaceBetweenLights){
 				if (_map[i,j] != WALL){
-					poss.Add(CoordToWorldPoint(new MapGenerator.Coord(i , j), 1.64f));
+					poss.Add(CoordToWorldPoint(new MapGenerator.Coord(i , j), heightoflight));
 				}
 			}
 		}

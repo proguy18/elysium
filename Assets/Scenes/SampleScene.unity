@@ -1160,7 +1160,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473490580}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25.165771, y: 2.9724426, z: 25.354889}
+  m_LocalPosition: {x: 26, y: -6, z: 25.354889}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1638526375}
@@ -1356,6 +1356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spaceBetweenLights: 12
+  heightoflight: 2.5
 --- !u!1 &1888167522
 GameObject:
   m_ObjectHideFlags: 0
