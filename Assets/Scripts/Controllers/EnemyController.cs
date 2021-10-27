@@ -61,12 +61,14 @@ public abstract class EnemyController : MonoBehaviour
     {
         Debug.Log("Enemy died");
         // Die animation
-        m_Animator.SetInteger("DeathIndex", Random.Range(0,3));
+        m_Animator.SetInteger("DeathIndex", Random.Range(0,2));
         m_Animator.SetTrigger("Die");
         m_Animator.SetBool("hasDied", true);
 
         // Disable the enemy
+        characterCombat.Toggle(false);
         Destroy(gameObject, 2.1f);
+        
     }
     void Update () 
     {
