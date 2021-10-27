@@ -46,7 +46,13 @@ public class HealthUISpawner : MonoBehaviour
     {
         if (HealthUITransform == null)
             return;
-        Destroy(HealthUITransform.gameObject, 1f);
+        StartCoroutine(DestroyHealthUIIn(1f));
+    }
+
+    private IEnumerator DestroyHealthUIIn(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(HealthUITransform.gameObject);
         HealthUITransform = null;
     }
 

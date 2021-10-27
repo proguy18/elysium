@@ -1902,6 +1902,7 @@ GameObject:
   - component: {fileID: -8621888296759895080}
   - component: {fileID: 1038176740466731570}
   - component: {fileID: 5058484649595847212}
+  - component: {fileID: 7750450196543252958}
   m_Layer: 6
   m_Name: BattleSpider01
   m_TagString: Untagged
@@ -1924,6 +1925,7 @@ Transform:
   - {fileID: 7679054208452357046}
   - {fileID: 5256815651816078215}
   - {fileID: 1138082292798718766}
+  - {fileID: 5764977783286723574}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2067,6 +2069,20 @@ MonoBehaviour:
   Movement: {fileID: 8300000, guid: c8551f171fc9eae46b844a18aac8cb8c, type: 3}
   getHit: {fileID: 8300000, guid: 984bac690e04f4546867bf3ad8e45853, type: 3}
   Attack: {fileID: 0}
+--- !u!114 &7750450196543252958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7679054210051478807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36eb972c470832d478af350723fe4e08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiPrefab: {fileID: 4833868377168429993, guid: 8f058fdf45307a24e97308bf150e317b, type: 3}
+  target: {fileID: 5764977783286723574}
 --- !u!1 &7679054210096695903
 GameObject:
   m_ObjectHideFlags: 0
@@ -2702,3 +2718,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &8785118326008476356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5764977783286723574}
+  m_Layer: 0
+  m_Name: HealthUITarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5764977783286723574
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8785118326008476356}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7679054210051478813}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -14,7 +14,8 @@ public abstract class CharacterCombat : MonoBehaviour
     [SerializeField] private LayerMask enemyLayers;
     [SerializeField] protected Animator m_Animator;
     private CharacterStats stats;
-
+    private bool isEnabled = true;
+    
     private void Awake()
     {
         stats = GetComponent<CharacterStats>();
@@ -26,8 +27,10 @@ public abstract class CharacterCombat : MonoBehaviour
         attackCooldown -= Time.deltaTime;
     }
 
-    public void Attack ()
+    public void Attack()
     {
+        if(!isEnabled)
+            return;
         if (attackCooldown <= 0f)
         {
             // Play attack animation
@@ -47,11 +50,16 @@ public abstract class CharacterCombat : MonoBehaviour
     
     // protected abstract void PlayAttackAnimation();
     
-    void OnDrawGizmosSelected () 
+    void OnDrawGizmosSelected() 
     {
         if (attackPoint == null) 
             return;
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    public void Toggle(bool enable)
+    {
+        isEnabled = enable;
     }
 }
