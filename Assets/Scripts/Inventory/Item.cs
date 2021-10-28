@@ -11,11 +11,4 @@ public class Item : MonoBehaviour {
 	public enum Effect {none, refillHealth}
     public Effect potionEffect = Effect.none;
 	public int effectValue;
-
-	public Item(Sprite icon, Type type){
-		this.icon = icon;
-		this.type = type;
-	}
-
-
 }
