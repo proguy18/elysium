@@ -33,24 +33,6 @@ public class MapGenerator : MonoBehaviour {
 
 	List<Coord> edgeTiles = null; 
 	public int TILE_BORDER = 30;
-
-	// void Start() {
-	// 	GenerateMap();
-	// }
-
-	// void Update() {
-	// 	if (Input.GetKeyDown("p")) {
-	// 		GenerateMap();
-			
-	// 	}
-	// 	if (Input.GetKeyDown("o")){
-	// 		mapOperational = false;
-	// 		meshGenerator.ClearMesh();
-	// 	}
-
-
-
-	// }
 	public void GenMap(){
 		mapOperational = true;
 		GenerateMap();
@@ -76,11 +58,6 @@ public class MapGenerator : MonoBehaviour {
 			}
 		}
 		List<Coord> allTiles = getAllFloorTiles(map);
-		// foreach(Room room in finalRooms){
-		// 	foreach(Coord tile in room.edgeTiles){
-		// 		allTiles.Add(tile);
-		// 	}
-		// }
 		Room bigRoom = new Room(allTiles, map);
 		edgeTiles = bigRoom.edgeTiles;
 		meshGenerator = GetComponent<MeshGenerator>();

@@ -5222,7 +5222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7816131044920414436}
   m_Layer: 0
-  m_Name: Lavapool
+  m_Name: Lavapool1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
