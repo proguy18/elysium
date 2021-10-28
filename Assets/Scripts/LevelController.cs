@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class LevelController : MonoBehaviour
 {
     // Start is called before the first frame update
+    public NavMeshSurface surface;
     private GameObject previousPlayer;
     int levelCount = 0;
     private MapGenerator mapGenerator;
@@ -15,6 +17,9 @@ public class LevelController : MonoBehaviour
     private PlayerSpawner playerSpawner;
     private MapPopulator mapPopulator;
     private EndSpawner endSpawner;
+    private bool newMap = false;
+    int count = 3;
+
     private void Awake() {
         mapGenerator = GetComponentInChildren<MapGenerator>();
         spawners = GetComponentsInChildren<ObjSpawner>();
@@ -36,15 +41,24 @@ public class LevelController : MonoBehaviour
     private void Start() {
         newLevel();
     }
-    private void Update() {
+    private void LateUpdate() {
         if (Input.GetKeyDown("i")){
             newLevel();
-        }    
+            
+        }   
+        if (newMap) count --;
+
+        if ((count == 0 && newMap) || Input.GetKeyDown("k")){ 
+            moveWalledObjects();
+            // moveWalledObjects();
+            // moveWalledObjects();
+            newMap = false;
+            count = 3;
+        }
+
     }
 
-    // Update is called once per frame
     void newLevel(){
-        //Save player stats inc inventory
         //Delete old Map
         
         if (levelCount > 0) {
@@ -60,10 +74,12 @@ public class LevelController : MonoBehaviour
         //Generate New Map
     
         mapGenerator.GenMap();
+        
         mapPopulator.reload();
         //Populate new map - possibly differently
         levelCount ++;
-        if (levelCount % 2 == 0){
+        playerSpawner.spawn();
+        if (levelCount % 2 == 1){
             foreach(ObjSpawner spawner in option0){
                 spawner.spawn();
             }
@@ -75,13 +91,22 @@ public class LevelController : MonoBehaviour
         }
         
         lightSpawner.spawn();
-        playerSpawner.spawn();
-        endSpawner.spawn();
         
-
+        endSpawner.spawn();
+        moveWalledObjects();
+        newMap = true;
+        surface.BuildNavMesh();
     }
     public void playerFinishedLevel(){
         newLevel();
+    }
+    void moveWalledObjects(){
+        
+        WallAttach[] wallAttaches = GetComponentsInChildren<WallAttach>();
+        Debug.Log("Amount of wall attaches" + wallAttaches.GetLength(0));
+        foreach (WallAttach wallAttach in wallAttaches){
+            wallAttach.MoveLights();
+        }
     }
 
           

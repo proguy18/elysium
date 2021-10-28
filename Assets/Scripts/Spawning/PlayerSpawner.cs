@@ -22,13 +22,13 @@ public class PlayerSpawner : MonoBehaviour, ISpawnable
     }
     public void spawn(){
         trySpawnPoint();
-        Debug.Log("Spawnpoint invalid" + spawnPoint.Equals(new Vector3(0,0,0)));
         if (!spawnPoint.Equals(new Vector3(0,0,0))){
             if (instance != null){
                 instance.transform.position = spawnPoint;
                 instance.SetActive(true);
             }else{
                 instance = Instantiate(objectToSpawn, spawnPoint, transform.rotation);
+                instance.layer = 7;
             }
         }
             

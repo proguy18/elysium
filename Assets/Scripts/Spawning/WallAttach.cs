@@ -7,20 +7,33 @@ public class WallAttach : MonoBehaviour
     RaycastHit finalHit = new RaycastHit();
     Vector3 normal = new Vector3(-40,-40,-40);
     Vector3 point = new Vector3(-40,-40,-40);
+    Transform hitTransform = null;
     public float adjustment = 0.3f;
-    public float height = 1.0f; 
-
-    // Update is called once per frame
-    private void Awake() {
-        MoveLights();
-    }
+    private bool hasMoved = false;
+    
+     
+    // private void LateUpdate() {
+    //     if (!hasMoved || Input.GetKeyDown("m")){
+    //         MoveLights();
+    //     }
+    
+    // }
     public void MoveLights(){
+        
         findBestDistance();
         moveToPosition();
     }
     void moveToPosition(){
-        transform.position = point + adjustment*normal;
-        transform.rotation = Quaternion.LookRotation(normal);
+        
+        if (normal != new Vector3(-40, -40, -40) && point != new Vector3(-40, -40, -40)){
+            transform.position = point + adjustment*normal;
+            transform.rotation = Quaternion.LookRotation(normal);
+            hasMoved = true; 
+        } else {
+            gameObject.SetActive(false);
+        }
+        normal = new Vector3(-40,-40,-40);
+        point = new Vector3(-40,-40,-40);
 
     }
     void findBestDistance(){
@@ -50,14 +63,18 @@ public class WallAttach : MonoBehaviour
                     distance = hit.distance;
                     _normal = hit.normal;
                     _point = hit.point;
+                    hitTransform = hit.transform;
+
                 }
             }
-            if (_normal != new Vector3(-40, -40, -40) && _point != new Vector3(-40, -40, -40)){
+            if (_normal != new Vector3(-40, -40, -40) && _point != new Vector3(-40, -40, -40) && hitTransform.name == "Walls"){
                 normal = _normal;
                 point = _point;
                 return;
             }
+            Debug.Log("no hits");
             gameObject.SetActive(false);
+            hitTransform = null;
             return;
         }
     }
