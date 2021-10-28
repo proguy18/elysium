@@ -20,6 +20,7 @@ public class PlayerInventory : MonoBehaviour {
     private Item RingSlot;
     private Item PotionSlot;
     private CharacterStats stats;
+    private Text statsDisplay;
 
     private bool swordIsEquipped() {return swordEquipped;}
     private bool ringIsEquipped() {return ringEquipped;}
@@ -39,10 +40,10 @@ public class PlayerInventory : MonoBehaviour {
         PotionSlot = weapons.transform.Find("PotionSlot").GetComponent<Item>();
         GameObject player = GameObject.Find("Player");
         stats = player.GetComponent<CharacterStats>();
+        statsDisplay = character.transform.Find("Text").GetComponent<Text>();        
         inventoryUI.SetActive(false);
-
-
-	}
+        updateText();
+    }
 
 	// Check to see if we should open/close the inventory
 	void Update ()
@@ -98,37 +99,43 @@ public class PlayerInventory : MonoBehaviour {
         if(item.icon == null) { return; }
         if(button.transform.parent.parent.name == "Storage"){
             if((item.type == Item.Type.Sword) && (!swordIsEquipped())){
+                AddModifiers(item);
                 FillSlot(SwordSlot, item);
                 ClearSlot(item);
-                swordEquipped = true;
+                swordEquipped = true;                
             }
             if((item.type == Item.Type.Ring) && (!ringIsEquipped())){
+                AddModifiers(item);
                 FillSlot(RingSlot, item);
                 ClearSlot(item);
                 ringEquipped = true;
             }
             if((item.type == Item.Type.Potion) && (!potionIsEquipped())){
+                AddModifiers(item);
                 FillSlot(PotionSlot, item);
                 ClearSlot(item);
                 potionEquipped = true;
             }
         }
         else {
-            Debug.Log(item.type);
             AddToInv(item);
             if(item.type == Item.Type.Sword){
+                RemoveModifiers(item);
                 ClearSlot(SwordSlot);
                 swordEquipped = false;
             }
             if(item.type == Item.Type.Ring){
+                RemoveModifiers(item);
                 ClearSlot(RingSlot);
                 ringEquipped = false;
             }
             if(item.type == Item.Type.Potion){
+                RemoveModifiers(item);
                 ClearSlot(PotionSlot);
                 potionEquipped = false;
             }
         }
+        updateText();
         
     }
 
@@ -137,6 +144,9 @@ public class PlayerInventory : MonoBehaviour {
 	{
         slot.icon = newItem.icon;
         slot.type = newItem.type;
+        slot.damageModifier = newItem.damageModifier;
+        slot.maxHealthModifier = newItem.maxHealthModifier;
+        slot.armorModifier = newItem.armorModifier;
         Image icon = slot.gameObject.transform.GetChild(0).GetComponent<Image>();
         icon.enabled = true;
         icon.sprite = newItem.icon;
@@ -147,10 +157,31 @@ public class PlayerInventory : MonoBehaviour {
 	{
         slot.icon = null;
         slot.type = Item.Type.Sword;
+        slot.damageModifier = 0;
+        slot.maxHealthModifier = 0;
+        slot.armorModifier = 0;
         Image icon = slot.gameObject.transform.GetChild(0).GetComponent<Image>();
         icon.enabled = false;
         icon.sprite = null;
 	}
+
+  public void AddModifiers(Item item)
+  {
+      stats.damage.AddModifier(item.damageModifier);
+      stats.maxHealth.AddModifier(item.maxHealthModifier);
+      stats.armor.AddModifier(item.armorModifier);
+  }
+
+  public void RemoveModifiers(Item item)
+  {
+      stats.damage.RemoveModifier(item.damageModifier);
+      stats.maxHealth.RemoveModifier(item.maxHealthModifier);
+      stats.armor.RemoveModifier(item.armorModifier);
+  }
+  
+  public void updateText() {
+      statsDisplay.text = string.Format("Max Health: {0}\nDamage: {1}\nArmor: {2}", stats.maxHealth.GetValue(), stats.damage.GetValue(), stats.armor.GetValue());
+  } 
 
 
 

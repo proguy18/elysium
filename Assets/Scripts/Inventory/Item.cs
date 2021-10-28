@@ -5,9 +5,9 @@ public class Item : MonoBehaviour {
 	public enum Type {Sword, Ring, Potion};	
 	public Sprite icon = null;	
 	public Type type;
-	public int damageBuff;
-	public int maxHealthBuff;
-	public int armourBuff;
+	public int damageModifier;
+	public int maxHealthModifier;
+	public int armorModifier;
 	public enum Effect {none, refillHealth}
     public Effect potionEffect = Effect.none;
 	public int effectValue;

@@ -158,9 +158,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 970324311431c794ca338446ea889948, type: 3}
   type: 1
-  damageBuff: 3
-  maxHealthBuff: 5
-  armourBuff: 4
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!222 &71179340
@@ -305,9 +305,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &100570308
@@ -649,9 +649,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!1 &248054768
@@ -755,9 +755,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &256185540
@@ -1238,9 +1238,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &381839077
@@ -1334,9 +1334,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &386937754
@@ -1694,9 +1694,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &511060877
@@ -1790,9 +1790,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &536553258
@@ -1961,9 +1961,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &588344967
@@ -2753,9 +2753,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &844014639
@@ -2981,9 +2981,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &862627365
@@ -3408,9 +3408,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &938557908
@@ -3542,9 +3542,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!1 &985147889
@@ -3864,9 +3864,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &1061366214
@@ -3960,9 +3960,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &1067767939
@@ -4056,9 +4056,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &1078547467
@@ -4473,9 +4473,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &1154740267
@@ -4739,9 +4739,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!1 &1269545716
@@ -5120,9 +5120,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 172774604c1bee84185a69041576525b, type: 3}
   type: 0
-  damageBuff: 1
-  maxHealthBuff: 2
-  armourBuff: 3
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!1 &1490832087
@@ -5446,9 +5446,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &1579443901
@@ -5755,9 +5755,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &1740771543
@@ -6058,9 +6058,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &1783901189
@@ -6286,9 +6286,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &1879524910
@@ -7032,9 +7032,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &1944262276
@@ -7128,9 +7128,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &1953746662
@@ -7361,9 +7361,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &1999989404
@@ -7457,9 +7457,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &2018671075
@@ -7613,9 +7613,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &2101367802
@@ -7691,10 +7691,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: e52ea25af699fd445b7046374f81a5b9, type: 3}
   type: 2
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
-  potionEffect: 2
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
+  potionEffect: 0
   effectValue: 5
 --- !u!222 &2101421996
 CanvasRenderer:
@@ -8118,8 +8118,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
-    m_LineSpacing: 2
-  m_Text: 'Health:
+    m_LineSpacing: 2.5
+  m_Text: 'Max Health
 
     Damage:
 
@@ -8426,7 +8426,7 @@ RectTransform:
   m_GameObject: {fileID: 6077654631507810448}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6077654631806608035}
   - {fileID: 6077654631872748767}
@@ -8636,7 +8636,7 @@ RectTransform:
   m_GameObject: {fileID: 6077654631872748766}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 6077654630394043398}
   m_Father: {fileID: 6077654631507810449}
@@ -8644,7 +8644,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -22.228, y: 10.478}
+  m_AnchoredPosition: {x: -22.228, y: 19.15}
   m_SizeDelta: {x: 105.8, y: 38.300003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6077654632502040785
@@ -8799,9 +8799,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   type: 0
-  damageBuff: 0
-  maxHealthBuff: 0
-  armourBuff: 0
+  damageModifier: 0
+  maxHealthModifier: 0
+  armorModifier: 0
   potionEffect: 0
   effectValue: 0
 --- !u!114 &6182722502332263263
