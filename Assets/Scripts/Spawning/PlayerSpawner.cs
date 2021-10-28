@@ -28,6 +28,7 @@ public class PlayerSpawner : MonoBehaviour, ISpawnable
                 instance.SetActive(true);
             }else{
                 instance = Instantiate(objectToSpawn, spawnPoint, transform.rotation);
+                instance.layer = 7;
             }
         }
             

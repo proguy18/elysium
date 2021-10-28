@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class LevelController : MonoBehaviour
 {
     // Start is called before the first frame update
+    public NavMeshSurface surface;
     private GameObject previousPlayer;
     int levelCount = 0;
     private MapGenerator mapGenerator;
@@ -72,9 +74,11 @@ public class LevelController : MonoBehaviour
         //Generate New Map
     
         mapGenerator.GenMap();
+        
         mapPopulator.reload();
         //Populate new map - possibly differently
         levelCount ++;
+        playerSpawner.spawn();
         if (levelCount % 2 == 1){
             foreach(ObjSpawner spawner in option0){
                 spawner.spawn();
@@ -87,10 +91,11 @@ public class LevelController : MonoBehaviour
         }
         
         lightSpawner.spawn();
-        playerSpawner.spawn();
+        
         endSpawner.spawn();
         moveWalledObjects();
         newMap = true;
+        surface.BuildNavMesh();
     }
     public void playerFinishedLevel(){
         newLevel();

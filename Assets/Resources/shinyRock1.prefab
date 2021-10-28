@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 6198374168612529602}
   - component: {fileID: 6198374168612529601}
   - component: {fileID: 6198374168612529600}
+  - component: {fileID: -3693113911286989310}
   m_Layer: 0
   m_Name: shinyRock1
   m_TagString: Untagged
@@ -191,3 +192,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: 8beff6b3bf60d5940abef1e0eb42fb70, type: 3}
+--- !u!114 &-3693113911286989310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6198374168612529607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff

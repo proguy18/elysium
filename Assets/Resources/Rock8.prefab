@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1687137011}
   - component: {fileID: 1687137010}
   - component: {fileID: 1687137009}
+  - component: {fileID: -6330905559372361610}
   m_Layer: 0
   m_Name: Rock8
   m_TagString: Untagged
@@ -26,8 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687137008}
-  m_LocalRotation: {x: 0.000000081394205, y: 0.040280618, z: -0.0000000032812753,
-    w: 0.9991884}
+  m_LocalRotation: {x: 0.000000081394205, y: 0.040280618, z: -0.0000000032812753, w: 0.9991884}
   m_LocalPosition: {x: -11.932674, y: -13.064599, z: 4.5412235}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -53,9 +53,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -67,6 +70,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -79,6 +83,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &1687137009
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -89,7 +94,23 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: 8beff6b3bf60d5940abef1e0eb42fb70, type: 3}
+--- !u!114 &-6330905559372361610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687137008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
