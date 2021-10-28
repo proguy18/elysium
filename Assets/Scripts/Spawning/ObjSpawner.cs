@@ -8,16 +8,20 @@ public class ObjSpawner : MonoBehaviour, ISpawnable
     
     private List<GameObject> objects;
 
-    public GameObject mapGeneratorOb;
+    private GameObject mapGeneratorOb;
     public List<GameObject> clones;
     private List<Vector3> spawnPoints = null;
 
     public int number = 100; 
     public float z = 0;
     public int levelType = 0;
+    public bool attachToWall = false;
+    private GameObject parent;
 
     private void Awake() {
         objects = new List<GameObject>();
+        parent = GameObject.Find("SpawnerParent");
+        mapGeneratorOb = GameObject.Find("MapGenerator");
         bool moreObjects = true;
         int i = 1;
         while(moreObjects){
@@ -57,10 +61,13 @@ public class ObjSpawner : MonoBehaviour, ISpawnable
             foreach(Vector3 spawnPoint in spawnPoints){
                 GameObject objectToSpawn = objects[rand];
                 Vector3 sp = new Vector3(spawnPoint.x, spawnPoint.y + z, spawnPoint.z);
-                clones.Add(Instantiate(objectToSpawn, sp, Quaternion.Euler(new Vector3(0,random.Next(0,360),0 ))));
+                GameObject instance = Instantiate(objectToSpawn, sp, Quaternion.Euler(new Vector3(0,random.Next(0,360),0 )));
+                clones.Add(instance);
+                instance.transform.parent = parent.transform;
                 rand = random.Next(0, objects.Count);
             }
         }
+        
 
     }
 }

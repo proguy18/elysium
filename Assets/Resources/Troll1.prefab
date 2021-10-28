@@ -1716,7 +1716,7 @@ GameObject:
   - component: {fileID: 8569654369875398723}
   - component: {fileID: 8569654369870934047}
   m_Layer: 0
-  m_Name: Troll_cannibal
+  m_Name: Troll1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
