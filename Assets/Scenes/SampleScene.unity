@@ -390,9 +390,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89ff4abc358e4f44bbcb4eb3058a274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 3454277780500744143, guid: 7234c83608121694ebb0c6175d854ed0, type: 3}
-  mapGeneratorOb: {fileID: 1651193678}
-  z: 1.64
+  objectToSpawn: {fileID: 2662942346109270115, guid: 3bfa04eedcc3b6f4791d44722b806a37, type: 3}
+  z: 0
 --- !u!114 &527687093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,7 +543,7 @@ MonoBehaviour:
   clones: []
   number: 30
   z: 0
-  levelType: 2
+  levelType: -1
   isEnemy: 0
 --- !u!114 &527687102
 MonoBehaviour:
@@ -1446,14 +1445,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ff641c15294c440acf79d1f1082fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 100
-  height: 150
+  width: 80
+  height: 120
   iterations: 4
   seed: 
   useRandomSeed: 1
-  randomFillPercent: 48
-  passageRadius: 3
-  TILE_BORDER: 5
+  randomFillPercent: 46
+  passageRadius: 4
+  TILE_BORDER: 10
 --- !u!4 &1651193681
 Transform:
   m_ObjectHideFlags: 0

@@ -74,11 +74,11 @@ public class LevelController : MonoBehaviour
         //Generate New Map
     
         mapGenerator.GenMap();
-        
         mapPopulator.reload();
         //Populate new map - possibly differently
         levelCount ++;
         playerSpawner.spawn();
+        endSpawner.spawn();
         if (levelCount % 2 == 1){
             foreach(ObjSpawner spawner in option0){
                 spawner.spawn();
@@ -89,10 +89,7 @@ public class LevelController : MonoBehaviour
                 spawner.spawn();
             }
         }
-        
         lightSpawner.spawn();
-        
-        endSpawner.spawn();
         moveWalledObjects();
         newMap = true;
         surface.BuildNavMesh();
