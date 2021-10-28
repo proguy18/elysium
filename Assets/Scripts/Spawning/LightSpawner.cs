@@ -7,10 +7,24 @@ public class LightSpawner : MonoBehaviour, ISpawnable
     
     public GameObject myLight;
     private List<GameObject> instances = null;
-    public GameObject mapGeneratorOb;
+    private GameObject mapGeneratorOb;
     private List<Vector3> spawnPoints = null;
+    private GameObject parent;
+
+    private void Awake() {
+        mapGeneratorOb = GameObject.Find("MapGenerator");
+        parent = GameObject.Find("SpawnerParent");
 
 
+    }
+    private void Update() {
+        if (Input.GetKeyDown("m")){
+            WallAttach[] wallAttaches = GetComponentsInChildren<WallAttach>();
+            foreach (WallAttach wallAttach in wallAttaches){
+                wallAttach.MoveLights();
+            }
+        }
+    }
 
     private void trySpawnPoints(){
         
@@ -25,10 +39,13 @@ public class LightSpawner : MonoBehaviour, ISpawnable
         if (spawnPoints != null){
             instances = new List<GameObject>();
             foreach(Vector3 spawnPoint in spawnPoints){
-                
-                instances.Add(Instantiate(myLight, spawnPoint, transform.rotation));
+                GameObject spawn = Instantiate(myLight, spawnPoint, transform.rotation);
+                instances.Add(spawn);
+                spawn.transform.parent = parent.transform;
             }
+
         }
+        
     }
     public void kill(){
         if (instances != null){

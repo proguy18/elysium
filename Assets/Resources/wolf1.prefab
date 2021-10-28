@@ -571,8 +571,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1194049098}
   - component: {fileID: 1194049097}
-  - component: {fileID: -9207995491601537964}
   - component: {fileID: 407549617048323037}
+  - component: {fileID: 5983100875614404388}
+  - component: {fileID: 943218964748796573}
   m_Layer: 0
   m_Name: wolf1
   m_TagString: Untagged
@@ -615,22 +616,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-9207995491601537964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1194049096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7374c1121e0ece64fbc62b5f140d3cb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lookRadius: 15
-  attackRange: 2
-  attackSpeed: 1
-  maxHealth: 100
 --- !u!195 &407549617048323037
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -653,6 +638,44 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5983100875614404388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194049096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc740b9e0d69384da8a9022e50f055a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth:
+    baseValue: 0
+  damage:
+    baseValue: 0
+  armor:
+    baseValue: 0
+--- !u!114 &943218964748796573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194049096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7587f0cbb12a452ebfe2a3e1451cb430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackSpeed: 1
+  attackCooldown: 0
+  attackPoint: {fileID: 0}
+  attackRange: 2
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Animator: {fileID: 0}
 --- !u!1 &1216563507
 GameObject:
   m_ObjectHideFlags: 0

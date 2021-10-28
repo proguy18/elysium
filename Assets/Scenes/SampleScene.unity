@@ -123,6 +123,82 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &41269097
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 41269098}
+  - component: {fileID: 41269100}
+  - component: {fileID: 41269099}
+  m_Layer: 5
+  m_Name: MiniMapborder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &41269098
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41269097}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1638526375}
+  m_Father: {fileID: 1888167526}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -110, y: -110}
+  m_SizeDelta: {x: 178, y: 178}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &41269099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41269097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &41269100
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41269097}
+  m_CullTransparentMesh: 1
 --- !u!1 &336031008
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,6 +337,7 @@ GameObject:
   - component: {fileID: 527687091}
   - component: {fileID: 527687100}
   - component: {fileID: 527687096}
+  - component: {fileID: 527687092}
   - component: {fileID: 527687101}
   - component: {fileID: 527687099}
   - component: {fileID: 527687098}
@@ -268,7 +345,6 @@ GameObject:
   - component: {fileID: 527687095}
   - component: {fileID: 527687094}
   - component: {fileID: 527687093}
-  - component: {fileID: 527687092}
   - component: {fileID: 527687107}
   - component: {fileID: 527687106}
   - component: {fileID: 527687105}
@@ -278,6 +354,8 @@ GameObject:
   - component: {fileID: 527687108}
   - component: {fileID: 527687109}
   - component: {fileID: 527687110}
+  - component: {fileID: 527687112}
+  - component: {fileID: 527687113}
   m_Layer: 0
   m_Name: SpawnerParent
   m_TagString: Untagged
@@ -327,11 +405,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameStem: BattleSpider0
-  mapGeneratorOb: {fileID: 1651193678}
   clones: []
   number: 10
   z: 0
   levelType: 0
+  attachToWall: 0
 --- !u!114 &527687094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,11 +423,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameStem: crate
-  mapGeneratorOb: {fileID: 1651193678}
   clones: []
   number: 45
   z: 0.5
   levelType: 0
+  attachToWall: 0
 --- !u!114 &527687095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,11 +441,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameStem: skeleton
-  mapGeneratorOb: {fileID: 1651193678}
   clones: []
   number: 10
   z: 0
   levelType: 0
+  attachToWall: 0
 --- !u!114 &527687096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,7 +459,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myLight: {fileID: 1073399667334255935, guid: dc2a4dfcdc610de47ab8445fbec9e5a8, type: 3}
-  mapGeneratorOb: {fileID: 1651193678}
 --- !u!114 &527687097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,11 +472,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameStem: Debris.00
-  mapGeneratorOb: {fileID: 1651193678}
   clones: []
   number: 300
   z: 0
   levelType: 0
+  attachToWall: 0
 --- !u!114 &527687098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,11 +490,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameStem: Wood.00
-  mapGeneratorOb: {fileID: 1651193678}
   clones: []
   number: 250
   z: 0
   levelType: 0
+  attachToWall: 0
 --- !u!114 &527687099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,11 +508,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameStem: rock
-  mapGeneratorOb: {fileID: 1651193678}
   clones: []
   number: 40
   z: 0
   levelType: 0
+  attachToWall: 0
 --- !u!114 &527687100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,11 +540,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameStem: shinyRock
-  mapGeneratorOb: {fileID: 1651193678}
   clones: []
   number: 30
   z: 0
   levelType: 2
+  attachToWall: 0
 --- !u!114 &527687102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,11 +558,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameStem: plant_
-  mapGeneratorOb: {fileID: 1651193678}
   clones: []
   number: 20
   z: 0
   levelType: 1
+  attachToWall: 0
 --- !u!114 &527687103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,11 +576,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameStem: mushroom_
-  mapGeneratorOb: {fileID: 1651193678}
   clones: []
   number: 150
   z: 0
   levelType: 1
+  attachToWall: 0
 --- !u!114 &527687104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,11 +594,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameStem: flower_
-  mapGeneratorOb: {fileID: 1651193678}
   clones: []
   number: 80
   z: 0
   levelType: 1
+  attachToWall: 0
 --- !u!114 &527687105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,11 +612,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameStem: grass_
-  mapGeneratorOb: {fileID: 1651193678}
   clones: []
   number: 30
   z: 0
   levelType: 1
+  attachToWall: 0
 --- !u!114 &527687106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,11 +630,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameStem: debris_
-  mapGeneratorOb: {fileID: 1651193678}
   clones: []
   number: 200
   z: 0
   levelType: 1
+  attachToWall: 0
 --- !u!114 &527687107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,11 +648,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameStem: bush_
-  mapGeneratorOb: {fileID: 1651193678}
   clones: []
   number: 20
   z: 0
   levelType: 1
+  attachToWall: 0
 --- !u!114 &527687108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589,11 +666,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameStem: wolf
-  mapGeneratorOb: {fileID: 1651193678}
   clones: []
   number: 15
   z: 0
   levelType: 1
+  attachToWall: 0
 --- !u!114 &527687109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,11 +684,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameStem: Plant_Root
-  mapGeneratorOb: {fileID: 1651193678}
   clones: []
   number: 70
   z: 3
   levelType: 2
+  attachToWall: 1
 --- !u!114 &527687110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,11 +702,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameStem: potion
-  mapGeneratorOb: {fileID: 1651193678}
   clones: []
   number: 8
   z: 0
   levelType: 2
+  attachToWall: 0
+--- !u!114 &527687112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527687090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: Zolrik
+  clones: []
+  number: 15
+  z: 0
+  levelType: 1
+  attachToWall: 0
+--- !u!114 &527687113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527687090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: LavaPool
+  clones: []
+  number: 10
+  z: 2
+  levelType: 0
+  attachToWall: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,7 +834,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &765067855
 GameObject:
@@ -869,7 +982,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -1191,38 +1304,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1473490580
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1473490581}
-  m_Layer: 0
-  m_Name: Minimap
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1473490581
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473490580}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26, y: -6, z: 25.354889}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1638526375}
-  m_Father: {fileID: 1888167526}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1638526374
 GameObject:
@@ -1250,16 +1332,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1638526374}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -25.354889}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1473490581}
+  m_Father: {fileID: 41269098}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 431, y: 252}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 170, y: 170}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1638526376
 MonoBehaviour:
@@ -1295,7 +1377,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1638526374}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 0
 --- !u!1 &1651193678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1505,7 +1587,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1473490581}
+  - {fileID: 41269098}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
