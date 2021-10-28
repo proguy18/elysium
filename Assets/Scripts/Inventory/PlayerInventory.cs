@@ -12,7 +12,6 @@ public class PlayerInventory : MonoBehaviour {
 
     private bool swordEquipped = false;
     private bool ringEquipped = false;
-    private bool potionEquipped = false;
     private int space = 24;	
     private int slotsOccupied = 0;
     private Transform inv;
@@ -24,9 +23,6 @@ public class PlayerInventory : MonoBehaviour {
 
     private bool swordIsEquipped() {return swordEquipped;}
     private bool ringIsEquipped() {return ringEquipped;}
-    private bool potionIsEquipped() {return potionEquipped;}
-
-
 
 	void Start ()
 	{
@@ -110,11 +106,9 @@ public class PlayerInventory : MonoBehaviour {
                 ClearSlot(item);
                 ringEquipped = true;
             }
-            if((item.type == Item.Type.Potion) && (!potionIsEquipped())){
-                AddModifiers(item);
-                FillSlot(PotionSlot, item);
+            if((item.type == Item.Type.Potion) && (item.potionEffect == Item.Effect.refillHealth)){
+                stats.Heal(item.effectValue);
                 ClearSlot(item);
-                potionEquipped = true;
             }
         }
         else {
@@ -129,11 +123,6 @@ public class PlayerInventory : MonoBehaviour {
                 ClearSlot(RingSlot);
                 ringEquipped = false;
             }
-            if(item.type == Item.Type.Potion){
-                RemoveModifiers(item);
-                ClearSlot(PotionSlot);
-                potionEquipped = false;
-            }
         }
         updateText();
         
@@ -147,6 +136,8 @@ public class PlayerInventory : MonoBehaviour {
         slot.damageModifier = newItem.damageModifier;
         slot.maxHealthModifier = newItem.maxHealthModifier;
         slot.armorModifier = newItem.armorModifier;
+        slot.potionEffect = newItem.potionEffect;
+        slot.effectValue = newItem.effectValue;        
         Image icon = slot.gameObject.transform.GetChild(0).GetComponent<Image>();
         icon.enabled = true;
         icon.sprite = newItem.icon;
