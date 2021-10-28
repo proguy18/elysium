@@ -84,7 +84,7 @@ Material:
     - _Mode: 0
     - _NormalIntensity: 0
     - _OcclusionStrength: 1
-    - _OutlineWidth: 0.05
+    - _OutlineWidth: 0
     - _Parallax: 0.02
     - _RimAmount: 0.716
     - _RimPower: 3
