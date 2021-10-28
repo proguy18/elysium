@@ -4,8 +4,11 @@ using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour {
     public KeyCode inventoryKey = KeyCode.I;
-    private GameObject defaultSwordIcon;
-    private GameObject defaultRingIcon;
+    public Sprite defaultSwordIcon;
+    public Sprite defaultRingIcon;
+
+    private GameObject defaultSwordIcon_;
+    private GameObject defaultRingIcon_;
     private GameObject inventoryUI;	
 	private Transform storage;	
     private bool swordEquipped = false;
@@ -36,9 +39,10 @@ public class PlayerInventory : MonoBehaviour {
         SwordSlot = weapons.transform.Find("SwordSlot").GetComponent<Item>();
         RingSlot = weapons.transform.Find("RingSlot").GetComponent<Item>();
         stats = GameObject.Find("Player").GetComponent<CharacterStats>();
-        defaultSwordIcon = weapons.transform.Find("SwordSlot").Find("UseButton").Find("Icon").gameObject;
-        defaultRingIcon = weapons.transform.Find("RingSlot").Find("UseButton").Find("Icon").gameObject;
-
+        defaultSwordIcon_ = weapons.transform.Find("SwordSlot").Find("UseButton").Find("Icon").gameObject;
+        defaultRingIcon_ = weapons.transform.Find("RingSlot").Find("UseButton").Find("Icon").gameObject;
+        defaultSwordIcon_.GetComponent<Image>().sprite = defaultSwordIcon;
+        defaultRingIcon_.GetComponent<Image>().sprite = defaultRingIcon;
     }
 
 	private void Update ()
@@ -96,14 +100,14 @@ public class PlayerInventory : MonoBehaviour {
             FillSlot(SwordSlot, item);
             ClearSlot(item);
             swordEquipped = true;   
-            defaultSwordIcon.SetActive(false);
+            defaultSwordIcon_.SetActive(false);
         }
         if((item.type == Item.Type.Ring) && (!ringIsEquipped())){
             AddModifiers(item);
             FillSlot(RingSlot, item);
             ClearSlot(item);
             ringEquipped = true;
-            defaultRingIcon.SetActive(false);
+            defaultRingIcon_.SetActive(false);
         }
         if((item.type == Item.Type.Potion) && (item.potionEffect == Item.Effect.refillHealth)){
             stats.Heal(item.effectValue);
@@ -117,12 +121,12 @@ public class PlayerInventory : MonoBehaviour {
         if(item.type == Item.Type.Sword){
             ClearSlot(SwordSlot);
             swordEquipped = false;
-            defaultSwordIcon.SetActive(true);
+            defaultSwordIcon_.SetActive(true);
         }
         if(item.type == Item.Type.Ring){
             ClearSlot(RingSlot);
             ringEquipped = false;
-            defaultRingIcon.SetActive(true);
+            defaultRingIcon_.SetActive(true);
 
         }
     }
