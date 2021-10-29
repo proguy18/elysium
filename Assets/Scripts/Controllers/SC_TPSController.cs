@@ -132,7 +132,7 @@ public class SC_TPSController : MonoBehaviour
         // Destroy(gameObject, 2.1f);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(movementAnimations){
             if(!m_Animator){
