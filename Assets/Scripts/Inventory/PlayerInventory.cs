@@ -35,7 +35,7 @@ public class PlayerInventory : MonoBehaviour {
     }
 
     private void initializeVariables(){
-        inv = GameObject.Find("Canvas").transform.Find("Inventory");
+        inv = GameObject.Find("CanvasScreenSpace").transform.Find("Inventory");
         inventoryUI = inv.gameObject;
         statsDisplay = inv.transform.Find("Stats").GetComponent<Text>();
         Transform weapons = inv.transform.Find("Weapons");
