@@ -38,12 +38,19 @@ public class LevelLoader : MonoBehaviour
         Application.Quit();
     }
 
-    public void GoToSettingsMenu()
-    {
-        SceneManager.LoadScene("SettingsMenu");
-    }
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        Debug.Log("Pressed go to main menu");
+        // StartCoroutine(LoadLevel(0));
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex - 1));
+        // SceneManager.LoadScene("StartScene");
+    }
+
+    public void RestartGame()
+    {
+        Debug.Log("Pressed play again");
+        // StartCoroutine(LoadLevel(1));
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
+        // SceneManager.LoadScene("IntegratedScene");
     }
 }
