@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
@@ -6,6 +7,8 @@ using UnityEngine.Rendering.PostProcessing;
 [RequireComponent(typeof(CharacterStats))]
 public class SC_TPSController : MonoBehaviour
 {
+    public GameObject deathMenuUI;
+    public GameObject blurOverlayUI;
 
     public float walkSpeed = 5f; 
     public float runSpeed = 8f;
@@ -130,15 +133,16 @@ public class SC_TPSController : MonoBehaviour
 
         // Disable the enemy
         // Destroy(gameObject, 2.1f);
+        StartCoroutine(PlayDeathScreen());
     }
 
     void Update()
     {
         if(movementAnimations){
-            if(!m_Animator){
+            if(!m_Animator)
                 m_Animator  = gameObject.GetComponent<Animator>();
-            }
-            animateMovements(); 
+            if(IsAlive())
+                animateMovements(); 
         }
         
         Vector3 forward = transform.TransformDirection(Vector3.forward);
@@ -149,7 +153,8 @@ public class SC_TPSController : MonoBehaviour
         moveDirection = (forward * curSpeedX) + (r * curSpeedY);
 
         // Move the controller
-        characterController.Move(moveDirection * Time.deltaTime);
+        if(IsAlive())
+            characterController.Move(moveDirection * Time.deltaTime);
 
         // prevent character from sinking into the grounded
         float offset = -transform.position.y + y; // set current position to 0, then add original y value
@@ -162,8 +167,31 @@ public class SC_TPSController : MonoBehaviour
         playerCameraParent.localRotation = Quaternion.Euler(rotation.x, 0, 0);
         transform.eulerAngles = new Vector2(0, rotation.y);
     }
+    bool IsAlive()
+    {
+        return !m_Animator.GetBool("hasDied");
+    }
     private void PlayAttackAnimation()
     {
         m_Animator.SetTrigger("Attack_2");
+    }
+    
+    private void EnableDeathUI()
+    {
+        deathMenuUI.SetActive(true);
+        blurOverlayUI.SetActive(true);
+    }
+    private void EnableCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+    private IEnumerator PlayDeathScreen()
+    {
+        yield return new WaitForSeconds(1f);
+        
+        EnableCursor();
+        EnableDeathUI();
+        Time.timeScale = 0f;
     }
 }
