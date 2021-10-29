@@ -1112,7 +1112,7 @@ GameObject:
   - component: {fileID: 259557371}
   - component: {fileID: 259557375}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: ScreenSpaceCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1214,6 +1214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0afed99106ce9c47892ccaddf0d1a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: fd4083b5ca81cf34e80d82ae7a416a14, type: 2}
   resolutionsDropDown: {fileID: 763274479}
   qualityDropDown: {fileID: 1520028577}
   displayDropDown: {fileID: 1793762826}
@@ -2247,6 +2248,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExampleScene
       objectReference: {fileID: 0}
+    - target: {fileID: 8709662675090203839, guid: c31d9c8a36a434943ba0ff47240a4b77, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: fd4083b5ca81cf34e80d82ae7a416a14, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c31d9c8a36a434943ba0ff47240a4b77, type: 3}
 --- !u!1 &493895856
@@ -2810,8 +2815,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 2098561897}
   m_HandleRect: {fileID: 160390573}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -80
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
