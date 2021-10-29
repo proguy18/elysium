@@ -341,22 +341,10 @@ GameObject:
   - component: {fileID: 527687092}
   - component: {fileID: 527687101}
   - component: {fileID: 527687099}
-  - component: {fileID: 527687098}
   - component: {fileID: 527687097}
-  - component: {fileID: 527687095}
-  - component: {fileID: 527687094}
-  - component: {fileID: 527687093}
-  - component: {fileID: 527687107}
-  - component: {fileID: 527687106}
-  - component: {fileID: 527687105}
-  - component: {fileID: 527687104}
-  - component: {fileID: 527687103}
-  - component: {fileID: 527687102}
-  - component: {fileID: 527687108}
   - component: {fileID: 527687109}
   - component: {fileID: 527687110}
-  - component: {fileID: 527687112}
-  - component: {fileID: 527687113}
+  - component: {fileID: 527687114}
   m_Layer: 0
   m_Name: SpawnerParent
   m_TagString: Untagged
@@ -374,7 +362,10 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -129.31825, y: 60.67452, z: -36.968384}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1467055076}
+  - {fileID: 1056557566}
+  - {fileID: 1481201916}
   m_Father: {fileID: 421225081}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -392,60 +383,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 2662942346109270115, guid: 3bfa04eedcc3b6f4791d44722b806a37, type: 3}
   z: 0
---- !u!114 &527687093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527687090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameStem: BattleSpider0
-  clones: []
-  number: 10
-  z: 0
-  levelType: 0
-  isEnemy: 0
---- !u!114 &527687094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527687090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameStem: crate
-  clones: []
-  number: 45
-  z: 0.5
-  levelType: 0
-  isEnemy: 0
---- !u!114 &527687095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527687090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameStem: skeleton
-  clones: []
-  number: 10
-  z: 0
-  levelType: 0
-  isEnemy: 0
 --- !u!114 &527687096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,27 +410,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameStem: Debris.00
   clones: []
-  number: 300
-  z: 0
-  levelType: 0
-  isEnemy: 0
---- !u!114 &527687098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527687090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameStem: Wood.00
-  clones: []
   number: 250
   z: 0
-  levelType: 0
+  levelType: -1
   isEnemy: 0
 --- !u!114 &527687099
 MonoBehaviour:
@@ -509,9 +428,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameStem: rock
   clones: []
-  number: 40
+  number: 15
   z: 0
-  levelType: 0
+  levelType: -1
   isEnemy: 0
 --- !u!114 &527687100
 MonoBehaviour:
@@ -545,132 +464,6 @@ MonoBehaviour:
   z: 0
   levelType: -1
   isEnemy: 0
---- !u!114 &527687102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527687090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameStem: plant_
-  clones: []
-  number: 20
-  z: 0
-  levelType: 1
-  isEnemy: 0
---- !u!114 &527687103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527687090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameStem: mushroom_
-  clones: []
-  number: 150
-  z: 0
-  levelType: 1
-  isEnemy: 0
---- !u!114 &527687104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527687090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameStem: flower_
-  clones: []
-  number: 80
-  z: 0
-  levelType: 1
-  isEnemy: 0
---- !u!114 &527687105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527687090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameStem: grass_
-  clones: []
-  number: 30
-  z: 0
-  levelType: 1
-  isEnemy: 0
---- !u!114 &527687106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527687090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameStem: debris_
-  clones: []
-  number: 200
-  z: 0
-  levelType: 1
-  isEnemy: 0
---- !u!114 &527687107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527687090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameStem: bush_
-  clones: []
-  number: 20
-  z: 0
-  levelType: 1
-  isEnemy: 0
---- !u!114 &527687108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527687090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameStem: wolf
-  clones: []
-  number: 15
-  z: 0
-  levelType: 1
-  isEnemy: 0
 --- !u!114 &527687109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,7 +480,7 @@ MonoBehaviour:
   clones: []
   number: 70
   z: 3
-  levelType: 2
+  levelType: -1
   isEnemy: 0
 --- !u!114 &527687110
 MonoBehaviour:
@@ -705,9 +498,9 @@ MonoBehaviour:
   clones: []
   number: 8
   z: 0
-  levelType: 2
+  levelType: -1
   isEnemy: 0
---- !u!114 &527687112
+--- !u!114 &527687114
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -719,29 +512,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameStem: Zolrik
+  nameStem: Rock_deb_
   clones: []
-  number: 15
+  number: 70
   z: 0
-  levelType: 1
-  isEnemy: 0
---- !u!114 &527687113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527687090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameStem: LavaPool
-  clones: []
-  number: 10
-  z: 2
-  levelType: 0
+  levelType: -1
   isEnemy: 0
 --- !u!1 &705507993
 GameObject:
@@ -1183,6 +958,207 @@ RectTransform:
   m_AnchoredPosition: {x: 463, y: 260.5}
   m_SizeDelta: {x: 926, y: 521}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1056557565
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1056557566}
+  - component: {fileID: 1056557575}
+  - component: {fileID: 1056557574}
+  - component: {fileID: 1056557573}
+  - component: {fileID: 1056557572}
+  - component: {fileID: 1056557571}
+  - component: {fileID: 1056557570}
+  - component: {fileID: 1056557569}
+  - component: {fileID: 1056557568}
+  - component: {fileID: 1056557567}
+  m_Layer: 0
+  m_Name: ArtemisSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1056557566
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056557565}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 101.81825, y: -56.314518, z: -6.531616}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 527687091}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1056557567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056557565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: artemis_sword
+  clones: []
+  number: 4
+  z: 0
+  levelType: 1
+  isEnemy: 0
+--- !u!114 &1056557568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056557565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: Zolrik
+  clones: []
+  number: 15
+  z: 0
+  levelType: 1
+  isEnemy: 0
+--- !u!114 &1056557569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056557565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: wolf
+  clones: []
+  number: 15
+  z: 0
+  levelType: 1
+  isEnemy: 0
+--- !u!114 &1056557570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056557565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: plant_
+  clones: []
+  number: 20
+  z: 0
+  levelType: 1
+  isEnemy: 0
+--- !u!114 &1056557571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056557565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: mushroom_
+  clones: []
+  number: 150
+  z: 0
+  levelType: 1
+  isEnemy: 0
+--- !u!114 &1056557572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056557565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: flower_
+  clones: []
+  number: 80
+  z: 0
+  levelType: 1
+  isEnemy: 0
+--- !u!114 &1056557573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056557565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: grass_
+  clones: []
+  number: 15
+  z: 0
+  levelType: 1
+  isEnemy: 0
+--- !u!114 &1056557574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056557565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: debris_
+  clones: []
+  number: 200
+  z: 0
+  levelType: 1
+  isEnemy: 0
+--- !u!114 &1056557575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056557565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: bush_
+  clones: []
+  number: 15
+  z: 0
+  levelType: 1
+  isEnemy: 0
 --- !u!1 &1233529961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,6 +1398,275 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1467055075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1467055076}
+  - component: {fileID: 1467055082}
+  - component: {fileID: 1467055081}
+  - component: {fileID: 1467055080}
+  - component: {fileID: 1467055079}
+  - component: {fileID: 1467055078}
+  - component: {fileID: 1467055077}
+  m_Layer: 0
+  m_Name: HadesSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1467055076
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467055075}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 101.81825, y: -56.314518, z: -6.531616}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 527687091}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1467055077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467055075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: hades_sword
+  clones: []
+  number: 4
+  z: 0
+  levelType: 0
+  isEnemy: 0
+--- !u!114 &1467055078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467055075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: LavaPool
+  clones: []
+  number: 10
+  z: 2
+  levelType: 0
+  isEnemy: 0
+--- !u!114 &1467055079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467055075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: BattleSpider0
+  clones: []
+  number: 10
+  z: 0
+  levelType: 0
+  isEnemy: 0
+--- !u!114 &1467055080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467055075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: crate
+  clones: []
+  number: 45
+  z: 0.5
+  levelType: 0
+  isEnemy: 0
+--- !u!114 &1467055081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467055075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: skeleton
+  clones: []
+  number: 10
+  z: 0
+  levelType: 0
+  isEnemy: 0
+--- !u!114 &1467055082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467055075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: Wood.00
+  clones: []
+  number: 250
+  z: 0
+  levelType: 0
+  isEnemy: 0
+--- !u!1 &1481201915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1481201916}
+  - component: {fileID: 1481201919}
+  - component: {fileID: 1481201918}
+  - component: {fileID: 1481201917}
+  - component: {fileID: 1481201921}
+  - component: {fileID: 1481201920}
+  m_Layer: 0
+  m_Name: AresSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1481201916
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481201915}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 101.81825, y: -56.314518, z: -6.531616}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 527687091}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1481201917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481201915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: weapon_rack
+  clones: []
+  number: 15
+  z: 0
+  levelType: 2
+  isEnemy: 0
+--- !u!114 &1481201918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481201915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: ares_sword
+  clones: []
+  number: 4
+  z: 0
+  levelType: 2
+  isEnemy: 0
+--- !u!114 &1481201919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481201915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: wall_art
+  clones: []
+  number: 30
+  z: 2
+  levelType: 2
+  isEnemy: 0
+--- !u!114 &1481201920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481201915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: Troll
+  clones: []
+  number: 15
+  z: 0
+  levelType: 2
+  isEnemy: 1
+--- !u!114 &1481201921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481201915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: skeleton
+  clones: []
+  number: 15
+  z: 0
+  levelType: 2
+  isEnemy: 1
 --- !u!1 &1638526374
 GameObject:
   m_ObjectHideFlags: 0
@@ -1544,8 +1789,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ff641c15294c440acf79d1f1082fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 80
-  height: 120
+  width: 100
+  height: 130
   iterations: 4
   seed: 
   useRandomSeed: 1

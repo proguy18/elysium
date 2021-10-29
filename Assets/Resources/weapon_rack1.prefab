@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 8669240701489220007}
   - component: {fileID: 8669240701488122727}
   - component: {fileID: 8669240701490058660}
+  - component: {fileID: 6517592012787010974}
   m_Layer: 0
-  m_Name: WeaponRack_Big
+  m_Name: weapon_rack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,6 +101,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 5a3630cf5f3e0b7489e748180d9a081a, type: 3}
+--- !u!114 &6517592012787010974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8669240701490058663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93728fdc97e7cf4fa60cb14a109aa9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xrotation: 270
+  yrotation: 0
+  zrotation: 0
+  setx: 1
+  sety: 0
+  setz: 0
 --- !u!1001 &2119013328824555875
 PrefabInstance:
   m_ObjectHideFlags: 0

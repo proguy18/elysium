@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 551740291447334627}
   - component: {fileID: 3461006737634634054}
   - component: {fileID: 1721219497683246476}
+  - component: {fileID: 2271418261786165235}
   m_Layer: 0
   m_Name: Hades_sword1
   m_TagString: Untagged
@@ -82,3 +83,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!122 &2271418261786165235
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928863522061646937}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4281412714
+  m_Size: 0.5
