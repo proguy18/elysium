@@ -117,7 +117,7 @@ MonoBehaviour:
   sety: 0
   setz: 0
   rotx: 0
-  roty: 0
+  roty: 1
   rotz: 0
 --- !u!1001 &3689796187690132864
 PrefabInstance:
