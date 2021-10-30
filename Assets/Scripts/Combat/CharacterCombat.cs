@@ -8,7 +8,7 @@ public abstract class CharacterCombat : MonoBehaviour
 {
     public event Action OnAttacking;
     [SerializeField] private float attackSpeed = 1f;
-    [SerializeField] private float attackCooldown;
+    [SerializeField] protected float attackCooldown;
     [SerializeField] private Transform attackPoint;
     [SerializeField] protected float attackRange = 2f;
     [SerializeField] private LayerMask enemyLayers;
@@ -61,5 +61,10 @@ public abstract class CharacterCombat : MonoBehaviour
     public void Toggle(bool enable)
     {
         isEnabled = enable;
+    }
+
+    public float getCooldown()
+    {
+        return attackCooldown;
     }
 }

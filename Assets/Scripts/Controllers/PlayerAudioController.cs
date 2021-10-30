@@ -11,12 +11,16 @@ public class PlayerAudioController : MonoBehaviour
     // Add movement sound
     public AudioSource _mainAudioSource;
     public AudioSource _secondaryAudioSource;
+    public AudioSource _secondaryAudioSource1;
     public AudioClip walking;
     public AudioClip running;
     public AudioClip swordSwing;
+    public AudioClip itemPick;
     
     private float attackCooldown = 0f;
     public float attackSpeed = 1f;
+
+    public bool isPaused = false;
     
     public KeyCode left = KeyCode.A;
     public KeyCode right = KeyCode.D;
@@ -33,8 +37,11 @@ public class PlayerAudioController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movementSounds();
-        attackCooldown -= Time.deltaTime;
+        if (!isPaused)
+        {
+            movementSounds();
+            attackCooldown -= Time.deltaTime;
+        }
     }
 
     private void movementSounds()
@@ -105,5 +112,32 @@ public class PlayerAudioController : MonoBehaviour
         }
 
         attackCooldown = 1 / attackSpeed;
+    }
+    
+    public void pickItem()
+    {
+        if (_secondaryAudioSource1.clip != itemPick)
+        {
+            _secondaryAudioSource1.Stop();
+            _secondaryAudioSource1.clip = itemPick;
+            _secondaryAudioSource1.Play();
+        }
+
+        if (!_secondaryAudioSource1.isPlaying)
+        {
+            _secondaryAudioSource1.Play();
+        }
+
+    }
+
+    public void togglePause()
+    {
+        isPaused = !isPaused;
+    }
+
+    public void stopSounds()
+    {
+        _mainAudioSource.Stop();
+        _secondaryAudioSource.Stop();
     }
 }

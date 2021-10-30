@@ -55,7 +55,9 @@ public class PlayerInventory : MonoBehaviour {
             Time.timeScale = (Time.timeScale == 0) ? 1 : 0; 
             Cursor.visible = !Cursor.visible;   
 			inventoryUI.SetActive(!inventoryUI.activeSelf);
-		}
+            gameObject.GetComponent<PlayerAudioController>().togglePause();
+            gameObject.GetComponent<PlayerAudioController>().stopSounds();
+        }
 
 	}
 
@@ -67,6 +69,7 @@ public class PlayerInventory : MonoBehaviour {
                 AddToInv(item);
                 Destroy(collision.collider.gameObject);
                 slotsOccupied++;
+                gameObject.GetComponent<PlayerAudioController>().pickItem();
             }
         }
     }

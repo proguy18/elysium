@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Combat
 {
@@ -18,7 +19,14 @@ namespace Combat
 
             // Attacks target if target is within attack range
             if (distance <= attackRange)
+            {   
+                // Play attack sound
+                if (attackCooldown <= 0f)
+                {
+                    gameObject.GetComponent<EnemyAudioController>().attackSound();
+                }
                 Attack();
+            }
         }
     }
 }
