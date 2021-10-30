@@ -212,7 +212,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.98039216, g: 0.45085233, b: 0, a: 1}
   m_Intensity: 3
-  m_Range: 7.93
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -274,7 +274,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   adjustment: 0.4
-  height: 1
 --- !u!1001 &1390938919442071396
 PrefabInstance:
   m_ObjectHideFlags: 0

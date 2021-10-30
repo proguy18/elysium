@@ -1342,6 +1342,7 @@ MonoBehaviour:
   down: 115
   run: 304
   postProcessResources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  lookXLimit: 30
 --- !u!114 &9133032776799548703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1355,7 +1356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth:
-    baseValue: 1000000
+    baseValue: 1000
   damage:
     baseValue: 10
   armor:

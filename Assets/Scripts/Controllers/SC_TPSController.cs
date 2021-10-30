@@ -24,7 +24,7 @@ public class SC_TPSController : MonoBehaviour
     
     public PostProcessResources postProcessResources;
 
-    private float lookXLimit = 0;
+    public float lookXLimit = 10;
     private Transform playerCameraParent;
     private CharacterController characterController;
     private Vector3 moveDirection = Vector3.zero;
