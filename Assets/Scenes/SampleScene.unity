@@ -2594,7 +2594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walls: {fileID: 765067856}
   cave: {fileID: 336031009}
-  wallHeight: 6
+  wallHeight: 20
   x_scale: 1
   wallTiles: 200
 --- !u!114 &1651193680
@@ -2625,7 +2625,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1651193678}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27.5, y: 4.36, z: -43.5}
+  m_LocalPosition: {x: -27.5, y: 18, z: -43.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 765067858}
@@ -2675,8 +2675,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1410a43f98fe1b040bfe23993a0a9a4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaceBetweenLights: 12
-  heightoflight: 2.5
+  spaceBetweenLights: 18
+  heightoflight: 5
 --- !u!224 &1868363774 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8631514541242809553, guid: 5cb27ee1080c16849917ff05d075116f, type: 3}
