@@ -1330,6 +1330,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9e5512dca401e45bb955f05890acf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathMenuUI: {fileID: 0}
+  blurOverlayUI: {fileID: 0}
   walkSpeed: 5
   runSpeed: 8
   mouseSensitivity: 2
@@ -1372,7 +1374,7 @@ MonoBehaviour:
   attackSpeed: 1
   attackCooldown: 0
   attackPoint: {fileID: 8672588682157186310}
-  attackRange: 0.5
+  attackRange: 2
   enemyLayers:
     serializedVersion: 2
     m_Bits: 64
