@@ -24,7 +24,7 @@ public class SC_TPSController : MonoBehaviour
     
     public PostProcessResources postProcessResources;
 
-    public float lookXLimit = 10;
+    public float lookXLimit = 30;
     private Transform playerCameraParent;
     private CharacterController characterController;
     private Vector3 moveDirection = Vector3.zero;
@@ -94,6 +94,8 @@ public class SC_TPSController : MonoBehaviour
         /*AudioListener audioListener = mainCamera.AddComponent<AudioListener>();*/
 
         cameraScript.referenceTransform = playerCameraParent;
+        Cursor.visible = false;
+
     }
 
     void Start()
@@ -153,9 +155,12 @@ public class SC_TPSController : MonoBehaviour
             }
         }
 
+        // mute gameplay sounds
+        gameObject.GetComponent<PlayerAudioController>().togglePause();
+        gameObject.GetComponent<PlayerAudioController>().stopSounds(); 
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!PauseMenu.isPaused)
         {
@@ -190,6 +195,7 @@ public class SC_TPSController : MonoBehaviour
             transform.eulerAngles = new Vector2(0, rotation.y);
         }
     }
+    
     bool IsAlive()
     {
         return !m_Animator.GetBool("hasDied");
@@ -206,7 +212,6 @@ public class SC_TPSController : MonoBehaviour
     }
     private void EnableCursor()
     {
-        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
     private IEnumerator PlayDeathScreen()
