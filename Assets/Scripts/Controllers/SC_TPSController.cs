@@ -128,7 +128,6 @@ public class SC_TPSController : MonoBehaviour
         m_Animator.SetTrigger("Die");
         m_Animator.SetBool("hasDied", true);
         gameObject.GetComponent<SC_TPSController>().enabled = false;
-
         // Disable the enemy
         // Destroy(gameObject, 2.1f);
     }
