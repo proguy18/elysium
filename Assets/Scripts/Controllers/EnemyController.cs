@@ -27,8 +27,8 @@ public abstract class EnemyController : MonoBehaviour
         stats = GetComponent<CharacterStats>();
         characterCombat = GetComponent<CharacterCombat>();
     
-        // target = PlayerManager.instance.player.transform;   
-        target = GameObject.Find("Player(Clone)").transform;
+        target = PlayerManager.instance.player.transform;
+        
         agent = GetComponent<NavMeshAgent>();
         
         enemyAudio = gameObject.GetComponent<EnemyAudioController>();
@@ -83,8 +83,8 @@ public abstract class EnemyController : MonoBehaviour
         
         float distance = Vector3.Distance(target.position, transform.position);
         
-        // Move to target if target is within look radius
-        if (distance <= lookRadius) 
+        // Move to target if target is within look radius and is alive
+        if (distance <= lookRadius && IsAlive()) 
         {
             agent.SetDestination(target.position);
             m_Animator.SetBool("Run", true);
@@ -99,7 +99,7 @@ public abstract class EnemyController : MonoBehaviour
             }
         }
         // Stop running when enemy is not travelling
-        if (agent.velocity.Equals(new Vector3(0, 0, 0)))
+        if (IsStationary())
         {
             m_Animator.SetBool("Run", false);
             enemyAudio.stopMainSound();
@@ -118,5 +118,14 @@ public abstract class EnemyController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
 
+    bool IsStationary()
+    {
+        return agent.velocity.Equals(new Vector3(0, 0, 0));
+    }
+
+    bool IsAlive()
+    {
+        return !m_Animator.GetBool("hasDied");
+    }
     protected abstract void PlayAttackAnimation();
 }
