@@ -127,12 +127,20 @@ public class SC_TPSController : MonoBehaviour
         // Die animation
         m_Animator.SetTrigger("Die");
         m_Animator.SetBool("hasDied", true);
-
+        gameObject.GetComponent<SC_TPSController>().enabled = false;
         // Disable the enemy
         // Destroy(gameObject, 2.1f);
+        Collider[] nearby = Physics.OverlapSphere(transform.position, 10);
+        for (int i = 0; i < nearby.Length; i++) {
+            CharacterCombat enemyCombat = nearby[i].gameObject.GetComponent<CharacterCombat>();
+            if(enemyCombat){
+                enemyCombat.enabled = false;
+            }
+        }
+
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(movementAnimations){
             if(!m_Animator){

@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 7516147023265018177}
   - component: {fileID: -233320804685842318}
   - component: {fileID: 1731342358158903755}
+  - component: {fileID: -4915313148357921446}
   m_Layer: 0
   m_Name: potion2
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -130,3 +131,22 @@ Halo:
     serializedVersion: 2
     rgba: 4284914291
   m_Size: 0.5
+--- !u!114 &-4915313148357921446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7516147023265018176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f47222897a906df4f87f1f02fc026303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 172774604c1bee84185a69041576525b, type: 3}
+  type: 0
+  damageModifier: 10
+  maxHealthModifier: 10
+  armorModifier: 10
+  potionEffect: 0
+  effectValue: 0

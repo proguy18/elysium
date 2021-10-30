@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 7200927917085466067}
   - component: {fileID: 607743572601561257}
   - component: {fileID: 7331963279713470622}
+  - component: {fileID: 6039770408364552368}
   m_Layer: 0
   m_Name: potion3
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -130,3 +131,22 @@ Halo:
     serializedVersion: 2
     rgba: 4283388869
   m_Size: 0.5
+--- !u!114 &6039770408364552368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7200927917085466066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f47222897a906df4f87f1f02fc026303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 6403afd719acd2b4dbb0dfae7add33cb, type: 3}
+  type: 1
+  damageModifier: 34
+  maxHealthModifier: 23
+  armorModifier: 12
+  potionEffect: 0
+  effectValue: 0
