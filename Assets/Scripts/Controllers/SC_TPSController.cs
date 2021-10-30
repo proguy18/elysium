@@ -9,6 +9,7 @@ public class SC_TPSController : MonoBehaviour
 {
     public GameObject deathMenuUI;
     public GameObject blurOverlayUI;
+    public static bool hasDied;
 
     public float walkSpeed = 5f; 
     public float runSpeed = 8f;
@@ -93,7 +94,8 @@ public class SC_TPSController : MonoBehaviour
     }
 
     void Start()
-    {                
+    {
+        hasDied = false;
         y = transform.position.y; // starting y-value
         characterController = GetComponent<CharacterController>();
         rotation.y = transform.eulerAngles.y;
@@ -127,9 +129,11 @@ public class SC_TPSController : MonoBehaviour
     void Die() 
     {
         Debug.Log("Player has died");
+        hasDied = true;
         // Die animation
         m_Animator.SetTrigger("Die");
         m_Animator.SetBool("hasDied", true);
+        
 
         // Disable the enemy
         // Destroy(gameObject, 2.1f);
