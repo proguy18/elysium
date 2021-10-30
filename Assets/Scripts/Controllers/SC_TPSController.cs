@@ -152,7 +152,7 @@ public class SC_TPSController : MonoBehaviour
 
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!PauseMenu.isPaused)
         {
@@ -187,6 +187,7 @@ public class SC_TPSController : MonoBehaviour
             transform.eulerAngles = new Vector2(0, rotation.y);
         }
     }
+    
     bool IsAlive()
     {
         return !m_Animator.GetBool("hasDied");
