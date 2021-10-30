@@ -17,6 +17,8 @@ public class SC_TPSController : MonoBehaviour
     public KeyCode up = KeyCode.W;
     public KeyCode down = KeyCode.S;
     public KeyCode run = KeyCode.LeftShift;
+    
+    public PostProcessResources postProcessResources;
 
     private float lookXLimit = 0;
     private Transform playerCameraParent;
@@ -80,6 +82,7 @@ public class SC_TPSController : MonoBehaviour
         
         // Add postprocessing
         PostProcessLayer postProcessLayer = mainCamera.AddComponent<PostProcessLayer>();
+        postProcessLayer.Init(postProcessResources);
         postProcessLayer.antialiasingMode = PostProcessLayer.Antialiasing.SubpixelMorphologicalAntialiasing;
         postProcessLayer.volumeLayer = LayerMask.GetMask("Post-processing");
         
