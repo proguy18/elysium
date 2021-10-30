@@ -154,34 +154,38 @@ public class SC_TPSController : MonoBehaviour
 
     void Update()
     {
-        if(movementAnimations){
-            if(!m_Animator)
-                m_Animator  = gameObject.GetComponent<Animator>();
-            if(IsAlive())
-                animateMovements(); 
+        if (!PauseMenu.isPaused)
+        {
+            if (movementAnimations)
+            {
+                if (!m_Animator)
+                    m_Animator = gameObject.GetComponent<Animator>();
+                if (IsAlive())
+                    animateMovements();
+            }
+
+            Vector3 forward = transform.TransformDirection(Vector3.forward);
+            Vector3 r = transform.TransformDirection(Vector3.right);
+            float speed = Input.GetKey(run) ? runSpeed : walkSpeed;
+            float curSpeedX = speed * getAxis(down, up);
+            float curSpeedY = speed * getAxis(left, right);
+            moveDirection = (forward * curSpeedX) + (r * curSpeedY);
+
+            // Move the controller
+            if (IsAlive())
+                characterController.Move(moveDirection * Time.deltaTime);
+
+            // prevent character from sinking into the grounded
+            float offset = -transform.position.y + y; // set current position to 0, then add original y value
+            characterController.Move(new Vector3(0, offset, 0));
+
+            // Player and Camera rotation
+            rotation.y += Input.GetAxis("Mouse X") * mouseSensitivity;
+            rotation.x += -Input.GetAxis("Mouse Y") * mouseSensitivity;
+            rotation.x = Mathf.Clamp(rotation.x, -lookXLimit, lookXLimit);
+            playerCameraParent.localRotation = Quaternion.Euler(rotation.x, 0, 0);
+            transform.eulerAngles = new Vector2(0, rotation.y);
         }
-        
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
-        Vector3 r = transform.TransformDirection(Vector3.right);
-        float speed = Input.GetKey(run) ? runSpeed : walkSpeed;
-        float curSpeedX = speed * getAxis(down, up);
-        float curSpeedY = speed * getAxis(left, right);
-        moveDirection = (forward * curSpeedX) + (r * curSpeedY);
-
-        // Move the controller
-        if(IsAlive())
-            characterController.Move(moveDirection * Time.deltaTime);
-
-        // prevent character from sinking into the grounded
-        float offset = -transform.position.y + y; // set current position to 0, then add original y value
-        characterController.Move(new Vector3(0, offset, 0));
-
-        // Player and Camera rotation
-        rotation.y += Input.GetAxis("Mouse X") * mouseSensitivity;
-        rotation.x += -Input.GetAxis("Mouse Y") * mouseSensitivity;
-        rotation.x = Mathf.Clamp(rotation.x, -lookXLimit, lookXLimit);
-        playerCameraParent.localRotation = Quaternion.Euler(rotation.x, 0, 0);
-        transform.eulerAngles = new Vector2(0, rotation.y);
     }
     bool IsAlive()
     {
