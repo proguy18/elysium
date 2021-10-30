@@ -22,7 +22,7 @@ public class SC_TPSController : MonoBehaviour
     public KeyCode down = KeyCode.S;
     public KeyCode run = KeyCode.LeftShift;
 
-    private float lookXLimit = 0;
+    public float lookXLimit = 0;
     private Transform playerCameraParent;
     private CharacterController characterController;
     private Vector3 moveDirection = Vector3.zero;
