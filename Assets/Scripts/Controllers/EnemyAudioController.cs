@@ -25,6 +25,11 @@ public class EnemyAudioController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale == 0)
+        {
+            stopMainSound();
+            stopSecondarySound();
+        }
     }
 
     public void stopMainSound()
@@ -72,5 +77,18 @@ public class EnemyAudioController : MonoBehaviour
     public void attackSound()
     {
         // to add attack sounds
+        // Add movement sound
+        if (_secondaryAudioSource1.clip != Attack)
+        {
+            _secondaryAudioSource1.Stop();
+            _secondaryAudioSource1.clip = Attack;
+            _secondaryAudioSource1.Play();
+        }
+
+        if (!_secondaryAudioSource1.isPlaying)
+        {
+            _secondaryAudioSource1.Play();
+        }
     }
+    
 }

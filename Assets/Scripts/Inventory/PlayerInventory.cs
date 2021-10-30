@@ -52,12 +52,39 @@ public class PlayerInventory : MonoBehaviour {
 	{
 		if (Input.GetKeyDown(inventoryKey))
 		{
-            Time.timeScale = (Time.timeScale == 0) ? 1 : 0; 
-            Cursor.visible = !Cursor.visible;   
-			inventoryUI.SetActive(!inventoryUI.activeSelf);
+            toggleInventory();
 		}
-
 	}
+
+    private void toggleInventory() {
+        // pause the game and display cursor
+        Time.timeScale = (Time.timeScale == 0) ? 1 : 0; 
+        Cursor.visible = !Cursor.visible;           
+
+        // toggle UI
+        inventoryUI.SetActive(!inventoryUI.activeSelf);
+
+        /* gameObject.GetComponent<PlayerAudioController>().togglePause();
+        gameObject.GetComponent<PlayerAudioController>().stopSounds(); */
+
+        // pause player sounds  
+        PlayerAudioController PAC = gameObject.GetComponent<PlayerAudioController>();
+        PAC._mainAudioSource.Stop(); 
+
+        // pause enemy sounds
+        Collider[] nearby = Physics.OverlapSphere(transform.position, 10);
+        for (int i = 0; i < nearby.Length; i++) {
+            AudioSource enemyAudio = nearby[i].gameObject.GetComponentInChildren<AudioSource>();
+            if(enemyAudio){
+                enemyAudio.enabled = !enemyAudio.enabled;
+            }                
+        }
+
+        // disable movement sounds temporarily 
+        PAC.enabled = !PAC.enabled; 
+    }
+
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -67,6 +94,7 @@ public class PlayerInventory : MonoBehaviour {
                 AddToInv(item);
                 Destroy(collision.collider.gameObject);
                 slotsOccupied++;
+                gameObject.GetComponent<PlayerAudioController>().pickItem();
             }
         }
     }
