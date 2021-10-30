@@ -41,7 +41,7 @@ public class RotationFixer : MonoBehaviour
     private void Start() {
         rotated = false;
     }
-    public void rotate(){
+    /*public void rotate(){
         else if ((rotx ||roty ||rotz)){
 
             if (rotx) x = xrotation;
@@ -51,6 +51,6 @@ public class RotationFixer : MonoBehaviour
             
         
         }
-    }
+    }*/
 
 }
