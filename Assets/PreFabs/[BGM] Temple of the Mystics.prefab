@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7216611645324180536}
   - component: {fileID: 7216611645324180539}
   m_Layer: 0
-  m_Name: '[BG] Temple of the Mystics'
+  m_Name: '[BGM] Temple of the Mystics'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

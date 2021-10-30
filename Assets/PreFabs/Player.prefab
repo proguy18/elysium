@@ -1351,7 +1351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth:
-    baseValue: 100
+    baseValue: 1000000
   damage:
     baseValue: 10
   armor:
@@ -1391,8 +1391,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainAudioSource: {fileID: 4133082766324662780}
   _secondaryAudioSource: {fileID: 874848128884587076}
-  walking: {fileID: 8300000, guid: b72d958a649776a49aceac30fbf3247a, type: 3}
-  running: {fileID: 8300000, guid: cb2e036a2cfab1d40ae095f2281d8943, type: 3}
+  walking: {fileID: 8300000, guid: 58cfca4474f40fc45b0208b240464b27, type: 3}
+  running: {fileID: 8300000, guid: 9f71cec130edf154491860ca3851db52, type: 3}
   swordSwing: {fileID: 8300000, guid: fc7468403b7b0ae489c1e5dc8a7fccb2, type: 3}
   attackSpeed: 1
   left: 97
@@ -1400,7 +1400,7 @@ MonoBehaviour:
   up: 119
   down: 115
   run: 304
-  attack: 323
+  attack: 32
 --- !u!81 &6441459128459653860
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1766,7 +1766,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.513
+  m_Volume: 0.09
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1893,7 +1893,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.409
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 0
   Mute: 0
