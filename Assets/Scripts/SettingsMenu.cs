@@ -1,9 +1,10 @@
 using System.Collections.Generic;
-//using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SettingsMenu : MonoBehaviour
 {
+    public AudioMixer audioMixer;
     private Resolution[] m_Resolutions;
     public TMPro.TMP_Dropdown resolutionsDropDown;
     public TMPro.TMP_Dropdown qualityDropDown;
@@ -31,7 +32,7 @@ public class SettingsMenu : MonoBehaviour
         int currentResolutionIndex = 0;
         for (int i = 0; i < m_Resolutions.Length; i++)
         {
-            // Only accept refresh rates of 60 Or 120
+            // Only accept refresh rates of 60 Or 120hz
             if (m_Resolutions[i].refreshRate == 120 || m_Resolutions[i].refreshRate == 60)
             {
                 string option = m_Resolutions[i].width + " x " + m_Resolutions[i].height + " (" + m_Resolutions[i].refreshRate + "Hz)";
@@ -51,6 +52,7 @@ public class SettingsMenu : MonoBehaviour
     public void SetVolume(float volume)
     {
         // Adjust Volume 
+        audioMixer.SetFloat("volume", volume);
         Debug.Log((volume));
     }
 

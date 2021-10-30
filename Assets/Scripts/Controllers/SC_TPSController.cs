@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
@@ -6,6 +7,9 @@ using UnityEngine.Rendering.PostProcessing;
 [RequireComponent(typeof(CharacterStats))]
 public class SC_TPSController : MonoBehaviour
 {
+    public GameObject deathMenuUI;
+    public GameObject blurOverlayUI;
+    public static bool hasDied;
 
     public float walkSpeed = 5f; 
     public float runSpeed = 8f;
@@ -93,7 +97,8 @@ public class SC_TPSController : MonoBehaviour
     }
 
     void Start()
-    {                
+    {
+        hasDied = false;
         y = transform.position.y; // starting y-value
         characterController = GetComponent<CharacterController>();
         rotation.y = transform.eulerAngles.y;
@@ -127,9 +132,16 @@ public class SC_TPSController : MonoBehaviour
     void Die() 
     {
         Debug.Log("Player has died");
+        hasDied = true;
         // Die animation
         m_Animator.SetTrigger("Die");
         m_Animator.SetBool("hasDied", true);
+        
+
+        // Disable the enemy
+        // Destroy(gameObject, 2.1f);
+        StartCoroutine(PlayDeathScreen());
+        
         gameObject.GetComponent<SC_TPSController>().enabled = false;
         // Disable the enemy
         // Destroy(gameObject, 2.1f);
@@ -143,38 +155,66 @@ public class SC_TPSController : MonoBehaviour
 
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        if(movementAnimations){
-            if(!m_Animator){
-                m_Animator  = gameObject.GetComponent<Animator>();
+        if (!PauseMenu.isPaused)
+        {
+            if (movementAnimations)
+            {
+                if (!m_Animator)
+                    m_Animator = gameObject.GetComponent<Animator>();
+                if (IsAlive())
+                    animateMovements();
             }
-            animateMovements(); 
+
+            Vector3 forward = transform.TransformDirection(Vector3.forward);
+            Vector3 r = transform.TransformDirection(Vector3.right);
+            float speed = Input.GetKey(run) ? runSpeed : walkSpeed;
+            float curSpeedX = speed * getAxis(down, up);
+            float curSpeedY = speed * getAxis(left, right);
+            moveDirection = (forward * curSpeedX) + (r * curSpeedY);
+
+            // Move the controller
+            if (IsAlive())
+                characterController.Move(moveDirection * Time.deltaTime);
+
+            // prevent character from sinking into the grounded
+            float offset = -transform.position.y + y; // set current position to 0, then add original y value
+            characterController.Move(new Vector3(0, offset, 0));
+
+            // Player and Camera rotation
+            rotation.y += Input.GetAxis("Mouse X") * mouseSensitivity;
+            rotation.x += -Input.GetAxis("Mouse Y") * mouseSensitivity;
+            rotation.x = Mathf.Clamp(rotation.x, -lookXLimit, lookXLimit);
+            playerCameraParent.localRotation = Quaternion.Euler(rotation.x, 0, 0);
+            transform.eulerAngles = new Vector2(0, rotation.y);
         }
-        
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
-        Vector3 r = transform.TransformDirection(Vector3.right);
-        float speed = Input.GetKey(run) ? runSpeed : walkSpeed;
-        float curSpeedX = speed * getAxis(down, up);
-        float curSpeedY = speed * getAxis(left, right);
-        moveDirection = (forward * curSpeedX) + (r * curSpeedY);
-
-        // Move the controller
-        characterController.Move(moveDirection * Time.deltaTime);
-
-        // prevent character from sinking into the grounded
-        float offset = -transform.position.y + y; // set current position to 0, then add original y value
-        characterController.Move(new Vector3(0, offset, 0));
-
-        // Player and Camera rotation
-        rotation.y += Input.GetAxis("Mouse X") * mouseSensitivity;
-        rotation.x += -Input.GetAxis("Mouse Y") * mouseSensitivity;
-        rotation.x = Mathf.Clamp(rotation.x, -lookXLimit, lookXLimit);
-        playerCameraParent.localRotation = Quaternion.Euler(rotation.x, 0, 0);
-        transform.eulerAngles = new Vector2(0, rotation.y);
+    }
+    bool IsAlive()
+    {
+        return !m_Animator.GetBool("hasDied");
     }
     private void PlayAttackAnimation()
     {
         m_Animator.SetTrigger("Attack_2");
+    }
+    
+    private void EnableDeathUI()
+    {
+        deathMenuUI.SetActive(true);
+        blurOverlayUI.SetActive(true);
+    }
+    private void EnableCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+    private IEnumerator PlayDeathScreen()
+    {
+        yield return new WaitForSeconds(1f);
+        
+        EnableCursor();
+        EnableDeathUI();
+        Time.timeScale = 0f;
     }
 }

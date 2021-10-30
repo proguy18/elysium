@@ -64,24 +64,9 @@ public class PlayerInventory : MonoBehaviour {
         // toggle UI
         inventoryUI.SetActive(!inventoryUI.activeSelf);
 
-        /* gameObject.GetComponent<PlayerAudioController>().togglePause();
-        gameObject.GetComponent<PlayerAudioController>().stopSounds(); */
-
-        // pause player sounds  
-        PlayerAudioController PAC = gameObject.GetComponent<PlayerAudioController>();
-        PAC._mainAudioSource.Stop(); 
-
-        // pause enemy sounds
-        Collider[] nearby = Physics.OverlapSphere(transform.position, 10);
-        for (int i = 0; i < nearby.Length; i++) {
-            AudioSource enemyAudio = nearby[i].gameObject.GetComponentInChildren<AudioSource>();
-            if(enemyAudio){
-                enemyAudio.enabled = !enemyAudio.enabled;
-            }                
-        }
-
-        // disable movement sounds temporarily 
-        PAC.enabled = !PAC.enabled; 
+        // mute gameplay sounds
+        gameObject.GetComponent<PlayerAudioController>().togglePause();
+        gameObject.GetComponent<PlayerAudioController>().stopSounds(); 
     }
 
 
