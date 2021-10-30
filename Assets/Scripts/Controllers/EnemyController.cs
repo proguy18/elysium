@@ -28,8 +28,8 @@ public abstract class EnemyController : MonoBehaviour
         characterCombat = GetComponent<CharacterCombat>();
     
         // target = PlayerManager.instance.player.transform;   
-        // target = GameObject.Find("Player(Clone)").transform;
-        target = GameObject.Find("Player").transform;
+        target = GameObject.Find("Player(Clone)").transform;
+        // target = GameObject.Find("Player").transform;
         
         agent = GetComponent<NavMeshAgent>();
         
