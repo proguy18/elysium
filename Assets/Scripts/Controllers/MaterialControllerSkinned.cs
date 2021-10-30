@@ -13,7 +13,7 @@ public class MaterialControllerSkinned : MonoBehaviour
     public KeyCode changeMaterial = KeyCode.F;
 
     private bool alt = false;
-    
+
     private float cooldown;
 
     // Update is called once per frame
@@ -41,5 +41,15 @@ public class MaterialControllerSkinned : MonoBehaviour
                 cooldown = 1f;
             }
         }
+    }
+
+    public void changeToTransparent()
+    {
+        skinnedMeshRenderer.material = transparentMaterial;
+    }
+    
+    public void changeToDefault()
+    {
+        skinnedMeshRenderer.material = defaultMaterial;
     }
 }
