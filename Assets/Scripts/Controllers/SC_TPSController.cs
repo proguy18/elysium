@@ -91,6 +91,8 @@ public class SC_TPSController : MonoBehaviour
         /*AudioListener audioListener = mainCamera.AddComponent<AudioListener>();*/
 
         cameraScript.referenceTransform = playerCameraParent;
+        Cursor.visible = false;
+
     }
 
     void Start()
@@ -204,7 +206,6 @@ public class SC_TPSController : MonoBehaviour
     }
     private void EnableCursor()
     {
-        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
     private IEnumerator PlayDeathScreen()
