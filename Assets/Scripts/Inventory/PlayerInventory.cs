@@ -64,6 +64,9 @@ public class PlayerInventory : MonoBehaviour {
         // toggle UI
         inventoryUI.SetActive(!inventoryUI.activeSelf);
 
+        /* gameObject.GetComponent<PlayerAudioController>().togglePause();
+        gameObject.GetComponent<PlayerAudioController>().stopSounds(); */
+
         // pause player sounds  
         PlayerAudioController PAC = gameObject.GetComponent<PlayerAudioController>();
         PAC._mainAudioSource.Stop(); 
@@ -91,6 +94,7 @@ public class PlayerInventory : MonoBehaviour {
                 AddToInv(item);
                 Destroy(collision.collider.gameObject);
                 slotsOccupied++;
+                gameObject.GetComponent<PlayerAudioController>().pickItem();
             }
         }
     }

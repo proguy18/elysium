@@ -119,6 +119,9 @@ MonoBehaviour:
   setx: 1
   sety: 0
   setz: 0
+  rotx: 0
+  roty: 0
+  rotz: 0
 --- !u!122 &2301245538467284644
 Halo:
   m_ObjectHideFlags: 0
