@@ -130,6 +130,14 @@ public class SC_TPSController : MonoBehaviour
         gameObject.GetComponent<SC_TPSController>().enabled = false;
         // Disable the enemy
         // Destroy(gameObject, 2.1f);
+        Collider[] nearby = Physics.OverlapSphere(transform.position, 10);
+        for (int i = 0; i < nearby.Length; i++) {
+            CharacterCombat enemyCombat = nearby[i].gameObject.GetComponent<CharacterCombat>();
+            if(enemyCombat){
+                enemyCombat.enabled = false;
+            }
+        }
+
     }
 
     void FixedUpdate()
