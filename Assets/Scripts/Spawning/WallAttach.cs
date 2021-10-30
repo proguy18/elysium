@@ -11,13 +11,6 @@ public class WallAttach : MonoBehaviour
     public float adjustment = 0.3f;
     private bool hasMoved = false;
     
-     
-    // private void LateUpdate() {
-    //     if (!hasMoved || Input.GetKeyDown("m")){
-    //         MoveLights();
-    //     }
-    
-    // }
     public void MoveLights(){
         
         findBestDistance();

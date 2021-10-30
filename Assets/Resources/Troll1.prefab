@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: -5830711143609867276}
   - component: {fileID: 923445762537348901}
   m_Layer: 6
-  m_Name: Zolrik2
+  m_Name: Troll1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,7 +177,7 @@ Animator:
   m_GameObject: {fileID: 3550853418079442980}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 9f82aa7445f950f46b8d0737f163b7df, type: 3}
-  m_Controller: {fileID: 9100000, guid: 70ad0eb5325986b4da66111eaa8e0a98, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -275,7 +275,7 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
-  m_Animator: {fileID: 0}
+  m_Animator: {fileID: 3550853418086705682}
 --- !u!114 &4769356677405600595
 MonoBehaviour:
   m_ObjectHideFlags: 0
