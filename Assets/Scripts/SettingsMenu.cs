@@ -32,7 +32,7 @@ public class SettingsMenu : MonoBehaviour
         int currentResolutionIndex = 0;
         for (int i = 0; i < m_Resolutions.Length; i++)
         {
-            // Only accept refresh rates of 60 Or 120
+            // Only accept refresh rates of 60 Or 120hz
             if (m_Resolutions[i].refreshRate == 120 || m_Resolutions[i].refreshRate == 60)
             {
                 string option = m_Resolutions[i].width + " x " + m_Resolutions[i].height + " (" + m_Resolutions[i].refreshRate + "Hz)";
