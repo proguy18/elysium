@@ -1938,7 +1938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackSpeed: 1
-  attackCooldown: 0
+  attackCooldown: 1
   attackPoint: {fileID: 1774102913248494325}
   attackRange: 2
   enemyLayers:

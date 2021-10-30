@@ -41,16 +41,16 @@ public class RotationFixer : MonoBehaviour
     private void Start() {
         rotated = false;
     }
-    public void rotate(){
-        else if ((rotx ||roty ||rotz)){
+    // public void rotate(){
+    //     else if ((rotx ||roty ||rotz)){
 
-            if (rotx) x = xrotation;
-            if (roty) y = yrotation;
-            if (rotz) z = zrotation;
+    //         if (rotx) x = xrotation;
+    //         if (roty) y = yrotation;
+    //         if (rotz) z = zrotation;
             
             
         
-        }
-    }
+    //     }
+    // }
 
 }

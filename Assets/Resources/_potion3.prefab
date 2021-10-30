@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &928863522061646937
+--- !u!1 &7200927917085466066
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,63 +8,64 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 551740291447334627}
-  - component: {fileID: 3461006737634634054}
-  - component: {fileID: 1721219497683246476}
-  - component: {fileID: 2271418261786165235}
-  - component: {fileID: 1243991079761396940}
-  - component: {fileID: 5850512026818805412}
-  - component: {fileID: -2658330917821906272}
+  - component: {fileID: 7200927917085622770}
+  - component: {fileID: 7200927917086425554}
+  - component: {fileID: 7200927917087392530}
+  - component: {fileID: 607743572601561257}
+  - component: {fileID: 7331963279713470622}
+  - component: {fileID: 6039770408364552368}
+  - component: {fileID: -2150621914464222857}
   m_Layer: 0
-  m_Name: Hades_sword1
+  m_Name: _potion3
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!4 &551740291447334627
+--- !u!4 &7200927917085622770
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928863522061646937}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_GameObject: {fileID: 7200927917085466066}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5, y: 0, z: 5}
+  m_LocalScale: {x: 200, y: 200, z: 200}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!33 &3461006737634634054
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &7200927917086425554
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928863522061646937}
-  m_Mesh: {fileID: -1694830996406892684, guid: f3324c692b6f09b488db57b53689f4a8, type: 3}
---- !u!23 &1721219497683246476
+  m_GameObject: {fileID: 7200927917085466066}
+  m_Mesh: {fileID: 4300000, guid: c6179e854b44e2541a9956947c806de0, type: 3}
+--- !u!23 &7200927917087392530
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928863522061646937}
+  m_GameObject: {fileID: 7200927917085466066}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 58ba3e1ca00c93447b2e38329d2a9553, type: 2}
+  - {fileID: 2100000, guid: d7afee8ecf148b041b622449663d7ef9, type: 2}
+  - {fileID: 2100000, guid: fa9e8323c39675f459e110ce7b78f7cf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -76,7 +77,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -86,31 +87,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!122 &2271418261786165235
-Halo:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928863522061646937}
-  m_Enabled: 1
-  m_Color:
-    serializedVersion: 2
-    rgba: 4281412714
-  m_Size: 1
---- !u!114 &1243991079761396940
+--- !u!114 &607743572601561257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928863522061646937}
+  m_GameObject: {fileID: 7200927917085466066}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a93728fdc97e7cf4fa60cb14a109aa9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xrotation: 90
+  xrotation: 270
   yrotation: 0
   zrotation: 0
   setx: 1
@@ -119,35 +108,47 @@ MonoBehaviour:
   rotx: 0
   roty: 0
   rotz: 0
---- !u!114 &5850512026818805412
+--- !u!122 &7331963279713470622
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7200927917085466066}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4283388869
+  m_Size: 0.5
+--- !u!114 &6039770408364552368
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928863522061646937}
+  m_GameObject: {fileID: 7200927917085466066}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f47222897a906df4f87f1f02fc026303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 82b47d9db47a0724abc484d5adb37cbf, type: 3}
-  type: 0
-  damageModifier: 22
-  maxHealthModifier: 22
-  armorModifier: 0
+  icon: {fileID: 21300000, guid: 6403afd719acd2b4dbb0dfae7add33cb, type: 3}
+  type: 1
+  damageModifier: 34
+  maxHealthModifier: 23
+  armorModifier: 12
   potionEffect: 0
   effectValue: 0
---- !u!65 &-2658330917821906272
+--- !u!65 &-2150621914464222857
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928863522061646937}
+  m_GameObject: {fileID: 7200927917085466066}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 1, z: 1}
-  m_Center: {x: -0.0016209818, y: -0.4031618, z: 0.002226029}
+  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Center: {x: 0, y: 0, z: 0.001237706}

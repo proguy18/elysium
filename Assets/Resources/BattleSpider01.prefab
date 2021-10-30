@@ -2031,7 +2031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackSpeed: 1
-  attackCooldown: 0
+  attackCooldown: 1
   attackPoint: {fileID: 5371291146186273253}
   attackRange: 2
   enemyLayers:

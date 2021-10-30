@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 8385242052075323531}
   - component: {fileID: 8385242052076126379}
   - component: {fileID: 8385242052077224555}
-  - component: {fileID: 8385242052075035818}
   - component: {fileID: 8414341551734574714}
   - component: {fileID: 2301245538467284644}
   - component: {fileID: 1790539704583579557}
+  - component: {fileID: -942103102238631167}
   m_Layer: 0
   m_Name: potion1
   m_TagString: Item
@@ -87,20 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8385242052075035818
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8385242052075035819}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: e873cbc7c65c12b409ffa8b357ef3039, type: 3}
 --- !u!114 &8414341551734574714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +105,9 @@ MonoBehaviour:
   setx: 1
   sety: 0
   setz: 0
+  rotx: 0
+  roty: 0
+  rotz: 0
 --- !u!122 &2301245538467284644
 Halo:
   m_ObjectHideFlags: 0
@@ -150,3 +139,16 @@ MonoBehaviour:
   armorModifier: 0
   potionEffect: 1
   effectValue: 42
+--- !u!65 &-942103102238631167
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8385242052075035819}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Center: {x: 0, y: 0, z: 0.001237706}

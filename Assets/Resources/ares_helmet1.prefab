@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7516147023265018176
+--- !u!1 &8036655354327228762
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,64 +8,62 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7516147023265246560}
-  - component: {fileID: 7516147023266049344}
-  - component: {fileID: 7516147023267016576}
-  - component: {fileID: 7516147023265018177}
-  - component: {fileID: -233320804685842318}
-  - component: {fileID: 1731342358158903755}
-  - component: {fileID: -4915313148357921446}
+  - component: {fileID: 7263250506227268576}
+  - component: {fileID: 6008897356405486661}
+  - component: {fileID: 8396700950206988431}
+  - component: {fileID: 7153553110427196430}
+  - component: {fileID: 7153553110427196429}
+  - component: {fileID: -6628518640605086082}
   m_Layer: 0
-  m_Name: potion2
+  m_Name: ares_helmet1
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7516147023265246560
+--- !u!4 &7263250506227268576
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7516147023265018176}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 0, z: 5}
-  m_LocalScale: {x: 200, y: 200, z: 200}
+  m_GameObject: {fileID: 8036655354327228762}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.93, z: 0}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7516147023266049344
+--- !u!33 &6008897356405486661
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7516147023265018176}
-  m_Mesh: {fileID: 4300000, guid: 7e1b98bbe17b88644aea6625cb61b2c5, type: 3}
---- !u!23 &7516147023267016576
+  m_GameObject: {fileID: 8036655354327228762}
+  m_Mesh: {fileID: 5366374598050484456, guid: 6eb12bb0295f1b54fa0fefa810bf43af, type: 3}
+--- !u!23 &8396700950206988431
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7516147023265018176}
+  m_GameObject: {fileID: 8036655354327228762}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
+  m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d7afee8ecf148b041b622449663d7ef9, type: 2}
-  - {fileID: 2100000, guid: fa9e8323c39675f459e110ce7b78f7cf, type: 2}
+  - {fileID: 2100000, guid: 9bcfa38df462e2e41963999c5098958b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,7 +75,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
+  m_StitchLightmapSeams: 1
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -87,66 +85,47 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7516147023265018177
-MeshCollider:
+--- !u!65 &7153553110427196430
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7516147023265018176}
+  m_GameObject: {fileID: 8036655354327228762}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 7e1b98bbe17b88644aea6625cb61b2c5, type: 3}
---- !u!114 &-233320804685842318
+  serializedVersion: 2
+  m_Size: {x: 0.020518716, y: 0.031621173, z: 0.026884012}
+  m_Center: {x: 0, y: -0.0027546552, z: 0.00011193892}
+--- !u!114 &7153553110427196429
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7516147023265018176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a93728fdc97e7cf4fa60cb14a109aa9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  xrotation: 270
-  yrotation: 0
-  zrotation: 0
-  setx: 1
-  sety: 0
-  setz: 0
---- !u!122 &1731342358158903755
-Halo:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7516147023265018176}
-  m_Enabled: 1
-  m_Color:
-    serializedVersion: 2
-    rgba: 4284914291
-  m_Size: 0.5
---- !u!114 &-4915313148357921446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7516147023265018176}
+  m_GameObject: {fileID: 8036655354327228762}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f47222897a906df4f87f1f02fc026303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 172774604c1bee84185a69041576525b, type: 3}
-  type: 0
-  damageModifier: 10
-  maxHealthModifier: 10
-  armorModifier: 10
+  icon: {fileID: 21300000, guid: 8b1efeb232aa21d40966cc443ceb29be, type: 3}
+  type: 1
+  damageModifier: 0
+  maxHealthModifier: 20
+  armorModifier: 50
   potionEffect: 0
   effectValue: 0
+--- !u!122 &-6628518640605086082
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8036655354327228762}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4283967025
+  m_Size: 1

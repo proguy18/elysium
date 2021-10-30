@@ -1351,9 +1351,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth:
-    baseValue: 100
+    baseValue: 250
   damage:
-    baseValue: 10
+    baseValue: 15
   armor:
     baseValue: 0
 --- !u!114 &5260497739065522607
@@ -1371,7 +1371,7 @@ MonoBehaviour:
   attackSpeed: 1
   attackCooldown: 0
   attackPoint: {fileID: 8672588682157186310}
-  attackRange: 0.5
+  attackRange: 2.5
   enemyLayers:
     serializedVersion: 2
     m_Bits: 64
@@ -1400,7 +1400,7 @@ MonoBehaviour:
   up: 119
   down: 115
   run: 304
-  attack: 323
+  attack: 32
 --- !u!81 &6441459128459653860
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1437,7 +1437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryKey: 101
   defaultSwordIcon: {fileID: 21300000, guid: 5fd50594014b70e48bd6993443d46b32, type: 3}
-  defaultRingIcon: {fileID: 21300000, guid: 970324311431c794ca338446ea889948, type: 3}
+  defaultRingIcon: {fileID: 21300000, guid: fd6e4fc32c78509458fc45ea4a478ba8, type: 3}
 --- !u!1 &1626152726088886931
 GameObject:
   m_ObjectHideFlags: 0
