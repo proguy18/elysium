@@ -152,6 +152,9 @@ public class SC_TPSController : MonoBehaviour
             }
         }
 
+        // mute gameplay sounds
+        gameObject.GetComponent<PlayerAudioController>().togglePause();
+        gameObject.GetComponent<PlayerAudioController>().stopSounds(); 
     }
 
     void FixedUpdate()
