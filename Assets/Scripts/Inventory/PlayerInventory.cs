@@ -64,8 +64,8 @@ public class PlayerInventory : MonoBehaviour {
         // toggle UI
         inventoryUI.SetActive(!inventoryUI.activeSelf);
 
-        gameObject.GetComponent<PlayerAudioController>().togglePause();
-        gameObject.GetComponent<PlayerAudioController>().stopSounds();
+        /* gameObject.GetComponent<PlayerAudioController>().togglePause();
+        gameObject.GetComponent<PlayerAudioController>().stopSounds(); */
 
         // pause player sounds  
         PlayerAudioController PAC = gameObject.GetComponent<PlayerAudioController>();
