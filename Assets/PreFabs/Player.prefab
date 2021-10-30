@@ -1329,6 +1329,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9e5512dca401e45bb955f05890acf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathMenuUI: {fileID: 0}
+  blurOverlayUI: {fileID: 0}
   walkSpeed: 5
   runSpeed: 8
   mouseSensitivity: 2
@@ -1351,7 +1353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth:
-    baseValue: 100
+    baseValue: 250
   damage:
     baseValue: 10
   armor:
