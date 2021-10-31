@@ -780,6 +780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   surface: {fileID: 2128583364}
+  difficultyScale: 0.007
 --- !u!1 &527687090
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,7 +867,7 @@ MonoBehaviour:
   number: 250
   z: 0
   levelType: -1
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!114 &527687099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -884,7 +885,7 @@ MonoBehaviour:
   number: 15
   z: 0
   levelType: -1
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!114 &527687100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -916,7 +917,7 @@ MonoBehaviour:
   number: 30
   z: 0
   levelType: -1
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!114 &527687109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -934,7 +935,7 @@ MonoBehaviour:
   number: 70
   z: 3
   levelType: -1
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!114 &527687110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -952,7 +953,7 @@ MonoBehaviour:
   number: 8
   z: 0.5
   levelType: -1
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!114 &527687114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -970,7 +971,7 @@ MonoBehaviour:
   number: 70
   z: 0
   levelType: -1
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1457,9 +1458,9 @@ MonoBehaviour:
   nameStem: artemis_sword
   clones: []
   number: 2
-  z: 0.5
+  z: 1
   levelType: 1
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!114 &1056557568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1477,7 +1478,7 @@ MonoBehaviour:
   number: 20
   z: 0
   levelType: 1
-  isEnemy: 1
+  isEnemySpawner: 1
 --- !u!114 &1056557569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1495,7 +1496,7 @@ MonoBehaviour:
   number: 10
   z: 0
   levelType: 1
-  isEnemy: 1
+  isEnemySpawner: 1
 --- !u!114 &1056557570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1513,7 +1514,7 @@ MonoBehaviour:
   number: 20
   z: 0
   levelType: 1
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!114 &1056557571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1531,7 +1532,7 @@ MonoBehaviour:
   number: 150
   z: 0
   levelType: 1
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!114 &1056557572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1549,7 +1550,7 @@ MonoBehaviour:
   number: 80
   z: 0
   levelType: 1
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!114 &1056557573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1567,7 +1568,7 @@ MonoBehaviour:
   number: 15
   z: 0
   levelType: 1
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!114 &1056557574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1585,7 +1586,7 @@ MonoBehaviour:
   number: 200
   z: 0
   levelType: 1
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!114 &1056557575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1603,7 +1604,7 @@ MonoBehaviour:
   number: 15
   z: 0
   levelType: 1
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!114 &1056557576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1619,9 +1620,9 @@ MonoBehaviour:
   nameStem: artemis_helmet
   clones: []
   number: 2
-  z: 0.5
+  z: 1
   levelType: 1
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!1 &1233529961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1962,7 +1963,7 @@ MonoBehaviour:
   number: 2
   z: 1
   levelType: 0
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!114 &1467055078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1980,7 +1981,7 @@ MonoBehaviour:
   number: 10
   z: 2
   levelType: 0
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!114 &1467055079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1998,7 +1999,7 @@ MonoBehaviour:
   number: 10
   z: 0
   levelType: 0
-  isEnemy: 1
+  isEnemySpawner: 1
 --- !u!114 &1467055080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2016,7 +2017,7 @@ MonoBehaviour:
   number: 45
   z: 0.5
   levelType: 0
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!114 &1467055081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2034,7 +2035,7 @@ MonoBehaviour:
   number: 10
   z: 0
   levelType: 0
-  isEnemy: 1
+  isEnemySpawner: 1
 --- !u!114 &1467055082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2052,7 +2053,7 @@ MonoBehaviour:
   number: 250
   z: 0
   levelType: 0
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!114 &1467055083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2070,7 +2071,7 @@ MonoBehaviour:
   number: 2
   z: 1
   levelType: 0
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!1 &1481201915
 GameObject:
   m_ObjectHideFlags: 0
@@ -2124,7 +2125,7 @@ MonoBehaviour:
   number: 15
   z: 0
   levelType: 2
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!114 &1481201918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2140,9 +2141,9 @@ MonoBehaviour:
   nameStem: ares_sword
   clones: []
   number: 2
-  z: 0.5
+  z: 1
   levelType: 2
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!114 &1481201919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2160,7 +2161,7 @@ MonoBehaviour:
   number: 30
   z: 2
   levelType: 2
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!114 &1481201920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2178,7 +2179,7 @@ MonoBehaviour:
   number: 7
   z: 0
   levelType: 2
-  isEnemy: 1
+  isEnemySpawner: 1
 --- !u!114 &1481201921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2196,7 +2197,7 @@ MonoBehaviour:
   number: 15
   z: 0
   levelType: 2
-  isEnemy: 1
+  isEnemySpawner: 1
 --- !u!114 &1481201922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2212,9 +2213,9 @@ MonoBehaviour:
   nameStem: ares_helmet
   clones: []
   number: 2
-  z: 0.5
+  z: 1
   levelType: 2
-  isEnemy: 0
+  isEnemySpawner: 0
 --- !u!1001 &1622646736
 PrefabInstance:
   m_ObjectHideFlags: 0

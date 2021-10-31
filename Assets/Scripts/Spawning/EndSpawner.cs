@@ -35,4 +35,6 @@ public class EndSpawner : MonoBehaviour, ISpawnable
         }
         
     }
+    
+
 }
