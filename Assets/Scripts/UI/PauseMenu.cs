@@ -6,6 +6,7 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool isPaused = false;
 
+    public GameObject deathMenuUI;
     public GameObject pauseMenuUI;
     public GameObject blurOverlayUI;
 
@@ -18,6 +19,11 @@ public class PauseMenu : MonoBehaviour
                 Resume();
             else
                 Pause();
+        }
+
+        if (SC_TPSController.hasDied)
+        {
+            StartCoroutine(PlayDeathScreen());
         }
     }
 
@@ -59,5 +65,20 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
         blurOverlayUI.SetActive(false);
+    }
+    
+    private void EnableDeathUI()
+    {
+        deathMenuUI.SetActive(true);
+        blurOverlayUI.SetActive(true);
+    }
+    
+    private IEnumerator PlayDeathScreen()
+    {
+        yield return new WaitForSeconds(1f);
+        
+        EnableCursor();
+        EnableDeathUI();
+        Time.timeScale = 0f;
     }
 }
