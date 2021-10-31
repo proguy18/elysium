@@ -68,8 +68,6 @@ public class HealthUISpawner : MonoBehaviour
         HealthUITransform.LookAt (
             new Vector3(camPosition.x,camPosition.y,camPosition.z), Vector3.down);
         HealthUITransform.position = target.position;
-        if(name.Contains("Player"))
-            Debug.Log("target position = " + target.position);
     }
     float GetHealthPercent() {
         return Mathf.Clamp01(stats.currentHealth / (float)stats.maxHealth.GetValue ());
