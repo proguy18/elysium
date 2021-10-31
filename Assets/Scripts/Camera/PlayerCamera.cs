@@ -1,7 +1,7 @@
-﻿namespace Camera
+﻿/*namespace Camera
 {
     public class PlayerCamera
     {
         
     }
-}
+}*/
