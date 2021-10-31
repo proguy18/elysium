@@ -84,6 +84,19 @@ Then we used a combination of random and semi-random methods to distribute objec
 
 ## Descriptions of how the custom shaders work (and which two should be marked).
 
+**Cel-shader** (to mark)
+
+The cel-shader (ToonShader2.shader in the Shaders folder) is used on the player as well as all the enemies and most of the environmental objects to give a cel-shaded aesthetic ..
+
+**Lava flow shader** (to mark)
+
+The lava flow shader was written to give make the lava in the lavapools look as though they are flowing..
+
+
+**Triplanar mapping shader**
+ 
+This shader was written in order to map the texture to the walls of the map without the need for UV mapping as there were issues with UV mapping in the procedurally generated map.
+
 ## A description of the particle system you wish to be marked and how to locate it in your Unity project.
 
 ## Description of the querying and observational methods used, including a description of the participants (how many, demographics), description of the methodology (which techniques did you use, what did you have participants do, how did you record the data), and feedback gathered.
@@ -118,6 +131,8 @@ Brackey's youtube channel assisted a lot in the template of our game: https://ww
 Alex Gorbatov (996729) focused on the generation of the map and populating it with objects. The majority of the content within the scripts involved with spawning objects, populating the map, and generating the map are created by him. This included sourcing and building many of the prefab assets for the visuals and population of the game. In addition, he created the minimap, transitions between levels, and performed the observational method. 
 
 Joseph Leonardi (1025351) focused on particle system effects, mob AI, player and mob combat, and UI elements. The majority of the content in scripts related to mob movement, combat, and menu UI were created by him. He created animation controllers and set the stats of each mob, and all the components in the mob prefabs besides the ones related to sounds. The StartScene was made entirely by him with the exception of the sample level that was randomly generated. Scene transitions were also made by him.
+
+Zhen Yi Ang (1000033) focused on the shaders, the graphics and aesthetic style of the game, and the sound design. All of the shaders implemented in the game was written by him. A majority of the graphics and sound assets in the game were sourced by him. He managed most of the graphics pipeline including the scene lighting, the graphics settings as well as the post-processing. He also designed the DemoScene and recorded and edited the demo video using that scene.
 
 ## Technologies
 Project is created with:
