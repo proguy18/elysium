@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool isPaused = false;
+    public static bool IsPaused = false;
 
     public GameObject optionsUI;
     public GameObject deathMenuUI;
@@ -16,10 +16,10 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && 
             !SC_TPSController.hasDied && 
-            !PlayerInventory.inventoryIsActive &&
+            !PlayerInventory.InventoryIsActive &&
             !optionsUI.activeSelf)
         {
-            if (isPaused)
+            if (IsPaused)
                 Resume();
             else
                 Pause();
@@ -36,7 +36,7 @@ public class PauseMenu : MonoBehaviour
         EnableCursor();
         EnableUI();
         Time.timeScale = 0f;
-        isPaused = true;
+        IsPaused = true;
     }
 
     public void Resume()
@@ -44,7 +44,7 @@ public class PauseMenu : MonoBehaviour
         DisableCursor();
         DisableUI();
         Time.timeScale = 1f;
-        isPaused = false;
+        IsPaused = false;
     }
 
     private void EnableCursor()
