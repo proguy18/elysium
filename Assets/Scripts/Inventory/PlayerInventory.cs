@@ -59,7 +59,8 @@ public class PlayerInventory : MonoBehaviour {
     private void toggleInventory() {
         // pause the game and display cursor
         Time.timeScale = (Time.timeScale == 0) ? 1 : 0; 
-        Cursor.visible = !Cursor.visible;           
+        Cursor.visible = !Cursor.visible;    
+        Cursor.lockState = CursorLockMode.Confined;       
 
         // toggle UI
         inventoryUI.SetActive(!inventoryUI.activeSelf);
