@@ -57,6 +57,7 @@ Remember that _"this document"_ should be `well written` and formatted **appropr
 | Student Name 1  | MainScene     |  Done |
 | Student Name 2    | Shader      |  Testing |
 | Student Name 3    | README Format      |  Amazing! |
+| Joseph Leonardi    | README Format and bug fixing      |  In Progress... |
 
 ## Explanation of the game
 Our game is a 3D dungeon crawler set in a never-ending hell created by the Greek gods Hades, Ares, and Artemis to punish a particular Spartan solider. By using a procedurally generated map that swaps between spaces inspired by the aesthetics and elements of each of these three gods, the player attempts to escape the maze only to find that each level becomes more difficult until the player dies. The challenge is therefore to get through as many levels as possible and to compete with yourself or your friends to get through the infinite challenge all whilst never really knowing if there is an end. 
@@ -73,6 +74,7 @@ All models are taken from free online resources such as the Unity asset store, S
 
 ## How you handled the graphics pipeline and camera motion.
 @Jack
+A random camera motion script was created for the StartScene, in order to display and highlight the map to the player upon booting up the game. The script uses 2 predetermined points as boundaries, and randomly picks a point within this boundary to move to, iteratively in order to showcase the procedurely generated level/map in the background of the main menu.
 
 ## The procedural generation technique and/or algorithm used, including a high level description of the implementation details.
 
@@ -91,11 +93,12 @@ For the observational method we used a Think Aloud Study focusing on the ease of
 - Participant B: Experienced gamer on PC
 - Participant C: Novice gamer on PC 
 - Participant D: Experienced gamer and game developer on both PC and console 
-- Participant E: Experinced gamer on only console
+- Participant E: Experienced gamer on only console
 
 We prompted the participants only to find the objects in the scene and transition to the next level. We left out all the combat elements and only left in the objects in the scene some of which were scenery and some of which were interactable. We used audio recording to record the data and as the task was simple enough, little prompting was needed by the experimenter to get the participants to talk freely and actively especially after the first few minutes. The feedback gathered was clear. Once the pattern was observed, participants found they were easily able to identify that the objects were pickup-able but did not know what the objects were as the light that we had used to identify the objects obscured the object itself. The door to transition to each level was easy to identify and obvious. All players did not need any prompting to identify, move towards, and transition to a new level. We also identified some feedback about the controls. PC gamers found the controls intuitive and easy to use but those who are new to gaming and PC gaming had intiuting the controls. 
 
-@Joey the other method. 
+@Joey the other method. queryingtechnique
+For the querying method we invited players to play the game, and answer a Google form questionnaire. The questionnaire focused on the art style, and overall 'fun-ness' and difficulty of the game.
 
 ## Document the changes made to your game based on the information collected during the evaluation.
 In response to the Think Aloud Study, we made a number of changes. 
@@ -106,12 +109,15 @@ In response to the Think Aloud Study, we made a number of changes.
 
 ## References and external resources that you used.
 Sebastian Lague tutorial series for the creation of a procedurally generated cave: https://www.youtube.com/watch?v=v7yyZZjF1z4&list=PLFt_AvWsXl0eZgMK_DT5_biRkWXftAOf9
+Brackey's youtube channel assisted a lot in the template of our game: https://www.youtube.com/c/Brackeys
 @All please add your references and other resources here. 
 
 ## A description of the contributions made by each member of the group.
 @All please add your contributions here. 
 
 Alex Gorbatov (996729) focused on the generation of the map and populating it with objects. The majority of the content within the scripts involved with spawning objects, populating the map, and generating the map are created by him. This included sourcing and building many of the prefab assets for the visuals and population of the game. In addition, he created the minimap, transitions between levels, and performed the observational method. 
+
+Joseph Leonardi (1025351) focused on particle system effects, mob AI, player and mob combat, and UI elements. The majority of the content in scripts related to mob movement, combat, and menu UI were created by him. He created animation controllers and set the stats of each mob, and all the components in the mob prefabs besides the ones related to sounds. The StartScene was made entirely by him with the exception of the sample level that was randomly generated. Scene transitions were also made by him.
 
 ## Technologies
 Project is created with:

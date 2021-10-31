@@ -6,6 +6,7 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool isPaused = false;
 
+    public GameObject optionsUI;
     public GameObject deathMenuUI;
     public GameObject pauseMenuUI;
     public GameObject blurOverlayUI;
@@ -13,7 +14,10 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !SC_TPSController.hasDied && !PlayerInventory.inventoryIsActive)
+        if (Input.GetKeyDown(KeyCode.Escape) && 
+            !SC_TPSController.hasDied && 
+            !PlayerInventory.inventoryIsActive &&
+            !optionsUI.activeSelf)
         {
             if (isPaused)
                 Resume();

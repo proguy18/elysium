@@ -2852,6 +2852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd03aeabe78a5cd4a8b1d0f40600b7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  optionsUI: {fileID: 7808792555593733410}
   deathMenuUI: {fileID: 7808792555088645001}
   pauseMenuUI: {fileID: 7808792556032154793}
   blurOverlayUI: {fileID: 7808792554310916372}
