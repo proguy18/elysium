@@ -8,6 +8,7 @@ public class PlayerInventory : MonoBehaviour {
     public KeyCode inventoryKey = KeyCode.I;
     public Sprite defaultSwordIcon;
     public Sprite defaultRingIcon;
+    public static bool inventoryIsActive = false;
 
     private GameObject defaultSwordIcon_;
     private GameObject defaultRingIcon_;
@@ -50,7 +51,7 @@ public class PlayerInventory : MonoBehaviour {
 
 	private void Update ()
 	{
-		if (Input.GetKeyDown(inventoryKey))
+		if (Input.GetKeyDown(inventoryKey) && !PauseMenu.isPaused)
 		{
             toggleInventory();
 		}
@@ -64,6 +65,7 @@ public class PlayerInventory : MonoBehaviour {
 
         // toggle UI
         inventoryUI.SetActive(!inventoryUI.activeSelf);
+        inventoryIsActive = inventoryUI.activeSelf;
 
         // mute gameplay sounds
         gameObject.GetComponent<PlayerAudioController>().togglePause();
