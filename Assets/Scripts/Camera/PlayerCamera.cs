@@ -1,7 +1,5 @@
-﻿namespace Camera
+﻿using UnityEngine;
+public static class PlayerCamera
 {
-    public class PlayerCamera
-    {
-        
-    }
+    public static Camera Camera;
 }

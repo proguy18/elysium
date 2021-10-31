@@ -29,8 +29,6 @@ public class LevelLoader : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        
-        Debug.Log("Pressed go to main menu");
         StartCoroutine(LoadScene("StartScene"));
     }
 

@@ -77,10 +77,11 @@ public class SC_TPSController : MonoBehaviour
         GameObject mainCamera = new GameObject("MainCamera");
         mainCamera.transform.SetParent(playerCameraParent);
         mainCamera.tag = "MainCamera";
-        mainCamera.AddComponent<Camera>();
+        Camera camera = mainCamera.AddComponent<Camera>();
         mainCamera.transform.localPosition = new Vector3(0,2.5f,-4);
         mainCamera.transform.localRotation = Quaternion.Euler(15,0,0);
         SC_CameraCollision cameraScript  = mainCamera.AddComponent<SC_CameraCollision>();
+        PlayerCamera.Camera = camera;
         
         // Add postprocessing
         PostProcessLayer postProcessLayer = mainCamera.AddComponent<PostProcessLayer>();
@@ -131,7 +132,6 @@ public class SC_TPSController : MonoBehaviour
 
     void Die() 
     {
-        Debug.Log("Player has died");
         hasDied = true;
         // Die animation
         m_Animator.SetTrigger("Die");
@@ -139,11 +139,10 @@ public class SC_TPSController : MonoBehaviour
         
 
         // Disable the enemy
-        // Destroy(gameObject, 2.1f);
-
+        
         gameObject.GetComponent<SC_TPSController>().enabled = false;
         // Disable the enemy
-        // Destroy(gameObject, 2.1f);
+
 
         // prevent mobs from pushing, attacking or moving towards the player
         Collider[] nearby = Physics.OverlapSphere(transform.position, 10);
@@ -165,7 +164,7 @@ public class SC_TPSController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!PauseMenu.isPaused)
+        if (!PauseMenu.IsPaused)
         {
             if (movementAnimations)
             {
