@@ -33,6 +33,7 @@ public class PlayerInventory : MonoBehaviour {
         inventoryUI.SetActive(false);
         updateText();
         Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
     }
 
     private void initializeVariables()
