@@ -12,7 +12,7 @@
 sampler2D _MainTex;
 float4 _MainTex_ST;
 
-fixed4 _Color;
+float4 _Color;
 float _Sharpness;
 float _TextureScale;
 
@@ -87,10 +87,11 @@ fixed4 frag(vertOut i) : SV_TARGET{
 	col_top *= weights.y;
 
 	//combine the projected colors
-	fixed4 sample = (col_front + col_side + col_top) + _Color;
+	float4 sample = (col_front + col_side + col_top) + _Color;
+	float4 sample1 = (col_front + col_side + col_top);
 	
 	float3 normal = normalize(i.normal);
-	float NdotL = dot(_WorldSpaceLightPos0, normal);
+	float NdotL = dot(_WorldSpaceLightPos0.xyz, normal);
 
 	// Shadows
 	float shadow1 = SHADOW_ATTENUATION(i);
@@ -98,20 +99,16 @@ fixed4 frag(vertOut i) : SV_TARGET{
 	///// start tutorial lighting implementation /////
 
 	// Calculate ambient RGB intensities
-	/*float Ka = 1;
-	float3 amb = sample.rgb * UNITY_LIGHTMODEL_AMBIENT.rgb * Ka;*/
+	float Ka = 0.3;
+	float3 amb = sample1.rgb * UNITY_LIGHTMODEL_AMBIENT.rgb * Ka;
 
 	// Calculate diffuse RBG reflections, we save the results of L.N because we will use it again
 	// (when calculating the reflected ray in our specular component)
 	float fAtt = 1;
 	float Kd = 1;
-	float3 L1 = _WorldSpaceLightPos0; // Q6: Using built-in Unity light data: _WorldSpaceLightPos0.
-	// Note that we are using a *directional* light in this instance,
-	// so _WorldSpaceLightPos0 is actually a direction rather than
-	// a point. Therefore there is no need to subtract the world
-	// space vertex position like in our point-light shaders.
+	float3 L1 = _WorldSpaceLightPos0; 
 	float LdotN = NdotL;
-	float3 dif = fAtt * _LightColor0 * Kd * sample.rgb * shadow1/** saturate(LdotN)*/; // Q6: Using built-in Unity light data: _LightColor0
+	float3 dif = fAtt * _LightColor0 * Kd * sample.rgb * shadow1/* * DotClamped(_WorldSpaceLightPos0, i.normal)*/; // Q6: Using built-in Unity light data: _LightColor0
 	
 	/*// Calculate specular reflections
 	float Ks = 1;
@@ -124,7 +121,7 @@ fixed4 frag(vertOut i) : SV_TARGET{
 
 	// Combine Phong illumination model components
 	float4 returnColor = float4(0.0f, 0.0f, 0.0f, 0.0f);
-	returnColor.rgb = /*amb.rgb + */dif.rgb/* + spe.rgb*/;
+	returnColor.rgb = amb.rgb + dif.rgb/* + spe.rgb*/;
 
 	#if defined (POINT) || defined (SPOT)
 		float3 L = _WorldSpaceLightPos0.xyz - i.worldPos.xyz;
