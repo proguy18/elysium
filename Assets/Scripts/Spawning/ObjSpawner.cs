@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ObjSpawner : MonoBehaviour, ISpawnable 
 {
@@ -16,7 +17,7 @@ public class ObjSpawner : MonoBehaviour, ISpawnable
     public float z = 0;
     public int levelType = 0;
 
-    public bool isEnemy = false;
+    public bool isEnemySpawner = false;
     private GameObject parent;
 
     private void Awake() {
@@ -43,7 +44,6 @@ public class ObjSpawner : MonoBehaviour, ISpawnable
         MapPopulator mapPopulator = mapGeneratorOb.GetComponent<MapPopulator>();
         if (mapPopulator != null){
             spawnPoints = mapPopulator.getRandomSpawns(number);
-            
         }
         
     }
@@ -66,12 +66,28 @@ public class ObjSpawner : MonoBehaviour, ISpawnable
                 clones.Add(instance);
                 instance.transform.parent = parent.transform;
                 rand = random.Next(0, objects.Count);
-                if (isEnemy){
+                if (isEnemySpawner){
                     instance.layer = 6;
+                }else {
+                    instance.layer = 8;
                 }
             }
         }
+        if (isEnemySpawner){
+            Debug.Log("Total mobs " + clones.Count);
+        }
         
-
     }
+    public void spawn(float multiplier){
+        int _number = number;
+        number = Convert.ToInt32(Math.Floor(multiplier* number));
+        Debug.Log("Asking for " + number);
+        spawn();
+        Debug.Log("Original number" + _number);
+        number = _number;
+    }
+    public bool isEnemy(){
+        return isEnemySpawner;
+    }
+
 }

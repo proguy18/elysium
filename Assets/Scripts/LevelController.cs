@@ -9,7 +9,7 @@ public class LevelController : MonoBehaviour
     // Start is called before the first frame update
     public NavMeshSurface surface;
     private GameObject previousPlayer;
-    int levelCount = 0;
+    private int levelCount = 0;
     private MapGenerator mapGenerator;
     private ObjSpawner[] spawners;
     private List<ObjSpawner> option0;
@@ -21,6 +21,7 @@ public class LevelController : MonoBehaviour
     private EndSpawner endSpawner;
     private bool newMap = false;
     int count = 3;
+    public float difficultyScale = 0.003f;
 
     private void Awake() {
         mapGenerator = GetComponentInChildren<MapGenerator>();
@@ -56,6 +57,7 @@ public class LevelController : MonoBehaviour
 
         if (count == 0 && newMap){ 
             moveWalledObjects();
+            endSpawner.GetClearExit().Clear();
             newMap = false;
             count = 3;
         }
@@ -84,27 +86,23 @@ public class LevelController : MonoBehaviour
         playerSpawner.spawn();
         endSpawner.spawn();
         int levelInd = 0;
+        float multiplier = 1;
         if (levelCount <= 3){
             levelInd = levelCount;
         }
         else {
+            multiplier = 1 + difficultyScale*(levelCount - 3)*(levelCount - 3);
             var rand = new System.Random();
             levelInd = rand.Next(1, 4);
             Debug.Log(levelInd);
         }
         if (levelInd == 1){
-            foreach(ObjSpawner spawner in option0){
-                spawner.spawn();
-            }
+            doSpawn(option0, multiplier);
         }
         else if (levelInd == 2) {
-            foreach(ObjSpawner spawner in option1){
-                spawner.spawn();
-            }
+            doSpawn(option1, multiplier);
         } else if (levelInd == 3){
-            foreach(ObjSpawner spawner in option2){
-                spawner.spawn();
-            }
+            doSpawn(option2, multiplier);
         }
         
         lightSpawner.spawn();
@@ -123,5 +121,19 @@ public class LevelController : MonoBehaviour
         }
     }
 
-          
+    public int GetLevel(){
+        return levelCount;
+    }
+
+    private void doSpawn(List<ObjSpawner> spawners, float multiplier){
+        foreach(ObjSpawner spawner in spawners){
+            if (spawner.isEnemy()){
+                spawner.spawn(multiplier);
+            }
+            else {
+                spawner.spawn();
+            }
+        }
+    }
+    
 }

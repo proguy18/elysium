@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5718943640236870724}
   - component: {fileID: 4268530934100033372}
   - component: {fileID: 1919465964146424415}
+  - component: {fileID: -6559841190880886393}
   m_Layer: 0
   m_Name: FinalDoor
   m_TagString: Untagged
@@ -59,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16a8c4272d6ee247b4e2cfa4c9fac43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  adjustment: 0.3
+  adjustment: 1
 --- !u!65 &1919465964146424415
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -73,6 +74,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.011301, y: 2.9819546, z: 0.74049836}
   m_Center: {x: 0.0024672747, y: 1.4909773, z: 0}
+--- !u!114 &-6559841190880886393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2662942346109270115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea97772efe97b949979294406a38579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 8
 --- !u!1001 &1669508701588593610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -154,6 +168,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 2994b5a545eef2843b34dc7ef741a131, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2994b5a545eef2843b34dc7ef741a131, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2994b5a545eef2843b34dc7ef741a131, type: 3}
       propertyPath: m_LocalPosition.x
