@@ -2136,8 +2136,11 @@ GameObject:
   - component: {fileID: 1353722881}
   - component: {fileID: 1353722880}
   - component: {fileID: 1353722879}
+<<<<<<< Updated upstream
   - component: {fileID: 1353722878}
   - component: {fileID: 1353722877}
+=======
+>>>>>>> Stashed changes
   - component: {fileID: 1353722876}
   - component: {fileID: 1353722882}
   m_Layer: 0
@@ -2179,6 +2182,7 @@ MonoBehaviour:
   z: 1
   levelType: 2
   isEnemy: 0
+<<<<<<< Updated upstream
 --- !u!114 &1353722877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2215,6 +2219,8 @@ MonoBehaviour:
   z: 0
   levelType: 2
   isEnemy: 1
+=======
+>>>>>>> Stashed changes
 --- !u!114 &1353722879
 MonoBehaviour:
   m_ObjectHideFlags: 0
