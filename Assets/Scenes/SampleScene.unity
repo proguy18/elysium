@@ -4435,7 +4435,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &956990331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5008,7 +5008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameStem: Zolrik
   clones: []
-  number: 15
+  number: 0
   z: 0
   levelType: 1
   isEnemy: 0
@@ -5026,7 +5026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameStem: wolf
   clones: []
-  number: 15
+  number: 0
   z: 0
   levelType: 1
   isEnemy: 0
@@ -6086,7 +6086,7 @@ MonoBehaviour:
   clones: []
   number: 10
   z: 0
-  levelType: 0
+  levelType: -1
   isEnemy: 0
 --- !u!114 &1467055080
 MonoBehaviour:
@@ -6120,9 +6120,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameStem: skeleton
   clones: []
-  number: 10
+  number: 15
   z: 0
-  levelType: 0
+  levelType: -1
   isEnemy: 0
 --- !u!114 &1467055082
 MonoBehaviour:
@@ -6210,7 +6210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameStem: weapon_rack
   clones: []
-  number: 15
+  number: 30
   z: 0
   levelType: 2
   isEnemy: 0
@@ -6264,7 +6264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameStem: Troll
   clones: []
-  number: 15
+  number: 0
   z: 0
   levelType: 2
   isEnemy: 1
@@ -6282,7 +6282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameStem: skeleton
   clones: []
-  number: 15
+  number: 0
   z: 0
   levelType: 2
   isEnemy: 1
