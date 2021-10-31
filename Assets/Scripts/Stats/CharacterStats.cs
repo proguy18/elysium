@@ -35,7 +35,6 @@ public class CharacterStats : MonoBehaviour
 
 		// Subtract damage from health
 		currentHealth -= damage;
-		Debug.Log(transform.name + " takes " + damage + " damage.");
 
 		// If we hit 0. Die.
 		if (currentHealth <= 0)

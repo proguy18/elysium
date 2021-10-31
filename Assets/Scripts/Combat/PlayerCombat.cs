@@ -16,8 +16,4 @@ public class PlayerCombat : CharacterCombat
             Attack();
     }
 
-    // protected override void PlayAttackAnimation()
-    // {
-    //     m_Animator.SetTrigger("Attack_2");
-    // }
 }
