@@ -17,8 +17,11 @@ public class CharacterStats : MonoBehaviour
 
 	public event System.Action OnHealthReachedZero;
 	public event System.Action OnDamaged;
+	private int minimumDamage; 
+
 	public virtual void Awake() {
 		currentHealth = maxHealth.GetValue();
+		minimumDamage = maxHealth.GetValue() / 100; // 1% of base health
 	}
 
 	// Start with max HP.
@@ -40,9 +43,8 @@ public class CharacterStats : MonoBehaviour
 	// Damage the character
 	public void TakeDamage (int damage)
 	{
-		// Subtract the armor value - Make sure damage doesn't go below 0.
-		damage -= armor.GetValue();
-		damage = Mathf.Clamp(damage, 0, int.MaxValue);
+		damage -= (damage * armor.GetValue() / 100); // armour modifier (eg. 50 armour = 50% damage reduction)
+		damage = Mathf.Clamp(damage, minimumDamage, currentHealth); // damage must be between 1% of base health and 100% of current health 
 
 		// Subtract damage from health
 		currentHealth -= damage;
