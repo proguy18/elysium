@@ -21,6 +21,7 @@ public class PlayerAudioController : MonoBehaviour
     public float attackSpeed = 1f;
 
     public bool isPaused = false;
+    private bool uiIsNotActive;
     
     public KeyCode left = KeyCode.A;
     public KeyCode right = KeyCode.D;
@@ -37,6 +38,7 @@ public class PlayerAudioController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        uiIsNotActive = (!PauseMenu.IsPaused && !PlayerInventory.InventoryIsActive);
         if (!isPaused)
         {
             movementSounds();
@@ -46,7 +48,8 @@ public class PlayerAudioController : MonoBehaviour
 
     private void movementSounds()
     {
-        if(Input.GetKey(left) || Input.GetKey(right) || Input.GetKey(up) || Input.GetKey(down)){
+        if((Input.GetKey(left) || Input.GetKey(right) || Input.GetKey(up) || Input.GetKey(down)) && uiIsNotActive)
+        {
             movementSound();
         }
         else
@@ -54,7 +57,8 @@ public class PlayerAudioController : MonoBehaviour
             _mainAudioSource.Stop();
         }
         
-        if(Input.GetKey(attack)) {
+        if(Input.GetKeyDown(attack) && uiIsNotActive) 
+        {
             attackSound();
         }
         else

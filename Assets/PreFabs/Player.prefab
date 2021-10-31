@@ -1380,7 +1380,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   m_Animator: {fileID: 0}
-  attack: 32
+  attack: 323
 --- !u!114 &-4407672627959293856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1407,7 +1407,7 @@ MonoBehaviour:
   up: 119
   down: 115
   run: 304
-  attack: 32
+  attack: 323
 --- !u!81 &6441459128459653860
 AudioListener:
   m_ObjectHideFlags: 0
