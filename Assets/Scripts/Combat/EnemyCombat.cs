@@ -6,11 +6,13 @@ namespace Combat
     public class EnemyCombat : CharacterCombat
     {
         private Transform target;
+        private EnemyAudioController audioController;
         
         void Start()
         {
             // target = PlayerManager.instance.player.transform;
             target = GameObject.Find("Player(Clone)").transform;
+            audioController = gameObject.GetComponent<EnemyAudioController>();
         }
         
         protected override void Update()
@@ -20,13 +22,13 @@ namespace Combat
 
             // Attacks target if target is within attack range
             if (distance <= attackRange)
-            {   
+            {
                 // Play attack sound
                 if (attackCooldown <= 0f)
                 {
-                    gameObject.GetComponent<EnemyAudioController>().attackSound();
+                    audioController.attackSound();
+                    Attack();
                 }
-                Attack();
             }
         }
     }

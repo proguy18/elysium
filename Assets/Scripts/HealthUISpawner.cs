@@ -26,6 +26,7 @@ public class HealthUISpawner : MonoBehaviour
         {
             if(c.renderMode == RenderMode.WorldSpace) 
             {
+                Debug.Log("Canvas name is " + c.name);
                 HealthUITransform = Instantiate(uiPrefab, c.transform).transform;
                 healthSlider = HealthUITransform.GetChild(0).GetComponent<Image>();
                 break;
@@ -74,6 +75,7 @@ public class HealthUISpawner : MonoBehaviour
         if (HealthUITransform == null)
             return;
         var camPosition = cam.position;
+        Debug.Log("Name of camera is " + cam.name + " position is " + cam.position);
         HealthUITransform.LookAt (
             new Vector3(camPosition.x,transform.position.y,camPosition.z), Vector3.down);
         

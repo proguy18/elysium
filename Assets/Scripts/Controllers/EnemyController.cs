@@ -77,7 +77,6 @@ public abstract class EnemyController : MonoBehaviour
     }
     void Update () 
     {
-        
         if(!m_Animator)
         {
             m_Animator  = gameObject.GetComponent<Animator>();
