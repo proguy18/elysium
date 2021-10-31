@@ -59,13 +59,13 @@ Remember that _"this document"_ should be `well written` and formatted **appropr
 | Student Name 3    | README Format      |  Amazing! |
 
 ## Explanation of the game
-Our game is a 3D dungeon crawler set in a never-ending hell created by the Greek gods Hades, Ares, and Artemis to punish a particular Spartan solider. By using a proceduarlly generated map that swaps between spaces inspired by the aesthetics and elements of each of these three gods, the player attempts to escape the maze only to find that each level becomes more difficult until the player dies. The challenge is therefore to get through as many levels as possible and to complete with yourself or your friends to get through the infinite challenge all whilst never really knowing if there is an end. 
+Our game is a 3D dungeon crawler set in a never-ending hell created by the Greek gods Hades, Ares, and Artemis to punish a particular Spartan solider. By using a procedurally generated map that swaps between spaces inspired by the aesthetics and elements of each of these three gods, the player attempts to escape the maze only to find that each level becomes more difficult until the player dies. The challenge is therefore to get through as many levels as possible and to compete with yourself or your friends to get through the infinite challenge all whilst never really knowing if there is an end. 
 
 ## How to use it
 Movement: W - A - S - D movement with SHIFT to sprint. 
 Combat: SPACE to attack 
 Equipment: Pickup equipment by colliding with it in game. E key opens an inventory and you can use the mouse to select the equipable items and to use the potions.
-Misc: ESC to pause, access the controlls list, and modify some of the settings. 
+Misc: ESC to pause, access the controls list, and modify some of the settings. 
 Level transitions: Find and collide with the door in the scene to transition to the next level.
 
 ## How we designed models and entities
@@ -76,7 +76,7 @@ All models are taken from free online resources such as the Unity asset store, S
 
 ## The procedural generation technique and/or algorithm used, including a high level description of the implementation details.
 
-The procedural generation technique that we used was Cellular Automation. First we generate a binary noise grid. This gives us the initial walls and floors. We then go through a perscribed amounnt of rounds of Cellular Automation where in each cell is compared with its neighbours. If more of its neighbors are walls, it is made a wall, if more of its neighbors are floor tiles, it it becomes a floor tile. After making sure that the map is all connected and that each room is bigger than a certain size, the map is turned into a mesh using the marching squares algorithm. Much of this was created following a tutorial by Sebastian Langue here: https://www.youtube.com/watch?v=v7yyZZjF1z4&list=PLFt_AvWsXl0eZgMK_DT5_biRkWXftAOf9. 
+The procedural generation technique that we used was Cellular Automation. First we generate a binary noise grid. This gives us the initial walls and floors. We then go through a prescribed amount of rounds of Cellular Automation wherein each cell is compared with its neighbours. If more of its neighbors are walls, it is made a wall, if more of its neighbors are floor tiles, it it becomes a floor tile. After making sure that the map is all connected and that each room is bigger than a certain size, the map is turned into a mesh using the marching squares algorithm. Much of this was created following a tutorial by Sebastian Langue here: https://www.youtube.com/watch?v=v7yyZZjF1z4&list=PLFt_AvWsXl0eZgMK_DT5_biRkWXftAOf9. 
 
 Then we used a combination of random and semi-random methods to distribute objects throughout each of these levels. This creates three distict environments one based on each of the Gods. We distribute lights throughout the map evenly which are then spread and attached to the walls of the scene afterwards. 
 
@@ -93,13 +93,13 @@ For the observational method we used a Think Aloud Study focusing on the ease of
 - Participant D: Experienced gamer and game developer on both PC and console 
 - Participant E: Experinced gamer on only console
 
-We promted the participants only to find the objects in the scene and transition to the next level. We left out all the combat elements and only left in the objects in the scene some of which were scenery and some of which were interactable. We used audio recording to record the data and as the task was simple enough, little prompting was needed by the experimenter to get the participants to talk freely and actively especially after the first few minutes. The feedback gathered was clear. Once the pattern was observed, participants found they were easily able to identify that the objects were pickup-able but did not know what the objects whre as the light that we had used to identify the objects obscured the object itself. The door to transition to each level was easy to identify and obvious. All players did not need any prompting to identify, movetowards, and transition to a new level. We also identified some feedback about the controls. PC gamers found the controls intuitive and easy to use but those who are new to gaming and PC gaming had intiuting the controls. 
+We prompted the participants only to find the objects in the scene and transition to the next level. We left out all the combat elements and only left in the objects in the scene some of which were scenery and some of which were interactable. We used audio recording to record the data and as the task was simple enough, little prompting was needed by the experimenter to get the participants to talk freely and actively especially after the first few minutes. The feedback gathered was clear. Once the pattern was observed, participants found they were easily able to identify that the objects were pickup-able but did not know what the objects were as the light that we had used to identify the objects obscured the object itself. The door to transition to each level was easy to identify and obvious. All players did not need any prompting to identify, move towards, and transition to a new level. We also identified some feedback about the controls. PC gamers found the controls intuitive and easy to use but those who are new to gaming and PC gaming had intiuting the controls. 
 
 @Joey the other method. 
 
 ## Document the changes made to your game based on the information collected during the evaluation.
 In response to the Think Aloud Study, we made a number of changes. 
-- For each of the pickup-able objects, we created a new script that made the object bob up and down whislt turning slightly and included a light over its head instead of coming from the object's centre. This means that the objects are easier to see from further away and the object itself are more identifable.
+- For each of the pickup-able objects, we created a new script that made the object bob up and down whilst turning slightly and included a light over its head instead of coming from the object's centre. This means that the objects are easier to see from further away and the object itself are more identifiable.
 - In the pause screen we have included the controls to make it easier for new players.
 
 @Joey describe what changes we made here. 
