@@ -144,6 +144,7 @@ public class PlayerInventory : MonoBehaviour {
         if((item.type == Item.Type.Potion) && (item.potionEffect == Item.Effect.refillHealth)){
             stats.Heal(item.effectValue);
             ClearSlot(item);
+            slotsOccupied--;
         }
     }
 
