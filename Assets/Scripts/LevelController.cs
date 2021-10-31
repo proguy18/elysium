@@ -84,7 +84,10 @@ public class LevelController : MonoBehaviour
         mapPopulator.reload();
         //Populate new map - possibly differently
         levelCount ++;
-        playerSpawner.spawn();
+        if (playerSpawner != null)
+        {
+            playerSpawner.spawn();
+        }
         endSpawner.spawn();
         int levelInd = 0;
         float multiplier = 1;
