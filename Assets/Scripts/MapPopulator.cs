@@ -37,10 +37,11 @@ public class MapPopulator : MonoBehaviour
     public Vector3 getPlayerSpawn() {
         if (mapPopulator != null) { 
 			MapGenerator.Coord coord = mapPopulator.getPlayerSpawn();
+			if (coord.Equals(new MapGenerator.Coord(-1,-1))) new Vector3(-40,-40,-40);
 			mapPopulator.fillCoord(coord);
             return CoordToWorldPoint(coord);
         }
-        return new Vector3(0,0,0);
+        return new Vector3(-40,-40,-40);
     }
     public List<Vector3> getRandomSpawns(int number, float height = 0){
 		if (mapPopulator == null){
@@ -71,23 +72,7 @@ public class MapPopulator : MonoBehaviour
 				}
 			}
 		}
-        // List<MapGenerator.Coord> edgeTiles = mapGenerator.getEdgeTiles();
-        // if (edgeTiles == null){
-        //     return null;
-        // }
-        // //First try getting every 20th and return it
 
-        // List<Vector3> lessTiles = new List<Vector3>();
-        // int j = spaceBetweenLights/2;
-        // foreach(MapGenerator.Coord tile in edgeTiles){
-        //     j ++;
-        //     if (j == spaceBetweenLights && !mapPopulator.filledCoord(tile)){
-        //         lessTiles.Add(CoordToWorldPoint(tile, 1.64f));
-		// 		mapPopulator.filledCoord(tile);
-        //         j = 0;
-        //     }
-            
-        // }
        return poss;
     }
     public Vector3 getEndSpawn(){

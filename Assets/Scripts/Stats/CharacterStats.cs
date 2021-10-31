@@ -25,9 +25,6 @@ public class CharacterStats : MonoBehaviour
 	}
 
 	// Start with max HP.
-	public virtual void Start ()
-	{
-	}
 
 	public void Update()
 	{
@@ -35,7 +32,7 @@ public class CharacterStats : MonoBehaviour
 		{
 			timer += Time.deltaTime;
 			// currentHealth = 100000;
-			// gameObject.GetComponentInChildren<MaterialControllerSkinned>().changeToTransparent();
+			gameObject.GetComponentInChildren<MaterialControllerSkinned>().changeToTransparent();
 			spawnProtection();
 		}
 	}
@@ -80,8 +77,7 @@ public class CharacterStats : MonoBehaviour
 			onStart = false;
 		}
 
-		
-
+	
 	}
 
 

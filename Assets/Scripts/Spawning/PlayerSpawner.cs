@@ -8,7 +8,7 @@ public class PlayerSpawner : MonoBehaviour, ISpawnable
     private GameObject instance = null;
     public GameObject objectToSpawn;
     public GameObject mapGeneratorOb;
-    private Vector3 spawnPoint;
+    private Vector3 spawnPoint = new Vector3(-40,-40,-40);
 
     // Update is called once per frame
     private void trySpawnPoint(){
@@ -22,7 +22,7 @@ public class PlayerSpawner : MonoBehaviour, ISpawnable
     }
     public void spawn(){
         trySpawnPoint();
-        if (!spawnPoint.Equals(new Vector3(0,0,0))){
+        if (!spawnPoint.Equals(new Vector3(-40,-40,-40))){
             if (instance != null){
                 instance.transform.position = spawnPoint;
                 instance.SetActive(true);
