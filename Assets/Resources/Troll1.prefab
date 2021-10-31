@@ -1909,7 +1909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7587f0cbb12a452ebfe2a3e1451cb430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackSpeed: 1
+  attackSpeed: 0.5
   attackCooldown: 0
   attackPoint: {fileID: 2968672228391630088}
   attackRange: 2

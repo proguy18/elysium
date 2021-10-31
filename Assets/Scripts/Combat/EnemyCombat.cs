@@ -9,7 +9,8 @@ namespace Combat
         
         void Start()
         {
-            target = PlayerManager.instance.player.transform;
+            // target = PlayerManager.instance.player.transform;
+            target = GameObject.Find("Player(Clone)").transform;
         }
         
         protected override void Update()
