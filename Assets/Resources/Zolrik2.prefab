@@ -138,8 +138,8 @@ GameObject:
   - component: {fileID: -6963408682055368168}
   - component: {fileID: -6987470087168242057}
   - component: {fileID: 4769356677405600595}
-  - component: {fileID: -5830711143609867276}
   - component: {fileID: -3234057585745421079}
+  - component: {fileID: -5830711143609867276}
   m_Layer: 6
   m_Name: Zolrik2
   m_TagString: Untagged
@@ -289,20 +289,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
---- !u!114 &-5830711143609867276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3550853418079442980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36eb972c470832d478af350723fe4e08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiPrefab: {fileID: 4833868377168429993, guid: 8f058fdf45307a24e97308bf150e317b, type: 3}
-  target: {fileID: 6406461707854217442}
 --- !u!114 &-3234057585745421079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,6 +307,20 @@ MonoBehaviour:
   Movement: {fileID: 8300000, guid: d990e103e98100d468fb25ff60513591, type: 3}
   getHit: {fileID: 8300000, guid: 1705b5ca4a87dce4ba9edb2d0d457bc7, type: 3}
   Attack: {fileID: 8300000, guid: 57b22824550612342a610fbd9405fe28, type: 3}
+--- !u!114 &-5830711143609867276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3550853418079442980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36eb972c470832d478af350723fe4e08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiPrefab: {fileID: 4833868377168429993, guid: 8f058fdf45307a24e97308bf150e317b, type: 3}
+  target: {fileID: 6406461707854217442}
 --- !u!1 &3550853418079442982
 GameObject:
   m_ObjectHideFlags: 0

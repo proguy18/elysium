@@ -7,8 +7,6 @@ using UnityEngine.Rendering.PostProcessing;
 [RequireComponent(typeof(CharacterStats))]
 public class SC_TPSController : MonoBehaviour
 {
-    public GameObject deathMenuUI;
-    public GameObject blurOverlayUI;
     public static bool hasDied;
 
     public float walkSpeed = 5f; 
@@ -80,7 +78,7 @@ public class SC_TPSController : MonoBehaviour
         mainCamera.transform.SetParent(playerCameraParent);
         mainCamera.tag = "MainCamera";
         mainCamera.AddComponent<Camera>();
-        mainCamera.transform.localPosition = new Vector3(0,2.5f,-6);
+        mainCamera.transform.localPosition = new Vector3(0,2.5f,-4);
         mainCamera.transform.localRotation = Quaternion.Euler(15,0,0);
         SC_CameraCollision cameraScript  = mainCamera.AddComponent<SC_CameraCollision>();
         
@@ -142,8 +140,7 @@ public class SC_TPSController : MonoBehaviour
 
         // Disable the enemy
         // Destroy(gameObject, 2.1f);
-        StartCoroutine(PlayDeathScreen());
-        
+
         gameObject.GetComponent<SC_TPSController>().enabled = false;
         // Disable the enemy
         // Destroy(gameObject, 2.1f);
@@ -209,23 +206,5 @@ public class SC_TPSController : MonoBehaviour
     private void PlayAttackAnimation()
     {
         m_Animator.SetTrigger("Attack_2");
-    }
-    
-    private void EnableDeathUI()
-    {
-        deathMenuUI.SetActive(true);
-        blurOverlayUI.SetActive(true);
-    }
-    private void EnableCursor()
-    {
-        Cursor.visible = true;
-    }
-    private IEnumerator PlayDeathScreen()
-    {
-        yield return new WaitForSeconds(1f);
-        
-        EnableCursor();
-        EnableDeathUI();
-        Time.timeScale = 0f;
     }
 }
