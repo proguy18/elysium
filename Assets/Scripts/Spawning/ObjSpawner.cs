@@ -68,6 +68,8 @@ public class ObjSpawner : MonoBehaviour, ISpawnable
                 rand = random.Next(0, objects.Count);
                 if (isEnemySpawner){
                     instance.layer = 6;
+                }else {
+                    instance.layer = 8;
                 }
             }
         }

@@ -57,6 +57,7 @@ public class LevelController : MonoBehaviour
 
         if (count == 0 && newMap){ 
             moveWalledObjects();
+            endSpawner.GetClearExit().Clear();
             newMap = false;
             count = 3;
         }
