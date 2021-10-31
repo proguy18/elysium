@@ -1583,6 +1583,7 @@ GameObject:
   - component: {fileID: 1626152726443455297}
   - component: {fileID: 1626152726443455296}
   - component: {fileID: 7193110708202510971}
+  - component: {fileID: 7252989408770843352}
   m_Layer: 0
   m_Name: Sword_LP
   m_TagString: Untagged
@@ -1598,8 +1599,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1626152726443455302}
   m_LocalRotation: {x: -0.008237777, y: -0.7053586, z: 0.0069051743, w: 0.70876914}
-  m_LocalPosition: {x: -0.00004, y: -0.00004, z: 0.00011}
-  m_LocalScale: {x: 0.015568021, y: 0.01556802, z: 0.027571999}
+  m_LocalPosition: {x: -0.000312, y: 0.000122, z: 0.000003}
+  m_LocalScale: {x: 0.015568021, y: 0.01556802, z: 0.032849763}
   m_Children: []
   m_Father: {fileID: 1626152725537733059}
   m_RootOrder: 1
@@ -1670,6 +1671,19 @@ MonoBehaviour:
   transparentMaterial: {fileID: 2100000, guid: 9b2f1c1a098ef7840a198963894ecd28, type: 2}
   meshRenderer: {fileID: 1626152726443455296}
   changeMaterial: 102
+--- !u!65 &7252989408770843352
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626152726443455302}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.07349747, y: 0.051955204, z: 0.4987156}
+  m_Center: {x: -0.007929356, y: 0.0000018646406, z: 0.19205154}
 --- !u!1 &1626152726486288795
 GameObject:
   m_ObjectHideFlags: 0
