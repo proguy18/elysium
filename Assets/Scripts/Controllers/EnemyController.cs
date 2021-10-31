@@ -27,7 +27,7 @@ public abstract class EnemyController : MonoBehaviour
         stats = GetComponent<CharacterStats>();
         characterCombat = GetComponent<CharacterCombat>();
     
-        // target = PlayerManager.instance.player.transform;   
+        // target = PlayerManager.instance.player.transform;
         target = GameObject.Find("Player(Clone)").transform;
         // target = GameObject.Find("Player").transform;
         

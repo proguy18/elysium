@@ -84,10 +84,8 @@ public class LevelController : MonoBehaviour
         mapPopulator.reload();
         //Populate new map - possibly differently
         levelCount ++;
-        if (playerSpawner != null)
-        {
+        if(playerSpawner != null)
             playerSpawner.spawn();
-        }
         endSpawner.spawn();
         int levelInd = 0;
         float multiplier = 1;
@@ -112,7 +110,8 @@ public class LevelController : MonoBehaviour
         lightSpawner.spawn();
         moveWalledObjects();
         newMap = true;
-        surface.BuildNavMesh();
+        if(surface != null)
+            surface.BuildNavMesh();
     }
     public void playerFinishedLevel(){
         newLevel();

@@ -33,7 +33,7 @@ Remember that _"this document"_ should be `well written` and formatted **appropr
 
 - [ ] Descriptions of how the custom shaders work (and which two should be marked).
 
-- [ ] A description of the particle system you wish to be marked and how to locate it in your Unity project.
+- [x] A description of the particle system you wish to be marked and how to locate it in your Unity project.
 
 - [ ] Description of the querying and observational methods used, including a description of the participants (how many, demographics), description of the methodology (which techniques did you use, what did you have participants do, how did you record the data), and feedback gathered.
 
@@ -64,7 +64,7 @@ Our game is a 3D dungeon crawler set in a never-ending hell created by the Greek
 
 ## How to use it
 Movement: W - A - S - D movement with SHIFT to sprint. 
-Combat: SPACE to attack 
+Combat: Mouse1 (MouseLeftClick) to attack 
 Equipment: Pickup equipment by colliding with it in game. E key opens an inventory and you can use the mouse to select the equipable items and to use the potions.
 Misc: ESC to pause, access the controls list, and modify some of the settings. 
 Level transitions: Find and collide with the door in the scene to transition to the next level.
@@ -99,6 +99,7 @@ This shader was written in order to map the texture to the walls of the map with
 
 ## A description of the particle system you wish to be marked and how to locate it in your Unity project.
 
+The particle system that we want marked is the fire particle system, it adapted and modified from https://www.youtube.com/watch?v=5Mw6NpSEb2o&t=686s.. It is located in Assets > PreFabs > Torch with point light. From the prefab, navigate to torch holder > PS_Fire. PS_Fire was taken from the PS_Fire prefab, but it had to be re-scaled to fit the torch. An ember particle system effect was added to the particle system, that was not present in the tutorial, in order to better imitate fire from wood.
 ## Description of the querying and observational methods used, including a description of the participants (how many, demographics), description of the methodology (which techniques did you use, what did you have participants do, how did you record the data), and feedback gathered.
 
 For the observational method we used a Think Aloud Study focusing on the ease of use of two features: 1) the inventory specifically finding and picking up items. 2) finding and transitioning to a new level. We had 5 participants of the study: 
@@ -111,7 +112,9 @@ For the observational method we used a Think Aloud Study focusing on the ease of
 We prompted the participants only to find the objects in the scene and transition to the next level. We left out all the combat elements and only left in the objects in the scene some of which were scenery and some of which were interactable. We used audio recording to record the data and as the task was simple enough, little prompting was needed by the experimenter to get the participants to talk freely and actively especially after the first few minutes. The feedback gathered was clear. Once the pattern was observed, participants found they were easily able to identify that the objects were pickup-able but did not know what the objects were as the light that we had used to identify the objects obscured the object itself. The door to transition to each level was easy to identify and obvious. All players did not need any prompting to identify, move towards, and transition to a new level. We also identified some feedback about the controls. PC gamers found the controls intuitive and easy to use but those who are new to gaming and PC gaming had intiuting the controls. 
 
 @Joey the other method. queryingtechnique
-For the querying method we invited players to play the game, and answer a Google form questionnaire. The questionnaire focused on the art style, and overall 'fun-ness' and difficulty of the game.
+For the querying method we invited players to play the game, and answer a Google form questionnaire. The questionnaire focused on the art style, and overall 'fun-ness' and difficulty of the game. 7 participants that were experienced gamers (one of which was experienced in game design) were given the game to try out.
+
+Without giving any assistance besides in the installation and start of the game, many participants found the game counter-intuitive with the attack button not being on the default Mouse1 that most people were accustomed to. Right off the bat, many were mindlessly trying to figure out the 'aim' of the game, as well as fiddle with the UI that revealed bugs. After 5 minutes, participants were given, the aim of the game, as well as the controls, if they hadn't figured it out already. Despite the controls being avaialble in the Pause menu,
 
 ## Document the changes made to your game based on the information collected during the evaluation.
 In response to the Think Aloud Study, we made a number of changes. 

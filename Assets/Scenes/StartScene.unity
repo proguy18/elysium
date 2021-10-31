@@ -297,8 +297,6 @@ GameObject:
   - component: {fileID: 37955882}
   - component: {fileID: 37955881}
   - component: {fileID: 37955880}
-  - component: {fileID: 37955879}
-  - component: {fileID: 37955878}
   - component: {fileID: 37955877}
   m_Layer: 0
   m_Name: AresSpawner
@@ -337,42 +335,6 @@ MonoBehaviour:
   clones: []
   number: 2
   z: 1
-  levelType: 2
-  isEnemySpawner: 0
---- !u!114 &37955878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 37955875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameStem: Troll
-  clones: []
-  number: 7
-  z: 0
-  levelType: 2
-  isEnemySpawner: 0
---- !u!114 &37955879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 37955875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameStem: skeleton
-  clones: []
-  number: 15
-  z: 0
   levelType: 2
   isEnemySpawner: 0
 --- !u!114 &37955880
@@ -1945,9 +1907,7 @@ GameObject:
   - component: {fileID: 385760369}
   - component: {fileID: 385760368}
   - component: {fileID: 385760367}
-  - component: {fileID: 385760366}
   - component: {fileID: 385760365}
-  - component: {fileID: 385760364}
   - component: {fileID: 385760363}
   m_Layer: 0
   m_Name: ArtemisSpawner
@@ -1988,24 +1948,6 @@ MonoBehaviour:
   z: 1
   levelType: 1
   isEnemySpawner: 0
---- !u!114 &385760364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 385760361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameStem: BattleSpider0
-  clones: []
-  number: 10
-  z: 0
-  levelType: 1
-  isEnemySpawner: 0
 --- !u!114 &385760365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2022,24 +1964,6 @@ MonoBehaviour:
   clones: []
   number: 2
   z: 1
-  levelType: 1
-  isEnemySpawner: 0
---- !u!114 &385760366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 385760361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameStem: Zolrik
-  clones: []
-  number: 20
-  z: 0
   levelType: 1
   isEnemySpawner: 0
 --- !u!114 &385760367
@@ -4579,9 +4503,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1178467713}
   - component: {fileID: 1178467720}
-  - component: {fileID: 1178467719}
   - component: {fileID: 1178467718}
-  - component: {fileID: 1178467717}
   - component: {fileID: 1178467716}
   - component: {fileID: 1178467715}
   - component: {fileID: 1178467714}
@@ -4660,24 +4582,6 @@ MonoBehaviour:
   z: 2
   levelType: 0
   isEnemySpawner: 0
---- !u!114 &1178467717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1178467712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameStem: BattleSpider0
-  clones: []
-  number: 10
-  z: 0
-  levelType: 0
-  isEnemySpawner: 0
 --- !u!114 &1178467718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4694,24 +4598,6 @@ MonoBehaviour:
   clones: []
   number: 45
   z: 0.5
-  levelType: 0
-  isEnemySpawner: 0
---- !u!114 &1178467719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1178467712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameStem: skeleton
-  clones: []
-  number: 10
-  z: 0
   levelType: 0
   isEnemySpawner: 0
 --- !u!114 &1178467720
