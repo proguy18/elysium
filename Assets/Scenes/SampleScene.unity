@@ -554,7 +554,7 @@ MonoBehaviour:
   nameStem: potion
   clones: []
   number: 8
-  z: 0
+  z: 0.5
   levelType: -1
   isEnemy: 0
 --- !u!114 &527687114
@@ -1061,7 +1061,7 @@ MonoBehaviour:
   nameStem: artemis_sword
   clones: []
   number: 2
-  z: 1
+  z: 0.5
   levelType: 1
   isEnemy: 0
 --- !u!114 &1056557568
@@ -1223,7 +1223,7 @@ MonoBehaviour:
   nameStem: artemis_helmet
   clones: []
   number: 2
-  z: 1
+  z: 0.5
   levelType: 1
   isEnemy: 0
 --- !u!1 &1233529961
@@ -1744,7 +1744,7 @@ MonoBehaviour:
   nameStem: ares_sword
   clones: []
   number: 2
-  z: 1
+  z: 0.5
   levelType: 2
   isEnemy: 0
 --- !u!114 &1481201919
@@ -1816,7 +1816,7 @@ MonoBehaviour:
   nameStem: ares_helmet
   clones: []
   number: 2
-  z: 1
+  z: 0.5
   levelType: 2
   isEnemy: 0
 --- !u!1001 &1622646736
