@@ -36,6 +36,6 @@ public class LevelLoader : MonoBehaviour
 
     public void StartGame()
     {
-        StartCoroutine(LoadScene("IntegratedScene"));
+        StartCoroutine(LoadScene("SampleScene"));
     }
 }
