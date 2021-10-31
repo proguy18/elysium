@@ -41,20 +41,24 @@ public class HealthUISpawner : MonoBehaviour
     {
         stats.OnHealthReachedZero -= DestroyHealthUI;
     }
+    private void OnDestroy() {
+        DestroyHealthUI();
+    }
 
     private void DestroyHealthUI()
     {
         if (HealthUITransform == null)
             return;
-        StartCoroutine(DestroyHealthUIIn(1f));
+        Destroy(HealthUITransform.gameObject);
+        // StartCoroutine(DestroyHealthUIIn(1f));
     }
 
-    private IEnumerator DestroyHealthUIIn(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        Destroy(HealthUITransform.gameObject);
-        HealthUITransform = null;
-    }
+    // private IEnumerator DestroyHealthUIIn(float delay)
+    // {
+    //     yield return new WaitForSeconds(delay);
+    //     Destroy(HealthUITransform.gameObject);
+    //     HealthUITransform = null;
+    // }
 
     // Update is called once per frame
     void Update()

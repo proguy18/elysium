@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using UnityEditor.Events;
+
 using UnityEngine.Events;
 
 public class PlayerInventory : MonoBehaviour {
