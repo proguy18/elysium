@@ -9,7 +9,7 @@ public class LevelController : MonoBehaviour
     // Start is called before the first frame update
     public NavMeshSurface surface;
     private GameObject previousPlayer;
-    int levelCount = 0;
+    private int levelCount = 0;
     private MapGenerator mapGenerator;
     private ObjSpawner[] spawners;
     private List<ObjSpawner> option0;
@@ -121,6 +121,10 @@ public class LevelController : MonoBehaviour
         foreach (WallAttach wallAttach in wallAttaches){
             wallAttach.MoveLights();
         }
+    }
+
+    public int GetLevel(){
+        return levelCount;
     }
 
           
