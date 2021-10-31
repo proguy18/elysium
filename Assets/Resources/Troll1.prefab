@@ -1775,15 +1775,14 @@ GameObject:
   m_Component:
   - component: {fileID: 8569654369884712067}
   - component: {fileID: 8569654369875398723}
-  - component: {fileID: 8569654369870934047}
   - component: {fileID: 7594721277767212886}
   - component: {fileID: 5070634165105759652}
   - component: {fileID: 1788690745826654221}
   - component: {fileID: 8945317589431608149}
   - component: {fileID: 4870381862542945623}
   - component: {fileID: 5933922208099633631}
-  - component: {fileID: 3382971160340424101}
   - component: {fileID: 2528906352679693618}
+  - component: {fileID: 3382971160340424101}
   m_Layer: 6
   m_Name: Troll1
   m_TagString: Untagged
@@ -1828,24 +1827,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!143 &8569654369870934047
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8569654369885081431}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1.82
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.001
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!195 &7594721277767212886
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1855,7 +1836,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8569654369885081431}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 1
   m_Acceleration: 10
   avoidancePriority: 50
@@ -1949,20 +1930,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
---- !u!114 &3382971160340424101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8569654369885081431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36eb972c470832d478af350723fe4e08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiPrefab: {fileID: 4833868377168429993, guid: 8f058fdf45307a24e97308bf150e317b, type: 3}
-  target: {fileID: 8794130659896950683}
 --- !u!114 &2528906352679693618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1981,6 +1948,20 @@ MonoBehaviour:
   Movement: {fileID: 8300000, guid: f011934a3cde49b4ca4e606bc515b80e, type: 3}
   getHit: {fileID: 8300000, guid: 1705b5ca4a87dce4ba9edb2d0d457bc7, type: 3}
   Attack: {fileID: 8300000, guid: 1aaee18fd939bea4b9dce15ab548ac34, type: 3}
+--- !u!114 &3382971160340424101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8569654369885081431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36eb972c470832d478af350723fe4e08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiPrefab: {fileID: 4833868377168429993, guid: 8f058fdf45307a24e97308bf150e317b, type: 3}
+  target: {fileID: 8794130659896950683}
 --- !u!1 &8569654369885081565
 GameObject:
   m_ObjectHideFlags: 0

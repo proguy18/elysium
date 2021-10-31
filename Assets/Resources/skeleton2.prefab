@@ -1946,10 +1946,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8680104993019445533}
+  - component: {fileID: 6993383240970530241}
   - component: {fileID: 1223701911098590820}
   - component: {fileID: 5835085174816641385}
   - component: {fileID: 8552752422378239542}
-  - component: {fileID: 6993383240970530241}
   - component: {fileID: -7273856556375397209}
   - component: {fileID: 8608028958432001517}
   - component: {fileID: 6603604332497364950}
@@ -1982,6 +1982,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &6993383240970530241
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8304142022520118183}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: c2583327bbf7aba469c513f6262e9f5f, type: 3}
+  m_Controller: {fileID: 9100000, guid: 43bb5bf6e074b9447b1f3e719ced4a08, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!195 &1223701911098590820
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2034,25 +2053,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!95 &6993383240970530241
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8304142022520118183}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: c2583327bbf7aba469c513f6262e9f5f, type: 3}
-  m_Controller: {fileID: 9100000, guid: 43bb5bf6e074b9447b1f3e719ced4a08, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &-7273856556375397209
 MonoBehaviour:
   m_ObjectHideFlags: 0
