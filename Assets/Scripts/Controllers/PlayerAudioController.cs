@@ -38,7 +38,8 @@ public class PlayerAudioController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        uiIsNotActive = (!PauseMenu.IsPaused && !PlayerInventory.InventoryIsActive);
+        //uiIsNotActive = (!PauseMenu.IsPaused && !PlayerInventory.InventoryIsActive);
+        //Debug.Log((PauseMenu.IsPaused, PlayerInventory.InventoryIsActive));
         if (!isPaused)
         {
             movementSounds();
@@ -57,7 +58,7 @@ public class PlayerAudioController : MonoBehaviour
             _mainAudioSource.Stop();
         }
         
-        if(Input.GetKeyDown(attack) && uiIsNotActive) 
+        if(Input.GetKeyDown(attack) /*&& uiIsNotActive*/) 
         {
             attackSound();
         }
@@ -101,6 +102,7 @@ public class PlayerAudioController : MonoBehaviour
 
     private void attackSound()
     {
+        Debug.Log(attackCooldown);
         if (!(attackCooldown <= 0f)) return;
         
         if (_secondaryAudioSource.clip != swordSwing)

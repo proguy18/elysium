@@ -18,6 +18,7 @@ public class LevelLoader : MonoBehaviour
 
         // Load Scene
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        PauseMenu.IsPaused = false;
         
         // Resumes Game
         Time.timeScale = 1f;
