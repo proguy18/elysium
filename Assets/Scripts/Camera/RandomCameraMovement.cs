@@ -58,7 +58,6 @@ public class RandomCameraMovement : MonoBehaviour
         float t = 0.0f;
         while (t < movementDuration)
         {
-            Debug.Log("t:" + t);
             camTransform.position = Vector3.Lerp(startPoint, endPoint, t/movementDuration);
             t += Time.deltaTime;
             yield return null;

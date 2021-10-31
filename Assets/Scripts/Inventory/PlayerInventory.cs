@@ -36,7 +36,8 @@ public class PlayerInventory : MonoBehaviour {
         Cursor.visible = false;
     }
 
-    private void initializeVariables(){
+    private void initializeVariables()
+    {
         inv = GameObject.Find("CanvasScreenSpace").transform.Find("Inventory");
         inventoryUI = inv.gameObject;
         statsDisplay = inv.transform.Find("Stats").GetComponent<Text>();

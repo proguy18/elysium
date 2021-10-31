@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
@@ -99,6 +100,8 @@ public class SC_TPSController : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("start player position: " + transform.position +
+                  " playerCameraParent: " + playerCameraParent.position);
         hasDied = false;
         y = transform.position.y; // starting y-value
         characterController = GetComponent<CharacterController>();
@@ -106,6 +109,12 @@ public class SC_TPSController : MonoBehaviour
         if(movementAnimations){
             m_Animator  = gameObject.GetComponent<Animator>();
         }
+    }
+
+    private void LateUpdate()
+    {
+        Debug.Log("late update player position: " + transform.position +
+                  " playerCameraParent: " + playerCameraParent.position);
     }
 
     void animateMovements() {
