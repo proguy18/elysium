@@ -21,12 +21,11 @@ public class HealthUISpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cam = Camera.main.transform;
+        cam = PlayerCamera.Camera.transform;
         foreach (Canvas c in FindObjectsOfType<Canvas>())
         {
             if(c.renderMode == RenderMode.WorldSpace) 
             {
-                Debug.Log("Canvas name is " + c.name);
                 HealthUITransform = Instantiate(uiPrefab, c.transform).transform;
                 healthSlider = HealthUITransform.GetChild(0).GetComponent<Image>();
                 break;
@@ -51,22 +50,13 @@ public class HealthUISpawner : MonoBehaviour
         if (HealthUITransform == null)
             return;
         Destroy(HealthUITransform.gameObject);
-        // StartCoroutine(DestroyHealthUIIn(1f));
     }
-
-    // private IEnumerator DestroyHealthUIIn(float delay)
-    // {
-    //     yield return new WaitForSeconds(delay);
-    //     Destroy(HealthUITransform.gameObject);
-    //     HealthUITransform = null;
-    // }
 
     // Update is called once per frame
     void Update()
     {
         if (HealthUITransform == null)
             return;
-        HealthUITransform.position = target.position;
         healthSlider.fillAmount = GetHealthPercent();
     }
 
@@ -75,10 +65,11 @@ public class HealthUISpawner : MonoBehaviour
         if (HealthUITransform == null)
             return;
         var camPosition = cam.position;
-        Debug.Log("Name of camera is " + cam.name + " position is " + cam.position);
         HealthUITransform.LookAt (
-            new Vector3(camPosition.x,transform.position.y,camPosition.z), Vector3.down);
-        
+            new Vector3(camPosition.x,camPosition.y,camPosition.z), Vector3.down);
+        HealthUITransform.position = target.position;
+        if(name.Contains("Player"))
+            Debug.Log("target position = " + target.position);
     }
     float GetHealthPercent() {
         return Mathf.Clamp01(stats.currentHealth / (float)stats.maxHealth.GetValue ());

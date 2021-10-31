@@ -36,12 +36,6 @@ public class RandomCameraMovement : MonoBehaviour
         StartCoroutine(MoveCamera());
     }
 
-    // void Update()
-    // {
-    //     Debug.Log("time:" + Time.time * 0.1f);
-    //     camTransform.position = Vector3.Lerp(startPoint, endPoint, Time.time * 0.1f);
-    // }
-
     private void ChooseRandomPoints()
     {
         startPoint = endPoint;

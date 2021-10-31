@@ -64,7 +64,6 @@ public abstract class EnemyController : MonoBehaviour
 
     void Die() 
     {
-        Debug.Log("Enemy died");
         // Die animation
         m_Animator.SetInteger("DeathIndex", Random.Range(0,2));
         m_Animator.SetTrigger("Die");
