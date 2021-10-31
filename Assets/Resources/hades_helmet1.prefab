@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5731642138351969845
+--- !u!1 &5180137823793721879
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,55 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4954296611335404687}
-  - component: {fileID: 8317841823584121642}
-  - component: {fileID: 6091714811199916000}
-  - component: {fileID: 4849123328044833641}
-  - component: {fileID: 4849123328044833638}
-  - component: {fileID: 5912197554242932155}
+  - component: {fileID: 5180137823793721872}
+  - component: {fileID: 5180137823793721873}
+  m_Layer: 0
+  m_Name: Halocontainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5180137823793721872
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5180137823793721879}
+  m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.05, z: 0}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_Children: []
+  m_Father: {fileID: 5180137824753497224}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!122 &5180137823793721873
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5180137823793721879}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4281215328
+  m_Size: 1
+--- !u!1 &5180137824753497330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5180137824753497224}
+  - component: {fileID: 5180137824753497231}
+  - component: {fileID: 5180137824753497230}
+  - component: {fileID: 5180137824753497229}
+  - component: {fileID: 5180137824753497228}
+  - component: {fileID: 5180137824753497331}
   m_Layer: 0
   m_Name: hades_helmet1
   m_TagString: Item
@@ -21,35 +64,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4954296611335404687
+--- !u!4 &5180137824753497224
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5731642138351969845}
+  m_GameObject: {fileID: 5180137824753497330}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.93, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 20}
-  m_Children: []
+  m_Children:
+  - {fileID: 5180137823793721872}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8317841823584121642
+--- !u!33 &5180137824753497231
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5731642138351969845}
+  m_GameObject: {fileID: 5180137824753497330}
   m_Mesh: {fileID: 5366374598050484456, guid: 6eb12bb0295f1b54fa0fefa810bf43af, type: 3}
---- !u!23 &6091714811199916000
+--- !u!23 &5180137824753497230
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5731642138351969845}
+  m_GameObject: {fileID: 5180137824753497330}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -85,26 +129,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4849123328044833641
+--- !u!65 &5180137824753497229
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5731642138351969845}
+  m_GameObject: {fileID: 5180137824753497330}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.020518716, y: 0.031621173, z: 0.026884012}
+  m_Size: {x: 0.03, y: 0.03, z: 0.03}
   m_Center: {x: 0, y: -0.0027546552, z: 0.00011193892}
---- !u!114 &4849123328044833638
+--- !u!114 &5180137824753497228
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5731642138351969845}
+  m_GameObject: {fileID: 5180137824753497330}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f47222897a906df4f87f1f02fc026303, type: 3}
@@ -117,15 +161,17 @@ MonoBehaviour:
   armorModifier: 20
   potionEffect: 0
   effectValue: 0
---- !u!122 &5912197554242932155
-Halo:
+--- !u!114 &5180137824753497331
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5731642138351969845}
+  m_GameObject: {fileID: 5180137824753497330}
   m_Enabled: 1
-  m_Color:
-    serializedVersion: 2
-    rgba: 4281346910
-  m_Size: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8d84488781475f45ac2726ccca588ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinSpeed: 6
+  bob_speed: 0.001

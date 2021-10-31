@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -110, y: -110}
+  m_AnchoredPosition: {x: -90, y: -90}
   m_SizeDelta: {x: 178, y: 178}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &41269099
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.16078432, g: 0.098039225, b: 0.08235294, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1021,9 +1021,10 @@ GameObject:
   - component: {fileID: 1056557572}
   - component: {fileID: 1056557571}
   - component: {fileID: 1056557570}
-  - component: {fileID: 1056557569}
   - component: {fileID: 1056557568}
   - component: {fileID: 1056557567}
+  - component: {fileID: 1056557569}
+  - component: {fileID: 1056557576}
   m_Layer: 0
   m_Name: ArtemisSpawner
   m_TagString: Untagged
@@ -1059,8 +1060,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameStem: artemis_sword
   clones: []
-  number: 4
-  z: 0
+  number: 2
+  z: 1
   levelType: 1
   isEnemy: 0
 --- !u!114 &1056557568
@@ -1077,10 +1078,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameStem: Zolrik
   clones: []
-  number: 15
+  number: 20
   z: 0
   levelType: 1
-  isEnemy: 0
+  isEnemy: 1
 --- !u!114 &1056557569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1093,12 +1094,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameStem: wolf
+  nameStem: BattleSpider0
   clones: []
-  number: 15
+  number: 10
   z: 0
   levelType: 1
-  isEnemy: 0
+  isEnemy: 1
 --- !u!114 &1056557570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1205,6 +1206,24 @@ MonoBehaviour:
   clones: []
   number: 15
   z: 0
+  levelType: 1
+  isEnemy: 0
+--- !u!114 &1056557576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056557565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: artemis_helmet
+  clones: []
+  number: 2
+  z: 1
   levelType: 1
   isEnemy: 0
 --- !u!1 &1233529961
@@ -1508,6 +1527,7 @@ GameObject:
   - component: {fileID: 1467055079}
   - component: {fileID: 1467055078}
   - component: {fileID: 1467055077}
+  - component: {fileID: 1467055083}
   m_Layer: 0
   m_Name: HadesSpawner
   m_TagString: Untagged
@@ -1543,8 +1563,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameStem: hades_sword
   clones: []
-  number: 4
-  z: 0
+  number: 2
+  z: 1
   levelType: 0
   isEnemy: 0
 --- !u!114 &1467055078
@@ -1582,7 +1602,7 @@ MonoBehaviour:
   number: 10
   z: 0
   levelType: 0
-  isEnemy: 0
+  isEnemy: 1
 --- !u!114 &1467055080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1618,7 +1638,7 @@ MonoBehaviour:
   number: 10
   z: 0
   levelType: 0
-  isEnemy: 0
+  isEnemy: 1
 --- !u!114 &1467055082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1637,6 +1657,24 @@ MonoBehaviour:
   z: 0
   levelType: 0
   isEnemy: 0
+--- !u!114 &1467055083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467055075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: hades_helmet
+  clones: []
+  number: 2
+  z: 1
+  levelType: 0
+  isEnemy: 0
 --- !u!1 &1481201915
 GameObject:
   m_ObjectHideFlags: 0
@@ -1651,6 +1689,7 @@ GameObject:
   - component: {fileID: 1481201917}
   - component: {fileID: 1481201921}
   - component: {fileID: 1481201920}
+  - component: {fileID: 1481201922}
   m_Layer: 0
   m_Name: AresSpawner
   m_TagString: Untagged
@@ -1704,8 +1743,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameStem: ares_sword
   clones: []
-  number: 4
-  z: 0
+  number: 2
+  z: 1
   levelType: 2
   isEnemy: 0
 --- !u!114 &1481201919
@@ -1740,7 +1779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameStem: Troll
   clones: []
-  number: 15
+  number: 7
   z: 0
   levelType: 2
   isEnemy: 1
@@ -1762,6 +1801,24 @@ MonoBehaviour:
   z: 0
   levelType: 2
   isEnemy: 1
+--- !u!114 &1481201922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481201915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: ares_helmet
+  clones: []
+  number: 2
+  z: 1
+  levelType: 2
+  isEnemy: 0
 --- !u!1001 &1622646736
 PrefabInstance:
   m_ObjectHideFlags: 0

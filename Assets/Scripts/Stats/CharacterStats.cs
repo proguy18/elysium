@@ -31,8 +31,8 @@ public class CharacterStats : MonoBehaviour
 		if (onStart)
 		{
 			timer += Time.deltaTime;
-			currentHealth = 100000;
-			gameObject.GetComponentInChildren<MaterialControllerSkinned>().changeToTransparent();
+			// currentHealth = 100000;
+			// gameObject.GetComponentInChildren<MaterialControllerSkinned>().changeToTransparent();
 			spawnProtection();
 		}
 	}

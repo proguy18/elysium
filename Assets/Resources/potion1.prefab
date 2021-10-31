@@ -1,5 +1,48 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6951615595409667015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4526976420401279485}
+  - component: {fileID: 7785507231013277854}
+  m_Layer: 0
+  m_Name: halo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4526976420401279485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6951615595409667015}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.005}
+  m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
+  m_Children: []
+  m_Father: {fileID: 8385242052075323531}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!122 &7785507231013277854
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6951615595409667015}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4284294188
+  m_Size: 1
 --- !u!1 &8385242052075035819
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,9 +55,9 @@ GameObject:
   - component: {fileID: 8385242052076126379}
   - component: {fileID: 8385242052077224555}
   - component: {fileID: 8414341551734574714}
-  - component: {fileID: 2301245538467284644}
   - component: {fileID: 1790539704583579557}
   - component: {fileID: -942103102238631167}
+  - component: {fileID: 1932889267255722037}
   m_Layer: 0
   m_Name: potion1
   m_TagString: Item
@@ -32,7 +75,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3, y: 0, z: 5}
   m_LocalScale: {x: 200, y: 200, z: 200}
-  m_Children: []
+  m_Children:
+  - {fileID: 4526976420401279485}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -108,18 +152,6 @@ MonoBehaviour:
   rotx: 0
   roty: 0
   rotz: 0
---- !u!122 &2301245538467284644
-Halo:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8385242052075035819}
-  m_Enabled: 1
-  m_Color:
-    serializedVersion: 2
-    rgba: 4290724692
-  m_Size: 0.5
 --- !u!114 &1790539704583579557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,5 +182,19 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Size: {x: 0.005, y: 0.005, z: 0.005}
   m_Center: {x: 0, y: 0, z: 0.001237706}
+--- !u!114 &1932889267255722037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8385242052075035819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8d84488781475f45ac2726ccca588ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinSpeed: 6
+  bob_speed: 0.001
