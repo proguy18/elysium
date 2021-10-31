@@ -34,12 +34,14 @@ public class EnemyAudioController : MonoBehaviour
 
     public void stopMainSound()
     {
-        _mainAudioSource.Stop();
+        if(_mainAudioSource != null)
+            _mainAudioSource.Stop();
     }
 
     public void stopSecondarySound()
     {
-        _secondaryAudioSource.Stop();
+        if(_secondaryAudioSource != null)
+            _secondaryAudioSource.Stop();
     }
     
     public void getHitSound () 
@@ -60,6 +62,8 @@ public class EnemyAudioController : MonoBehaviour
 
     public void movementSounds()
     {
+        if (_mainAudioSource == null)
+            return;
         // Add movement sound
         if (_mainAudioSource.clip != Movement)
         {
@@ -76,6 +80,8 @@ public class EnemyAudioController : MonoBehaviour
 
     public void attackSound()
     {
+        if (_secondaryAudioSource1 == null)
+            return;
         // to add attack sounds
         // Add movement sound
         if (_secondaryAudioSource1.clip != Attack)

@@ -34,7 +34,6 @@ public abstract class CharacterCombat : MonoBehaviour
         if (attackCooldown <= 0f)
         {
             // Play attack animation
-            // PlayAttackAnimation();
             if (OnAttacking != null) 
                 OnAttacking();
 
