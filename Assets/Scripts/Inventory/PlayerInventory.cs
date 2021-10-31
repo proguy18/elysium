@@ -35,7 +35,8 @@ public class PlayerInventory : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Confined;
     }
 
-    private void initializeVariables(){
+    private void initializeVariables()
+    {
         inv = GameObject.Find("CanvasScreenSpace").transform.Find("Inventory");
         inventoryUI = inv.gameObject;
         statsDisplay = inv.transform.Find("Stats").GetComponent<Text>();

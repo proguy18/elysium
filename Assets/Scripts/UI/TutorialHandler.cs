@@ -34,9 +34,10 @@ public class TutorialHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(keyCodes[currentMessageIndex]))
         {
-            StartCoroutine(NextMessage());
             if (hasReachedEndTutorial())
                 SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+            else
+                StartCoroutine(NextMessage());
         }
     }
 
