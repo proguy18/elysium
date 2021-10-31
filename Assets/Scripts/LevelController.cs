@@ -20,6 +20,7 @@ public class LevelController : MonoBehaviour
     private MapPopulator mapPopulator;
     private EndSpawner endSpawner;
     private bool newMap = false;
+    private int killCount = 0;
     int count = 3;
     public float difficultyScale = 0.003f;
 
@@ -135,5 +136,12 @@ public class LevelController : MonoBehaviour
             }
         }
     }
+    public void incrementKillCount(){
+        killCount ++;
+    }
+    public int getKillCount(){
+        return killCount;
+    }
+    
     
 }
