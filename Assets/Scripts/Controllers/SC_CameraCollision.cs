@@ -1,3 +1,5 @@
+// Adapted from https://sharpcoderblog.com/blog/third-person-camera-in-unity-3d
+
 using UnityEngine;
 
 public class SC_CameraCollision : MonoBehaviour

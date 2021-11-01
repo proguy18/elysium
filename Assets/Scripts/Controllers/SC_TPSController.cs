@@ -1,3 +1,5 @@
+// Adapted from https://sharpcoderblog.com/blog/third-person-camera-in-unity-3d
+
 using System;
 using System.Collections;
 using UnityEngine;
