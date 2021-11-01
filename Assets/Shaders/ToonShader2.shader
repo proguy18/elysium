@@ -11,8 +11,6 @@ Shader "Unlit/Toon2"
 		_RimAmount("Rim Amount", Range(0, 1)) = 0.716
 		_RimThreshold("Rim Threshold", Range(0, 1)) = 0.1
 		
-		_SkyboxLight ("Skybox Light", 2D) = "black" {}
-
 		_HeightMap ("Height Map", 2D) = "black" {}
 		_HeightIntensity ("Height Intensity", Range(0, 1)) = 0
 
@@ -20,9 +18,6 @@ Shader "Unlit/Toon2"
 		_NormalIntensity ("Normal Intensity", Range(0,10)) = 0
 
 		_OutlineColor ("Outline Color", Color) = (0,0,0,1)
-      	_LitOutlineThickness ("Lit Outline Thickness", Range(0,1)) = 0.1
-      	_UnlitOutlineThickness ("Unlit Outline Thickness", Range(0,1)) = 0.4
-
 		_OutlineWidth ("Outline Width", Range(0, 0.1)) = 0.00001
 	}
 	SubShader
@@ -31,14 +26,6 @@ Shader "Unlit/Toon2"
 			Tags {
 				"LightMode" = "ForwardBase"
 				}
-
-			/*Cull Off
-
-			Stencil {
-				Ref 1
-				Comp Always
-				Pass Replace
-			}*/
 
 			CGPROGRAM
 			#pragma vertex vert
@@ -57,11 +44,6 @@ Shader "Unlit/Toon2"
 
 		Pass {
 			Cull Front
-
-			/*Stencil {
-				Ref 1
-				Comp Greater
-			}*/
 
 			CGPROGRAM
 			#pragma vertex vert

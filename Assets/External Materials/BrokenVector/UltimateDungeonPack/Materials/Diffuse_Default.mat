@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Diffuse_Default
-  m_Shader: {fileID: 4800000, guid: e728c395640ce6742b1e206c6fd10311, type: 3}
+  m_Shader: {fileID: 4800000, guid: a10e1e2806efde441a15b4a5d0198a11, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -39,6 +39,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _HeightMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: fbdc28b4a3304bb4185e640c32ffc5c5, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -47,11 +51,19 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SkyboxLight:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -69,9 +81,11 @@ Material:
     - _Glossiness: 0.041
     - _GlossyReflections: 1
     - _HeightAdjustment: 0
+    - _HeightIntensity: 0
     - _LitOutlineThickness: 0.1
     - _Metallic: 0
     - _Mode: 0
+    - _NormalIntensity: 0
     - _OcclusionStrength: 1
     - _OutlineWidth: 0
     - _Parallax: 0.02

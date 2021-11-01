@@ -16,16 +16,6 @@ float4 _Color;
 float _Sharpness;
 float _TextureScale;
 
-// for toon lighting
-sampler2D _HeightMap;
-sampler2D _NormalMap;
-float _HeightIntensity;
-float _NormalIntensity;
-float4 _AmbientColor;
-float _Glossiness;
-float4 _SpecularColor;
-float4 _FinalColor;
-
 struct vertIn{
 	float4 vertex : POSITION;
 	float3 normal : NORMAL;

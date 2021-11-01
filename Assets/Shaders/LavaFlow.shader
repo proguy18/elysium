@@ -7,7 +7,6 @@ Shader "Unlit/LavaFlow"
 	{
 		_Color("Color", Color) = (0.5, 0.65, 1, 1)
 		_MainTex("Main Texture", 2D) = "white" {}
-		//_WaveA("Wave A (dir, steepness, wavelength)", Vector) = (1,0,0.5,10)
 		[NoScaleOffset] _FlowMap ("Flow", 2D) = "black" {}
 		[NoScaleOffset] _NormalMap ("Normals", 2D) = "bump" {}
 		_UJump ("U jump per phase", Range(-0.25, 0.25)) = 0.25
