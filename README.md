@@ -54,7 +54,7 @@ Remember that _"this document"_ should be `well written` and formatted **appropr
 
 | Name | Task | State |
 | :---         |     :---:      |          ---: |
-| Student Name 1  | MainScene     |  Done |
+| Zhen Yi Ang  | Final cleanup     |  Done |
 | Alex Gorabtov    | Final bug fixing     |  Done |
 | Jack Lenard    |  Bug fixing, refactoring  |  Incomplete  |
 | Joseph Leonardi    | README Format and bug fixing      |  In Progress... |
