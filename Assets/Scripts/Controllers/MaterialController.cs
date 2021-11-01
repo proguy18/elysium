@@ -40,4 +40,14 @@ public class MaterialController : MonoBehaviour
             }
         }
     }
+    
+    public void changeToTransparent()
+    {
+        meshRenderer.material = transparentMaterial;
+    }
+    
+    public void changeToDefault()
+    {
+        meshRenderer.material = defaultMaterial;
+    }
 }

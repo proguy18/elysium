@@ -91,9 +91,6 @@ public class SC_TPSController : MonoBehaviour
         postProcessLayer.Init(postProcessResources);
         postProcessLayer.antialiasingMode = PostProcessLayer.Antialiasing.SubpixelMorphologicalAntialiasing;
         postProcessLayer.volumeLayer = LayerMask.GetMask("Post-processing");
-        
-        // Add audio controller
-        /*AudioListener audioListener = mainCamera.AddComponent<AudioListener>();*/
 
         cameraScript.referenceTransform = playerCameraParent;
         Cursor.visible = false;

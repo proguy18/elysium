@@ -5,14 +5,16 @@ using UnityEngine;
 public class SpawningSafely : MonoBehaviour
 {
     // Start is called before the first frame update
-    private MaterialControllerSkinned skinned = null;
+    private MaterialControllerSkinned skin = null;
+    private GameObject[] weapons;
     private float timer;
     private CharacterStats stats;
     private bool onStart = true;
     
     void Start()
     {
-        skinned = gameObject.GetComponentInChildren<MaterialControllerSkinned>();
+        skin = gameObject.GetComponentInChildren<MaterialControllerSkinned>();
+        weapons = GameObject.FindGameObjectsWithTag("weapon");
         stats = gameObject.GetComponent<CharacterStats>();
     }
 
@@ -22,7 +24,8 @@ public class SpawningSafely : MonoBehaviour
         if (onStart)
 		{
 			timer += Time.deltaTime;
-			if (skinned != null )skinned.changeToTransparent();
+			if (skin != null ) skin.changeToTransparent();
+			weaponInvisibility(true);
 			spawnProtection();
 		}
     }
@@ -31,7 +34,8 @@ public class SpawningSafely : MonoBehaviour
 		
 		if (timer > 5f)
 		{
-			gameObject.GetComponentInChildren<MaterialControllerSkinned>().changeToDefault();
+			skin.changeToDefault();
+			weaponInvisibility(false);
 			stats.Heal(stats.maxHealth.GetValue());
 			onStart = false;
 		}
@@ -40,4 +44,15 @@ public class SpawningSafely : MonoBehaviour
         }
 
 	}
+
+    private void weaponInvisibility(bool isInvisible)
+    {
+	    foreach (GameObject material in weapons)
+	    {
+		    if (isInvisible) material.GetComponent<MaterialController>().changeToTransparent();
+		    
+		    else material.GetComponent<MaterialController>().changeToDefault();
+		    
+	    }
+    }
 }
