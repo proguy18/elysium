@@ -102,9 +102,10 @@ This shader was written in order to map the texture to the walls of the map with
 
 ## A description of the particle system you wish to be marked and how to locate it in your Unity project.
 
-The particle system that we want marked is the fire particle system, it adapted and modified from https://www.youtube.com/watch?v=5Mw6NpSEb2o&t=686s.. It is located in Assets > PreFabs > Torch with point light. From the prefab, navigate to torch holder > PS_Fire. PS_Fire was taken from the PS_Fire prefab, but it had to be re-scaled to fit the torch. An ember particle system effect was added to the particle system, that was not present in the tutorial, in order to better imitate fire from wood.
+The particle system that we want marked is the fire particle system, it adapted and modified from https://www.youtube.com/watch?v=5Mw6NpSEb2o&t=686s. It is located in Assets > PreFabs > Torch with point light. From the prefab, navigate to torch holder > PS_Fire. PS_Fire was taken from the PS_Fire prefab, but it had to be re-scaled to fit the torch. An ember particle system effect was added to the particle system, that was not present in the tutorial, in order to better imitate fire from wood.
 ## Description of the querying and observational methods used, including a description of the participants (how many, demographics), description of the methodology (which techniques did you use, what did you have participants do, how did you record the data), and feedback gathered.
 
+**Observational Method**
 For the observational method we used a Think Aloud Study focusing on the ease of use of two features: 1) the inventory specifically finding and picking up items. 2) finding and transitioning to a new level. We had 5 participants of the study: 
 - Participant A: Experienced gamer on both PC and console
 - Participant B: Experienced gamer on PC
@@ -114,29 +115,61 @@ For the observational method we used a Think Aloud Study focusing on the ease of
 
 We prompted the participants only to find the objects in the scene and transition to the next level. We left out all the combat elements and only left in the objects in the scene some of which were scenery and some of which were interactable. We used audio recording to record the data and as the task was simple enough, little prompting was needed by the experimenter to get the participants to talk freely and actively especially after the first few minutes. The feedback gathered was clear. Once the pattern was observed, participants found they were easily able to identify that the objects were pickup-able but did not know what the objects were as the light that we had used to identify the objects obscured the object itself. The door to transition to each level was easy to identify and obvious. All players did not need any prompting to identify, move towards, and transition to a new level. We also identified some feedback about the controls. PC gamers found the controls intuitive and easy to use but those who are new to gaming and PC gaming had intiuting the controls. 
 
-@Joey the other method. queryingtechnique
-For the querying method we invited players to play the game, and answer a Google form questionnaire. The questionnaire focused on the art style, and overall 'fun-ness' and difficulty of the game. 7 participants that were experienced gamers (one of which was experienced in game design) were given the game to try out.
+**Querying Method**
+For the querying method we invited players to play the game, and answer a Google form questionnaire. 7 participants that were experienced gamers (one of which was experienced in game design) were given the game to try out. The second part of the survey focused on the design and balancing of the mobs in the game.
 
-Without giving any assistance besides in the installation and start of the game, many participants found the game counter-intuitive with the attack button not being on the default Mouse1 that most people were accustomed to. Right off the bat, many were mindlessly trying to figure out the 'aim' of the game, as well as fiddle with the UI that revealed bugs. After 5 minutes, participants were given, the aim of the game, as well as the controls, if they hadn't figured it out already. Despite the controls being avaialble in the Pause menu,
+Without giving any assistance besides in the installation and start of the game, many participants found the game counter-intuitive with the attack button not being on the default Mouse1 that most people were accustomed to. Right off the bat, many were mindlessly trying to figure out the 'aim' of the game, as well as fiddle with the UI that revealed bugs. After 5 minutes, participants were given, the aim of the game, as well as the controls, if they hadn't figured it out already. Despite the controls being available in the pause menu, many participants reported that having a scene that showed the controls/a tutorial before starting the game would've helped them understand the controls and game more.
+
+**Results Part 1**
+The first part questionnaire focused on the art style, and overall 'fun-ness' and difficulty of the game.
+The difficulty of the game was rated fairly easy with 3 participants saying the game was 'easy' and 4 participants saying it was 'very easy.'
+The art style and graphics of the game had mixed reviews with 4 participants giving the art style and graphics positive reviews, while 3 participants gave a negative review.
+The game ran smoothly for 5 of the participants and it did not for 2 of the participants. Upon investigation, this was due to the resolution option messing up the game if the participant had a multiple screen setup.
+The game was negatively rated for having a clear end goal with 6 participants saying the end goal wasn't clear.
+The game was rated positively for allowing the player to explore, with 4 participants agreeing that they felt able to explore things, and 2 participants disagreeing, while 1 participant was neutral.
+
+**Results Part 2**
+The second part of the survey showed us what the participants liked and disliked about the mobs in our game. The skeletons and spiders in our game received mostly positive reviews, while the trolls and goblins received mixed reviews. The trolls and goblins received mixed reviews due to them being bugged during this playtest and they were unable to attack the player. However, many participants were quick to compliment the design of the troll, as they were 'large and funny looking.'
+
+**Results Part 3**
+The last part of the survey asks the participant what they liked and disliked about our game. The main objective of the game being unclear was a recurring theme received as feedback from the participants. Subsequently a recurring theme about what the participants liked about our game was the minimap and the design of the troll.
+
+By reading these comments in more detail, participants did not like the idea of mobs being pointless towards the objective of the game, as the player could run all the way to the exit without fighting a single mob. Some items in the map were too small and couldn't be seen by the player.
 
 ## Document the changes made to your game based on the information collected during the evaluation.
+**Changes made after information collected from the observational study**
 In response to the Think Aloud Study, we made a number of changes. 
 - For each of the pickup-able objects, we created a new script that made the object bob up and down whilst turning slightly and included a light over its head instead of coming from the object's centre. This means that the objects are easier to see from further away and the object itself are more identifiable.
 - In the pause screen we have included the controls to make it easier for new players.
 
-@Joey describe what changes we made here. 
+**Changes made after information collected from the querying method**
+In response to the questionnaire, we made a number of changes. 
+- Option to change a player's resolution was removed, as it would take too much time to fix. Additionally, default launch options of the game worked well, so we on scrapping the feature to produce a stable game.
+- Trolls and goblins were fixed in the game.
+- More particle system effects were added into the game and its objects to make them more visible.
+- A tutorial scene was implemented to teach the player the controls and the basis of the game.
+- Control remapping was done, in order to make the game more intuitive to existing gamers.
+- An option to go to the main menu while in game was implemented as per participant's request.
+- A level score system was implemented in order to track a player's progress, as well as implicitly tell the player about the end goal.
+- The mobs were given stronger stats (speed, health, damage, armour) to make the game more difficult
+- Combat was incentivised by making the mobs able to drop items.
 
 ## References and external resources that you used.
-Sebastian Lague tutorial series for the creation of a procedurally generated cave: https://www.youtube.com/watch?v=v7yyZZjF1z4&list=PLFt_AvWsXl0eZgMK_DT5_biRkWXftAOf9
-Brackey's youtube channel assisted a lot in the template of our game: https://www.youtube.com/c/Brackeys
-Took the gaussian number generator from here: https://stackoverflow.com/questions/218060/random-gaussian-variables
-Third person camera: https://sharpcoderblog.com/blog/third-person-camera-in-unity-3d
+@All please add your references and other resources here. 
+
+- Third person camera: https://sharpcoderblog.com/blog/third-person-camera-in-unity-3d
+
+- Sebastian Lague tutorial series for the creation of a procedurally generated cave: https://www.youtube.com/watch?v=v7yyZZjF1z4&list=PLFt_AvWsXl0eZgMK_DT5_biRkWXftAOf9
+
+- Brackey's youtube channel assisted a lot in the template of our game: https://www.youtube.com/c/Brackeys
+
+- Took the gaussian number generator from here: https://stackoverflow.com/questions/218060/random-gaussian-variables
 
 ## A description of the contributions made by each member of the group.
 
 Alex Gorbatov (996729) focused on the generation of the map and populating it with objects. The majority of the content within the scripts involved with spawning objects, populating the map, and generating the map are created by him. This included sourcing and building many of the prefab assets for the visuals and population of the game. In addition, he created the minimap, transitions between levels, performed the observational method, and created the procedurally generated items.
 
-Joseph Leonardi (1025351) focused on particle system effects, mob AI, player and mob combat, and UI elements. The majority of the content in scripts related to mob movement, combat, and menu UI were created by him. He created animation controllers and set the stats of each mob, and all the components in the mob prefabs besides the ones related to sounds. The StartScene was made entirely by him with the exception of the sample level that was randomly generated. Scene transitions were also made by him.
+Joseph Leonardi (1025351) focused on particle system effects, mob AI, player and mob combat, tutorial, and UI elements. The majority of the content in scripts related to mob movement, combat, and menu UI were created by him. He created animation controllers and set the stats of each mob, and all the components in the mob prefabs besides the ones related to sounds. The StartScene was made entirely by him with the exception of the sample level that was randomly generated. Scene transitions were also made by him. The TutorialScene was made by him in response to the querying method he conducted.
 
 Zhen Yi Ang (1000033) focused on the shaders, the graphics and aesthetic style of the game, and the sound design. All of the shaders implemented in the game was written by him. A majority of the graphics and sound assets in the game were sourced by him. He managed most of the graphics pipeline including the scene lighting, the graphics settings as well as the post-processing. He also designed the DemoScene and recorded and edited the demo video using that scene.
 
@@ -148,31 +181,6 @@ Project is created with:
 * Ipsum version: 2.33
 * Ament library version: 999
 
-## Using Images
-
-You can use images/gif by adding them to a folder in your repo:
-
-<p align="center">
-  <img src="Gifs/Q1-1.gif"  width="300" >
-</p>
-
-To create a gif from a video you can follow this [link](https://ezgif.com/video-to-gif/ezgif-6-55f4b3b086d4.mov).
-
-## Code Snippets 
-
-You can include a code snippet here, but make sure to explain it! 
-Do not just copy all your code, only explain the important parts.
-
-```c#
-public class firstPersonController : MonoBehaviour
-{
-    //This function run once when Unity is in Play
-     void Start ()
-    {
-      standMotion();
-    }
-}
-```
 
 
 
