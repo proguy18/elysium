@@ -32,7 +32,7 @@ Level transitions: Find and collide with the door in the scene to transition to 
 All models are taken from free online resources such as the Unity asset store, SketchFab, or other similar resources. Small modifications were made to the colour of the objects for distiction purposes. 
 
 ## How you handled the graphics pipeline and camera motion.
-Camera motion is determined by both the player movement script and a camera collisions script. The main camera is positioned behind and above the player, to provide a third-person perspective. Camera motion can be controlled by the user in the form of mouse movements. The camera object is set up as a child of the player object, and is locked to the same relative position. When the mouse is moved, the camera rotates around the player object, while the player object rotates in place - allowing the user to "look" around the scene. To prevent the camera from clipping into objects when moved, the camera script script automatically detects collisions after every frame and offsets the camera position away from the point of collision if any are found. For convenience, the player movement script automatically creates and initializes the camera game object. 
+The main camera is positioned behind and above the player, to provide a third-person perspective. Camera motion can be controlled by the user in the form of mouse movements. The camera object is set up as a child of the player object, and is locked to the same relative position. When the mouse is moved, the camera rotates around the player object, while the player object rotates in place - allowing the user to "look" around the scene. For convenience, the player movement script automatically creates and initializes the camera game object. 
 
 A random camera motion script was created for the StartScene, in order to display and highlight the map to the player upon booting up the game. The script uses 2 predetermined points as boundaries, and randomly picks a point within this boundary to move to, iteratively in order to showcase the procedurely generated level/map in the background of the main menu.
 
@@ -138,7 +138,6 @@ Project is created with:
 * Unity 2021.1.13f1
 * Ipsum version: 2.33
 * Ament library version: 999
-
 
 
 

@@ -14,7 +14,7 @@ public class SC_TPSController : MonoBehaviour
 
     public float walkSpeed = 5f; 
     public float runSpeed = 8f;
-    public float mouseSensitivity = 2.0f;
+    public float mouseSensitivity = 4.0f;
     public bool movementAnimations = false; // will cause errors if changed during runtime
 
     public KeyCode left = KeyCode.A;
@@ -25,7 +25,7 @@ public class SC_TPSController : MonoBehaviour
     
     public PostProcessResources postProcessResources;
 
-    public float lookXLimit = 30;
+    public float lookXLimit = 20;
     private Transform playerCameraParent;
     private CharacterController characterController;
     private Vector3 moveDirection = Vector3.zero;
@@ -81,9 +81,8 @@ public class SC_TPSController : MonoBehaviour
         mainCamera.transform.SetParent(playerCameraParent);
         mainCamera.tag = "MainCamera";
         Camera camera = mainCamera.AddComponent<Camera>();
-        mainCamera.transform.localPosition = new Vector3(0,2.5f,-4);
-        mainCamera.transform.localRotation = Quaternion.Euler(15,0,0);
-        SC_CameraCollision cameraScript  = mainCamera.AddComponent<SC_CameraCollision>();
+        mainCamera.transform.localPosition = new Vector3(0,2f,-2);
+        mainCamera.transform.localRotation = Quaternion.Euler(30,0,0);
         PlayerCamera.Camera = camera;
         
         // Add postprocessing
@@ -92,7 +91,6 @@ public class SC_TPSController : MonoBehaviour
         postProcessLayer.antialiasingMode = PostProcessLayer.Antialiasing.SubpixelMorphologicalAntialiasing;
         postProcessLayer.volumeLayer = LayerMask.GetMask("Post-processing");
 
-        cameraScript.referenceTransform = playerCameraParent;
         Cursor.visible = false;
 
     }
