@@ -38,9 +38,7 @@ public class PlayerAudioController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //uiIsNotActive = (!PauseMenu.IsPaused && !PlayerInventory.InventoryIsActive);
-        //Debug.Log((PauseMenu.IsPaused, PlayerInventory.InventoryIsActive));
-        if (!isPaused)
+        if (!isPaused && !PauseMenu.IsPaused)
         {
             movementSounds();
             attackCooldown -= Time.deltaTime;
@@ -49,7 +47,7 @@ public class PlayerAudioController : MonoBehaviour
 
     private void movementSounds()
     {
-        if((Input.GetKey(left) || Input.GetKey(right) || Input.GetKey(up) || Input.GetKey(down)) && uiIsNotActive)
+        if((Input.GetKey(left) || Input.GetKey(right) || Input.GetKey(up) || Input.GetKey(down)))
         {
             movementSound();
         }
@@ -58,7 +56,7 @@ public class PlayerAudioController : MonoBehaviour
             _mainAudioSource.Stop();
         }
         
-        if(Input.GetKeyDown(attack) /*&& uiIsNotActive*/) 
+        if(Input.GetKey(attack)) 
         {
             attackSound();
         }
@@ -71,9 +69,11 @@ public class PlayerAudioController : MonoBehaviour
     private void movementSound()
     {
         if(Input.GetKey(run)){
+            Debug.Log("running");
                 
             if (_mainAudioSource.clip != running)
             {
+                Debug.Log("setting clip");
                 _mainAudioSource.Stop();
                 _mainAudioSource.clip = running;
                 _mainAudioSource.Play();
@@ -102,8 +102,9 @@ public class PlayerAudioController : MonoBehaviour
 
     private void attackSound()
     {
-        Debug.Log(attackCooldown);
+        
         if (!(attackCooldown <= 0f)) return;
+        
         
         if (_secondaryAudioSource.clip != swordSwing)
         {
@@ -115,6 +116,7 @@ public class PlayerAudioController : MonoBehaviour
         if (!_secondaryAudioSource.isPlaying)
         {
             _secondaryAudioSource.Play();
+            Debug.Log(attackCooldown);
         }
 
         attackCooldown = 1 / attackSpeed;

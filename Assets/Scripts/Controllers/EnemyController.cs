@@ -62,7 +62,7 @@ public abstract class EnemyController : MonoBehaviour
         enemyAudio.getHitSound();
     }
 
-    void Die() 
+    void Die()
     {
         // Die animation
         m_Animator.SetInteger("DeathIndex", Random.Range(0,2));
@@ -123,7 +123,7 @@ public abstract class EnemyController : MonoBehaviour
         return agent.velocity.Equals(new Vector3(0, 0, 0));
     }
 
-    bool IsAlive()
+    public bool IsAlive()
     {
         return !m_Animator.GetBool("hasDied");
     }

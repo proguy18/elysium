@@ -162,6 +162,4 @@ public class LevelController : MonoBehaviour
         droppables[index].spawn(multiplier, spawnPos);
         
     }
-    
-    
 }
