@@ -23,12 +23,15 @@ public class PlayerInventory : MonoBehaviour {
     private Item SwordSlot;
     private Item RingSlot;
     private CharacterStats stats;
+    private CharacterStats baseStats;
     private Text statsDisplay;
     private bool swordIsEquipped() {return swordEquipped;}
     private bool ringIsEquipped() {return ringEquipped;}
+    private Text deltaMaxHealth;
+    private Text deltaDammage;
+    private Text deltaArmour;
 
-	private void Start ()
-	{
+	private void Awake(){
         initializeVariables();      
         initializeButtons();
         inventoryUI.SetActive(false);
@@ -41,7 +44,9 @@ public class PlayerInventory : MonoBehaviour {
     {
         inv = GameObject.Find("CanvasScreenSpace").transform.Find("Inventory");
         inventoryUI = inv.gameObject;
-        statsDisplay = inv.transform.Find("Stats").GetComponent<Text>();
+        Transform stats_ = inv.transform.Find("Stats");
+
+        statsDisplay = stats_.GetComponent<Text>();
         Transform weapons = inv.transform.Find("Weapons");
         SwordSlot = weapons.transform.Find("SwordSlot").GetComponent<Item>();
         RingSlot = weapons.transform.Find("RingSlot").GetComponent<Item>();
@@ -50,6 +55,7 @@ public class PlayerInventory : MonoBehaviour {
         defaultRingIcon_ = weapons.transform.Find("RingSlot").Find("UseButton").Find("Icon").gameObject;
         defaultSwordIcon_.GetComponent<Image>().sprite = defaultSwordIcon;
         defaultRingIcon_.GetComponent<Image>().sprite = defaultRingIcon;
+
     }
 
 	private void Update ()
@@ -170,9 +176,8 @@ public class PlayerInventory : MonoBehaviour {
             ringEquipped = false;
             defaultRingIcon_.SetActive(true);
 
-        }
+        }        
     }
-
 
 	private void FillSlot (Item slot, Item newItem)
 	{
@@ -218,5 +223,29 @@ public class PlayerInventory : MonoBehaviour {
     statsDisplay.text = string.Format("Max Health: {0}\nDamage: {1}\nArmor: {2}", 
         stats.maxHealth.GetValue(), stats.damage.GetValue(), stats.armor.GetValue());
     } 
+    public void triggerDelta(Item item){
+        if (item.icon == null) return;
+        initialiseTextFields();
+        changeText(item.maxHealthModifier, deltaMaxHealth);
+        changeText(item.damageModifier, deltaDammage);
+        changeText(item.armorModifier, deltaArmour);
+
+    }
+    public void untriggerDelta(){
+        deltaMaxHealth.text = "";
+        deltaDammage.text = "";
+        deltaArmour.text = "";
+    }
+    private void changeText(int difference, Text text){
+        string s = "("+difference+")";
+        text.text = s;
+    }
+    private void initialiseTextFields(){
+        Transform stats_ = GameObject.Find("CanvasScreenSpace").transform.Find("Inventory").transform.Find("Stats");
+        deltaArmour = stats_.Find("Armour Change").GetComponent<Text>();
+        deltaDammage = stats_.Find("Damage Change").GetComponent<Text>();
+        deltaMaxHealth = stats_.Find("MaxHealth Change").GetComponent<Text>();
+
+    }
 
 }

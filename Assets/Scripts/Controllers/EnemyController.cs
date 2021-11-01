@@ -67,6 +67,7 @@ public abstract class EnemyController : MonoBehaviour
         // Die animation
         m_Animator.SetInteger("DeathIndex", Random.Range(0,2));
         m_Animator.SetTrigger("Die");
+        enemyAudio.getHitSound();
         m_Animator.SetBool("hasDied", true);
 
         // Disable the enemy

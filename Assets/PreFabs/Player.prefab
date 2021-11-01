@@ -647,7 +647,7 @@ GameObject:
   - component: {fileID: 1049446197327258625}
   m_Layer: 0
   m_Name: Shield_LP
-  m_TagString: Untagged
+  m_TagString: weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1372,7 +1372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae2c00f31ffcaab4cb0f62f36f38f990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackSpeed: 1
+  attackSpeed: 1.5
   attackCooldown: 0
   attackPoint: {fileID: 8672588682157186310}
   attackRange: 2.5
@@ -1400,7 +1400,7 @@ MonoBehaviour:
   running: {fileID: 8300000, guid: 9f71cec130edf154491860ca3851db52, type: 3}
   swordSwing: {fileID: 8300000, guid: fc7468403b7b0ae489c1e5dc8a7fccb2, type: 3}
   itemPick: {fileID: 8300000, guid: 2d56f833cb6bbf040bdd341ae5516fac, type: 3}
-  attackSpeed: 1
+  attackSpeed: 1.5
   isPaused: 0
   left: 97
   right: 100
@@ -1597,7 +1597,7 @@ GameObject:
   - component: {fileID: 7252989408770843352}
   m_Layer: 0
   m_Name: Sword_LP
-  m_TagString: Untagged
+  m_TagString: weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1799,7 +1799,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: ac4bded52f005fe4b9b901761de8cceb, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.09
+  m_Volume: 0.169
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2053,7 +2053,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: ac4bded52f005fe4b9b901761de8cceb, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.15
+  m_Volume: 0.261
   m_Pitch: 1
   Loop: 0
   Mute: 0

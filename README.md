@@ -31,15 +31,15 @@ Remember that _"this document"_ should be `well written` and formatted **appropr
 
 - [x] The procedural generation technique and/or algorithm used, including a high level description of the implementation details.
 
-- [ ] Descriptions of how the custom shaders work (and which two should be marked).
+- [x] Descriptions of how the custom shaders work (and which two should be marked).
 
 - [x] A description of the particle system you wish to be marked and how to locate it in your Unity project.
 
-- [ ] Description of the querying and observational methods used, including a description of the participants (how many, demographics), description of the methodology (which techniques did you use, what did you have participants do, how did you record the data), and feedback gathered.
+- [x] Description of the querying and observational methods used, including a description of the participants (how many, demographics), description of the methodology (which techniques did you use, what did you have participants do, how did you record the data), and feedback gathered.
 
 - [x] Document the changes made to your game based on the information collected during the evaluation.
 
-- [ ] References and external resources that you used.
+- [x] References and external resources that you used.
 
 - [x] A description of the contributions made by each member of the group.
 
@@ -55,7 +55,7 @@ Remember that _"this document"_ should be `well written` and formatted **appropr
 | Name | Task | State |
 | :---         |     :---:      |          ---: |
 | Student Name 1  | MainScene     |  Done |
-| Student Name 2    | Shader      |  Testing |
+| Alex Gorabtov    | Final bug fixing     |  Done |
 | Jack Lenard    |  Bug fixing, refactoring  |  Incomplete  |
 | Joseph Leonardi    | README Format and bug fixing      |  In Progress... |
 
@@ -75,7 +75,6 @@ All models are taken from free online resources such as the Unity asset store, S
 ## How you handled the graphics pipeline and camera motion.
 Camera motion is determined by both the player movement script and a camera collisions script. The main camera is positioned behind and above the player, to provide a third-person perspective. Camera motion can be controlled by the user in the form of mouse movements. The camera object is set up as a child of the player object, and is locked to the same relative position. When the mouse is moved, the camera rotates around the player object, while the player object rotates in place - allowing the user to "look" around the scene. To prevent the camera from clipping into objects when moved, the camera script script automatically detects collisions after every frame and offsets the camera position away from the point of collision if any are found. For convenience, the player movement script automatically creates and initializes the camera game object. 
 
-
 A random camera motion script was created for the StartScene, in order to display and highlight the map to the player upon booting up the game. The script uses 2 predetermined points as boundaries, and randomly picks a point within this boundary to move to, iteratively in order to showcase the procedurely generated level/map in the background of the main menu.
 
 ## The procedural generation technique and/or algorithm used, including a high level description of the implementation details.
@@ -84,15 +83,17 @@ The procedural generation technique that we used was Cellular Automation. First 
 
 Then we used a combination of random and semi-random methods to distribute objects throughout each of these levels. This creates three distict environments one based on each of the Gods. We distribute lights throughout the map evenly which are then spread and attached to the walls of the scene afterwards. 
 
+Futher, we procedurally generate better and better items through the course of the game. The item's stats are modified based on a gaussian distribution pattern and the extent to which they are modified is based on the level. This will generate the poissibility of more and more powerful items as you progress through the levels. This will help you prepare for similarly more difficult mobs. 
+
 ## Descriptions of how the custom shaders work (and which two should be marked).
 
 **Cel-shader** (to mark)
 
-The cel-shader (ToonShader2.shader in the Shaders folder) is used on the player as well as all the enemies and most of the environmental objects to give a cel-shaded aesthetic ..
+The cel-shader (ToonShader2.shader in the Shaders folder) is used on the player as well as all the enemies and most of the environmental objects to give a cel-shaded aesthetic.
 
 **Lava flow shader** (to mark)
 
-The lava flow shader was written to give make the lava in the lavapools look as though they are flowing..
+The lava flow shader was written to give make the lava in the lavapools look as though they are flowing.
 
 
 **Triplanar mapping shader**
@@ -165,9 +166,8 @@ In response to the questionnaire, we made a number of changes.
 - Took the gaussian number generator from here: https://stackoverflow.com/questions/218060/random-gaussian-variables
 
 ## A description of the contributions made by each member of the group.
-@All please add your contributions here. 
 
-Alex Gorbatov (996729) focused on the generation of the map and populating it with objects. The majority of the content within the scripts involved with spawning objects, populating the map, and generating the map are created by him. This included sourcing and building many of the prefab assets for the visuals and population of the game. In addition, he created the minimap, transitions between levels, and performed the observational method. 
+Alex Gorbatov (996729) focused on the generation of the map and populating it with objects. The majority of the content within the scripts involved with spawning objects, populating the map, and generating the map are created by him. This included sourcing and building many of the prefab assets for the visuals and population of the game. In addition, he created the minimap, transitions between levels, performed the observational method, and created the procedurally generated items.
 
 Joseph Leonardi (1025351) focused on particle system effects, mob AI, player and mob combat, tutorial, and UI elements. The majority of the content in scripts related to mob movement, combat, and menu UI were created by him. He created animation controllers and set the stats of each mob, and all the components in the mob prefabs besides the ones related to sounds. The StartScene was made entirely by him with the exception of the sample level that was randomly generated. Scene transitions were also made by him. The TutorialScene was made by him in response to the querying method he conducted.
 
