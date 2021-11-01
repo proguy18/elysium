@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8396700950206988431}
   - component: {fileID: 7153553110427196430}
   - component: {fileID: 7153553110427196429}
-  - component: {fileID: 2805111839514220217}
   m_Layer: 0
   m_Name: ares_helmet1
   m_TagString: Item
@@ -118,20 +117,6 @@ MonoBehaviour:
   armorModifier: 50
   potionEffect: 0
   effectValue: 0
---- !u!114 &2805111839514220217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8036655354327228762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8d84488781475f45ac2726ccca588ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spinSpeed: 6
-  bob_speed: 0.001
 --- !u!1001 &8192986896820186646
 PrefabInstance:
   m_ObjectHideFlags: 0

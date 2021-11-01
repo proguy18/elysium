@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 607743572601561257}
   - component: {fileID: 6039770408364552368}
   - component: {fileID: -2150621914464222857}
-  - component: {fileID: 7114352049835028657}
   m_Layer: 0
   m_Name: potion1
   m_TagString: Item
@@ -141,20 +140,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.005, y: 0.005, z: 0.005}
   m_Center: {x: 0, y: 0, z: 0.001237706}
---- !u!114 &7114352049835028657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7200927917085466066}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8d84488781475f45ac2726ccca588ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spinSpeed: 8
-  bob_speed: 0.001
 --- !u!1001 &582827896856643191
 PrefabInstance:
   m_ObjectHideFlags: 0
