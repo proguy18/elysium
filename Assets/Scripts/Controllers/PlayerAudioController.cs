@@ -58,7 +58,7 @@ public class PlayerAudioController : MonoBehaviour
             _mainAudioSource.Stop();
         }
         
-        if(Input.GetKeyDown(attack) /*&& uiIsNotActive*/) 
+        if(Input.GetKey(attack) /*&& uiIsNotActive*/) 
         {
             attackSound();
         }
