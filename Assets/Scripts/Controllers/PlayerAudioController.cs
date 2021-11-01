@@ -38,20 +38,16 @@ public class PlayerAudioController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //uiIsNotActive = (!PauseMenu.IsPaused && !PlayerInventory.InventoryIsActive);
-        //Debug.Log((PauseMenu.IsPaused, PlayerInventory.InventoryIsActive));
-        /*if (!isPaused)
+        if (!isPaused && !PauseMenu.IsPaused)
         {
             movementSounds();
             attackCooldown -= Time.deltaTime;
-        }*/
-        movementSounds();
-        attackCooldown -= Time.deltaTime;
+        }
     }
 
     private void movementSounds()
     {
-        if((Input.GetKey(left) || Input.GetKey(right) || Input.GetKey(up) || Input.GetKey(down)) /*&& uiIsNotActive*/)
+        if((Input.GetKey(left) || Input.GetKey(right) || Input.GetKey(up) || Input.GetKey(down)))
         {
             movementSound();
         }
@@ -60,7 +56,7 @@ public class PlayerAudioController : MonoBehaviour
             _mainAudioSource.Stop();
         }
         
-        if(Input.GetKey(attack) /*&& uiIsNotActive*/) 
+        if(Input.GetKey(attack)) 
         {
             attackSound();
         }
@@ -112,7 +108,6 @@ public class PlayerAudioController : MonoBehaviour
         
         if (_secondaryAudioSource.clip != swordSwing)
         {
-            //Debug.Log(attackCooldown);
             _secondaryAudioSource.Stop();
             _secondaryAudioSource.clip = swordSwing;
             _secondaryAudioSource.Play();
