@@ -16,13 +16,29 @@ public class CharacterStats : MonoBehaviour
 	public event System.Action OnHealthReachedZero;
 	public event System.Action OnDamaged;
 	private int minimumDamage; 
+	private int baseHp; 
+	private int baseDammage; 
+	private int baseArmour;
 	
 
 	public virtual void Awake() {
 		currentHealth = maxHealth.GetValue();
 		minimumDamage = maxHealth.GetValue() / 100; // 1% of base health
+		baseHp = currentHealth;
+		baseArmour = armor.GetValue();
+		baseDammage = damage.GetValue();;
 		
 	}
+	public int getBaseHp(){
+		return baseHp;
+	}
+	public int getBaseDamage(){
+		return baseDammage;
+	}
+	public int getBaseArmor(){
+		return baseArmour;
+	}
+
 
 	// Start with max HP.
 
