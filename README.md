@@ -162,7 +162,6 @@ In response to the questionnaire, we made a number of changes.
 - Combat was incentivised by making the mobs able to drop items.
 
 ## References and external resources that you used.
-@All please add your references and other resources here. 
 
 - Third person camera: https://sharpcoderblog.com/blog/third-person-camera-in-unity-3d
 
