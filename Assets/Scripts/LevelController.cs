@@ -57,10 +57,6 @@ public class LevelController : MonoBehaviour
         newLevel();
     }
     private void LateUpdate() {
-        if (Input.GetKeyDown("i")){
-            newLevel();
-            
-        }   
         if (newMap) count --;
 
         if (count == 0 && newMap){ 
