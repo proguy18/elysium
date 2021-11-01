@@ -102,8 +102,8 @@ public class SC_TPSController : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("start player position: " + transform.position +
-                  " playerCameraParent: " + playerCameraParent.position);
+        // Debug.Log("start player position: " + transform.position +
+        //           " playerCameraParent: " + playerCameraParent.position);
         hasDied = false;
         y = transform.position.y; // starting y-value
         characterController = GetComponent<CharacterController>();
@@ -115,8 +115,8 @@ public class SC_TPSController : MonoBehaviour
 
     private void LateUpdate()
     {
-        Debug.Log("late update player position: " + transform.position +
-                  " playerCameraParent: " + playerCameraParent.position);
+        // Debug.Log("late update player position: " + transform.position +
+        //           " playerCameraParent: " + playerCameraParent.position);
     }
 
     void animateMovements() {

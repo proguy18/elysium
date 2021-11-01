@@ -128,6 +128,7 @@ In response to the Think Aloud Study, we made a number of changes.
 ## References and external resources that you used.
 Sebastian Lague tutorial series for the creation of a procedurally generated cave: https://www.youtube.com/watch?v=v7yyZZjF1z4&list=PLFt_AvWsXl0eZgMK_DT5_biRkWXftAOf9
 Brackey's youtube channel assisted a lot in the template of our game: https://www.youtube.com/c/Brackeys
+Took the gaussian number generator from here: https://stackoverflow.com/questions/218060/random-gaussian-variables
 @All please add your references and other resources here. 
 - Third person camera: https://sharpcoderblog.com/blog/third-person-camera-in-unity-3d
 

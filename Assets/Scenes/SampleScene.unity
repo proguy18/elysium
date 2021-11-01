@@ -789,6 +789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   surface: {fileID: 2128583364}
   difficultyScale: 0.01
+  spawnChance: 0.15
 --- !u!1 &527687090
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,6 +829,7 @@ Transform:
   - {fileID: 1467055076}
   - {fileID: 1056557566}
   - {fileID: 1481201916}
+  - {fileID: 595144869}
   m_Father: {fileID: 421225081}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -876,6 +878,7 @@ MonoBehaviour:
   z: 0
   levelType: -1
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!114 &527687099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -894,6 +897,7 @@ MonoBehaviour:
   z: 0
   levelType: -1
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!114 &527687100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -926,6 +930,7 @@ MonoBehaviour:
   z: 0
   levelType: -1
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!114 &527687109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -944,6 +949,7 @@ MonoBehaviour:
   z: 3
   levelType: -1
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!114 &527687110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -962,6 +968,7 @@ MonoBehaviour:
   z: 0.5
   levelType: -1
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!114 &527687114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -980,6 +987,7 @@ MonoBehaviour:
   z: 0
   levelType: -1
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!1 &549571221
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,6 +1081,256 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549571221}
   m_CullTransparentMesh: 1
+--- !u!1 &595144868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 595144869}
+  - component: {fileID: 595144870}
+  - component: {fileID: 595144871}
+  - component: {fileID: 595144875}
+  - component: {fileID: 595144874}
+  - component: {fileID: 595144873}
+  - component: {fileID: 595144872}
+  - component: {fileID: 595144876}
+  - component: {fileID: 595144880}
+  - component: {fileID: 595144879}
+  - component: {fileID: 595144878}
+  - component: {fileID: 595144877}
+  m_Layer: 0
+  m_Name: itemDropSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &595144869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595144868}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 101.81825, y: -56.314518, z: -6.531616}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 527687091}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &595144870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595144868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: hades_sword
+  clones: []
+  number: 1
+  z: 1
+  levelType: 3
+  isEnemySpawner: 0
+  isItemSpawner: 1
+--- !u!114 &595144871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595144868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: hades_helmet
+  clones: []
+  number: 1
+  z: 1
+  levelType: 3
+  isEnemySpawner: 0
+  isItemSpawner: 1
+--- !u!114 &595144872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595144868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: ares_sword
+  clones: []
+  number: 1
+  z: 1
+  levelType: 3
+  isEnemySpawner: 0
+  isItemSpawner: 1
+--- !u!114 &595144873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595144868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: ares_helmet
+  clones: []
+  number: 2
+  z: 1
+  levelType: 3
+  isEnemySpawner: 0
+  isItemSpawner: 1
+--- !u!114 &595144874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595144868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: artemis_helmet
+  clones: []
+  number: 1
+  z: 1
+  levelType: 4
+  isEnemySpawner: 0
+  isItemSpawner: 1
+--- !u!114 &595144875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595144868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: artemis_sword
+  clones: []
+  number: 1
+  z: 1
+  levelType: 3
+  isEnemySpawner: 0
+  isItemSpawner: 1
+--- !u!114 &595144876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595144868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: potion
+  clones: []
+  number: 1
+  z: 1
+  levelType: 3
+  isEnemySpawner: 0
+  isItemSpawner: 0
+--- !u!114 &595144877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595144868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: potion
+  clones: []
+  number: 1
+  z: 1
+  levelType: 3
+  isEnemySpawner: 0
+  isItemSpawner: 1
+--- !u!114 &595144878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595144868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: potion
+  clones: []
+  number: 1
+  z: 1
+  levelType: 3
+  isEnemySpawner: 0
+  isItemSpawner: 1
+--- !u!114 &595144879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595144868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: potion
+  clones: []
+  number: 1
+  z: 1
+  levelType: 3
+  isEnemySpawner: 0
+  isItemSpawner: 1
+--- !u!114 &595144880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595144868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec11ef70aec74d40a7af81a49d6f855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameStem: potion
+  clones: []
+  number: 1
+  z: 1
+  levelType: 3
+  isEnemySpawner: 0
+  isItemSpawner: 1
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,6 +1820,7 @@ MonoBehaviour:
   z: 1
   levelType: 1
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!114 &1056557568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1580,6 +1839,7 @@ MonoBehaviour:
   z: 0
   levelType: 1
   isEnemySpawner: 1
+  isItemSpawner: 0
 --- !u!114 &1056557569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1598,6 +1858,7 @@ MonoBehaviour:
   z: 0
   levelType: 1
   isEnemySpawner: 1
+  isItemSpawner: 0
 --- !u!114 &1056557570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1616,6 +1877,7 @@ MonoBehaviour:
   z: 0
   levelType: 1
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!114 &1056557571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1634,6 +1896,7 @@ MonoBehaviour:
   z: 0
   levelType: 1
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!114 &1056557572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1652,6 +1915,7 @@ MonoBehaviour:
   z: 0
   levelType: 1
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!114 &1056557573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1670,6 +1934,7 @@ MonoBehaviour:
   z: 0
   levelType: 1
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!114 &1056557574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1688,6 +1953,7 @@ MonoBehaviour:
   z: 0
   levelType: 1
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!114 &1056557575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1706,6 +1972,7 @@ MonoBehaviour:
   z: 0
   levelType: 1
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!114 &1056557576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1724,6 +1991,7 @@ MonoBehaviour:
   z: 1
   levelType: 1
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!1 &1233529961
 GameObject:
   m_ObjectHideFlags: 0
@@ -2065,6 +2333,7 @@ MonoBehaviour:
   z: 1
   levelType: 0
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!114 &1467055078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2083,6 +2352,7 @@ MonoBehaviour:
   z: 2
   levelType: 0
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!114 &1467055079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2101,6 +2371,7 @@ MonoBehaviour:
   z: 0
   levelType: 0
   isEnemySpawner: 1
+  isItemSpawner: 0
 --- !u!114 &1467055080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2119,6 +2390,7 @@ MonoBehaviour:
   z: 0.5
   levelType: 0
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!114 &1467055081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2137,6 +2409,7 @@ MonoBehaviour:
   z: 0
   levelType: 0
   isEnemySpawner: 1
+  isItemSpawner: 0
 --- !u!114 &1467055082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2155,6 +2428,7 @@ MonoBehaviour:
   z: 0
   levelType: 0
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!114 &1467055083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2173,6 +2447,7 @@ MonoBehaviour:
   z: 1
   levelType: 0
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!1 &1481201915
 GameObject:
   m_ObjectHideFlags: 0
@@ -2227,6 +2502,7 @@ MonoBehaviour:
   z: 0
   levelType: 2
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!114 &1481201918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2245,6 +2521,7 @@ MonoBehaviour:
   z: 1
   levelType: 2
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!114 &1481201919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2263,6 +2540,7 @@ MonoBehaviour:
   z: 2
   levelType: 2
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!114 &1481201920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2281,6 +2559,7 @@ MonoBehaviour:
   z: 0
   levelType: 2
   isEnemySpawner: 1
+  isItemSpawner: 0
 --- !u!114 &1481201921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2299,6 +2578,7 @@ MonoBehaviour:
   z: 0
   levelType: 2
   isEnemySpawner: 1
+  isItemSpawner: 0
 --- !u!114 &1481201922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2317,6 +2597,7 @@ MonoBehaviour:
   z: 1
   levelType: 2
   isEnemySpawner: 0
+  isItemSpawner: 0
 --- !u!1001 &1622646736
 PrefabInstance:
   m_ObjectHideFlags: 0

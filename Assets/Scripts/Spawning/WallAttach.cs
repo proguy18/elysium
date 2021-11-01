@@ -65,7 +65,6 @@ public class WallAttach : MonoBehaviour
                 point = _point;
                 return;
             }
-            Debug.Log("no hits");
             gameObject.SetActive(false);
             hitTransform = null;
             return;
