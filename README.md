@@ -47,8 +47,6 @@ Remember that _"this document"_ should be `well written` and formatted **appropr
 * [Team Members](#team-members)
 * [Explanation of the game](#explanation-of-the-game)
 * [Technologies](#technologies)
-* [Using Images](#using-images)
-* [Code Snipets ](#code-snippets)
 
 ## Team Members
 
