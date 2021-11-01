@@ -8,7 +8,7 @@ public class SettingsMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
     private Resolution[] m_Resolutions;
-    public TMPro.TMP_Dropdown resolutionsDropDown;
+    // public TMPro.TMP_Dropdown resolutionsDropDown;
     public TMPro.TMP_Dropdown qualityDropDown;
     public TMPro.TMP_Dropdown displayDropDown;
     public Slider volumeSlider;

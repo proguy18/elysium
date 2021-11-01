@@ -764,7 +764,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7808792554604236846}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: SetVolume
         m_Mode: 0
@@ -4886,10 +4886,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0afed99106ce9c47892ccaddf0d1a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: ac4bded52f005fe4b9b901761de8cceb, type: 2}
   resolutionsDropDown: {fileID: 0}
-  qualityDropDown: {fileID: 0}
-  displayDropDown: {fileID: 0}
+  qualityDropDown: {fileID: 8940848187264459130}
+  displayDropDown: {fileID: 3987056748703187075}
 --- !u!114 &7808792554604236847
 MonoBehaviour:
   m_ObjectHideFlags: 0
