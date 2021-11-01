@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UIElements;
 
 public class SettingsMenu : MonoBehaviour
 {
@@ -9,9 +11,14 @@ public class SettingsMenu : MonoBehaviour
     public TMPro.TMP_Dropdown resolutionsDropDown;
     public TMPro.TMP_Dropdown qualityDropDown;
     public TMPro.TMP_Dropdown displayDropDown;
+    public Slider volumeSlider;
     
     void Start()
     {
+        // Sets default volume
+        volumeSlider.value = PlayerPrefs.GetFloat("volume", 0.75f);
+        
+        
         //Sets default display mode
         if (Screen.fullScreenMode.Equals(FullScreenMode.ExclusiveFullScreen))
             displayDropDown.value = 0;
@@ -52,7 +59,9 @@ public class SettingsMenu : MonoBehaviour
     public void SetVolume(float volume)
     {
         // Adjust Volume 
-        audioMixer.SetFloat("volume", volume);
+        // audioMixer.SetFloat("volume", volume);
+        audioMixer.SetFloat("volume", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("volume", volume);
     }
 
     public void SetQuality(int qualityIndex)
