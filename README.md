@@ -4,19 +4,60 @@
 **The University of Melbourne**
 # COMP30019 – Graphics and Interaction
 
+Final Electronic Submission (project): **4pm, November 1**
+
+Do not forget **One member** of your group must submit a text file to the LMS (Canvas) by the due date which includes the commit ID of your final submission.
+
+You can add a link to your Gameplay Video here but you must have already submit it by **4pm, October 17**
+
+# Project-2 README
+
+You must modify this `README.md` that describes your application, specifically what it does, how to use it, and how you evaluated and improved it.
+
+Remember that _"this document"_ should be `well written` and formatted **appropriately**. This is just an example of different formating tools available for you. For help with the format you can find a guide [here](https://docs.github.com/en/github/writing-on-github).
+
+
+**Get ready to complete all the tasks:**
+
+- [x] Read the handout for Project-2 carefully.
+
+- [x] Brief explanation of the game.
+
+- [x] How to use it (especially the user interface aspects).
+
+- [x] How you designed objects and entities.
+
+- [x] How you handled the graphics pipeline and camera motion.
+
+- [x] The procedural generation technique and/or algorithm used, including a high level description of the implementation details.
+
+- [x] Descriptions of how the custom shaders work (and which two should be marked).
+
+- [x] A description of the particle system you wish to be marked and how to locate it in your Unity project.
+
+- [x] Description of the querying and observational methods used, including a description of the participants (how many, demographics), description of the methodology (which techniques did you use, what did you have participants do, how did you record the data), and feedback gathered.
+
+- [x] Document the changes made to your game based on the information collected during the evaluation.
+
+- [x] References and external resources that you used.
+
+- [x] A description of the contributions made by each member of the group.
+
 ## Table of contents
 * [Team Members](#team-members)
 * [Explanation of the game](#explanation-of-the-game)
 * [Technologies](#technologies)
+* [Using Images](#using-images)
+* [Code Snipets ](#code-snippets)
 
 ## Team Members
 
 | Name | Task | State |
 | :---         |     :---:      |          ---: |
-| Student Name 1  | Idling     |  Done |
-| Alex Gorabtov    | Idling     |  Done |
-| Jack Lenard    |  Idling  |  Done  |
-| Joseph Leonardi    | Idling      |  Done |
+| Student Name 1  | MainScene     |  Done |
+| Alex Gorabtov    | Final bug fixing     |  Done |
+| Jack Lenard    |  Bug fixing, refactoring  |  Incomplete  |
+| Joseph Leonardi    | README Format and bug fixing      |  In Progress... |
 
 ## Explanation of the game
 Our game is a 3D dungeon crawler set in a never-ending hell created by the Greek gods Hades, Ares, and Artemis to punish a particular Spartan solider. By using a procedurally generated map that swaps between spaces inspired by the aesthetics and elements of each of these three gods, the player attempts to escape the maze only to find that each level becomes more difficult until the player dies. The challenge is therefore to get through as many levels as possible and to compete with yourself or your friends to get through the infinite challenge all whilst never really knowing if there is an end. 
@@ -32,9 +73,16 @@ Level transitions: Find and collide with the door in the scene to transition to 
 All models are taken from free online resources such as the Unity asset store, SketchFab, or other similar resources. Small modifications were made to the colour of the objects for distiction purposes. 
 
 ## How you handled the graphics pipeline and camera motion.
-The main camera is positioned behind and above the player, to provide a third-person perspective. Camera motion can be controlled by the user in the form of mouse movements. The camera object is set up as a child of the player object, and is locked to the same relative position. When the mouse is moved, the camera rotates around the player object, while the player object rotates in place - allowing the user to "look" around the scene. For convenience, the player movement script automatically creates and initializes the camera game object. 
+
+**Camera motion**
+
+Camera motion is determined by both the player movement script and a camera collisions script. The main camera is positioned behind and above the player, to provide a third-person perspective. Camera motion can be controlled by the user in the form of mouse movements. The camera object is set up as a child of the player object, and is locked to the same relative position. When the mouse is moved, the camera rotates around the player object, while the player object rotates in place - allowing the user to "look" around the scene. To prevent the camera from clipping into objects when moved, the camera script script automatically detects collisions after every frame and offsets the camera position away from the point of collision if any are found. For convenience, the player movement script automatically creates and initializes the camera game object. 
 
 A random camera motion script was created for the StartScene, in order to display and highlight the map to the player upon booting up the game. The script uses 2 predetermined points as boundaries, and randomly picks a point within this boundary to move to, iteratively in order to showcase the procedurely generated level/map in the background of the main menu.
+
+**Graphics pipeline**
+
+The project used the built-in graphics pipeline of Unity, relying on forward rendering. All of the mobs as well as the player character use a custom cel-shader to handle lighting and shadows, although there is a small number of objects that use the standard shader or a basic diffuse lighting setup. For the walls, the fragment shader was modified to use trplanar mapping which uses planar projection in order to map textures without the use of uv coordinates which are not available with the procedurally generated walls. Some post-processing was added with the Unity built in post-processing pipeline. In particular, ambient occlusion was added to make the objects look more grounded and a small amount of bloom was added to make bright objects glow.
 
 ## The procedural generation technique and/or algorithm used, including a high level description of the implementation details.
 
@@ -46,24 +94,25 @@ Futher, we procedurally generate better and better items through the course of t
 
 ## Descriptions of how the custom shaders work (and which two should be marked).
 
-### Cel-shader (to mark)
+**Cel-shader** (to mark)
 
-The cel-shader (ToonShader2.shader in the Shaders folder) is used on the player as well as all the enemies and most of the environmental objects to give a cel-shaded aesthetic.
+The cel-shader (ToonShader2.shader in the Shaders folder) is used on the player as well as all the enemies and most of the environmental objects to give a cel-shaded aesthetic. It is based on standard blinn-phong lighting except that the transitions between light and dark are banded to achieve the flatter toon look. Rim lighting is also added for parts of the object that is facing away from the camera. Normals are read from a normal map if provided for better shadows An outline was added as well.  
 
-### Lava flow shader (to mark)
+**Lava flow shader** (to mark)
 
-The lava flow shader was written to give make the lava in the lavapools look as though they are flowing.
+The lava flow shader (LavaFlow.shader in the Shaders folder) was written to give make the lava in the lavapools look as though they are flowing. It implements a function FlowUV shifts the uv coodinates based on the time to create the illusion that the texture is flowing. It uses a simplified lighting system where the albedo of the texture is multiplied directly with the light color as well as attenuation for a simplified effect. It is also used in the skybox such that it appears that the player is in a fiery hellscape. 
 
-### Triplanar mapping shader
+
+**Triplanar mapping shader**
  
-This shader was written in order to map the texture to the walls of the map without the need for UV mapping as there were issues with UV mapping in the procedurally generated map.
+This shader was written in order to map the texture to the walls of the map without the need for UV mapping as there were issues with UV mapping in the procedurally generated map. It uses xy, zy, and xz projectinos of the vertex to generate 3 uv positions and then blends them together and enable placing of textures without uv coodinates. It also ensures that the texture does not look stretched and has no seams which works well for large surfaces such as the walls in the levels. This shader uses a standard diffuse lighting system based on the approach used in the workshop, extended for multiple light sources and shadows.
 
 ## A description of the particle system you wish to be marked and how to locate it in your Unity project.
 
 The particle system that we want marked is the fire particle system, it adapted and modified from https://www.youtube.com/watch?v=5Mw6NpSEb2o&t=686s. It is located in Assets > PreFabs > Torch with point light. From the prefab, navigate to torch holder > PS_Fire. PS_Fire was taken from the PS_Fire prefab, but it had to be re-scaled to fit the torch. An ember particle system effect was added to the particle system, that was not present in the tutorial, in order to better imitate fire from wood.
 ## Description of the querying and observational methods used, including a description of the participants (how many, demographics), description of the methodology (which techniques did you use, what did you have participants do, how did you record the data), and feedback gathered.
 
-### Observational Method
+**Observational Method**
 For the observational method we used a Think Aloud Study focusing on the ease of use of two features: 1) the inventory specifically finding and picking up items. 2) finding and transitioning to a new level. We had 5 participants of the study: 
 - Participant A: Experienced gamer on both PC and console
 - Participant B: Experienced gamer on PC
@@ -73,12 +122,12 @@ For the observational method we used a Think Aloud Study focusing on the ease of
 
 We prompted the participants only to find the objects in the scene and transition to the next level. We left out all the combat elements and only left in the objects in the scene some of which were scenery and some of which were interactable. We used audio recording to record the data and as the task was simple enough, little prompting was needed by the experimenter to get the participants to talk freely and actively especially after the first few minutes. The feedback gathered was clear. Once the pattern was observed, participants found they were easily able to identify that the objects were pickup-able but did not know what the objects were as the light that we had used to identify the objects obscured the object itself. The door to transition to each level was easy to identify and obvious. All players did not need any prompting to identify, move towards, and transition to a new level. We also identified some feedback about the controls. PC gamers found the controls intuitive and easy to use but those who are new to gaming and PC gaming had intiuting the controls. 
 
-### Querying Method
+**Querying Method**
 For the querying method we invited players to play the game, and answer a Google form questionnaire. 7 participants that were experienced gamers (one of which was experienced in game design) were given the game to try out. The second part of the survey focused on the design and balancing of the mobs in the game.
 
 Without giving any assistance besides in the installation and start of the game, many participants found the game counter-intuitive with the attack button not being on the default Mouse1 that most people were accustomed to. Right off the bat, many were mindlessly trying to figure out the 'aim' of the game, as well as fiddle with the UI that revealed bugs. After 5 minutes, participants were given, the aim of the game, as well as the controls, if they hadn't figured it out already. Despite the controls being available in the pause menu, many participants reported that having a scene that showed the controls/a tutorial before starting the game would've helped them understand the controls and game more.
 
-### Results Part 1
+**Results Part 1**
 The first part questionnaire focused on the art style, and overall 'fun-ness' and difficulty of the game.
 The difficulty of the game was rated fairly easy with 3 participants saying the game was 'easy' and 4 participants saying it was 'very easy.'
 The art style and graphics of the game had mixed reviews with 4 participants giving the art style and graphics positive reviews, while 3 participants gave a negative review.
@@ -86,22 +135,21 @@ The game ran smoothly for 5 of the participants and it did not for 2 of the part
 The game was negatively rated for having a clear end goal with 6 participants saying the end goal wasn't clear.
 The game was rated positively for allowing the player to explore, with 4 participants agreeing that they felt able to explore things, and 2 participants disagreeing, while 1 participant was neutral.
 
-### Results Part 2
+**Results Part 2**
 The second part of the survey showed us what the participants liked and disliked about the mobs in our game. The skeletons and spiders in our game received mostly positive reviews, while the trolls and goblins received mixed reviews. The trolls and goblins received mixed reviews due to them being bugged during this playtest and they were unable to attack the player. However, many participants were quick to compliment the design of the troll, as they were 'large and funny looking.'
 
-### Results Part 3
+**Results Part 3**
 The last part of the survey asks the participant what they liked and disliked about our game. The main objective of the game being unclear was a recurring theme received as feedback from the participants. Subsequently a recurring theme about what the participants liked about our game was the minimap and the design of the troll.
 
 By reading these comments in more detail, participants did not like the idea of mobs being pointless towards the objective of the game, as the player could run all the way to the exit without fighting a single mob. Some items in the map were too small and couldn't be seen by the player.
 
 ## Document the changes made to your game based on the information collected during the evaluation.
-
-### Changes made after information collected from the observational study
+**Changes made after information collected from the observational study**
 In response to the Think Aloud Study, we made a number of changes. 
 - For each of the pickup-able objects, we created a new script that made the object bob up and down whilst turning slightly and included a light over its head instead of coming from the object's centre. This means that the objects are easier to see from further away and the object itself are more identifiable.
 - In the pause screen we have included the controls to make it easier for new players.
 
-### Changes made after information collected from the querying method
+**Changes made after information collected from the querying method**
 In response to the questionnaire, we made a number of changes. 
 - Option to change a player's resolution was removed, as it would take too much time to fix. Additionally, default launch options of the game worked well, so we on scrapping the feature to produce a stable game.
 - Trolls and goblins were fixed in the game.
@@ -114,6 +162,7 @@ In response to the questionnaire, we made a number of changes.
 - Combat was incentivised by making the mobs able to drop items.
 
 ## References and external resources that you used.
+@All please add your references and other resources here. 
 
 - Third person camera: https://sharpcoderblog.com/blog/third-person-camera-in-unity-3d
 
@@ -122,6 +171,24 @@ In response to the questionnaire, we made a number of changes.
 - Brackey's youtube channel assisted a lot in the template of our game: https://www.youtube.com/c/Brackeys
 
 - Took the gaussian number generator from here: https://stackoverflow.com/questions/218060/random-gaussian-variables
+
+- Cel shader and lighting: 
+
+  https://catlikecoding.com/unity/tutorials/rendering/part-5/
+
+  https://roystan.net/articles/toon-shader.html
+
+  https://torchinsky.me/cel-shading/
+
+  https://janhalozan.com/2017/08/12/phong-shader/
+  
+  https://www.reddit.com/r/shaders/comments/5vmlm9/help_unity_cel_shader_point_light_troubles/
+
+  
+- Triplanar mapping: https://www.ronja-tutorials.com/post/010-triplanar-mapping/
+
+- Lava shader: https://catlikecoding.com/unity/tutorials/flow/texture-distortion/
+
 
 ## A description of the contributions made by each member of the group.
 
@@ -138,6 +205,7 @@ Project is created with:
 * Unity 2021.1.13f1
 * Ipsum version: 2.33
 * Ament library version: 999
+
 
 
 
