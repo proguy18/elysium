@@ -15,6 +15,7 @@ public class LevelController : MonoBehaviour
     private List<ObjSpawner> option0;
     private List<ObjSpawner> option1;
     private List<ObjSpawner> option2;
+    private List<ObjSpawner> droppables;
     private LightSpawner lightSpawner;
     private PlayerSpawner playerSpawner;
     private MapPopulator mapPopulator;
@@ -23,6 +24,8 @@ public class LevelController : MonoBehaviour
     private int killCount = 0;
     int count = 3;
     public float difficultyScale = 0.003f;
+    System.Random rand = new System.Random();
+    public double spawnChance = 0.15;
 
     private void Awake() {
         mapGenerator = GetComponentInChildren<MapGenerator>();
@@ -30,6 +33,7 @@ public class LevelController : MonoBehaviour
         option1 = new List<ObjSpawner>();
         option0 = new List<ObjSpawner>();
         option2 = new List<ObjSpawner>();
+        droppables = new List<ObjSpawner>();
         foreach (ObjSpawner spawner in spawners){
             if (spawner.levelType == 0 || spawner.levelType == -1){
                 option0.Add(spawner);
@@ -39,6 +43,9 @@ public class LevelController : MonoBehaviour
             }
             if (spawner.levelType == 2 || spawner.levelType == -1){
                 option2.Add(spawner);
+            }
+            if (spawner.levelType == 3){
+                droppables.Add(spawner);
             }
         }
         lightSpawner = GetComponentInChildren<LightSpawner>();
@@ -94,7 +101,7 @@ public class LevelController : MonoBehaviour
         }
         else {
             multiplier = 1 + difficultyScale*(levelCount - 3)*(levelCount - 3);
-            var rand = new System.Random();
+            
             levelInd = rand.Next(1, 4);
             Debug.Log(levelInd);
         }
@@ -138,11 +145,22 @@ public class LevelController : MonoBehaviour
             }
         }
     }
-    public void incrementKillCount(){
+    public void incrementKillCount(Vector3 spawnPos){
         killCount ++;
+        spawnItem(spawnPos);
     }
     public int getKillCount(){
         return killCount;
+    }
+    void spawnItem(Vector3 spawnPos){
+        
+        if (rand.NextDouble() > spawnChance){
+            return;
+        }
+        int index = rand.Next(0, droppables.Count);
+        float multiplier = multiplier = 1 + difficultyScale*(Math.Min(levelCount, 3) - 3)*(Math.Min(levelCount, 3) - 3);
+        droppables[index].spawn(multiplier, spawnPos);
+        
     }
     
     

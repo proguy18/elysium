@@ -18,6 +18,7 @@ public class ObjSpawner : MonoBehaviour, ISpawnable
     public int levelType = 0;
 
     public bool isEnemySpawner = false;
+    public bool isItemSpawner = false;
     private GameObject parent;
 
     private void Awake() {
@@ -73,18 +74,27 @@ public class ObjSpawner : MonoBehaviour, ISpawnable
                 }
             }
         }
-        if (isEnemySpawner){
-            Debug.Log("Total mobs " + clones.Count);
-        }
         
     }
     public void spawn(float multiplier){
-        int _number = number;
-        number = Convert.ToInt32(Math.Floor(multiplier* number));
-        Debug.Log("Asking for " + number);
-        spawn();
-        Debug.Log("Original number" + _number);
-        number = _number;
+        if (isEnemySpawner){
+            int _number = number;
+            number = Convert.ToInt32(Math.Floor(multiplier* number));
+            spawn();
+            number = _number;
+        }
+        
+    }
+    public void spawn(float multiplier, Vector3 location){
+        if (isItemSpawner){
+            spawn();
+            if (clones.Count == 1){
+                GameObject instance = clones[0];
+                Item item = instance.GetComponent<Item>();
+                item.modifyStats(multiplier);
+                instance.transform.position = new Vector3(location.x, instance.transform.position.y, location.z);
+            }
+        }
     }
     public bool isEnemy(){
         return isEnemySpawner;

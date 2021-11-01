@@ -41,7 +41,9 @@ public class CharacterStats : MonoBehaviour
 		{
 			if (OnHealthReachedZero != null)
 				OnHealthReachedZero();
-				gameObject.SendMessageUpwards("incrementKillCount");
+				if (gameObject.layer == 6){
+					gameObject.SendMessageUpwards("incrementKillCount", gameObject.transform.position);
+				}
 		}
 		else
 		{

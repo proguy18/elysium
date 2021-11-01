@@ -19,7 +19,6 @@ public class EndSpawner : MonoBehaviour, ISpawnable
     private void trySpawnPoint(){
         MapPopulator mapPopulator = mapGeneratorOb.GetComponent<MapPopulator>();
         if (mapPopulator != null){
-            Debug.Log("Spawning here!");
             spawnPoint = mapPopulator.getEndSpawn();
         }
     }

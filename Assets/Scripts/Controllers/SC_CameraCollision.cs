@@ -1,3 +1,5 @@
+// Adapted from https://sharpcoderblog.com/blog/third-person-camera-in-unity-3d
+
 using UnityEngine;
 
 public class SC_CameraCollision : MonoBehaviour
@@ -23,31 +25,31 @@ public class SC_CameraCollision : MonoBehaviour
         //Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        Debug.Log("Start() defaultPos = " + defaultPos + " position: " + transform.position + 
-                  "  reference transform: " + referenceTransform.position);
+        // Debug.Log("Start() defaultPos = " + defaultPos + " position: " + transform.position + 
+        //           "  reference transform: " + referenceTransform.position);
     }
 
     // LateUpdate is called after Update
     void LateUpdate()
     {
         dirtyFixCameraBug();
-        Debug.Log("LateUpdate() defaultPos = " + defaultPos + " position: " + transform.position +
-                  "  reference transform: " + referenceTransform.position);
+        // Debug.Log("LateUpdate() defaultPos = " + defaultPos + " position: " + transform.position +
+        //           "  reference transform: " + referenceTransform.position);
         Vector3 currentPos = defaultPos;
         RaycastHit hit;
         Vector3 dirTmp = parentTransform.TransformPoint(defaultPos) - referenceTransform.position;
-        Debug.Log("dirTmp: " + dirTmp + " collision offset: " + collisionOffset + 
-                  " defaultDistance: " + defaultDistance);
+        // Debug.Log("dirTmp: " + dirTmp + " collision offset: " + collisionOffset + 
+        //           " defaultDistance: " + defaultDistance);
         if (Physics.SphereCast(referenceTransform.position, collisionOffset, dirTmp, out hit, defaultDistance))
         {
-            Debug.Log("LateUpdate() IF defaultPos = " + defaultPos + " hit collider = " + hit.collider.name);
+            // Debug.Log("LateUpdate() IF defaultPos = " + defaultPos + " hit collider = " + hit.collider.name);
             currentPos = (directionNormalized * (hit.distance - collisionOffset));
 
             transform.localPosition = currentPos;
         }
         else
         {
-            Debug.Log("LateUpdate() ELSE defaultPos = " + defaultPos);
+            // Debug.Log("LateUpdate() ELSE defaultPos = " + defaultPos);
             transform.localPosition = Vector3.Lerp(transform.localPosition, currentPos, Time.deltaTime * cameraSpeed);
         }
     }

@@ -41,7 +41,7 @@ Remember that _"this document"_ should be `well written` and formatted **appropr
 
 - [ ] References and external resources that you used.
 
-- [ ] A description of the contributions made by each member of the group.
+- [x] A description of the contributions made by each member of the group.
 
 ## Table of contents
 * [Team Members](#team-members)
@@ -56,7 +56,7 @@ Remember that _"this document"_ should be `well written` and formatted **appropr
 | :---         |     :---:      |          ---: |
 | Student Name 1  | MainScene     |  Done |
 | Student Name 2    | Shader      |  Testing |
-| Student Name 3    | README Format      |  Amazing! |
+| Jack Lenard    |  Bug fixing, refactoring  |  Incomplete  |
 | Joseph Leonardi    | README Format and bug fixing      |  In Progress... |
 
 ## Explanation of the game
@@ -73,7 +73,9 @@ Level transitions: Find and collide with the door in the scene to transition to 
 All models are taken from free online resources such as the Unity asset store, SketchFab, or other similar resources. Small modifications were made to the colour of the objects for distiction purposes. 
 
 ## How you handled the graphics pipeline and camera motion.
-@Jack
+Camera motion is determined by both the player movement script and a camera collisions script. The main camera is positioned behind and above the player, to provide a third-person perspective. Camera motion can be controlled by the user in the form of mouse movements. The camera object is set up as a child of the player object, and is locked to the same relative position. When the mouse is moved, the camera rotates around the player object, while the player object rotates in place - allowing the user to "look" around the scene. To prevent the camera from clipping into objects when moved, the camera script script automatically detects collisions after every frame and offsets the camera position away from the point of collision if any are found. For convenience, the player movement script automatically creates and initializes the camera game object. 
+
+
 A random camera motion script was created for the StartScene, in order to display and highlight the map to the player upon booting up the game. The script uses 2 predetermined points as boundaries, and randomly picks a point within this boundary to move to, iteratively in order to showcase the procedurely generated level/map in the background of the main menu.
 
 ## The procedural generation technique and/or algorithm used, including a high level description of the implementation details.
@@ -126,7 +128,9 @@ In response to the Think Aloud Study, we made a number of changes.
 ## References and external resources that you used.
 Sebastian Lague tutorial series for the creation of a procedurally generated cave: https://www.youtube.com/watch?v=v7yyZZjF1z4&list=PLFt_AvWsXl0eZgMK_DT5_biRkWXftAOf9
 Brackey's youtube channel assisted a lot in the template of our game: https://www.youtube.com/c/Brackeys
+Took the gaussian number generator from here: https://stackoverflow.com/questions/218060/random-gaussian-variables
 @All please add your references and other resources here. 
+- Third person camera: https://sharpcoderblog.com/blog/third-person-camera-in-unity-3d
 
 ## A description of the contributions made by each member of the group.
 @All please add your contributions here. 
@@ -136,6 +140,8 @@ Alex Gorbatov (996729) focused on the generation of the map and populating it wi
 Joseph Leonardi (1025351) focused on particle system effects, mob AI, player and mob combat, and UI elements. The majority of the content in scripts related to mob movement, combat, and menu UI were created by him. He created animation controllers and set the stats of each mob, and all the components in the mob prefabs besides the ones related to sounds. The StartScene was made entirely by him with the exception of the sample level that was randomly generated. Scene transitions were also made by him.
 
 Zhen Yi Ang (1000033) focused on the shaders, the graphics and aesthetic style of the game, and the sound design. All of the shaders implemented in the game was written by him. A majority of the graphics and sound assets in the game were sourced by him. He managed most of the graphics pipeline including the scene lighting, the graphics settings as well as the post-processing. He also designed the DemoScene and recorded and edited the demo video using that scene.
+
+Jack Lenard (1083024) focused on player movement, camera setup, inventory logic and inventory UI. Also implemented were player collisions, camera spawning and player movement animations. The inventory feature was created by him, and allows game objects with an 'item' component to be added to the inventory via collisions. Stored items can be either equipped/unequipped in the case of swords/helmets or consumed, in the case of potions. Equipped items confer benefits to combat stats, while potions refill health.
 
 ## Technologies
 Project is created with:
