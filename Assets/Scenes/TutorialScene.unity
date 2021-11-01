@@ -2255,7 +2255,7 @@ MonoBehaviour:
   - Press Left Shift to sprint
   - Press MouseLeftClick to attack
   - Press "E" to open your inventory
-  - Press "E" to close your inventory
+  - Press "E" or "Esc" to close your inventory
   - Press "Esc" to pause the game
   - Press "Esc" again to unpause the game
   - Press "Space" to start playing the game
@@ -2328,9 +2328,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1037155171803995432, guid: 3bfa04eedcc3b6f4791d44722b806a37, type: 3}
+      propertyPath: m_Name
+      value: PS
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037155171803995432, guid: 3bfa04eedcc3b6f4791d44722b806a37, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2662942346109270115, guid: 3bfa04eedcc3b6f4791d44722b806a37, type: 3}
       propertyPath: m_Name
       value: FinalDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015880068609499402, guid: 3bfa04eedcc3b6f4791d44722b806a37, type: 3}
+      propertyPath: m_Name
+      value: PS
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015880068609499402, guid: 3bfa04eedcc3b6f4791d44722b806a37, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5292268115624424769, guid: 3bfa04eedcc3b6f4791d44722b806a37, type: 3}
       propertyPath: m_RootOrder
@@ -2376,7 +2392,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5718943640236870724, guid: 3bfa04eedcc3b6f4791d44722b806a37, type: 3}
+    - {fileID: 4268530934100033372, guid: 3bfa04eedcc3b6f4791d44722b806a37, type: 3}
+    - {fileID: -6559841190880886393, guid: 3bfa04eedcc3b6f4791d44722b806a37, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3bfa04eedcc3b6f4791d44722b806a37, type: 3}
 --- !u!1001 &1799845035
 PrefabInstance:
