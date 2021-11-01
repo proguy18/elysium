@@ -1,5 +1,3 @@
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
 #if !defined(MY_SHADOWS_INCLUDED)
 #define MY_SHADOWS_INCLUDED
 

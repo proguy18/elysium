@@ -70,5 +70,4 @@ Shader "Custom/Triplanar"{
             ENDCG
         }
 	}
-	//FallBack "Standard" //fallback adds a shadow pass so we get shadows on other objects
 }
