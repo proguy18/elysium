@@ -5,7 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class PlayerInventory : MonoBehaviour {
-    public KeyCode inventoryKey = KeyCode.I;
+    public KeyCode inventoryKey = KeyCode.E;
+    private KeyCode altCloseInventoryKey = KeyCode.Escape;
     public Sprite defaultSwordIcon;
     public Sprite defaultRingIcon;
     public static bool InventoryIsActive = false;
@@ -57,7 +58,10 @@ public class PlayerInventory : MonoBehaviour {
 		{
             toggleInventory();
 		}
-	}
+        // Closes inventory with "Escape" key as well
+        if(Input.GetKeyDown(altCloseInventoryKey) && !PauseMenu.IsPaused && InventoryIsActive)
+            toggleInventory();
+    }
 
     private void toggleInventory() {
         // pause the game and display cursor
