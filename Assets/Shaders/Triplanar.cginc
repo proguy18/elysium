@@ -12,7 +12,7 @@
 sampler2D _MainTex;
 float4 _MainTex_ST;
 
-fixed4 _Color;
+float4 _Color;
 float _Sharpness;
 float _TextureScale;
 
@@ -87,44 +87,29 @@ fixed4 frag(vertOut i) : SV_TARGET{
 	col_top *= weights.y;
 
 	//combine the projected colors
-	fixed4 sample = (col_front + col_side + col_top) + _Color;
+	float4 sample = (col_front + col_side + col_top) + _Color;
+	float4 sample1 = (col_front + col_side + col_top);
 	
 	float3 normal = normalize(i.normal);
-	float NdotL = dot(_WorldSpaceLightPos0, normal);
+	float NdotL = dot(_WorldSpaceLightPos0.xyz, normal);
 
 	// Shadows
 	float shadow1 = SHADOW_ATTENUATION(i);
 
-	///// start tutorial lighting implementation /////
+	///// start tutorial lighting adaptation /////
 
 	// Calculate ambient RGB intensities
-	/*float Ka = 1;
-	float3 amb = sample.rgb * UNITY_LIGHTMODEL_AMBIENT.rgb * Ka;*/
-
-	// Calculate diffuse RBG reflections, we save the results of L.N because we will use it again
-	// (when calculating the reflected ray in our specular component)
+	float Ka = 0.3;
+	float3 amb = sample1.rgb * UNITY_LIGHTMODEL_AMBIENT.rgb * Ka;
+	
 	float fAtt = 1;
 	float Kd = 1;
-	float3 L1 = _WorldSpaceLightPos0; // Q6: Using built-in Unity light data: _WorldSpaceLightPos0.
-	// Note that we are using a *directional* light in this instance,
-	// so _WorldSpaceLightPos0 is actually a direction rather than
-	// a point. Therefore there is no need to subtract the world
-	// space vertex position like in our point-light shaders.
+	float3 L1 = _WorldSpaceLightPos0; 
 	float LdotN = NdotL;
-	float3 dif = fAtt * _LightColor0 * Kd * sample.rgb * shadow1/** saturate(LdotN)*/; // Q6: Using built-in Unity light data: _LightColor0
+	float3 dif = fAtt * _LightColor0 * Kd * sample.rgb * shadow1;
 	
-	/*// Calculate specular reflections
-	float Ks = 1;
-	float specN = 5; // Values>>1 give tighter highlights
-	float3 V = normalize(_WorldSpaceCameraPos - i.worldPos.xyz);
-	// Using Blinn-Phong approximation:
-	specN = 25; // We usually need a higher specular power when using Blinn-Phong
-	float3 H = normalize(V + L1);
-	float3 spe = fAtt * _LightColor0 * Ks * pow(saturate(dot(normal, H)), specN); // Q6: Using built-in Unity light data: _LightColor0*/
-
-	// Combine Phong illumination model components
 	float4 returnColor = float4(0.0f, 0.0f, 0.0f, 0.0f);
-	returnColor.rgb = /*amb.rgb + */dif.rgb/* + spe.rgb*/;
+	returnColor.rgb = amb.rgb + dif.rgb/* + spe.rgb*/;
 
 	#if defined (POINT) || defined (SPOT)
 		float3 L = _WorldSpaceLightPos0.xyz - i.worldPos.xyz;
@@ -133,7 +118,6 @@ fixed4 frag(vertOut i) : SV_TARGET{
 
 		// https://janhalozan.com/2017/08/12/phong-shader/
 		float oneOverDistance = 1.0 / length(L);
-		//float attenuation = lerp(1.0, oneOverDistance, _WorldSpaceLightPos0.w);
 
 		UNITY_LIGHT_ATTENUATION(attenuation, i, i.worldPos.xyz);
 		returnColor *= attenuation * dot1;
@@ -142,48 +126,8 @@ fixed4 frag(vertOut i) : SV_TARGET{
 	#else
 
 	return returnColor;
-
-	/*return _Color * sample  /*+ skyboxLight#1#;*/
-    
-	//return _Color * sample * (_AmbientColor + light);
     
 	#endif
-
-	///// end standard tutorial lighting implementation) /////
-
-	/*// Toonify it
-	float lightIntensity = smoothstep(0, 0.01, NdotL * shadow1);
-	float4 light = lightIntensity * _LightColor0;    
-
-	float3 viewDir = normalize(i.viewDir);
-	float3 halfVector = normalize(_WorldSpaceLightPos0 + viewDir);
-	float NdotH = dot(normal, halfVector);
-
-	float specularIntensity = pow(NdotH * lightIntensity, _Glossiness * _Glossiness);
-    
-	// Toonify it
-	float specularIntensitySmooth = smoothstep(0.005, 0.01, specularIntensity);
-	float4 specular = specularIntensitySmooth * _SpecularColor;
-
-	float4 multiplier = light + specular;
-
-	// IF point or spot light
-	// https://www.reddit.com/r/shaders/comments/5vmlm9/help_unity_cel_shader_point_light_troubles/
-	#if defined (POINT) || defined (SPOT)
-		float3 L = _WorldSpaceLightPos0.xyz - i.worldPos.xyz;
-		float dist = length(L);
-		float dot1 = max(dot(normalize(L), normal), 0);
-
-		UNITY_LIGHT_ATTENUATION(attenuation, i, i.worldPos.xyz);
-		return _Color * sample * attenuation * dot1  * multiplier;
-
-	#else
-
-	return _Color * sample * multiplier /*+ skyboxLight#1#;
-    
-	//return _Color * sample * (_AmbientColor + light);
-    
-	#endif*/
 }
 
 #endif
