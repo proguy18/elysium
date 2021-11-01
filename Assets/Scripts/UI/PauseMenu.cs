@@ -38,8 +38,8 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         IsPaused = true;
         // mute gameplay sounds
-        gameObject.GetComponent<PlayerAudioController>().togglePause();
-        gameObject.GetComponent<PlayerAudioController>().stopSounds();
+        /*gameObject.GetComponent<PlayerAudioController>().togglePause();
+        gameObject.GetComponent<PlayerAudioController>().stopSounds();*/
     }
 
     public void Resume()
@@ -48,7 +48,7 @@ public class PauseMenu : MonoBehaviour
         DisableUI();
         Time.timeScale = 1f;
         IsPaused = false;
-        gameObject.GetComponent<PlayerAudioController>().togglePause();
+        /*gameObject.GetComponent<PlayerAudioController>().togglePause();*/
     }
 
     private void EnableCursor()
