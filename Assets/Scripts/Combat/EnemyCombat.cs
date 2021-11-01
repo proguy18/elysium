@@ -24,7 +24,7 @@ namespace Combat
             if (distance <= attackRange)
             {
                 // Play attack sound
-                if (attackCooldown <= 0f)
+                if (attackCooldown <= 0f && gameObject.GetComponent<EnemyController>().IsAlive())
                 {
                     audioController.attackSound();
                     Attack();
